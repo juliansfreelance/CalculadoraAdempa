@@ -1,0 +1,53 @@
+@import 'fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar {
+   @apply w-1.5 h-1.5;
+}
+
+*::-webkit-scrollbar-track {
+   @apply bg-slate-300
+}
+
+*::-webkit-scrollbar-thumb {
+   @apply bg-green-400;
+}
+
+html,
+body {
+   @apply bg-slate-800;
+}
+
+* {
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+   @apply select-none antialiased font-albert !important;
+}
+
+.slide{
+   @apply w-[1024px] h-[768px] bg-fondo bg-cover bg-center px-12 py-6 flex flex-col gap-7
+}
+
+header hgroup {
+   @apply w-fit px-16 -ml-12 py-2 rounded-r-full text-center bg-gradient-to-r from-red-600 to-amber-600
+}
+
+nav {
+   @apply bg-white/50 px-12 py-16 rounded-3xl grid grid-cols-2 grid-rows-2 gap-8 self-center shadow-black/50 shadow-lg
+}
+.menu-item {
+   @apply w-[270px] h-[210px] bg-gradient-to-b from-menu-100 to-menu-200 shadow-black/40 shadow-lg p-2 rounded-[55px] hover:shadow-black/40 hover:shadow-xl transition-all
+}
+
+.menu-item figure {
+   @apply w-full h-full bg-gradient-to-b from-white/50 to-transparent rounded-[50px] flex flex-col justify-end items-center
+}
+.menu-item figure img {
+   @apply w-[100px] self-center drop-shadow-md
+}
+
+.menu-item figure figcaption {
+   @apply text-3xl text-text-500 font-extrabold leading-none pb-6 pt-3
+}

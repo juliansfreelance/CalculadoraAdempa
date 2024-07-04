@@ -1,0 +1,95 @@
+@font-face {
+   font-family: 'FSAlbert';
+   src: url('../fonts/fsalbert_thin-webfont.eot');
+   src: url('../fonts/fsalbert_thin-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/fsalbert_thin-webfont.woff2') format('woff2'),
+      url('../fonts/fsalbert_thin-webfont.woff') format('woff'),
+      url('../fonts/fsalbert_thin-webfont.ttf') format('truetype'),
+      url('../fonts/fsalbert_thin-webfont.svg#fsalbertthin') format('svg');
+   font-weight: 100;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'FSAlbert';
+   src: url('../fonts/fsalbert_light_italic-webfont.eot');
+   src: url('../fonts/fsalbert_light_italic-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/fsalbert_light_italic-webfont.woff2') format('woff2'),
+      url('../fonts/fsalbert_light_italic-webfont.woff') format('woff'),
+      url('../fonts/fsalbert_light_italic-webfont.ttf') format('truetype'),
+      url('../fonts/fsalbert_light_italic-webfont.svg#fsalbertlight_italic') format('svg');
+   font-weight: 100;
+   font-style: italic;
+}
+
+@font-face {
+   font-family: 'FSAlbert';
+   src: url('../fonts/fsalbert_light-webfont.eot');
+   src: url('../fonts/fsalbert_light-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/fsalbert_light-webfont.woff2') format('woff2'),
+      url('../fonts/fsalbert_light-webfont.woff') format('woff'),
+      url('../fonts/fsalbert_light-webfont.ttf') format('truetype'),
+      url('../fonts/fsalbert_light-webfont.svg#fsalbertlight') format('svg');
+   font-weight: 300;
+   font-style: normal
+}
+
+@font-face {
+   font-family: 'FSAlbert';
+   src: url('../fonts/fsalbert_regular-webfont.eot');
+   src: url('../fonts/fsalbert_regular-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/fsalbert_regular-webfont.woff2') format('woff2'),
+      url('../fonts/fsalbert_regular-webfont.woff') format('woff'),
+      url('../fonts/fsalbert_regular-webfont.ttf') format('truetype'),
+      url('../fonts/fsalbert_regular-webfont.svg#fsalbertregular') format('svg');
+   font-weight: 400;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'FSAlbert';
+   src: url('../fonts/fsalbert_italic-webfont.eot');
+   src: url('../fonts/fsalbert_italic-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/fsalbert_italic-webfont.woff2') format('woff2'),
+      url('../fonts/fsalbert_italic-webfont.woff') format('woff'),
+      url('../fonts/fsalbert_italic-webfont.ttf') format('truetype'),
+      url('../fonts/fsalbert_italic-webfont.svg#fsalbertitalic') format('svg');
+   font-weight: 400;
+   font-style: italic;
+}
+
+@font-face {
+   font-family: 'FSAlbert';
+   src: url('../fonts/fsalbert-bold-webfont.eot');
+   src: url('../fonts/fsalbert-bold-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/fsalbert-bold-webfont.woff2') format('woff2'),
+      url('../fonts/fsalbert-bold-webfont.woff') format('woff'),
+      url('../fonts/fsalbert-bold-webfont.ttf') format('truetype'),
+      url('../fonts/fsalbert-bold-webfont.svg#fsalbertbold') format('svg');
+   font-weight: 700;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'FSAlbert';
+   src: url('../fonts/fsalbert-extrabold-webfont.eot');
+   src: url('../fonts/fsalbert-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/fsalbert-extrabold-webfont.woff2') format('woff2'),
+      url('../fonts/fsalbert-extrabold-webfont.woff') format('woff'),
+      url('../fonts/fsalbert-extrabold-webfont.ttf') format('truetype'),
+      url('../fonts/fsalbert-extrabold-webfont.svg#fsalbertextrabold') format('svg');
+   font-weight: 800;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Helvetica';
+   src: url('../fonts/helvetica_lt_std_light_condensed-webfont.eot');
+   src: url('../fonts/helvetica_lt_std_light_condensed-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/helvetica_lt_std_light_condensed-webfont.woff2') format('woff2'),
+      url('../fonts/helvetica_lt_std_light_condensed-webfont.woff') format('woff'),
+      url('../fonts/helvetica_lt_std_light_condensed-webfont.ttf') format('truetype'),
+      url('../fonts/helvetica_lt_std_light_condensed-webfont.svg#helvetica_lt_stdLtCn') format('svg');
+   font-weight: 300;
+   font-style: normal;
+}
