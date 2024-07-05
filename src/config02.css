@@ -1,0 +1,85 @@
+@import 'fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar {
+   @apply w-1.5 h-1.5;
+}
+
+*::-webkit-scrollbar-track {
+   @apply bg-slate-300
+}
+
+*::-webkit-scrollbar-thumb {
+   @apply bg-green-400;
+}
+
+html,
+body {
+   @apply bg-slate-800;
+}
+
+* {
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+   @apply select-none antialiased font-albert !important;
+}
+
+.slide{
+   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-4
+}
+
+header hgroup {
+   @apply w-full h-[88px] px-16 py-2 text-center bg-gradient-to-r from-red-600 to-amber-600
+}
+
+.factores{
+   @apply bg-introduccion-100 text-text-500 text-sm p-4 rounded-lg shadow-md shadow-black/40
+}
+
+.instrucciones {
+   @apply bg-white/70 text-text-500 text-sm p-4 rounded-lg shadow-md shadow-black/40
+}
+.casillas {
+   @apply bg-white/70 text-text-500 text-sm p-4 rounded-lg shadow-md shadow-black/40
+}
+
+input {
+   @apply py-1 px-4 pr-8 text-sm text-right !important;
+}
+
+.input-insert {
+   @apply border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
+}
+
+.input-cal {
+   @apply border-slate-400 bg-zinc-300 rounded-md block w-full
+}
+
+.input-edit {
+   @apply border-slate-400 bg-introduccion-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
+}
+
+.bg-button1 {
+   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 shadow-md shadow-black/40 rounded-lg
+}
+.bg-button1 div {
+   @apply text-button-text pl-7 pr-5 py-1 bg-gradient-to-b from-button-bg1 to-white rounded-md
+}
+.bg-button1 div i {
+   @apply -ml-4 mr-2
+}
+
+.bg-button2 {
+   @apply text-button-text bg-gradient-to-t from-button-bg2 to-button-bg4 border-t-[3px] border-button-bg2 p-1 shadow-md shadow-black/30 rounded-full
+}
+.bg-button2 div {
+   @apply text-button-text pl-7 pr-5 py-0.5 drop-shadow-button
+}
+.bg-button2 div i {
+   @apply -ml-4 mr-2
+}
+.bg-button2 div h4{
+   @apply font-bold text-sm
+}
