@@ -26,6 +26,33 @@ body {
    @apply select-none antialiased font-albert !important;
 }
 
+ol {
+   counter-reset: item;
+}
+
+ol li {
+   @apply block my-2
+}
+ol li:last-child {
+   @apply block mb-0
+}
+
+ol>li {
+   display: block;
+   counter-increment: item;
+}
+
+ol>li:before {
+   content: counters(item, ".") " ";
+   font-weight: bold;
+   margin-right: 0.5em;
+}
+
+ol ol>li {
+   list-style: none;
+   @apply block my-0.5
+}
+
 .slide{
    @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-4
 }
@@ -34,15 +61,20 @@ header hgroup {
    @apply w-full h-[88px] px-16 py-2 text-center bg-gradient-to-r from-red-600 to-amber-600
 }
 
+.factores,
+.instrucciones,
+.casillas {
+   @apply bg-white/70 text-text-500 text-sm px-6 py-4 rounded-lg shadow-md shadow-black/40
+}
 .factores{
-   @apply bg-introduccion-100 text-text-500 text-sm p-4 rounded-lg shadow-md shadow-black/40
+   @apply bg-introduccion-100
 }
 
 .instrucciones {
-   @apply bg-white/70 text-text-500 text-sm p-4 rounded-lg shadow-md shadow-black/40
+   @apply col-span-6 py-6
 }
 .casillas {
-   @apply bg-white/70 text-text-500 text-sm p-4 rounded-lg shadow-md shadow-black/40
+   @apply col-span-4 py-6
 }
 
 input {

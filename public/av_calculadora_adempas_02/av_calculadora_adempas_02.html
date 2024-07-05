@@ -29,7 +29,7 @@
 
       <main class="mx-16">
          <article class="factores animate-fade-in-up animate-delay-[1100ms]">
-            <h3 class="font-extrabold text-xl leading-none">La calculadora toma en cuenta varios factores:</h3>
+            <h3 class="font-extrabold text-xl leading-none mb-3">La calculadora toma en cuenta varios factores:</h3>
             <ul class="list-disc list-inside ml-4 leading-tight">
                <li>Riesgo del paciente</li>
                <li>Costos de los procedimientos médicos necesarios</li>
@@ -41,62 +41,47 @@
          </article>
       </main>
 
-      <main class="mx-16 grid grid-cols-2 gap-6">
+      <main class="mx-16 grid grid-cols-10 gap-6">
          <article class="instrucciones animate-fade-in-left animate-delay-[1300ms]">
-            <h3 class="font-extrabold text-xl leading-normal">Instrucciones</h3>
-            <ul class="list-decimal list-outside ml-6 leading-tight">
+            <h3 class="font-extrabold text-xl leading-none mb-4">Instrucciones</h3>
+            <ol class="list-decimal list-outside ml-3 leading-tight">
                <li>Debe registrar la cohorte de pacientes de la institución.</li>
                <li>La cohorte según la literatura o con datos de la institución, se distribuirá según la proporción de pacientes por cada categoria de riesgo.</li>
                <li>Se asignara un costo de procedimientos, costo de complicaciones y uso de terapias por cada categoria de riesgo por paciente, la cual se ajustará a la proporción de pacientes distribuidos de la cohorte total.</li>
                <li>El porcentaje de uso de tecnologías (Mono, Doble y Triple terapia) podrá ser modificado según la realidad de cada institución.</li>
                <li>Los factores modificadores, podrán ser modificados según el tipo de apoyo que se brinde desde Bayer.</li>
-            </ul>
+            </ol>
          </article>
 
          <article class="casillas animate-fade-in-right animate-delay-[1300ms]">
-
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col">
                <div class="grid grid-rows-2 gap-2">
-                  <div class="relative">
-                     <input class="input-insert" type="text" placeholder="Aquí puede escribir"/>
 
-                     <div class="absolute text-text-500 right-1 -mt-[26px]">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path
-                              d="M16.2426 6.34319C16.6331 5.95266 17.2663 5.95266 17.6568 6.34319C18.0474 6.73371 18.0474 7.36688 17.6568 7.7574L7.75734 17.6569C7.36681 18.0474 6.73365 18.0474 6.34313 17.6569C5.9526 17.2664 5.9526 16.6332 6.34313 16.2427L16.2426 6.34319Z"
-                              fill="currentColor" />
-                           <path
-                              d="M9.87866 9.87872C9.09761 10.6598 7.83128 10.6598 7.05023 9.87872C6.26918 9.09767 6.26918 7.83134 7.05023 7.05029C7.83128 6.26924 9.09761 6.26924 9.87866 7.05029C10.6597 7.83134 10.6597 9.09767 9.87866 9.87872Z"
-                              fill="currentColor" />
-                           <path
-                              d="M14.1213 16.9498C14.9023 17.7308 16.1687 17.7308 16.9497 16.9498C17.7308 16.1687 17.7308 14.9024 16.9497 14.1214C16.1687 13.3403 14.9023 13.3403 14.1213 14.1214C13.3403 14.9024 13.3403 16.1687 14.1213 16.9498Z"
-                              fill="currentColor" />
-                        </svg>
+                  <div class="grid grid-cols-5 gap-2 content-center">
+                     <div class="relative w-full col-span-3">
+                        <input class="input-insert" type="text" placeholder="Aquí puede escribir" />
+                        <div class="absolute text-text-500 right-1 -mt-[26px]">
+                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M16.2426 6.34319C16.6331 5.95266 17.2663 5.95266 17.6568 6.34319C18.0474 6.73371 18.0474 7.36688 17.6568 7.7574L7.75734 17.6569C7.36681 18.0474 6.73365 18.0474 6.34313 17.6569C5.9526 17.2664 5.9526 16.6332 6.34313 16.2427L16.2426 6.34319Z" fill="currentColor" />
+                              <path d="M9.87866 9.87872C9.09761 10.6598 7.83128 10.6598 7.05023 9.87872C6.26918 9.09767 6.26918 7.83134 7.05023 7.05029C7.83128 6.26924 9.09761 6.26924 9.87866 7.05029C10.6597 7.83134 10.6597 9.09767 9.87866 9.87872Z" fill="currentColor" />
+                              <path d="M14.1213 16.9498C14.9023 17.7308 16.1687 17.7308 16.9497 16.9498C17.7308 16.1687 17.7308 14.9024 16.9497 14.1214C16.1687 13.3403 14.9023 13.3403 14.1213 14.1214C13.3403 14.9024 13.3403 16.1687 14.1213 16.9498Z" fill="currentColor" />
+                           </svg>
+                        </div>
                      </div>
+                     <label class="col-span-2 text-text-500 text-center flex flex-col justify-center">
+                        <h4 class="font-bold text-base leading-none">Casillas blancas</h4>
+                        <p class="font-normal text-xs leading-none">Celdas modificables</p>
+                     </label>
                   </div>
-                  
-
-                  <label class="block text-text-500 text-center">
-                     <h4 class="font-bold text-base leading-none">Casillas blancas</h4>
-                     <p class="font-normal text-xs leading-none">Celdas modificables. introduce información aquí</p>
-                  </label>
-
-                  
 
                <div class="grid grid-cols-5 gap-2 content-center">
                   <div class="relative w-full col-span-3">
                      <input class="input-cal " type="text" value="Valor calculado" placeholder="Valor calculado" disabled />
                      <div class="absolute text-text-500 right-1 -mt-[26px]">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path
-                              d="M16.2426 6.34319C16.6331 5.95266 17.2663 5.95266 17.6568 6.34319C18.0474 6.73371 18.0474 7.36688 17.6568 7.7574L7.75734 17.6569C7.36681 18.0474 6.73365 18.0474 6.34313 17.6569C5.9526 17.2664 5.9526 16.6332 6.34313 16.2427L16.2426 6.34319Z"
-                              fill="currentColor" />
-                           <path
-                              d="M9.87866 9.87872C9.09761 10.6598 7.83128 10.6598 7.05023 9.87872C6.26918 9.09767 6.26918 7.83134 7.05023 7.05029C7.83128 6.26924 9.09761 6.26924 9.87866 7.05029C10.6597 7.83134 10.6597 9.09767 9.87866 9.87872Z"
-                              fill="currentColor" />
-                           <path
-                              d="M14.1213 16.9498C14.9023 17.7308 16.1687 17.7308 16.9497 16.9498C17.7308 16.1687 17.7308 14.9024 16.9497 14.1214C16.1687 13.3403 14.9023 13.3403 14.1213 14.1214C13.3403 14.9024 13.3403 16.1687 14.1213 16.9498Z"
-                              fill="currentColor" />
+                           <path d="M16.2426 6.34319C16.6331 5.95266 17.2663 5.95266 17.6568 6.34319C18.0474 6.73371 18.0474 7.36688 17.6568 7.7574L7.75734 17.6569C7.36681 18.0474 6.73365 18.0474 6.34313 17.6569C5.9526 17.2664 5.9526 16.6332 6.34313 16.2427L16.2426 6.34319Z" fill="currentColor" />
+                           <path d="M9.87866 9.87872C9.09761 10.6598 7.83128 10.6598 7.05023 9.87872C6.26918 9.09767 6.26918 7.83134 7.05023 7.05029C7.83128 6.26924 9.09761 6.26924 9.87866 7.05029C10.6597 7.83134 10.6597 9.09767 9.87866 9.87872Z" fill="currentColor" />
+                           <path d="M14.1213 16.9498C14.9023 17.7308 16.1687 17.7308 16.9497 16.9498C17.7308 16.1687 17.7308 14.9024 16.9497 14.1214C16.1687 13.3403 14.9023 13.3403 14.1213 14.1214C13.3403 14.9024 13.3403 16.1687 14.1213 16.9498Z" fill="currentColor" />
                         </svg>
                      </div>
                   </div>
@@ -111,18 +96,11 @@
                      <input class="input-edit " type="text" placeholder="Aquí puede editar" />
                      <div class="absolute text-text-500 right-1 -mt-[26px]">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path
-                              d="M16.2426 6.34319C16.6331 5.95266 17.2663 5.95266 17.6568 6.34319C18.0474 6.73371 18.0474 7.36688 17.6568 7.7574L7.75734 17.6569C7.36681 18.0474 6.73365 18.0474 6.34313 17.6569C5.9526 17.2664 5.9526 16.6332 6.34313 16.2427L16.2426 6.34319Z"
-                              fill="currentColor" />
-                           <path
-                              d="M9.87866 9.87872C9.09761 10.6598 7.83128 10.6598 7.05023 9.87872C6.26918 9.09767 6.26918 7.83134 7.05023 7.05029C7.83128 6.26924 9.09761 6.26924 9.87866 7.05029C10.6597 7.83134 10.6597 9.09767 9.87866 9.87872Z"
-                              fill="currentColor" />
-                           <path
-                              d="M14.1213 16.9498C14.9023 17.7308 16.1687 17.7308 16.9497 16.9498C17.7308 16.1687 17.7308 14.9024 16.9497 14.1214C16.1687 13.3403 14.9023 13.3403 14.1213 14.1214C13.3403 14.9024 13.3403 16.1687 14.1213 16.9498Z"
-                              fill="currentColor" />
+                           <path d="M16.2426 6.34319C16.6331 5.95266 17.2663 5.95266 17.6568 6.34319C18.0474 6.73371 18.0474 7.36688 17.6568 7.7574L7.75734 17.6569C7.36681 18.0474 6.73365 18.0474 6.34313 17.6569C5.9526 17.2664 5.9526 16.6332 6.34313 16.2427L16.2426 6.34319Z" fill="currentColor" />
+                           <path d="M9.87866 9.87872C9.09761 10.6598 7.83128 10.6598 7.05023 9.87872C6.26918 9.09767 6.26918 7.83134 7.05023 7.05029C7.83128 6.26924 9.09761 6.26924 9.87866 7.05029C10.6597 7.83134 10.6597 9.09767 9.87866 9.87872Z" fill="currentColor" />
+                           <path d="M14.1213 16.9498C14.9023 17.7308 16.1687 17.7308 16.9497 16.9498C17.7308 16.1687 17.7308 14.9024 16.9497 14.1214C16.1687 13.3403 14.9023 13.3403 14.1213 14.1214C13.3403 14.9024 13.3403 16.1687 14.1213 16.9498Z" fill="currentColor" />
                         </svg>
                      </div>
-
                   </div>
                   <label class="col-span-2 text-text-500 text-center flex flex-col justify-center">
                      <h4 class="font-bold text-base leading-none">Casillas marrón</h4>
@@ -134,10 +112,8 @@
                   <button class="bg-button2 w-fit">
                      <div class="flex flex-row items-center justify-center">
                         <i>
-                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                              class="size-5">
-                              <path stroke-linecap="round" stroke-linejoin="round"
-                                 d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                            </svg>
 
                         </i>
@@ -151,40 +127,36 @@
                   </label>
                </div>
 
-               <div class="h-fit grid grid-cols-2 gap-2 content-center items-center">
+               <div class="h-fit grid grid-cols-2 gap-0 content-center items-center">
                   <div class="flex flex-col items-center">
                      <i class="text-green-600 text-sm drop-shadow-pop cursor-pointer rounded-full bg-white">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                           <path fill-rule="evenodd"
-                              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z"
-                              clip-rule="evenodd" />
+                           <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
                         </svg>
    
                      </i>
                      <label class=" text-text-500 text-center flex flex-col justify-center">
-                        <h4 class="font-bold text-base leading-none">Desplegar más información</h4>
+                        <h4 class="font-bold text-base leading-tight">Abrir Pop-Up</h4>
                      </label>
                   </div>
                   <div class="flex flex-col items-center">
                      <i class="text-red-600 text-sm drop-shadow-pop cursor-pointer rounded-full bg-white">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                           <path fill-rule="evenodd"
-                              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"
-                              clip-rule="evenodd" />
+                           <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" clip-rule="evenodd" />
                         </svg>
    
                      </i>
                      <label class=" text-text-500 text-center flex flex-col justify-center">
-                        <h4 class="font-bold text-base leading-none">Minimizar pop up</h4>
+                        <h4 class="font-bold text-base leading-tight">Cerrar Pop-Up</h4>
                      </label>
                   </div>
    
                </div>
             </div>
-
-
          </article>
+
       </main>
+
       <footer class="w-full px-16 text-center flex flex-col items-center gap-4">
          <p class="leading-tight text-center text-text-600 text-sm animate-fade-in-up animate-delay-[1800ms]">En resumen, esta herramienta nos ayuda a entender y estimar los costos financieros asociados con la atención médica para pacientes con HTP, lo que puede ser útil para la toma de decisiones clínicas y la planificación de tratamientos.</p>
          <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[2300ms]" onclick="javascript:jumptoSlide('01')">
