@@ -1,0 +1,88 @@
+@import 'fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar {
+   @apply w-1.5 h-1.5;
+}
+
+*::-webkit-scrollbar-track {
+   @apply bg-slate-300
+}
+
+*::-webkit-scrollbar-thumb {
+   @apply bg-green-400;
+}
+
+html,
+body {
+   @apply bg-slate-800;
+}
+
+* {
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+   @apply select-none antialiased font-albert !important;
+}
+
+.slide{
+   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-8
+}
+
+header hgroup {
+   @apply w-full h-[88px] flex flex-col justify-center items-center px-16 py-2 text-center bg-gradient-to-r from-red-600 to-amber-600
+}
+
+.estadificaciones,
+.consideraciones,
+.supuestos {
+   @apply bg-white/70 text-text-500 text-sm py-8 px-8 rounded-lg shadow-md shadow-black/40
+}
+.estadificaciones {
+   @apply grid grid-cols-3 gap-3 py-4 px-4 justify-center content-center text-center
+}
+.estadificacion
+{
+   @apply border-l-4 bg-slate-800/5 rounded-lg py-2
+}
+.estadificacion h3
+{
+   @apply font-bold text-lg mb-2
+}
+
+
+
+.back-button {
+   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 shadow-md shadow-black/40 rounded-lg
+}
+.back-button div {
+   @apply text-button-text pl-7 pr-5 py-1 bg-gradient-to-b from-button-bg1 to-white rounded-md
+}
+.back-button div i {
+   @apply -ml-4 mr-2
+}
+
+
+ol {
+   counter-reset: item;
+}
+ol li {
+   @apply block my-3
+}
+
+ol>li {
+   display: block;
+   counter-increment: item;
+}
+
+ol>li:before {
+   content: counters(item, ".") " ";
+   font-weight: bold;
+   margin-right: 0.5em;
+}
+
+ol ol>li {
+   list-style: none;
+   @apply block my-1
+}
