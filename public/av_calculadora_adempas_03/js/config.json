@@ -1,0 +1,37 @@
+{
+   "zipName": "av_calculadora_adempas_",
+   "presentationCode": "00023200",
+   "slide": "03",
+   "enlaces": [
+      {
+         "docName": "Nombre del documento a linkear",
+         "zipName": "av_calculadora_adempas_01",
+         "presentationCode": "00023200",
+         "color": "#FFCF01"
+      },
+      {
+         "docName": "Nombre del documento a linkear",
+         "zipName": "av_calculadora_adempas_02",
+         "presentationCode": "00023200",
+         "color": "#C95D47"
+      },
+      {
+         "docName": "Nombre del documento a linkear",
+         "zipName": "av_calculadora_adempas_03",
+         "presentationCode": "00023200",
+         "color": "#820053"
+      },
+      {
+         "docName": "Nombre del documento a linkear",
+         "zipName": "av_calculadora_adempas_04",
+         "presentationCode": "00023200",
+         "color": "#00728F"
+      },
+      {
+         "docName": "Nombre del documento a linkear",
+         "zipName": "av_calculadora_adempas_05",
+         "presentationCode": "00023200",
+         "color": "#679146"
+      }
+   ]
+}

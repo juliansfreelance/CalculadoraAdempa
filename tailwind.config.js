@@ -29,7 +29,11 @@ module.exports = {
       },
       dropShadow: {
         'button': '2px 2px 0px rgba(255, 255, 255, 0.8)',
-        'pop': '1px 2px 2px rgba(0, 0, 0, 0.2)',
+        'button-text': '2px 2px 0px rgba(0, 0, 0, 0.4)'
+      },
+      boxShadow: {
+        'links': '-1px 0px 4px rgba(0, 0, 0, 1)',
+        'pop': '1px 2px 2px rgba(0, 0, 0, 0.2)'
       },
       aspectRatio: {
         'ipad': '4 / 3',
