@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+   <meta name="format-detection" content="telephone=no" />
+   <meta name="msapplication-tap-highlight" content="no" />
+   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+   <meta name='author' href="https://github.com/juliansfreelance" email="jcalderon.code@gmail.com" content='Julio Calderón - Desarrollador Front-end' />
+   <meta name="description" content="Herramienta de costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica o de la Hipertensión Pulmonar por categoria de riesgo (HTP)" />
+
+   <title>AV Calculadora HTP Adempa | Población</title>
+
+   <link rel="icon" type="image/ico" href="images/icon.png" />
+   <link rel="stylesheet" href="css/style.css">
+   <script src="js/script.js" defer></script>
+</head>
+<body class="w-screen h-screen grid place-items-center">
+   <section class="slide animate-fade-in animate-duration-slow">
+
+      <header class="w-full">
+
+         <hgroup class="animate-fade-in-down animate-delay-500 animate-duration-slow">
+            <h2 class="font-extrabold text-white text-3xl leading-none">Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
+         </hgroup>
+
+      </header>
+
+      <main class="mx-40 grid grid-flow-row auto-rows-max justify-items-center gap-6">
+
+         <button class="bg-button w-fit animate-pulse-fade-in animate-delay-[750ms]" onclick="javascript:jumpToSlide('02')">
+            <div class="flex flex-row items-center justify-center">
+               <h4 class=" font-bold text-lg">Instrucciones</h4>
+            </div>
+         </button>
+
+         <div class="input-poblacion animate-fade-in-down animate-delay-[800ms]">
+            <input type="number" id="poblacion" class="peer z-0" placeholder="Ingresa aquí tu población" />
+            <label for="poblacion" class="backaground-btn-orange z-10 peer-focus:border-blue-300 peer-focus:ring peer-focus:ring-blue-200 peer-focus:ring-opacity-50">
+               <div class="flex flex-row items-center justify-center">
+                  <i>
+                     <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                     </svg>
+                  </i>
+                  <h4>Población</h4>
+               </div>
+            </label>
+         </div>
+
+         <div class="flex flex-col items-center justify-center gap-2 animate-fade-in-up animate-delay-[800ms]">
+            <h3 class="font-extrabold text-text-500 text-2xl leading-none">Distribución por grupo de HTP</h3>
+            <p class="text-base text-text-500 leading-none">¿Conoce usted sus grupos?</p>
+            <div class="flex gap-4">
+               <button class="backaground-btn-orange button-orange-corner-full animate-fade-in-left animate-delay-[1100ms]"><div><h4>SI</h4></div></button>
+               <button class="backaground-btn-orange button-orange-corner-full animate-fade-in-right animate-delay-[1100ms]"><div><h4>NO</h4></div></button>
+            </div>
+         </div>
+
+         <section class="w-full grid grid-cols-2 gap-6 content-center px-6">
+
+            <div class="grid gap-0 content-center animate-fade-in-left animate-delay-[1300ms]">
+               <div class="flex flex-col-reverse items-center justify-center">
+                  <div class="relative w-full">
+                     <input class="input-insert" type="text" />
+                     <div class="absolute text-text-500 right-1 -mt-[26px]">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path fill="currentColor" d="M16.2426 6.34319C16.6331 5.95266 17.2663 5.95266 17.6568 6.34319C18.0474 6.73371 18.0474 7.36688 17.6568 7.7574L7.75734 17.6569C7.36681 18.0474 6.73365 18.0474 6.34313 17.6569C5.9526 17.2664 5.9526 16.6332 6.34313 16.2427L16.2426 6.34319Z"/>
+                           <path fill="currentColor" d="M9.87866 9.87872C9.09761 10.6598 7.83128 10.6598 7.05023 9.87872C6.26918 9.09767 6.26918 7.83134 7.05023 7.05029C7.83128 6.26924 9.09761 6.26924 9.87866 7.05029C10.6597 7.83134 10.6597 9.09767 9.87866 9.87872Z"/>
+                           <path fill="currentColor" d="M14.1213 16.9498C14.9023 17.7308 16.1687 17.7308 16.9497 16.9498C17.7308 16.1687 17.7308 14.9024 16.9497 14.1214C16.1687 13.3403 14.9023 13.3403 14.1213 14.1214C13.3403 14.9024 13.3403 16.1687 14.1213 16.9498Z"/>
+                        </svg>
+                     </div>
+                  </div>
+                  <label class="backaground-btn-blue label-blue">
+                     <div><h4>Grupo I HAP</h4></div>
+                  </label>
+               </div>
+            </div>
+
+            <div class="grid gap-0 content-center animate-fade-in-right animate-delay-[1300ms]">
+               <div class=" flex flex-col-reverse items-center justify-center">
+                  <div class="relative w-full">
+                     <input class="input-insert" type="text" />
+                     <div class="absolute text-text-500 right-1 -mt-[26px]">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path fill="currentColor" d="M16.2426 6.34319C16.6331 5.95266 17.2663 5.95266 17.6568 6.34319C18.0474 6.73371 18.0474 7.36688 17.6568 7.7574L7.75734 17.6569C7.36681 18.0474 6.73365 18.0474 6.34313 17.6569C5.9526 17.2664 5.9526 16.6332 6.34313 16.2427L16.2426 6.34319Z" />
+                           <path fill="currentColor" d="M9.87866 9.87872C9.09761 10.6598 7.83128 10.6598 7.05023 9.87872C6.26918 9.09767 6.26918 7.83134 7.05023 7.05029C7.83128 6.26924 9.09761 6.26924 9.87866 7.05029C10.6597 7.83134 10.6597 9.09767 9.87866 9.87872Z" />
+                           <path fill="currentColor" d="M14.1213 16.9498C14.9023 17.7308 16.1687 17.7308 16.9497 16.9498C17.7308 16.1687 17.7308 14.9024 16.9497 14.1214C16.1687 13.3403 14.9023 13.3403 14.1213 14.1214C13.3403 14.9024 13.3403 16.1687 14.1213 16.9498Z" />
+                        </svg>
+                     </div>
+                  </div>
+                  <label class="backaground-btn-blue label-blue">
+                     <div><h4>Grupo IV HTCE</h4></div>
+                  </label>
+               </div>
+            </div>
+
+
+         </section>
+
+         <button class="backaground-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[1600ms]" onclick="javascript:validarForm()">
+            <div class="flex flex-row-reverse items-center justify-center">
+               <i>
+                  <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                  </svg>
+               </i>
+               <h4>Continuar</h4>
+            </div>
+         </button>
+
+
+
+      </main>
+
+      <footer class="w-full px-52 text-center flex flex-col items-center gap-4">
+         <article class="animate-blurred-fade-in animate-delay-[1800ms] animate-duration-slower">
+            <p class="font-helvet font-light leading-none text-center text-xs my-2">Costos procedimientos por paciente = Recurso en salud * Proporción de uso por estadificación de riesgo * Costo unitario. La proporción de uso de recursos según estadificación de riesgo está basada en la literatura (38) y el costo unitario basado en el tarifario del Instituto de Seguridad Social de Colombia de 2001 más el 35% de inflación estimado desde año a la actualidad (39)</p>
+            <p class="font-helvet font-light leading-none text-center text-xs my-2">38. Zozaya N., et al. The economic burden of pulmonary arterial hypertension in Spain. BMC Pulm Med. 2022 Mar 26;22(1):105.39. Ministerio de Salud. ACUERDO No. 256 DE 2.001. URL disponible: https://lexsaludcolombia.files.wordpress.com/2010/10/tarifas-iss-2001.pdf.</p>
+         </article>
+         <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[2000ms]" onclick="javascript:jumpToSlide('01')">
+            <div class="flex flex-row items-center justify-center">
+            <i>
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+               </svg>
+            </i>
+            <h4 class=" font-bold text-lg">Regresar</h4></div>
+         </button>
+      </footer>
+
+   </section>
+</body>
+</html>

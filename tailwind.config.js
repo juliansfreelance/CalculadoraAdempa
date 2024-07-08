@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'albert': ['FSAlbert'],
-      'helvet': ['Helvetica'],
+      'helvet': ['Helvet'],
     },
     extend: {
       colors: {

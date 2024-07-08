@@ -7,7 +7,8 @@
     "scanTailwind01": "npx tailwindcss -i ./src/config01.css -o ./public/av_calculadora_adempas_01/css/style.css --watch",
     "scanTailwind02": "npx tailwindcss -i ./src/config02.css -o ./public/av_calculadora_adempas_02/css/style.css --watch",
     "scanTailwind03": "npx tailwindcss -i ./src/config03.css -o ./public/av_calculadora_adempas_03/css/style.css --watch",
-    "dev": "npx tailwindcss -i ./src/config04.css -o ./public/av_calculadora_adempas_04/css/style.css --watch"
+    "scanTailwind04": "npx tailwindcss -i ./src/config04.css -o ./public/av_calculadora_adempas_04/css/style.css --watch",
+    "dev": "npx tailwindcss -i ./src/config05.css -o ./public/av_calculadora_adempas_05/css/style.css --watch"
   },
   "keywords": [],
   "author": "",
