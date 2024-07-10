@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+   <meta name="format-detection" content="telephone=no" />
+   <meta name="msapplication-tap-highlight" content="no" />
+   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+   <meta name='author' href="https://github.com/juliansfreelance" email="jcalderon.code@gmail.com" content='Julio Calderón - Desarrollador Front-end' />
+   <meta name="description" content="Herramienta de costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica o de la Hipertensión Pulmonar por categoria de riesgo (HTP)" />
+
+   <title>AV Calculadora HTP Adempa | Distribución</title>
+
+   <link rel="icon" type="image/ico" href="images/icon.png" />
+   <link rel="stylesheet" href="css/style.css">
+   <script src="js/components/input.js" defer></script>
+   <script src="js/components/pop.js" defer></script>
+   <script src="js/script.js" defer></script>
+</head>
+<body class="w-screen h-screen grid place-items-center">
+   <section class="slide animate-fade-in animate-duration-slow">
+
+      <header class="w-full">
+
+         <hgroup class="animate-fade-in-down animate-delay-500 animate-duration-slow">
+            <h2 class="font-extrabold text-white text-3xl leading-none">Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
+         </hgroup>
+
+      </header>
+
+      <main class="mx-7 grid grid-flow-row auto-rows-max justify-items-center gap-6">
+
+         <section class="tratamiento flex flex-col-reverse w-fit">
+            <div class="form">
+               <table class="w-full table-auto">
+                  <thead>
+                     <tr>
+                        <th class="font-bold text-base text-orange-400 text-left">Tratamiento</th>
+                        <th class="font-bold text-base text-yellow-400 text-center">Estadificación riesgo Bajo</th>
+                        <th class="font-bold text-base text-lime-600 text-center">Estadificación riesgo Intermedio</th>
+                        <th class="font-bold text-base text-cyan-500 text-center">Estadificación riesgo Alto</th>
+                        <th></th>
+                     </tr>
+                  </thead>
+                  <tbody>
+
+                     <tr>
+                        <td>Monoterapia</td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-intermedio" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-alto" type="insert" icon="porcentaje"></custom-input></td>
+                        <td>
+                           <button class="text-green-600 shadow-md rounded-full bg-white ">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                 <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
+                              </svg>
+                           </button>
+                        </td>
+                     </tr>
+
+                     <tr>
+                        <td>Terapias combinadas (doble)</td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td>
+                           <button class="text-green-600 shadow-md rounded-full bg-white ">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
+                              </svg>
+                           </button>
+                        </td>
+                     </tr>
+
+                     <tr>
+                        <td>Terapias combinadas (Triples)</td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td>
+                           <button class="text-green-600 shadow-md rounded-full bg-white ">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
+                              </svg>
+                           </button>
+                        </td>
+                     </tr>
+
+                     <tr>
+                        <td>
+                           <button class="btn-caso-ref w-fit">
+                              <div class="flex flex-row items-center justify-center">
+                                 <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                 </svg>
+                                 <h4>Caso de referencia</h4>
+                              </div>
+                           </button>
+                        </td>
+                        <td><custom-input name="monoterapia-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                        <td></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="label"><h4>Distribución uso de tecnologías</h4></div>
+         </section>
+
+         <section class="complicaciones flex flex-col-reverse w-fit">
+            <div class="form">
+               <article class="animate-blurred-fade-in animate-delay-[1800ms] animate-duration-slower">
+                  <p class="font-normal leading-none text-center text-xs text-text-500">Si tiene el rubro no es por paquete con un solo costo, puedo dirigirse a Costo de complicaciones para realizar microcosteo</p>
+               </article>
+               <table class="w-full table-auto">
+                  <thead>
+                     <tr>
+                        <th class="font-bold text-base text-orange-400 text-left">Complicaciones</th>
+                        <th class="font-bold text-base text-yellow-400 text-center">Estadificación riesgo Bajo</th>
+                        <th class="font-bold text-base text-lime-600 text-center">Estadificación riesgo Intermedio</th>
+                        <th class="font-bold text-base text-cyan-500 text-center">Estadificación riesgo Alto</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>Hospitalizaciones por causas diferentes<br>a falla cardiaca derecha</td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                     </tr>
+
+                     <tr>
+                        <td>Falla cardiaca en hospitalización general</td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                     </tr>
+
+                     <tr>
+                        <td>Falla cardiaca derecha de paciente Crítico</td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                     </tr>
+
+                     <tr>
+                        <td><button class="btn-caso-ref w-fit">
+                           <div class="flex flex-row items-center justify-center">
+                              <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                              </svg>
+                              <h4>Caso de referencia</h4>
+                           </div>
+                        </button></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                     </tr>
+
+                  </tbody>
+               </table>
+            </div>
+
+            <div class="label">
+               <h4>Distribución por estadificación de riesgo</h4>
+            </div>
+         </section>
+
+      </main>
+
+      <footer class="w-full px-12 text-center flex items-center justify-between">
+         <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[2000ms]" onclick="javascript:jumpToSlide('05')">
+            <div class="flex flex-row items-center justify-center">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+               </svg>
+               <h4 class=" font-bold text-lg">Regresar</h4>
+            </div>
+         </button>
+
+         <article class="animate-blurred-fade-in animate-delay-[1800ms] animate-duration-slower">
+            <p class="font-normal leading-none text-center text-base my-2 text-text-500">Si no tiene datos de la institución, seleccione un caso de referencia</p>
+         </article>
+
+         <button class="backaground-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[1600ms]"
+            onclick="javascript:validarForm()">
+            <div class="flex flex-row-reverse items-center justify-center">
+               <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+               </svg>
+               <h4>Continuar</h4>
+            </div>
+         </button>
+      </footer>
+
+   </section>
+</body>
+</html>
