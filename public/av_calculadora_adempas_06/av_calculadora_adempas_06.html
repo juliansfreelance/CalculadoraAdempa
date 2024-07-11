@@ -13,7 +13,10 @@
    <title>AV Calculadora HTP Adempa | Distribución</title>
 
    <link rel="icon" type="image/ico" href="images/icon.png" />
+
    <link rel="stylesheet" href="css/style.css">
+
+   <script src="js/lib/currency.min.js" defer></script>
    <script src="js/components/input.js" defer></script>
    <script src="js/components/pop.js" defer></script>
    <script src="js/script.js" defer></script>
@@ -29,9 +32,9 @@
 
       </header>
 
-      <main class="mx-7 grid grid-flow-row auto-rows-max justify-items-center gap-6">
+      <main class="mx-7 grid grid-flow-row auto-rows-max justify-items-center gap-5">
 
-         <section class="tratamiento flex flex-col-reverse w-fit">
+         <section class="tratamiento flex flex-col-reverse w-fit animate-fade-in-right animate-delay-900 animate-duration-slower">
             <div class="form">
                <table class="w-full table-auto">
                   <thead>
@@ -51,7 +54,7 @@
                         <td><custom-input name="monoterapia-intermedio" type="insert" icon="porcentaje"></custom-input></td>
                         <td><custom-input name="monoterapia-alto" type="insert" icon="porcentaje"></custom-input></td>
                         <td>
-                           <button class="text-green-600 shadow-md rounded-full bg-white ">
+                           <button onclick="javascript:popUp('monoterapia')" class="text-green-600 shadow-md rounded-full bg-white ">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
                               </svg>
@@ -61,11 +64,11 @@
 
                      <tr>
                         <td>Terapias combinadas (doble)</td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="doble-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="doble-intermedio" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="doble-alto" type="insert" icon="porcentaje"></custom-input></td>
                         <td>
-                           <button class="text-green-600 shadow-md rounded-full bg-white ">
+                           <button onclick="javascript:popUp('biterapia')" class="text-green-600 shadow-md rounded-full bg-white ">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
                               </svg>
@@ -75,11 +78,11 @@
 
                      <tr>
                         <td>Terapias combinadas (Triples)</td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="triple-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="triple-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="triple-bajo" type="insert" icon="porcentaje"></custom-input></td>
                         <td>
-                           <button class="text-green-600 shadow-md rounded-full bg-white ">
+                           <button onclick="javascript:popUp('triterapia')" class="text-green-600 shadow-md rounded-full bg-white ">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
                               </svg>
@@ -98,9 +101,9 @@
                               </div>
                            </button>
                         </td>
-                        <td><custom-input name="monoterapia-bajo" type="calc" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="calc" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="total-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="total-intermedio" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="total-alto" type="calc" icon="porcentaje"></custom-input></td>
                         <td></td>
                      </tr>
                   </tbody>
@@ -109,9 +112,9 @@
             <div class="label"><h4>Distribución uso de tecnologías</h4></div>
          </section>
 
-         <section class="complicaciones flex flex-col-reverse w-fit">
+         <section class="complicaciones flex flex-col-reverse w-fit animate-fade-in-left animate-delay-900 animate-duration-slower">
             <div class="form">
-               <article class="animate-blurred-fade-in animate-delay-[1800ms] animate-duration-slower">
+               <article>
                   <p class="font-normal leading-none text-center text-xs text-text-500">Si tiene el rubro no es por paquete con un solo costo, puedo dirigirse a Costo de complicaciones para realizar microcosteo</p>
                </article>
                <table class="w-full table-auto">
@@ -126,23 +129,23 @@
                   <tbody>
                      <tr>
                         <td>Hospitalizaciones por causas diferentes<br>a falla cardiaca derecha</td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="tecnologia-1-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="tecnologia-1-intermedio" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="tecnologia-1-alto" type="insert" icon="porcentaje"></custom-input></td>
                      </tr>
 
                      <tr>
                         <td>Falla cardiaca en hospitalización general</td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="tecnologia-2-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="tecnologia-2-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="tecnologia-2-bajo" type="insert" icon="porcentaje"></custom-input></td>
                      </tr>
 
                      <tr>
                         <td>Falla cardiaca derecha de paciente Crítico</td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="tecnologia-3-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="tecnologia-3-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="tecnologia-3-bajo" type="insert" icon="porcentaje"></custom-input></td>
                      </tr>
 
                      <tr>
@@ -171,7 +174,7 @@
       </main>
 
       <footer class="w-full px-12 text-center flex items-center justify-between">
-         <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[2000ms]" onclick="javascript:jumpToSlide('05')">
+         <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[1600ms]" onclick="javascript:jumpToSlide('05')">
             <div class="flex flex-row items-center justify-center">
                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -180,7 +183,7 @@
             </div>
          </button>
 
-         <article class="animate-blurred-fade-in animate-delay-[1800ms] animate-duration-slower">
+         <article class="animate-blurred-fade-in animate-delay-[1600ms] animate-duration-slower">
             <p class="font-normal leading-none text-center text-base my-2 text-text-500">Si no tiene datos de la institución, seleccione un caso de referencia</p>
          </article>
 
@@ -196,6 +199,12 @@
          </button>
       </footer>
 
+      <custom-pop type="monoterapia" class="hidden"></custom-pop>
+      <custom-pop type="biterapia" class="hidden"></custom-pop>
+      <custom-pop type="triterapia" class="hidden"></custom-pop>
    </section>
+
+   
+
 </body>
 </html>

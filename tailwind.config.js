@@ -26,6 +26,9 @@ module.exports = {
           'bg2': '#FFCF01',
           'bg3': '#F8971D',
           'bg4': '#FFF11C'
+        },
+        pop: {
+          'background': '#DDD7D1'
         }
       },
       dropShadow: {

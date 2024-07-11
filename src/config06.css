@@ -28,7 +28,7 @@ body {
 }
 
 input {
-   @apply py-1 px-4 pr-8 text-sm text-right !important;
+   @apply py-1 text-sm text-right !important;
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -125,11 +125,17 @@ header hgroup {
 .input-insert input {
    @apply border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
 }
-.input-insert .porcentaje {
+.input-insert input.porcentaje {
+   @apply pr-8
+}
+.input-insert input.money {
+   @apply pl-8
+}
+.input-insert .icon-porcentaje {
    @apply absolute text-text-500 right-[10px] -mt-[24px]
 }
-.input-insert .money {
-   @apply absolute text-text-500 right-[10px] -mt-[24px]
+.input-insert .icon-money {
+   @apply absolute text-text-500 left-[10px] -mt-[24px]
 }
 
 
@@ -139,11 +145,17 @@ header hgroup {
 .input-calc input {
    @apply border-slate-400 bg-zinc-300 rounded-md block w-full
 }
-.input-calc .porcentaje {
+.input-calc input.porcentaje {
+   @apply pr-8
+}
+.input-calc input.money {
+   @apply pl-8
+}
+.input-calc .icon-porcentaje {
    @apply absolute text-text-500 right-[10px] -mt-[24px]
 }
-.input-calc .money {
-   @apply absolute text-text-500 right-[10px] -mt-[24px]
+.input-calc .icon-money {
+   @apply absolute text-text-500 left-[10px] -mt-[24px]
 }
 
 
@@ -153,95 +165,56 @@ header hgroup {
 .input-edit input {
    @apply border-slate-400 bg-introduccion-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
 }
-.input-edit .porcentaje {
+.input-edit input.porcentaje {
+   @apply pr-8
+}
+.input-edit input.money {
+   @apply pl-8
+}
+.input-edit .icon-porcentaje {
    @apply absolute text-text-500 right-[10px] -mt-[24px]
 }
-.input-edit .money {
-   @apply absolute text-text-500 right-[10px] -mt-[24px]
+.input-edit .icon-money {
+   @apply absolute text-text-500 left-[10px] -mt-[24px]
 }
 
-
-
-
-
-/* 
-.bg-button {
-   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 shadow-md shadow-black/40 rounded-lg
+.pop-conten {
+   @apply absolute flex flex-col justify-center items-center top-0 left-0 w-full h-full bg-pop-background/85 p-4
+}
+.pop {
+   @apply flex flex-col-reverse  w-fit drop-shadow-md
+}
+.pop .pop-form {
+   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
 }
 
-.bg-button div {
-   @apply text-button-text px-5 py-1 bg-gradient-to-b from-button-bg1 to-white rounded-md
+.pop .pop-form table thead tr th {
+   @apply leading-none py-2
+}
+.pop .pop-form table tbody tr td {
+   @apply leading-none py-1 px-1
+}
+.pop .pop-form table tbody tr td:first-child {
+   @apply mr-2
 }
 
-.input-poblacion {
-   @apply relative flex w-full flex-row-reverse h-9
+.pop .pop-label {
+   @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
 }
-.input-poblacion input {
-   @apply form-input w-full block rounded-r-md border border-l-0 text-text-500 shadow-sm shadow-black/40 border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
+.pop .pop-label div {
+   @apply flex bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% pl-6 py-1 rounded-t-2xl
 }
-.input-poblacion label {
-   @apply flex flex-row items-center justify-center rounded-l-full p-[3px] shadow-sm shadow-black/40 border border-[#F8971D] bg-white
+.pop .pop-label div h4 {
+   @apply text-orange-400 font-extrabold text-lg
 }
-.input-poblacion label div{
-   @apply rounded-l-full h-full
-}
-.input-poblacion label i{
-   @apply text-white pl-4
+.pop .pop-label div button {
+   @apply mx-3
 }
 
-.input-poblacion label h4 {
-   @apply pl-2 pr-4 font-bold text-base text-white
+.pop-animate-up {
+   @apply animate-fade-in animate-duration-slow
 }
 
-
-
-.backaground-btn-blue {
-   @apply bg-gradient-to-tl from-[#005D73] from-20% to-[#009CC1]
+.pop-animate-down {
+   @apply animate-fade-out animate-duration-slow
 }
-.backaground-btn-blue div {
-   @apply bg-gradient-to-b from-[#00748F] from-40% to-white/25
-}
-
-.button-orange-corner-full {
-   @apply  p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-full
-}
-.button-orange-corner-full div {
-   @apply px-16 py-0.5 rounded-full
-}
-.button-orange-corner-full div h4{
-   @apply text-white font-bold text-base
-}
-
-
-
-
-.factores,
-.instrucciones,
-.casillas {
-   @apply bg-white/70 text-text-500 text-sm px-6 py-4 rounded-lg shadow-md shadow-black/40
-}
-.factores{
-   @apply bg-introduccion-100
-}
-
-.instrucciones {
-   @apply col-span-6 py-6
-}
-.casillas {
-   @apply col-span-4 py-6
-}
-
-
-
-
-
-
-
-
-.bg-button2 div i {
-   @apply -ml-4 mr-2
-}
-.bg-button2 div h4{
-   @apply font-bold text-sm
-}
-*/
