@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+   <meta name="format-detection" content="telephone=no" />
+   <meta name="msapplication-tap-highlight" content="no" />
+   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+   <meta name='author' href="https://github.com/juliansfreelance" email="jcalderon.code@gmail.com" content='Julio Calderón - Desarrollador Front-end' />
+   <meta name="description" content="Herramienta de costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica o de la Hipertensión Pulmonar por categoria de riesgo (HTP)" />
+
+   <title>AV Calculadora HTP Adempa | Resultados</title>
+
+   <link rel="icon" type="image/ico" href="images/icon.png" />
+
+   <link rel="stylesheet" href="css/style.css">
+
+   <script src="js/lib/currency.min.js" defer></script>
+   <script src="js/components/input.js" defer></script>
+   <script src="js/components/pop.js" defer></script>
+   <script src="js/script.js" defer></script>
+</head>
+<body class="w-screen h-screen grid place-items-center">
+   <section class="slide animate-fade-in animate-duration-slow">
+
+      <header class="z-50 w-full px-16">
+         <hgroup class="animate-fade-in-down animate-delay-500 animate-duration-slow">
+            <h2>Costo TOTAL por paciente</h2>
+            <button class=" bg-button1 w-fit animate-pulse-fade-in animate-delay-[1600ms]" onclick="javascript:jumpToSlide('06')">
+               <div class="flex flex-row items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+                     class="size-5">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                  </svg>
+                  <h4 class=" font-bold text-lg">Regresar</h4>
+               </div>
+            </button>
+         </hgroup>
+      </header>
+
+      <main class="z-50 mx-7 grid grid-flow-row auto-rows-max justify-items-center gap-5">
+         <p></p>
+      </main>
+
+   </section>
+
+   <section class="content-folder fade-out">
+      <section class="folder close" id="poblacion">
+         <header>
+            <button onclick="toggleFolder('poblacion')">
+               <h4>Población</h4>
+               <div>
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"/>
+                  </svg>
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z"/>
+                  </svg>
+               </div>
+            </button>
+         </header>
+         <main class="folder-contents">
+            <h4 class="font-extrabold text-2xl text-lime-600">Población</h4>
+            <p></p>
+         </main>
+      </section>
+
+      <section class="folder close" id="pocedimientos">
+         <header>
+            <button onclick="toggleFolder('pocedimientos')">
+               <h4>Procedimientos</h4>
+               <div>
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
+                  </svg>
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
+                  </svg>
+               </div>
+            </button>
+         </header>
+         <main class="folder-contents">
+            <h4 class="font-extrabold text-2xl text-pink-600">Costo procedimientos anual de uso por paciente</h4>
+            <p></p>
+         </main>
+      </section>
+
+      <section class="folder close" id="tecnologias">
+         <header>
+            <button onclick="toggleFolder('tecnologias')">
+               <h4>Tecnologías</h4>
+               <div>
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
+                  </svg>
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
+                  </svg>
+               </div>
+            </button>
+         </header>
+         <main class="folder-contents">
+            <h4 class="font-extrabold text-2xl text-amber-500">Costo anual de tecnologías por paciente año</h4>
+            <p></p>
+         </main>
+      </section>
+
+      <section class="folder close" id="cohorte">
+         <header>
+            <button onclick="toggleFolder('cohorte')">
+               <h4>Cohorte</h4>
+               <div>
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
+                  </svg>
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
+                  </svg>
+               </div>
+            </button>
+         </header>
+         <main class="folder-contents">
+            <h4 class="font-extrabold text-2xl text-sky-600">COHORTE</h4>
+            <p></p>
+         </main>
+      </section>
+   </section>
+
+   
+
+</body>
+</html>
