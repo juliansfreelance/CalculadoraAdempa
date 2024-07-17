@@ -1415,9 +1415,6 @@ body {
 
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-  -webkit-user-select: none !important;
-     -moz-user-select: none !important;
-          user-select: none !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   font-family: FSAlbert
@@ -2048,16 +2045,10 @@ header hgroup h2 {
 
 .folder.close header button div svg:first-child {
   display: none;
-  transition-property: color;
-  transition-duration: 600ms;
-  transition-timing-function: ease-in-out;
 }
 
 .folder.open header button div svg:last-child {
   display: none;
-  transition-property: backgroud;
-  transition-duration: 600ms;
-  transition-timing-function: ease-in-out;
 }
 
 .folder-contents {

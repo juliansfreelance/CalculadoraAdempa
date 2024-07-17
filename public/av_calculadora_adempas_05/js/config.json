@@ -1,5 +1,63 @@
 {
    "zipName": "av_calculadora_adempas_",
    "presentationCode": "00023200",
-   "slide": "02"
+   "slide": "05",
+   "calculadora": {
+      "poblacion": 0,
+      "grupos": {
+         "conoceDistribucion": false,
+         "study": "",
+         "HAP": 0,
+         "HTEC": 0
+      },
+      "estadificacionEscenario": [0],
+      "estadificacionPacientes": {
+         "bajo": 0,
+         "intermedio": 0,
+         "alto": 0
+      },
+      "estadificacionCategoria": {
+         "bajo": 0,
+         "intermedio": 0,
+         "alto": 0
+      },
+      "referencias": {
+         "grupos": [
+            {
+               "name": "Brasil Study",
+               "HAP": 64,
+               "HTEC": 36,
+               "fuente": "Estudio Brasil cohorte de ingreso UCI",
+               "IPP": "García MH, Souza R, Costa ELV, Fernandes CJCS, Jardim C, Caruso P. Outcomes and prognostic factors of decompensated pulmonary hypertension in the intensive care unit. Respiratory Medicine. 2021 Dec 1;190:106685."
+            },
+            {
+               "name": "UK Study",
+               "HAP": 58,
+               "HTEC": 42,
+               "fuente": "UK study",
+               "IPP": "Kjellstrom BWM, Dahlerup H, Hesselstrand R, et al. Swedish € Pulmonary Arterial Hypertension Registry annual report 2019, www.ucr.uu.se/spahr/arsrapporter (2019, accessed 1 October 2020)."
+            }
+         ],
+         "estadificacion": [
+            {
+               "name": "Datos presentados de Centros de referencia en HTP",
+               "riesgoBajo": 35.18,
+               "riesgoIntermedio": 54.55,
+               "riesgoAlto": 10.28
+            },
+            {
+               "name": "Adv Ther.2019;36(9):2351-63",
+               "riesgoBajo": 33,
+               "riesgoIntermedio": 45,
+               "riesgoAlto": 22
+            },
+            {
+               "name": "Cadiovid",
+               "riesgoBajo": 15,
+               "riesgoIntermedio": 68,
+               "riesgoAlto": 17
+            }
+         ]
+      }
+   }
 }

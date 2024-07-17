@@ -7,13 +7,16 @@
 *::-webkit-scrollbar {
    @apply w-1.5 h-1.5;
 }
-
 *::-webkit-scrollbar-track {
    @apply bg-slate-300
 }
-
 *::-webkit-scrollbar-thumb {
    @apply bg-green-400;
+}
+* {
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+   @apply select-none antialiased !important;
+   @apply font-albert
 }
 
 html,
@@ -21,14 +24,9 @@ body {
    @apply bg-slate-800;
 }
 
-* {
-   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-   @apply select-none antialiased !important;
-   @apply font-albert
-}
 
 input {
-   @apply py-1 px-4 pr-8 text-sm text-right !important;
+   @apply py-1 text-sm text-right !important;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -41,83 +39,108 @@ input[type=number] {
    -moz-appearance: textfield;
 }
 
-
 .slide {
-   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-9
+   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-6 z-0;
 }
 
 header hgroup {
-   @apply w-full h-[88px] flex flex-col justify-center items-center px-16 py-2 text-center bg-gradient-to-r from-red-600 to-amber-600
+   @apply w-full h-[88px] flex flex-col justify-center items-center px-16 py-2 text-center bg-gradient-to-r from-red-600 to-amber-600;
+}
+header hgroup h2 {
+   @apply font-extrabold text-white text-3xl leading-none;
+}
+main {
+   @apply flex-grow mx-40 grid grid-flow-row auto-rows-max justify-items-center gap-6;
 }
 
-.bg-button {
-   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 shadow-md shadow-black/40 rounded-lg
+.HTP-ask {
+   @apply flex flex-col items-center justify-center gap-2;
+}
+.HTP-ask h3 {
+   @apply font-extrabold text-text-500 text-2xl leading-none;
+}
+.HTP-ask p {
+   @apply text-base text-text-500 leading-none;
+}
+.HTP-ask div {
+   @apply flex flex-row justify-center items-center gap-4;
 }
 
-.bg-button div {
-   @apply text-button-text px-5 py-1 bg-gradient-to-b from-button-bg1 to-white rounded-md
-}
-
-.input-poblacion {
-   @apply relative flex w-full flex-row-reverse h-9
-}
-.input-poblacion input {
-   @apply form-input w-full block rounded-r-md border border-l-0 text-text-500 shadow-sm shadow-black/40 border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
-}
-.input-poblacion label {
-   @apply flex flex-row items-center justify-center rounded-l-full p-[3px] shadow-sm shadow-black/40 border border-[#F8971D] bg-white
-}
-.input-poblacion label div{
-   @apply rounded-l-full h-full
-}
-.input-poblacion label i{
-   @apply text-white pl-4
-}
-
-.input-poblacion label h4 {
-   @apply pl-2 pr-4 font-bold text-base text-white
-}
-
-.backaground-btn-orange {
-   @apply bg-gradient-to-tl from-[#F49306] from-20% to-[#F6C37E]
-}
-.backaground-btn-orange div {
-   @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
-}
-
-.backaground-btn-blue {
+.background-btn-blue {
    @apply bg-gradient-to-tl from-[#005D73] from-20% to-[#009CC1]
 }
-.backaground-btn-blue div {
+.background-btn-blue div {
    @apply bg-gradient-to-b from-[#00748F] from-40% to-white/25
 }
 
+.background-btn-gray {
+   @apply bg-gradient-to-b from-white to-button-bg1;
+}
+.background-btn-gray div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+
+.background-btn-orange {
+   @apply bg-gradient-to-tl from-[#F49306] from-20% to-[#F6C37E]
+}
+.background-btn-orange div {
+   @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
+}
+
+.button-gray-corner-md {
+   @apply p-1 border border-gray-400 shadow-md shadow-black/30 rounded-lg w-fit;
+}
+.button-gray-corner-md div {
+   @apply flex flex-row items-center justify-center gap-1 px-5 py-1 rounded-md;
+}
+.button-gray-corner-md div svg {
+   @apply text-button-text;
+}
+.button-gray-corner-md div h4 {
+   @apply text-button-text font-bold text-lg;
+}
+
+.button-gray-corner-full {
+   @apply p-[3px] border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit transition-all
+}
+.button-gray-corner-full div {
+   @apply flex flex-row items-center justify-center gap-1 px-16 py-0.5 rounded-full
+}
+.button-gray-corner-full div svg {
+   @apply text-button-text
+}
+.button-gray-corner-full div h4 {
+   @apply text-button-text font-bold text-base
+}
+
+.button-orange-corner-md {
+   @apply p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-lg w-fit
+}
+.button-orange-corner-md div {
+   @apply flex flex-row-reverse items-center justify-center gap-1 px-5 py-1 rounded-md !important;
+}
+.button-orange-corner-md div svg {
+   @apply text-white
+}
+.button-orange-corner-md div h4 {
+   @apply text-white font-bold text-lg
+}
+
 .button-orange-corner-full {
-   @apply  p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-full
+   @apply p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-full w-fit
 }
 .button-orange-corner-full div {
    @apply px-16 py-0.5 rounded-full
 }
-.button-orange-corner-full div h4{
+.button-orange-corner-full div svg {
+   @apply text-white
+}
+.button-orange-corner-full div h4 {
    @apply text-white font-bold text-base
 }
 
-.button-orange-corner-md {
-   @apply p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-lg
-}
-.button-orange-corner-md div {
-   @apply px-5 py-1 rounded-md
-}
-.button-orange-corner-md div i {
-   @apply text-white
-}
-.button-orange-corner-md div h4 {
-   @apply text-white font-bold text-lg mr-2
-}
-
-
-.label-blue{
-   @apply flex flex-col justify-center w-fit p-[3px] border border-b-0 border-[#004555] shadow-md shadow-black/30 rounded-t-lg 
+.label-blue {
+   @apply mx-auto flex flex-col justify-center w-fit p-[3px] border border-b-0 border-[#004555] shadow-md shadow-black/30 rounded-t-lg
 }
 .label-blue div {
    @apply rounded-md px-4 py-1
@@ -126,89 +149,114 @@ header hgroup {
    @apply text-center text-white font-bold text-lg
 }
 
-
-
-
-
-
-
-
-
-
-
-ol {
-   counter-reset: item;
+.input-poblacion {
+   @apply relative flex w-full h-9
 }
 
-ol li {
-   @apply block my-2
+.input-poblacion input {
+   @apply form-input w-full block rounded-r-md border border-l-0 text-text-500 shadow-sm shadow-black/40 border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
 }
-ol li:last-child {
-   @apply block mb-0
+.input-poblacion label {
+   @apply flex flex-row items-center justify-center rounded-l-full p-[3px] shadow-sm shadow-black/40 border border-[#F8971D] bg-white
 }
-
-ol>li {
-   display: block;
-   counter-increment: item;
+.input-poblacion label div {
+   @apply rounded-l-full h-full
 }
-
-ol>li:before {
-   content: counters(item, ".") " ";
-   font-weight: bold;
-   margin-right: 0.5em;
+.input-poblacion label i {
+   @apply pl-4
 }
-
-ol ol>li {
-   list-style: none;
-   @apply block my-0.5
+.input-poblacion label h4 {
+   @apply pl-2 pr-4 font-bold text-base
 }
-
-
-
-.factores,
-.instrucciones,
-.casillas {
-   @apply bg-white/70 text-text-500 text-sm px-6 py-4 rounded-lg shadow-md shadow-black/40
+.input-poblacion label i,
+.input-poblacion label h4 {
+   @apply text-black/35 drop-shadow-button
 }
-.factores{
-   @apply bg-introduccion-100
+.input-poblacion .error {
+   @apply absolute mt-9 ml-4 text-red-500 leading-none pt-1 text-xs flex-none italic;
+}
+.content-inputs .error {
+   @apply ml-4 text-red-500 leading-none pt-1 text-xs flex-none italic;
 }
 
-.instrucciones {
-   @apply col-span-6 py-6
+.content-inputs {
+   @apply w-full flex-col justify-center items-center gap-6;
 }
-.casillas {
-   @apply col-span-4 py-6
+.content-inputs .htp-edit,
+.content-inputs .htp-estudy   {
+   @apply grid-cols-2 gap-6 content-center w-full;
 }
-
-
-
-.input-insert {
-   @apply border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
-}
-
-.input-cal {
-   @apply border-slate-400 bg-zinc-300 rounded-md block w-full
+.content-inputs .htp-edit .input,
+.content-inputs .htp-estudy .input {
+   @apply flex flex-col
 }
 
-.input-edit {
-   @apply border-slate-400 bg-introduccion-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
+.input-insert,
+.input-calc {
+   @apply w-full relative;
+}
+.input-insert input {
+   @apply w-full text-text-500 border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40;
+}
+.input-insert input.porcentaje,
+.input-calc input.porcentaje {
+   @apply pr-8;
+}
+.input-insert .icon-porcentaje,
+.input-calc .icon-porcentaje {
+   @apply absolute text-text-500 right-[10px] -mt-[24px]
 }
 
-.bg-button1 {
-   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 shadow-md shadow-black/40 rounded-lg
-}
-.bg-button1 div {
-   @apply text-button-text pl-7 pr-5 py-1 bg-gradient-to-b from-button-bg1 to-white rounded-md
-}
-.bg-button1 div i {
-   @apply -ml-4 mr-2
+.input-calc input {
+   @apply w-full text-text-500 border-slate-400 bg-zinc-300 rounded-md block
 }
 
-
-.bg-button2 div i {
-   @apply -ml-4 mr-2
+footer {
+   @apply w-full px-52 text-center flex flex-col items-center gap-4;
 }
-.bg-button2 div h4{
-   @apply font-bold text-sm
+footer article {
+   @apply px-12;
+}
+footer article p {
+   @apply font-helvet font-light leading-none text-center text-xs my-2
+}
+
+.alert-conten {
+   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex-col gap-4 justify-center items-center py-6 p-4;
+}
+.alert {
+   @apply flex flex-col-reverse w-fit drop-shadow-md
+}
+.alert h4 {
+   @apply font-extrabold text-button-text
+}
+.alert .alert-form {
+   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
+}
+.alert .alert-form table thead tr th {
+   @apply leading-none py-2
+}
+.alert .alert-form table tbody tr td {
+   @apply leading-none py-1 px-1
+}
+.alert .alert-form table tbody tr td:first-child {
+   @apply mr-2
+}
+.alert .alert-label {
+   @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
+}
+.alert .alert-label div {
+   @apply flex justify-center items-center bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% pl-6 py-1 rounded-t-2xl
+}
+.alert .alert-label div h4 {
+   @apply text-orange-400 font-extrabold text-lg
+}
+.alert .alert-label div button {
+   @apply mx-3
+}
+.alert-animate-up {
+   @apply animate-fade-in animate-duration-slow
+}
+.alert-animate-down {
+   @apply animate-fade-out animate-duration-slow
 }

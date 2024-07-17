@@ -46,34 +46,32 @@ function popDown(pop) {
 }
 
 function toggleFolder(folderId) {
+   const headerElement = document.querySelector('.slide header');
+   const mainElement = document.querySelector('.slide main');
    const contentFolder = document.querySelector('.content-folder');
-   const z50 = document.querySelector('header','main');
-   const openFolders = document.querySelectorAll('.folder.open');
    const folder = document.getElementById(folderId);
+   const openFolders = document.querySelectorAll('.folder.open');
 
-   openFolders.forEach(folder => {
-      if (folder.id !== folderId && folder.classList.contains('open')) {
-         folder.classList.remove('open');
-         folder.classList.add('close');
+   openFolders.forEach(openFolder => {
+      if (openFolder.id !== folderId) {
+         openFolder.classList.replace('open', 'close');
       }
    });
-
    if (folder.classList.contains('open')) {
       setTimeout(() => {
-         z50.classList.add('z-50');
+         headerElement.classList.add('z-50');
+         mainElement.classList.add('z-50');
       }, 600);
-      contentFolder.classList.remove('fade-in');
-      contentFolder.classList.add('fade-out');
-      folder.classList.remove('open');
-      folder.classList.add('close');
+      folder.classList.replace('open', 'close');
+      contentFolder.classList.replace('fade-in', 'fade-out');
    } else {
-      z50.classList.remove('z-50');
-      contentFolder.classList.remove('fade-out');
-      contentFolder.classList.add('fade-in');
-      folder.classList.remove('close');
-      folder.classList.add('open');
+      headerElement.classList.remove('z-50');
+      mainElement.classList.remove('z-50');
+      contentFolder.classList.replace('fade-out', 'fade-in');
+      folder.classList.replace('close', 'open');
    }
 }
+
 
 function validarForm() {
    console.log('Validacion slide 06 pendiente');
