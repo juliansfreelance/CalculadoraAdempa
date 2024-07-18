@@ -40,11 +40,15 @@ input[type=number] {
 }
 
 .slide {
-   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-4
+   @apply w-[1024px] min-h-[768px] bg-white bg-fondo bg-cover bg-center flex flex-col gap-4
 }
 
 header hgroup {
-   @apply w-full h-[88px] flex flex-col justify-center items-center px-16 py-2 text-center bg-gradient-to-r from-red-600 to-amber-600
+   @apply w-full h-[80px] flex justify-between items-center
+}
+
+header hgroup h2 {
+   @apply w-fit h-full flex items-center font-extrabold text-center text-white text-2xl leading-none px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl
 }
 
 .tratamiento,
@@ -211,10 +215,10 @@ header hgroup {
    @apply mx-3
 }
 
-.pop-animate-up {
+/* .pop-animate-up {
    @apply animate-fade-in animate-duration-slow
 }
 
 .pop-animate-down {
    @apply animate-fade-out animate-duration-slow
-}
+} */

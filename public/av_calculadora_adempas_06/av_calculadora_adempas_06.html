@@ -24,10 +24,19 @@
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="w-full">
+      <header class="z-50 w-full px-16">
 
          <hgroup class="animate-fade-in-down animate-delay-500 animate-duration-slow">
-            <h2 class="font-extrabold text-white text-3xl leading-none">Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
+            <button class=" bg-button1 w-fit animate-pulse-fade-in animate-delay-[1600ms]" onclick="javascript:jumpToSlide('05')">
+               <div class="flex flex-row items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+                     class="size-5">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                  </svg>
+                  <h4 class=" font-bold text-lg">Regresar</h4>
+               </div>
+            </button>
+            <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
          </hgroup>
 
       </header>
@@ -173,15 +182,11 @@
 
       </main>
 
+      <custom-pop type="monoterapia" class="hidden"></custom-pop>
+      <custom-pop type="biterapia" class="hidden"></custom-pop>
+      <custom-pop type="triterapia" class="hidden"></custom-pop>
+
       <footer class="w-full px-12 text-center flex items-center justify-between">
-         <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[1600ms]" onclick="javascript:jumpToSlide('05')">
-            <div class="flex flex-row items-center justify-center">
-               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-               </svg>
-               <h4 class=" font-bold text-lg">Regresar</h4>
-            </div>
-         </button>
 
          <article class="animate-blurred-fade-in animate-delay-[1600ms] animate-duration-slower">
             <p class="font-normal leading-none text-center text-base my-2 text-text-500">Si no tiene datos de la institución, seleccione un caso de referencia</p>
@@ -198,10 +203,6 @@
             </div>
          </button>
       </footer>
-
-      <custom-pop type="monoterapia" class="hidden"></custom-pop>
-      <custom-pop type="biterapia" class="hidden"></custom-pop>
-      <custom-pop type="triterapia" class="hidden"></custom-pop>
    </section>
 
    

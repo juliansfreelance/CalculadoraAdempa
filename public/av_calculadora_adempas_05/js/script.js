@@ -17,34 +17,50 @@ let slideCinco = {
       const htpEdit = document.querySelector('.htp-edit');
       const htpEstudy = document.querySelector('.htp-estudy');
 
-      if (localStorage.getItem('calculadora') !== null){
-         veeva.calculadora = await JSON.parse(localStorage.getItem('calculadora'));
+      const calculadoraData = localStorage.getItem('calculadora');
+      if (calculadoraData) {
+         veeva.calculadora = await JSON.parse(calculadoraData);
          console.log(veeva);
+
          inputElement.value = veeva.calculadora.poblacion;
+
+         const updateButtonStyles = (index) => {
+            buttonsElement[index].classList.replace('background-btn-gray', 'background-btn-orange');
+            buttonsElement[index].classList.replace('button-gray-corner-full', 'button-orange-corner-full');
+         };
+
          if (veeva.calculadora.grupos.conoceDistribucion) {
-            buttonsElement[0].classList.replace('background-btn-gray', 'background-btn-orange');
-            buttonsElement[0].classList.replace('button-gray-corner-full', 'button-orange-corner-full');
+            updateButtonStyles(0);
+
+            const hapEditValue = document.querySelector('input[name="edit-HAP"]');
+            const htecEditValue = document.querySelector('input[name="edit-HTCE"]');
+
+            hapEditValue.value = veeva.calculadora.grupos.HAP.toString().replace('.', ',');
+            htecEditValue.value = veeva.calculadora.grupos.HTEC.toString().replace('.', ',');
+
             htpEdit.classList.replace('hidden', 'grid');
             inputsElement.classList.replace('hidden', 'flex');
          } else {
-            buttonsElement[1].classList.replace('background-btn-gray', 'background-btn-orange');
-            buttonsElement[1].classList.replace('button-gray-corner-full', 'button-orange-corner-full');
+            updateButtonStyles(1);
+
             const hapEstudyValue = document.querySelector('input[name="estudy-HAP"]');
             const htecEstudyValue = document.querySelector('input[name="estudy-HTCE"]');
             const grupoSelected = veeva.calculadora.referencias.grupos.find(g => g.name === veeva.calculadora.grupos.study);
-            console.log('grupoSelected',grupoSelected);
-            hapEstudyValue.value = grupoSelected.name + ' - ' + grupoSelected.HAP;
-            htecEstudyValue.value = grupoSelected.name + ' - ' + grupoSelected.HTEC;
+
+            hapEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HAP}`;
+            htecEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HTEC}`;
+
             inputsElement.classList.replace('hidden', 'flex');
             htpEstudy.classList.replace('hidden', 'grid');
          }
       }
+
       inputElement.addEventListener('input', slideCinco.handleInput);
       inputElement.addEventListener('blur', slideCinco.handleBlur);
+
       buttonsElement.forEach(button => {
          button.addEventListener('click', slideCinco.handleButtonClick);
       });
-
    },
 
    loadConfig: function () {
@@ -101,23 +117,31 @@ let slideCinco = {
       }
    },
 
-   handleButtonClick: function (event) {
+   handleButtonClick(event) {
       const inputsElement = document.querySelector('.content-inputs');
       const buttonsElement = document.querySelectorAll('button[name="conoceGrupos"]');
       const htpEdit = document.querySelector('.htp-edit');
       const htpEstudy = document.querySelector('.htp-estudy');
-      buttonsElement.forEach(button => {
-         button.classList.replace('background-btn-orange', 'background-btn-gray');
-         button.classList.replace('button-orange-corner-full', 'button-gray-corner-full');
+      const button = event.currentTarget;
+
+      buttonsElement.forEach(btn => {
+         btn.classList.replace('background-btn-orange', 'background-btn-gray');
+         btn.classList.replace('button-orange-corner-full', 'button-gray-corner-full');
       });
+
       htpEdit.classList.replace('grid', 'hidden');
       htpEstudy.classList.replace('grid', 'hidden');
-      this.classList.replace('background-btn-gray', 'background-btn-orange');
-      this.classList.replace('button-gray-corner-full', 'button-orange-corner-full');
-      veeva.calculadora.grupos.conoceDistribucion = this.value.trim().toLowerCase() === "true";
-      if (veeva.calculadora.grupos.conoceDistribucion) {
+
+      button.classList.replace('background-btn-gray', 'background-btn-orange');
+      button.classList.replace('button-gray-corner-full', 'button-orange-corner-full');
+
+      const conoceDistribucion = button.value.trim().toLowerCase() === "true";
+      veeva.calculadora.grupos.conoceDistribucion = conoceDistribucion;
+
+      if (conoceDistribucion) {
          veeva.calculadora.grupos.HAP = 0;
          veeva.calculadora.grupos.HTEC = 0;
+         veeva.calculadora.grupos.study = "";
          htpEdit.classList.replace('hidden', 'grid');
          inputsElement.classList.replace('hidden', 'flex');
       } else {
@@ -164,61 +188,72 @@ let slideCinco = {
       }, 500);
    },
 
-   selectGrupo: function (grupo) {
+   selectGrupo(grupo) {
       const alert = document.querySelector('.alert-conten');
       const inputsElement = document.querySelector('.content-inputs');
       const htpEstudy = document.querySelector('.htp-estudy');
-      alert.classList.replace('alert-animate-up', 'alert-animate-down');
       const hapEstudyValue = document.querySelector('input[name="estudy-HAP"]');
       const htecEstudyValue = document.querySelector('input[name="estudy-HTCE"]');
       const grupoSelected = veeva.calculadora.referencias.grupos.find(g => g.name === grupo);
-      hapEstudyValue.value = grupoSelected.name +' - '+ grupoSelected.HAP;
-      htecEstudyValue.value = grupoSelected.name + ' - ' + grupoSelected.HTEC;
-      veeva.calculadora.grupos.HAP = grupoSelected.HAP;
-      veeva.calculadora.grupos.HTEC = grupoSelected.HTEC;
-      veeva.calculadora.grupos.study = grupoSelected.name;
-      setTimeout(() => {
-         alert.classList.replace('flex', 'hidden');
-         inputsElement.classList.replace('hidden', 'flex');
-         htpEstudy.classList.replace('hidden', 'grid');
-      }, 500);
+
+      alert.classList.replace('alert-animate-up', 'alert-animate-down');
+
+      if (grupoSelected) {
+         hapEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HAP}`;
+         htecEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HTEC}`;
+         const { HAP, HTEC, name } = grupoSelected;
+
+         veeva.calculadora.grupos = { ...veeva.calculadora.grupos, HAP, HTEC, study: name };
+
+         setTimeout(() => {
+            alert.classList.replace('flex', 'hidden');
+            inputsElement.classList.replace('hidden', 'flex');
+            htpEstudy.classList.replace('hidden', 'grid');
+         }, 500);
+      } else {
+         console.error('Grupo no encontrado:', grupo);
+      }
    },
 
-   validarForm: function () {
-      if (veeva.calculadora.poblacion === 0) {
-         document.querySelector('.input-poblacion .error').classList.replace('hidden', 'block');
-      } else {
-         document.querySelector('.input-poblacion .error').classList.replace('block', 'hidden');
-      }
-      if (veeva.calculadora.grupos.conoceDistribucion) {
-         const hapEditValue = parseFloat((document.querySelector('input[name="edit-HAP"]').value).replace(',', '.'));
-         const htecEditValue = parseFloat((document.querySelector('input[name="edit-HTCE"]').value).replace(',', '.'));
-         if (!document.querySelector('input[name="edit-HAP"]').value) {
-            document.querySelector('.hap-error').classList.replace('hidden', 'block');
-         } else {
-            document.querySelector('.hap-error').classList.replace('block', 'hidden');
-         }
-         if (!document.querySelector('input[name="edit-HTCE"]').value) {
-            document.querySelector('.htce-error').classList.replace('hidden', 'block');
-         } else {
-            document.querySelector('.htce-error').classList.replace('block', 'hidden');
-         }
-         if (hapEditValue + htecEditValue !== 100) {
-            document.querySelector('.grupos-error').classList.replace('hidden', 'block');
-         } else {
-            veeva.calculadora.grupos.HAP = hapEditValue;
-            veeva.calculadora.grupos.HTEC = htecEditValue;
-            document.querySelector('.grupos-error').classList.replace('block', 'hidden');
-            if (veeva.calculadora.poblacion !== 0) {
+   validarForm() {
+      const { poblacion, grupos } = veeva.calculadora;
+
+      const toggleError = (selector, condition) => {
+         document.querySelector(selector).classList.replace(condition ? 'hidden' : 'block', condition ? 'block' : 'hidden');
+      };
+
+      // Validar población
+      toggleError('.input-poblacion .error', poblacion === 0);
+
+      // Validar grupos si se conoce la distribución
+      if (grupos.conoceDistribucion) {
+         const hapInput = document.querySelector('input[name="edit-HAP"]');
+         const htecInput = document.querySelector('input[name="edit-HTCE"]');
+         const hapEditValue = parseFloat(hapInput.value.replace(',', '.'));
+         const htecEditValue = parseFloat(htecInput.value.replace(',', '.'));
+
+         toggleError('.hap-error', !hapInput.value);
+         toggleError('.htce-error', !htecInput.value);
+
+         const inputsNotEmpty = hapInput.value && htecInput.value;
+         const sumNot100 = hapEditValue + htecEditValue !== 100;
+
+         if (inputsNotEmpty && sumNot100) {
+            toggleError('.grupos-error', true);
+         } else if (inputsNotEmpty && !sumNot100) {
+            toggleError('.grupos-error', false);
+            grupos.HAP = hapEditValue;
+            grupos.HTEC = htecEditValue;
+
+            if (poblacion !== 0) {
                slideCinco.estadificacionPacientes();
             }
          }
-      } else {
-         if (veeva.calculadora.poblacion !== 0) {
-            slideCinco.estadificacionPacientes();
-         }
+      } else if (poblacion !== 0) {
+         slideCinco.estadificacionPacientes();
       }
    },
+
    estadificacionPacientes: function () {
       const escenarioIndex = veeva.calculadora.estadificacionEscenario[0];
       const estadificacionRef = veeva.calculadora.referencias.estadificacion[escenarioIndex];

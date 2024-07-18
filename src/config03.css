@@ -47,30 +47,39 @@ body {
    @apply select-none antialiased font-albert !important;
 }
 
-.slide{
-   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-4
+.slide {
+   @apply w-[1024px] h-[768px] flex flex-col gap-6 bg-white bg-fondo bg-cover bg-center pb-16 z-0;
 }
 
 header hgroup {
-   @apply w-full h-[88px] flex flex-col justify-center items-center px-16 py-2 text-center bg-gradient-to-r from-red-600 to-amber-600
+   @apply w-full h-[80px] flex justify-between items-center
+}
+
+header hgroup h2 {
+   @apply w-fit h-full flex items-center font-extrabold text-center text-white text-3xl leading-none px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl
+}
+
+main {
+   @apply flex-grow mx-16 flex flex-wrap justify-around content-around;
 }
 
 .btn-enlaces {
-   @apply h-full flex;
+   @apply flex flex-row-reverse;
 }
 .btn-enlaces div {
-   @apply h-full w-[1px] bg-slate-800/30 shadow-links;
+   @apply h-[240px] w-[169px] border-l border-gray-800/40 overflow-hidden p-5 drop-shadow-links;
 }
 .btn-enlaces button {
-   @apply grid content-center justify-center my-4 w-full shadow-sm shadow-black/40 px-3 rounded-r-full;
+   @apply h-[200px] w-[200px] shadow-sm shadow-black/40 p-4 pl-[40px] rounded-full -ml-[56px] border-4;
 }
+
 .btn-enlaces button h5 {
-   @apply drop-shadow-button-text text-white font-bold leading-none
+   @apply drop-shadow-folder-buttton-text text-black/50 font-bold leading-none text-lg
 
 }
 
 .bg-button1 {
-   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 shadow-md shadow-black/40 rounded-lg
+   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/40 rounded-lg
 }
 .bg-button1 div {
    @apply text-button-text pl-7 pr-5 py-1 bg-gradient-to-b from-button-bg1 to-white rounded-md

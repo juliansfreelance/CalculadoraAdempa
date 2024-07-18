@@ -39,22 +39,27 @@ input[type=number] {
    -moz-appearance: textfield;
 }
 
+/* .slide {
+   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-6 ;
+} */
 .slide {
-   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-6 z-0;
+   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6  z-0;
 }
 
 header hgroup {
-   @apply w-full h-[88px] flex flex-col justify-center items-center px-16 py-2 text-center bg-gradient-to-r from-red-600 to-amber-600;
+   @apply w-full h-[80px] flex justify-between items-center
 }
+
 header hgroup h2 {
-   @apply font-extrabold text-white text-3xl leading-none;
+   @apply w-fit h-full flex items-center font-extrabold text-center text-white text-2xl leading-none px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl
 }
+
 main {
-   @apply flex-grow mx-40 grid grid-flow-row auto-rows-max justify-items-center gap-6;
+   @apply flex-grow mx-40 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
 }
 
 .HTP-ask {
-   @apply flex flex-col items-center justify-center gap-2;
+   @apply flex flex-col items-center justify-center gap-2 mt-4;
 }
 .HTP-ask h3 {
    @apply font-extrabold text-text-500 text-2xl leading-none;
@@ -178,13 +183,16 @@ main {
 .content-inputs .error {
    @apply ml-4 text-red-500 leading-none pt-1 text-xs flex-none italic;
 }
+.grupos-error {
+   @apply col-span-2 text-center ml-0 !important
+}
 
 .content-inputs {
    @apply w-full flex-col justify-center items-center gap-6;
 }
 .content-inputs .htp-edit,
 .content-inputs .htp-estudy   {
-   @apply grid-cols-2 gap-6 content-center w-full;
+   @apply grid-cols-2 gap-x-6 gap-y-1 content-center w-full;
 }
 .content-inputs .htp-edit .input,
 .content-inputs .htp-estudy .input {
@@ -212,13 +220,13 @@ main {
 }
 
 footer {
-   @apply w-full px-52 text-center flex flex-col items-center gap-4;
+   @apply w-full px-44 text-center flex flex-col items-center gap-4;
 }
 footer article {
-   @apply px-12;
+   @apply px-9;
 }
 footer article p {
-   @apply font-helvet font-light leading-none text-center text-xs my-2
+   @apply font-helvet font-light leading-none text-center text-xs mt-2
 }
 
 .alert-conten {

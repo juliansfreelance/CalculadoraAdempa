@@ -939,6 +939,10 @@ select {
   z-index: 50;
 }
 
+.col-span-10 {
+  grid-column: span 10 / span 10;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
@@ -960,11 +964,6 @@ select {
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-}
-
-.my-36 {
-  margin-top: 9rem;
-  margin-bottom: 9rem;
 }
 
 .-mt-\[23px\] {
@@ -993,10 +992,6 @@ select {
 
 .mt-1 {
   margin-top: 0.25rem;
-}
-
-.mt-8 {
-  margin-top: 2rem;
 }
 
 .block {
@@ -1037,10 +1032,6 @@ select {
 .size-7 {
   width: 1.75rem;
   height: 1.75rem;
-}
-
-.h-2\/5 {
-  height: 40%;
 }
 
 .h-fit {
@@ -1308,17 +1299,16 @@ select {
   gap: 1.5rem;
 }
 
-.gap-x-8 {
-  -moz-column-gap: 2rem;
-       column-gap: 2rem;
-}
-
 .self-start {
   align-self: flex-start;
 }
 
 .rounded-full {
   border-radius: 9999px;
+}
+
+.border {
+  border-width: 1px;
 }
 
 .border-cyan-500 {
@@ -1370,11 +1360,6 @@ select {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .text-4xl {
@@ -1506,6 +1491,12 @@ select {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .animate-delay-100 {
   animation-delay: 100ms;
 }
@@ -1516,6 +1507,10 @@ select {
 
 .animate-delay-900 {
   animation-delay: 900ms;
+}
+
+.animate-delay-\[1000ms\] {
+  animation-delay: 1000ms;
 }
 
 .animate-delay-\[100ms\] {
@@ -1536,18 +1531,6 @@ select {
 
 .animate-delay-\[1600ms\] {
   animation-delay: 1600ms;
-}
-
-.animate-delay-\[1700ms\] {
-  animation-delay: 1700ms;
-}
-
-.animate-delay-\[1800ms\] {
-  animation-delay: 1800ms;
-}
-
-.animate-delay-\[1900ms\] {
-  animation-delay: 1900ms;
 }
 
 .animate-delay-\[2300ms\] {
@@ -1623,29 +1606,40 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+/* .slide {
+   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-6 ;
+} */
+
 .slide {
   z-index: 0;
   display: flex;
   height: 768px;
   width: 1024px;
   flex-direction: column;
-  gap: 1.5rem;
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   background-image: url('../images/fondo.png');
   background-size: cover;
   background-position: center;
-  padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
 
 header hgroup {
   display: flex;
-  height: 88px;
+  height: 80px;
   width: 100%;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+header hgroup h2 {
+  display: flex;
+  height: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  border-bottom-right-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
   --tw-gradient-from: #dc2626 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(220 38 38 / 0) var(--tw-gradient-to-position);
@@ -1656,11 +1650,8 @@ header hgroup {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   text-align: center;
-}
-
-header hgroup h2 {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
   font-weight: 800;
   line-height: 1;
   --tw-text-opacity: 1;
@@ -1674,11 +1665,13 @@ main {
   flex-grow: 1;
   grid-auto-flow: row;
   grid-auto-rows: max-content;
+  align-content: center;
   justify-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .HTP-ask {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2128,6 +2121,12 @@ main {
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
+.grupos-error {
+  grid-column: span 2 / span 2 !important;
+  margin-left: 0px !important;
+  text-align: center !important;
+}
+
 .content-inputs {
   width: 100%;
   flex-direction: column;
@@ -2141,7 +2140,9 @@ main {
   width: 100%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-content: center;
-  gap: 1.5rem;
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
+  row-gap: 0.25rem;
 }
 
 .content-inputs .htp-edit .input,
@@ -2212,19 +2213,18 @@ footer {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding-left: 13rem;
-  padding-right: 13rem;
+  padding-left: 11rem;
+  padding-right: 11rem;
   text-align: center;
 }
 
 footer article {
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
 }
 
 footer article p {
   margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
   text-align: center;
   font-family: Helvet;
   font-size: 0.75rem;

@@ -19,77 +19,79 @@
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="w-full">
-
-         <hgroup class="animate-fade-in-down animate-delay-500 animate-duration-slow">
-            <h2 class="font-extrabold text-white text-4xl leading-none">Metodología</h2>
+      <header class="z-50 w-full px-16">
+         <hgroup class="animate-fade-in-left animate-delay-500 animate-duration-slow">
+            <button class="back-button w-fit animate-pulse-fade-in animate-delay-[800ms]"
+               onclick="javascript:slideCuatro.jumptoSlide('01')">
+               <div class="flex flex-row items-center justify-center">
+                  <i>
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+                        class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                     </svg>
+                  </i>
+                  <h4 class=" font-bold text-lg">Regresar</h4>
+               </div>
+            </button>
+            <h2>Metodología</h2>
          </hgroup>
-
       </header>
 
-      <main class="mx-16 mt-8">
-         <article class="estadificaciones animate-fade-in-up animate-delay-[1100ms]">
+      <main>
 
-            <div class="estadificacion border-yellow-400 animate-fade-in-left animate-delay-[1300ms]">
-               <h3 class="text-yellow-400">Estadificación riesgo Bajo</h3>
-               <ul>
-                  <li>Proporción de pacientes</li>
-                  <li>Costos de atención</li>
-               </ul>
-            </div>
-            <div class="estadificacion border-lime-600 animate-fade-in-up animate-delay-[1300ms]">
-               <h3 class="text-lime-600">Estadificación riesgo Intermedio</h3>
-               <ul>
-                  <li>Proporción de pacientes</li>
-                  <li>Costos de atención</li>
-               </ul>
-            </div>
-            <div class="estadificacion border-cyan-500 animate-fade-in-right animate-delay-[1300ms]">
-               <h3 class="text-cyan-500">Estadificación riesgo Alto</h3>
-               <ul>
-                  <li>Proporción de pacientes</li>
-                  <li>Costos de atención</li>
-               </ul>
-            </div>
-         </article>
+         <section class="w-full">
+            <article class="w-full estadificaciones animate-fade-in-up animate-delay-[1100ms]">
+
+               <div class="estadificacion border-yellow-400 animate-fade-in-left animate-delay-[1300ms]">
+                  <h3 class="text-yellow-400">Estadificación riesgo Bajo</h3>
+                  <ul>
+                     <li>Proporción de pacientes</li>
+                     <li>Costos de atención</li>
+                  </ul>
+               </div>
+               <div class="estadificacion border-lime-600 animate-fade-in-up animate-delay-[1300ms]">
+                  <h3 class="text-lime-600">Estadificación riesgo Intermedio</h3>
+                  <ul>
+                     <li>Proporción de pacientes</li>
+                     <li>Costos de atención</li>
+                  </ul>
+               </div>
+               <div class="estadificacion border-cyan-500 animate-fade-in-right animate-delay-[1300ms]">
+                  <h3 class="text-cyan-500">Estadificación riesgo Alto</h3>
+                  <ul>
+                     <li>Proporción de pacientes</li>
+                     <li>Costos de atención</li>
+                  </ul>
+               </div>
+            </article>
+         </section>
+
+         <section class="w-full grid grid-cols-2 gap-6">
+            <article class="consideraciones animate-fade-in-left animate-delay-[1300ms]">
+               <h3 class="font-extrabold text-xl leading-normal">Consideraciones</h3>
+               <ol class="list-decimal list-outside ml-6 leading-tight">
+                  <li>Esta escala se debería usar para evaluar el riesgo de mortalidad al momento del diagnóstico, 3-6 meses después de cambio de terapia, cada 3-6 meses en pacientes estables y en caso de empeoramiento clínico.</li>
+                  <li>Se tienen en cuenta 3 variables principales para la clasificación de riesgo
+                     <ol class="list-decimal list-outside ml-6 leading-tight">
+                        <li>Clase funcional según la OMS*</li>
+                        <li>Distancia en la prueba de camina de 6 minutos</li>
+                        <li>Niveles séricos de NT-proBNP o BNP</li>
+                     </ol>
+                  </li>
+               </ol>
+            </article>
+
+            <article class="supuestos animate-fade-in-right animate-delay-[1300ms]">
+               <h3 class="font-extrabold text-xl leading-normal">Supuestos</h3>
+               <ol class="list-decimal list-outside! ml-6 leading-tight">
+                  <li>El modelo contempla que la cohorte se divide en las categorias de riesgo, sumando el total de los pacientes diagnosticados con HTP Grupo I + Grupo IV</li>
+                  <li>La suma de la proporción de pacientes debe ser igual a 100% y la suma de pacientes debe ser igual al número total de la cohorte</li>
+                  <li>La distribución de pacientes es la base de las estimaciones económicas</li>
+               </ol>
+            </article>
+         </section>
+
       </main>
-
-      <main class="mx-16 grid grid-cols-2 gap-6">
-         <article class="consideraciones animate-fade-in-left animate-delay-[1300ms]">
-            <h3 class="font-extrabold text-xl leading-normal">Consideraciones</h3>
-            <ol class="list-decimal list-outside ml-6 leading-tight">
-               <li>Esta escala se debería usar para evaluar el riesgo de mortalidad al momento del diagnóstico, 3-6 meses después de cambio de terapia, cada 3-6 meses en pacientes estables y en caso de empeoramiento clínico.</li>
-               <li>Se tienen en cuenta 3 variables principales para la clasificación de riesgo
-                  <ol class="list-decimal list-outside ml-6 leading-tight">
-                     <li>Clase funcional según la OMS*</li>
-                     <li>Distancia en la prueba de camina de 6 minutos</li>
-                     <li>Niveles séricos de NT-proBNP o BNP</li>
-                  </ol>
-               </li>
-            </ol>
-         </article>
-
-         <article class="supuestos animate-fade-in-right animate-delay-[1300ms]">
-            <h3 class="font-extrabold text-xl leading-normal">Supuestos</h3>
-            <ol class="list-decimal list-outside! ml-6 leading-tight">
-               <li>El modelo contempla que la cohorte se divide en las categorias de riesgo, sumando el total de los pacientes diagnosticados con HTP Grupo I + Grupo IV</li>
-               <li>La suma de la proporción de pacientes debe ser igual a 100% y la suma de pacientes debe ser igual al número total de la cohorte</li>
-               <li>La distribución de pacientes es la base de las estimaciones económicas</li>
-            </ol>
-         </article>
-      </main>
-
-      <footer class="w-full px-16 text-center flex flex-col items-center gap-4">
-         <button class="back-button w-fit animate-pulse-fade-in animate-delay-[1700ms]" onclick="javascript:jumptoSlide('01')">
-            <div class="flex flex-row items-center justify-center">
-            <i>
-               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-               </svg>
-            </i>
-            <h4 class=" font-bold text-lg">Regresar</h4></div>
-         </button>
-      </footer>
 
    </section>
 </body>
