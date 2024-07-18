@@ -19,16 +19,28 @@
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="w-full">
-
-         <hgroup class="animate-fade-in-down animate-delay-500 animate-duration-slow">
-            <h2 class="font-extrabold text-white text-2xl leading-none">Hemos desarrollado una herramienta que calcula los costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica (HTP)</h2>
+      <header class="z-50 w-full px-16">
+         <hgroup class="animate-fade-in-left animate-delay-500 animate-duration-slow">
+            <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[1000ms]"
+               onclick="javascript:slideDos.jumptoSlide('01')">
+               <div class="flex flex-row items-center justify-center">
+                  <i>
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                        stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                     </svg>
+                  </i>
+                  <h4 class=" font-bold text-lg">Regresar</h4>
+               </div>
+            </button>
+            <h2>Introducción</h2>
          </hgroup>
-
       </header>
 
-      <main class="mx-16">
-         <article class="factores animate-fade-in-up animate-delay-[1100ms]">
+      <main>
+         <h2 class="titulo animate-fade-in-down animate-delay-[800ms]">Hemos desarrollado una herramienta que calcula los costos
+            asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica (HTP)</h2>
+         <article class="factores animate-fade-in-up animate-delay-[800ms]">
             <h3 class="font-extrabold text-xl leading-none mb-3">La calculadora toma en cuenta varios factores:</h3>
             <ul class="list-disc list-inside ml-4 leading-tight">
                <li>Riesgo del paciente</li>
@@ -114,7 +126,6 @@
                         <h4>Caso de referencia</h4>
                      </div>
                   </button>
-               
                   <label class="block text-text-500 text-center">
                      <h4 class="font-bold text-base leading-none">Botón caso de referencia</h4>
                      <p class="font-normal text-xs leading-none">En caso de no tener datos de la institución, seleccione un caso de referencia</p>
@@ -123,12 +134,11 @@
 
                <div class="h-fit grid grid-cols-2 gap-0 content-center items-center">
                   <div class="flex flex-col items-center">
-                     <i class="text-green-600 text-sm drop-shadow-pop cursor-pointer rounded-full bg-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                           <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
-                        </svg>
-   
-                     </i>
+                        <i class="text-green-600 text-sm drop-shadow-pop cursor-pointer rounded-full bg-white">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                              <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
+                           </svg>
+                        </i>
                      <label class=" text-text-500 text-center flex flex-col justify-center">
                         <h4 class="font-bold text-base leading-tight">Abrir Pop-Up</h4>
                      </label>
@@ -138,32 +148,22 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" clip-rule="evenodd" />
                         </svg>
-   
+
                      </i>
                      <label class=" text-text-500 text-center flex flex-col justify-center">
                         <h4 class="font-bold text-base leading-tight">Cerrar Pop-Up</h4>
                      </label>
                   </div>
-   
+
                </div>
             </div>
          </article>
 
+         <article class="w-full px-16 text-center flex flex-col items-center gap-4 col-span-10">
+            <p class="leading-none text-center text-text-600 text-sm animate-fade-in-up animate-delay-[1600ms]">En resumen, esta herramienta nos ayuda a entender y estimar los costos financieros asociados con la atención médica para pacientes con HTP, lo que puede ser útil para la toma de decisiones clínicas y la planificación de tratamientos.</p>
+         </article>
       </main>
 
-      <footer class="w-full px-16 text-center flex flex-col items-center gap-4">
-         <p class="leading-tight text-center text-text-600 text-sm animate-fade-in-up animate-delay-[1800ms]">En resumen, esta herramienta nos ayuda a entender y estimar los costos financieros asociados con la atención médica para pacientes con HTP, lo que puede ser útil para la toma de decisiones clínicas y la planificación de tratamientos.</p>
-         <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[2300ms]"
-            onclick="javascript:slideDos.jumptoSlide('01')">
-            <div class="flex flex-row items-center justify-center">
-            <i>
-               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-               </svg>
-            </i>
-            <h4 class=" font-bold text-lg">Regresar</h4></div>
-         </button>
-      </footer>
 
    </section>
 </body>

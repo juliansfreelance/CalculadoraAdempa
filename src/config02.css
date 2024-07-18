@@ -53,12 +53,23 @@ ol ol>li {
    @apply block my-0.5
 }
 
-.slide{
-   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-4
+.slide {
+   @apply w-[1024px] h-[768px] flex flex-col gap-4 bg-white bg-fondo bg-cover bg-center pb-16 z-0;
 }
 
 header hgroup {
-   @apply w-full h-[88px] px-16 py-2 text-center bg-gradient-to-r from-red-600 to-amber-600
+   @apply w-full h-[80px] flex justify-between items-center
+}
+
+header hgroup h2 {
+   @apply w-fit h-full flex items-center font-extrabold text-center text-white text-3xl leading-none px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl
+}
+
+main {
+   @apply flex-grow mx-16 flex flex-wrap justify-around content-around;
+}
+.titulo {
+   @apply font-extrabold text-2xl leading-none mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-amber-600
 }
 
 .factores,
@@ -94,7 +105,7 @@ input {
 }
 
 .bg-button1 {
-   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 shadow-md shadow-black/40 rounded-lg
+   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 shadow-md shadow-black/40 rounded-lg border border-gray-400
 }
 .bg-button1 div {
    @apply text-button-text pl-7 pr-5 py-1 bg-gradient-to-b from-button-bg1 to-white rounded-md

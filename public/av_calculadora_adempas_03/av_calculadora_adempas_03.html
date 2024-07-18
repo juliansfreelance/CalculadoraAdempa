@@ -19,27 +19,32 @@
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="w-full">
-
-         <hgroup class="animate-fade-in-down animate-delay-500 animate-duration-slow">
-            <h2 class="font-extrabold text-white text-4xl leading-none">Bases teóricas</h2>
+      <header class="z-50 w-full px-16">
+         <hgroup class="animate-fade-in-left animate-delay-500 animate-duration-slow">
+            <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[1000ms]"
+               onclick="javascript:slideTres.jumptoSlide('01')">
+               <div class="flex flex-row items-center justify-center">
+                  <i>
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+                        class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                     </svg>
+                  </i>
+                  <h4 class=" font-bold text-lg">Regresar</h4>
+               </div>
+            </button>
+            <h2>Bases teóricas</h2>
          </hgroup>
-
       </header>
 
-      <main id="container" class="h-2/5 mx-16 grid grid-cols-5 gap-x-8 my-36"></main>
+      <main id="container">
+         
+      </main>
+
 
 
       <footer class="w-full px-16 text-center flex flex-col items-center gap-4">
-         <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[1900ms]" onclick="javascript:slideTres.jumptoSlide('01')">
-            <div class="flex flex-row items-center justify-center">
-            <i>
-               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-               </svg>
-            </i>
-            <h4 class=" font-bold text-lg">Regresar</h4></div>
-         </button>
+         
       </footer>
 
    </section>

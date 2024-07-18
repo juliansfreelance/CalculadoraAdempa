@@ -923,10 +923,6 @@ select {
   position: relative;
 }
 
-.right-1 {
-  right: 0.25rem;
-}
-
 .right-\[10px\] {
   right: 10px;
 }
@@ -937,6 +933,14 @@ select {
 
 .z-10 {
   z-index: 10;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.col-span-10 {
+  grid-column: span 10 / span 10;
 }
 
 .col-span-2 {
@@ -952,11 +956,6 @@ select {
   margin-right: 4rem;
 }
 
-.mx-40 {
-  margin-left: 10rem;
-  margin-right: 10rem;
-}
-
 .mx-7 {
   margin-left: 1.75rem;
   margin-right: 1.75rem;
@@ -967,17 +966,8 @@ select {
   margin-bottom: 0.5rem;
 }
 
-.my-36 {
-  margin-top: 9rem;
-  margin-bottom: 9rem;
-}
-
 .-mt-\[23px\] {
   margin-top: -23px;
-}
-
-.-mt-\[26px\] {
-  margin-top: -26px;
 }
 
 .mb-3 {
@@ -1024,6 +1014,10 @@ select {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .size-4 {
   width: 1rem;
   height: 1rem;
@@ -1039,8 +1033,9 @@ select {
   height: 1.5rem;
 }
 
-.h-2\/5 {
-  height: 40%;
+.size-7 {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .h-fit {
@@ -1300,13 +1295,12 @@ select {
   gap: 1rem;
 }
 
-.gap-6 {
-  gap: 1.5rem;
+.gap-5 {
+  gap: 1.25rem;
 }
 
-.gap-x-8 {
-  -moz-column-gap: 2rem;
-       column-gap: 2rem;
+.gap-6 {
+  gap: 1.5rem;
 }
 
 .self-start {
@@ -1315,6 +1309,10 @@ select {
 
 .rounded-full {
   border-radius: 9999px;
+}
+
+.border {
+  border-width: 1px;
 }
 
 .border-cyan-500 {
@@ -1337,6 +1335,14 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.p-0 {
+  padding: 0px;
+}
+
+.p-0\.5 {
+  padding: 0.125rem;
+}
+
 .px-12 {
   padding-left: 3rem;
   padding-right: 3rem;
@@ -1347,16 +1353,6 @@ select {
   padding-right: 4rem;
 }
 
-.px-52 {
-  padding-left: 13rem;
-  padding-right: 13rem;
-}
-
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -1365,18 +1361,9 @@ select {
   text-align: center;
 }
 
-.font-helvet {
-  font-family: Helvet;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .text-4xl {
@@ -1417,10 +1404,6 @@ select {
   font-weight: 800;
 }
 
-.font-light {
-  font-weight: 300;
-}
-
 .font-normal {
   font-weight: 400;
 }
@@ -1439,6 +1422,11 @@ select {
 
 .leading-tight {
   line-height: 1.25;
+}
+
+.text-amber-500 {
+  --tw-text-opacity: 1;
+  color: rgb(245 158 11 / var(--tw-text-opacity));
 }
 
 .text-cyan-500 {
@@ -1461,9 +1449,19 @@ select {
   color: rgb(251 146 60 / var(--tw-text-opacity));
 }
 
+.text-pink-600 {
+  --tw-text-opacity: 1;
+  color: rgb(219 39 119 / var(--tw-text-opacity));
+}
+
 .text-red-600 {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+.text-sky-600 {
+  --tw-text-opacity: 1;
+  color: rgb(2 132 199 / var(--tw-text-opacity));
 }
 
 .text-text-500 {
@@ -1492,12 +1490,29 @@ select {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
 .animate-delay-500 {
   animation-delay: 500ms;
 }
 
 .animate-delay-900 {
   animation-delay: 900ms;
+}
+
+.animate-delay-\[1000ms\] {
+  animation-delay: 1000ms;
+}
+
+.animate-delay-\[100ms\] {
+  animation-delay: 100ms;
 }
 
 .animate-delay-\[1100ms\] {
@@ -1520,20 +1535,12 @@ select {
   animation-delay: 1700ms;
 }
 
-.animate-delay-\[1800ms\] {
-  animation-delay: 1800ms;
-}
-
-.animate-delay-\[1900ms\] {
-  animation-delay: 1900ms;
-}
-
-.animate-delay-\[2000ms\] {
-  animation-delay: 2000ms;
-}
-
 .animate-delay-\[2300ms\] {
   animation-delay: 2300ms;
+}
+
+.animate-delay-\[600ms\] {
+  animation-delay: 600ms;
 }
 
 .animate-delay-\[750ms\] {
@@ -1617,6 +1624,7 @@ ol ol>li {
 }
 
 .slide {
+  z-index: 0;
   display: flex;
   height: 768px;
   width: 1024px;
@@ -1627,13 +1635,25 @@ ol ol>li {
   background-image: url('../images/fondo.png');
   background-size: cover;
   background-position: center;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 4rem;
 }
 
 header hgroup {
-  height: 88px;
+  display: flex;
+  height: 80px;
   width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header hgroup h2 {
+  display: flex;
+  height: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  border-bottom-right-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
   --tw-gradient-from: #dc2626 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(220 38 38 / 0) var(--tw-gradient-to-position);
@@ -1644,6 +1664,39 @@ header hgroup {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   text-align: center;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 800;
+  line-height: 1;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+main {
+  margin-left: 4rem;
+  margin-right: 4rem;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+}
+
+.titulo {
+  margin-bottom: 1rem;
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: #dc2626 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(220 38 38 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #d97706 var(--tw-gradient-to-position);
+  -webkit-background-clip: text;
+          background-clip: text;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
 }
 
 .factores,
@@ -1753,6 +1806,9 @@ input {
 
 .bg-button1 {
   border-radius: 0.5rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
   --tw-gradient-from: #fff var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);

@@ -7,31 +7,36 @@
          "docName": "Nombre del documento a linkear",
          "zipName": "av_calculadora_adempas_01",
          "presentationCode": "00023200",
-         "color": "#FFCF01"
+         "color": "#db2777",
+         "border": "#9d174d"
       },
       {
          "docName": "Nombre del documento a linkear",
          "zipName": "av_calculadora_adempas_02",
          "presentationCode": "00023200",
-         "color": "#C95D47"
+         "color": "#a21caf",
+         "border": "#701a75"
       },
       {
          "docName": "Nombre del documento a linkear",
          "zipName": "av_calculadora_adempas_03",
          "presentationCode": "00023200",
-         "color": "#820053"
+         "color": "#0284c7",
+         "border": "#075985"
       },
       {
          "docName": "Nombre del documento a linkear",
          "zipName": "av_calculadora_adempas_04",
          "presentationCode": "00023200",
-         "color": "#00728F"
+         "color": "#16a34a",
+         "border": "#047857"
       },
       {
          "docName": "Nombre del documento a linkear",
          "zipName": "av_calculadora_adempas_05",
          "presentationCode": "00023200",
-         "color": "#679146"
+         "color": "#eab308",
+         "border": "#ca8a04"
       }
    ]
 }
