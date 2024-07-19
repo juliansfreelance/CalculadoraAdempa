@@ -24,23 +24,25 @@
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="z-50 w-full px-16">
-         <hgroup class="animate-fade-in-down animate-delay-500 animate-duration-slow">
-            <button class=" bg-button1 w-fit animate-pulse-fade-in animate-delay-[1600ms]" onclick="javascript:jumpToSlide('06')">
-               <div class="flex flex-row items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
-                     class="size-5">
+      <header class="z-50">
+         <hgroup>
+            <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[600ms]"
+               onclick="javascript:slideSiete.jumpToSlide('06')">
+               <div>
+                  <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                   </svg>
-                  <h4 class=" font-bold text-lg">Regresar</h4>
+                  <h4>Regresar</h4>
                </div>
             </button>
-            <h2>Costo TOTAL por paciente</h2>
+            <h2 class="animate-fade-in-down animate-delay-500 animate-duration-slow">Resultados</h2>
          </hgroup>
       </header>
 
-      <main class="z-50 mx-7 grid grid-flow-row auto-rows-max justify-items-center gap-5">
-         <p></p>
+      <main class="z-50">
+         <article>
+            <h4 class="font-extrabold text-2xl text-lime-600">Población</h4>
+         </article>
       </main>
 
    </section>
@@ -48,8 +50,8 @@
    <section class="content-folder fade-out">
       <section class="folder close" id="poblacion">
          <header>
-            <button onclick="toggleFolder('poblacion')">
-               <h4>Población</h4>
+            <button onclick="slideSiete.toggleFolder('poblacion')">
+               <h4>Paciente</h4>
                <div>
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"/>
@@ -61,19 +63,18 @@
             </button>
          </header>
          <main class="folder-contents">
-            <h4 class="font-extrabold text-2xl text-lime-600">Población</h4>
+            <h4 class="font-extrabold text-2xl text-lime-600">Costo total por paciente</h4>
             <p></p>
          </main>
       </section>
 
       <section class="folder close" id="pocedimientos">
          <header>
-            <button onclick="toggleFolder('pocedimientos')">
+            <button onclick="slideSiete.toggleFolder('pocedimientos')">
                <h4>Procedimientos</h4>
                <div>
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                     <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
                   </svg>
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
@@ -89,7 +90,7 @@
 
       <section class="folder close" id="tecnologias">
          <header>
-            <button onclick="toggleFolder('tecnologias')">
+            <button onclick="slideSiete.toggleFolder('tecnologias')">
                <h4>Tecnologías</h4>
                <div>
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -109,7 +110,7 @@
 
       <section class="folder close" id="cohorte">
          <header>
-            <button onclick="toggleFolder('cohorte')">
+            <button onclick="slideSiete.toggleFolder('cohorte')">
                <h4>Cohorte</h4>
                <div>
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -127,8 +128,6 @@
          </main>
       </section>
    </section>
-
-   
 
 </body>
 </html>
