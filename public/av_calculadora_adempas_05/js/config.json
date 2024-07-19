@@ -21,6 +21,179 @@
          "intermedio": 0,
          "alto": 0
       },
+      "tecnologias": {
+         "monoterapias":{
+            "title": "Monoterapia",
+            "id": "monoterapia",
+            "terapias": [
+               {
+                  "nombre": "RIOCIGUAT",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERAs",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "iPDE-5",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Selexipag",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Treprostinil",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Epoprostenol",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Iloprost",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               }
+            ]
+         },
+         "terapiasDobles":{
+            "title": "Terapias combinadas (Dobles)",
+            "id": "biterapia",
+            "terapias": [
+               {
+                  "nombre": "ERA - iPDE-5",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Riociguat",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Selexipag",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Treprostinil",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Epoprostenol",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Iloprost",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Riociguat - Selexipag",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Riociguat - Treprostinil",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Riociguat - Epoprostenol",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Riociguat - Iloprost",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               }
+            ]
+         },
+         "terapiasTripes":{
+            "title": "Terapias combinadas (Triples)",
+            "id": "triterapia",
+            "terapias": [
+               {
+                  "nombre": "ERA - iPDE-5 - Selexipag",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - iPDE-5 - Treprostinil",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - iPDE-5 - Epoprostenol",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - iPDE-5 - Iloprost",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Riociguat - Selexipag",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Riociguat - Treprostinil",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Riociguat - Epoprostenol",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Riociguat - Iloprost",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               }
+            ]
+         }
+      },
+      "complicaciones":[
+
+      ],
       "referencias": {
          "grupos": [
             {

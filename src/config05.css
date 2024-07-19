@@ -39,9 +39,6 @@ input[type=number] {
    -moz-appearance: textfield;
 }
 
-/* .slide {
-   @apply w-[1024px] h-[768px] bg-white bg-fondo bg-cover bg-center py-6 flex flex-col gap-6 ;
-} */
 .slide {
    @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6  z-0;
 }

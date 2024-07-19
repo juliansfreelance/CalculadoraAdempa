@@ -21,29 +21,27 @@
    <script src="js/components/pop.js" defer></script>
    <script src="js/script.js" defer></script>
 </head>
-<body class="w-screen h-screen grid place-items-center">
+<body class="w-screen h-screen flex flex-col justify-center items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="z-50 w-full px-16">
-
-         <hgroup class="animate-fade-in-down animate-delay-500 animate-duration-slow">
-            <button class=" bg-button1 w-fit animate-pulse-fade-in animate-delay-[1600ms]" onclick="javascript:jumpToSlide('05')">
-               <div class="flex flex-row items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
-                     class="size-5">
+      <header>
+         <hgroup>
+            <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[600ms]"
+               onclick="javascript:slideSeis.jumpToSlide('05')">
+               <div>
+                  <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                   </svg>
-                  <h4 class=" font-bold text-lg">Regresar</h4>
+                  <h4>Regresar</h4>
                </div>
             </button>
-            <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
+            <h2 class="animate-fade-in-left animate-delay-500 animate-duration-slow">Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
          </hgroup>
-
       </header>
 
-      <main class="mx-7 grid grid-flow-row auto-rows-max justify-items-center gap-5">
+      <main>
 
-         <section class="tratamiento flex flex-col-reverse w-fit animate-fade-in-right animate-delay-900 animate-duration-slower">
+         <section class="tratamiento animate-fade-in-right animate-delay-900 animate-duration-slower">
             <div class="form">
                <table class="w-full table-auto">
                   <thead>
@@ -59,11 +57,11 @@
 
                      <tr>
                         <td>Monoterapia</td>
-                        <td><custom-input name="monoterapia-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-intermedio" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="monoterapia-alto" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-intermedio" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="monoterapia-alto" type="calc" icon="porcentaje"></custom-input></td>
                         <td>
-                           <button onclick="javascript:popUp('monoterapia')" class="text-green-600 shadow-md rounded-full bg-white ">
+                           <button onclick="javascript:slideSeis.popUp('monoterapia')" class="text-green-600 shadow-md rounded-full bg-white ">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
                               </svg>
@@ -73,11 +71,11 @@
 
                      <tr>
                         <td>Terapias combinadas (doble)</td>
-                        <td><custom-input name="doble-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="doble-intermedio" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="doble-alto" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="doble-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="doble-intermedio" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="doble-alto" type="calc" icon="porcentaje"></custom-input></td>
                         <td>
-                           <button onclick="javascript:popUp('biterapia')" class="text-green-600 shadow-md rounded-full bg-white ">
+                           <button onclick="javascript:slideSeis.popUp('biterapia')" class="text-green-600 shadow-md rounded-full bg-white ">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
                               </svg>
@@ -87,11 +85,11 @@
 
                      <tr>
                         <td>Terapias combinadas (Triples)</td>
-                        <td><custom-input name="triple-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="triple-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="triple-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="triple-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="triple-intermedio" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="triple-alto" type="calc" icon="porcentaje"></custom-input></td>
                         <td>
-                           <button onclick="javascript:popUp('triterapia')" class="text-green-600 shadow-md rounded-full bg-white ">
+                           <button onclick="javascript:slideSeis.popUp('triterapia')" class="text-green-600 shadow-md rounded-full bg-white ">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
                               </svg>
@@ -101,8 +99,8 @@
 
                      <tr>
                         <td>
-                           <button class="btn-caso-ref w-fit">
-                              <div class="flex flex-row items-center justify-center">
+                           <button class="btn-caso-ref">
+                              <div>
                                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                  </svg>
@@ -121,7 +119,7 @@
             <div class="label"><h4>Distribución uso de tecnologías</h4></div>
          </section>
 
-         <section class="complicaciones flex flex-col-reverse w-fit animate-fade-in-left animate-delay-900 animate-duration-slower">
+         <section class="complicaciones animate-fade-in-left animate-delay-900 animate-duration-slower">
             <div class="form">
                <article>
                   <p class="font-normal leading-none text-center text-xs text-text-500">Si tiene el rubro no es por paquete con un solo costo, puedo dirigirse a Costo de complicaciones para realizar microcosteo</p>
@@ -138,34 +136,36 @@
                   <tbody>
                      <tr>
                         <td>Hospitalizaciones por causas diferentes<br>a falla cardiaca derecha</td>
-                        <td><custom-input name="tecnologia-1-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="tecnologia-1-intermedio" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="tecnologia-1-alto" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-1-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-1-intermedio" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-1-alto" type="insert" icon="porcentaje"></custom-input></td>
                      </tr>
 
                      <tr>
                         <td>Falla cardiaca en hospitalización general</td>
-                        <td><custom-input name="tecnologia-2-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="tecnologia-2-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="tecnologia-2-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-2-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-2-intermedio" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-2-alto" type="insert" icon="porcentaje"></custom-input></td>
                      </tr>
 
                      <tr>
                         <td>Falla cardiaca derecha de paciente Crítico</td>
-                        <td><custom-input name="tecnologia-3-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="tecnologia-3-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="tecnologia-3-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-3-bajo" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-3-intermedio" type="insert" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-3-alto" type="insert" icon="porcentaje"></custom-input></td>
                      </tr>
 
                      <tr>
-                        <td><button class="btn-caso-ref w-fit">
-                           <div class="flex flex-row items-center justify-center">
-                              <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                              </svg>
-                              <h4>Caso de referencia</h4>
-                           </div>
-                        </button></td>
+                        <td>
+                           <button class="btn-caso-ref">
+                              <div>
+                                 <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                 </svg>
+                                 <h4>Caso de referencia</h4>
+                              </div>
+                           </button>
+                        </td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -182,30 +182,27 @@
 
       </main>
 
-      <custom-pop type="monoterapia" class="hidden"></custom-pop>
-      <custom-pop type="biterapia" class="hidden"></custom-pop>
-      <custom-pop type="triterapia" class="hidden"></custom-pop>
+      <footer>
 
-      <footer class="w-full px-12 text-center flex items-center justify-between">
-
-         <article class="animate-blurred-fade-in animate-delay-[1600ms] animate-duration-slower">
-            <p class="font-normal leading-none text-center text-base my-2 text-text-500">Si no tiene datos de la institución, seleccione un caso de referencia</p>
+         <article class="animate-fade-in-right animate-delay-[1200ms] animate-duration-slower">
+            <p>Si no tiene datos de la institución, seleccione un caso de referencia</p>
          </article>
 
-         <button class="backaground-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[1600ms]"
-            onclick="javascript:validarForm()">
-            <div class="flex flex-row-reverse items-center justify-center">
-               <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                  stroke="currentColor">
+         <button class="background-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[1200ms]"
+            onclick="javascript:slideSeis.validarForm()">
+            <div>
+               <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                </svg>
                <h4>Continuar</h4>
             </div>
          </button>
       </footer>
-   </section>
 
-   
+      <custom-pop type="monoterapia" class="hidden"></custom-pop>
+      <custom-pop type="biterapia" class="hidden"></custom-pop>
+      <custom-pop type="triterapia" class="hidden"></custom-pop>
+   </section>
 
 </body>
 </html>
