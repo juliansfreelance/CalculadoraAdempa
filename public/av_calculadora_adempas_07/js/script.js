@@ -8,7 +8,7 @@
 "use strict";
 import chartHomeModule from './modules/chartHome.js';
 
- let veeva = {};
+let veeva = {};
 
 let slideSiete = {
 
@@ -39,7 +39,7 @@ let slideSiete = {
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
       } else {
-         document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+         document.location = `/CalculadoraAdempa/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
       }
    },
 
