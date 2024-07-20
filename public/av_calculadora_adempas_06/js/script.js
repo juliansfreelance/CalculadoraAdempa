@@ -14,7 +14,6 @@ let slideSeis = {
       const calculadoraData = localStorage.getItem('calculadora');
       if (calculadoraData) {
          veeva.calculadora = await JSON.parse(calculadoraData);
-         console.log(veeva);
          document.dispatchEvent(new Event('configLoaded'));
       }
    },
@@ -57,6 +56,45 @@ let slideSeis = {
       } else {
          console.error(`No se encontró ningún elemento <custom-pop> con type="${pop}".`);
       }
+   },
+
+   formatToFloatString: function(value) {
+      let floatValue = parseFloat(value).toFixed(2);
+      return floatValue.replace('.', ',');
+   },
+
+   updateInputTecnologias: function () {
+      const totalRiesgoBajo = document.querySelector("input[name='total-bajo']");
+      const totalRiesgoIntermedio = document.querySelector("input[name='total-intermedio']");
+      const totalRiesgoAlto = document.querySelector("input[name='total-alto']");
+
+      const monoterapiaBajo = document.querySelector("input[name='monoterapia-bajo']");
+      const monoterapiaIntermedio = document.querySelector("input[name='monoterapia-intermedio']");
+      const monoterapiaAlto = document.querySelector("input[name='monoterapia-alto']");
+
+      const dobleBajo = document.querySelector("input[name='doble-bajo']");
+      const dobleIntermedio = document.querySelector("input[name='doble-intermedio']");
+      const dobleAlto = document.querySelector("input[name='doble-alto']");
+
+      const tripleBajo = document.querySelector("input[name='triple-bajo']");
+      const tripleIntermedio = document.querySelector("input[name='triple-intermedio']");
+      const tripleAlto = document.querySelector("input[name='triple-alto']");
+
+      monoterapiaBajo.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.monoterapias.bajo);
+      monoterapiaIntermedio.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.monoterapias.intermedio);
+      monoterapiaAlto.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.monoterapias.alto);
+
+      dobleBajo.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasDobles.bajo);
+      dobleIntermedio.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasDobles.intermedio);
+      dobleAlto.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasDobles.alto);
+
+      tripleBajo.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasTripes.bajo);
+      tripleIntermedio.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasTripes.intermedio);
+      tripleAlto.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasTripes.alto);
+
+      totalRiesgoBajo.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.totalRiesgoBajo);
+      totalRiesgoIntermedio.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.totalRiesgoIntermedio);
+      totalRiesgoAlto.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.totalRiesgoAlto);
    },
 
    validarForm: function() {

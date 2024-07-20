@@ -60,7 +60,6 @@ class customInput extends HTMLElement {
    }
 
    formatNumber(val) {
-      console.log(val);
       const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
       const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
       if (val !== '') {
@@ -86,6 +85,7 @@ class customInput extends HTMLElement {
       }
       event.target.value = inputValue;
       this.valor = inputValue;
+      this.updateJsonValue(event.target.name, inputValue);
    }
 
    handleBlur(event) {
@@ -93,7 +93,46 @@ class customInput extends HTMLElement {
          let inputValue = event.target.value.replace(/[^\d,.]/g, '');
          event.target.value = this.formatNumber(inputValue);
          this.valor = this.formatNumber(inputValue);
+         this.updateJsonValue(event.target.name, inputValue);
       }
+   }
+
+   updateGlobalValues() {
+      function sumTerapias(terapias, field) {
+         return terapias.reduce((sum, terapia) => sum + terapia[field], 0);
+      }
+      veeva.calculadora.tecnologias.monoterapias.bajo = sumTerapias(veeva.calculadora.tecnologias.monoterapias.terapias, 'bajo');
+      veeva.calculadora.tecnologias.monoterapias.intermedio = sumTerapias(veeva.calculadora.tecnologias.monoterapias.terapias, 'intermedio');
+      veeva.calculadora.tecnologias.monoterapias.alto = sumTerapias(veeva.calculadora.tecnologias.monoterapias.terapias, 'alto');
+
+      veeva.calculadora.tecnologias.terapiasDobles.bajo = sumTerapias(veeva.calculadora.tecnologias.terapiasDobles.terapias, 'bajo');
+      veeva.calculadora.tecnologias.terapiasDobles.intermedio = sumTerapias(veeva.calculadora.tecnologias.terapiasDobles.terapias, 'intermedio');
+      veeva.calculadora.tecnologias.terapiasDobles.alto = sumTerapias(veeva.calculadora.tecnologias.terapiasDobles.terapias, 'alto');
+
+      veeva.calculadora.tecnologias.terapiasTripes.bajo = sumTerapias(veeva.calculadora.tecnologias.terapiasTripes.terapias, 'bajo');
+      veeva.calculadora.tecnologias.terapiasTripes.intermedio = sumTerapias(veeva.calculadora.tecnologias.terapiasTripes.terapias, 'intermedio');
+      veeva.calculadora.tecnologias.terapiasTripes.alto = sumTerapias(veeva.calculadora.tecnologias.terapiasTripes.terapias, 'alto');
+
+      veeva.calculadora.tecnologias.totalRiesgoBajo = veeva.calculadora.tecnologias.monoterapias.bajo + veeva.calculadora.tecnologias.terapiasDobles.bajo + veeva.calculadora.tecnologias.terapiasTripes.bajo;
+      veeva.calculadora.tecnologias.totalRiesgoIntermedio = veeva.calculadora.tecnologias.monoterapias.intermedio + veeva.calculadora.tecnologias.terapiasDobles.intermedio + veeva.calculadora.tecnologias.terapiasTripes.intermedio;
+      veeva.calculadora.tecnologias.totalRiesgoAlto = veeva.calculadora.tecnologias.monoterapias.alto + veeva.calculadora.tecnologias.terapiasDobles.alto + veeva.calculadora.tecnologias.terapiasTripes.alto;
+      
+      slideSeis.updateInputTecnologias();
+   }
+
+   updateJsonValue(name, value) {
+      const path = name.split('-');
+      const terapiaIndex = parseInt(path[1]);
+      const field = path[2];
+      value
+      if (path[0] === 'monoterapia') {
+         veeva.calculadora.tecnologias.monoterapias.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
+      } else if (path[0] === 'biterapia') {
+         veeva.calculadora.tecnologias.terapiasDobles.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
+      } else if (path[0] === 'triterapia') {
+         veeva.calculadora.tecnologias.terapiasTripes.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
+      }
+      this.updateGlobalValues();
    }
 
    connectedCallback() {

@@ -1,12 +1,14 @@
-"use strict";
 /**
  * Lab: Bayer
  * Agency: ÜlaIdeas
  * Created by: Julio Calderón
  * Developed By: Julio Calderón
  * Modified By:
- */
-let veeva = {};
+*/
+"use strict";
+import chartHomeModule from './modules/chartHome.js';
+
+ let veeva = {};
 
 let slideSiete = {
 
@@ -14,8 +16,14 @@ let slideSiete = {
       const calculadoraData = localStorage.getItem('calculadora');
       if (calculadoraData) {
          veeva.calculadora = await JSON.parse(calculadoraData);
+         slideSiete.updateResult();
          console.log(veeva);
-         document.dispatchEvent(new Event('configLoaded'));
+      } else {
+         const alert = document.querySelector('.alert-conten');
+         alert.classList.replace('alert-animate-down', 'alert-animate-up');
+         setTimeout(() => {
+            alert.classList.replace('hidden', 'flex');
+         }, 500);
       }
    },
 
@@ -73,19 +81,56 @@ let slideSiete = {
       });
       if (folder.classList.contains('open')) {
          setTimeout(() => {
-            headerElement.classList.add('z-50');
-            mainElement.classList.add('z-50');
-         }, 600);
+            headerElement.classList.replace('z-10','z-50');
+            mainElement.classList.replace('z-10','z-50');
+         }, 560);
          folder.classList.replace('open', 'close');
          contentFolder.classList.replace('fade-in', 'fade-out');
       } else {
-         headerElement.classList.remove('z-50');
-         mainElement.classList.remove('z-50');
+         headerElement.classList.replace('z-50', 'z-10');
+         mainElement.classList.replace('z-50', 'z-10');
          contentFolder.classList.replace('fade-out', 'fade-in');
          folder.classList.replace('close', 'open');
       }
+   },
+
+   updateResult: function () {
+
+      const resPoblacion = document.querySelector("input[name='res-poblacion']");
+
+      const resRiskBajo = document.querySelector("input[name='res-risk-bajo']");
+      const resRiskIntermedio = document.querySelector("input[name='res-risk-intermedio']");
+      const resRiskAlto = document.querySelector("input[name='res-risk-alto']");
+
+      const resPercentBajo = document.querySelector("input[name='res-percent-bajo']");
+      const resPercentIntermedio = document.querySelector("input[name='res-percent-intermedio']");
+      const resPercentAlto = document.querySelector("input[name='res-percent-alto']");
+
+      resPoblacion.value = veeva.calculadora.poblacion;
+
+      resRiskBajo.value = veeva.calculadora.estadificacionCategoria.bajo;
+      resRiskIntermedio.value = veeva.calculadora.estadificacionCategoria.intermedio;
+      resRiskAlto.value = veeva.calculadora.estadificacionCategoria.alto;
+
+      resPercentBajo.value = veeva.calculadora.estadificacionPacientes.bajo;
+      resPercentIntermedio.value = veeva.calculadora.estadificacionPacientes.intermedio;
+      resPercentAlto.value = veeva.calculadora.estadificacionPacientes.alto;
+
+      slideSiete.chartIni();
+   },
+
+   chartIni: function () {
+      console.log(veeva);
+      const chartContainer = document.querySelector('.chart-home');
+      setTimeout(() => {
+         chartContainer.innerHTML = `<canvas id="chartHome" class="chart-animate-fade-in"></canvas>`;
+         chartHomeModule.chartIni(veeva);
+      }, 1600);
    }
 };
+
+window.slideSiete = slideSiete;
+window.veeva = veeva;
 
 document.addEventListener('DOMContentLoaded', function () {
    slideSiete.loadConfig().then(() => {

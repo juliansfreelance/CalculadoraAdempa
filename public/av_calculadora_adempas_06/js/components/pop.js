@@ -8,6 +8,11 @@ class customPop extends HTMLElement{
       return ['type'];
    }
 
+   formatToFloatString(value) {
+      let floatValue = parseFloat(value).toFixed(2);
+      return floatValue.replace('.', ',');
+   }
+
    getTerapias(terapias) {
       let terapiasHTML = '';
       terapias.forEach((terapia, i) => {
@@ -15,9 +20,9 @@ class customPop extends HTMLElement{
             terapiasHTML += `
                <tr>
                   <td>${terapia.nombre}</td>
-                  <td><custom-input name="${this.type}-${i + 1}-bajo" type="insert" icon="porcentaje"></custom-input></td>
-                  <td><custom-input name="${this.type}-${i + 1}-intermedio" type="insert" icon="porcentaje"></custom-input></td>
-                  <td><custom-input name="${this.type}-${i + 1}-alto" type="insert" icon="porcentaje"></custom-input></td>
+                  <td><custom-input name="${this.type}-${i}-bajo" type="edit" icon="porcentaje" valor="${this.formatToFloatString(terapia.bajo)}"></custom-input></td>
+                  <td><custom-input name="${this.type}-${i}-intermedio" type="edit" icon="porcentaje" valor="${this.formatToFloatString(terapia.intermedio)}"></custom-input></td>
+                  <td><custom-input name="${this.type}-${i}-alto" type="edit" icon="porcentaje" valor="${this.formatToFloatString(terapia.alto)}"></custom-input></td>
                </tr>`;
          }
       });
@@ -49,9 +54,9 @@ class customPop extends HTMLElement{
                      <thead>
                         <tr>
                            <th></th>
-                           <th class="font-bold text-base text-yellow-400 text-center">Estadificación riesgo Bajo</th>
-                           <th class="font-bold text-base text-lime-600 text-center">Estadificación riesgo Intermedio</th>
-                           <th class="font-bold text-base text-cyan-500 text-center">Estadificación riesgo Alto</th>
+                           <th class="font-bold text-base text-green-500 text-center">Estadificación riesgo Bajo</th>
+                           <th class="font-bold text-base text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                           <th class="font-bold text-base text-red-500 text-center">Estadificación riesgo Alto</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -73,6 +78,7 @@ class customPop extends HTMLElement{
                </div>
             </section>
          </section>`;
+         slideSeis.updateInputTecnologias();
       });
    }
 }

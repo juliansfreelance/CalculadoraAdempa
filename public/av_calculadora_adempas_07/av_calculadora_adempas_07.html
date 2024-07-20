@@ -17,14 +17,19 @@
    <link rel="stylesheet" href="css/style.css">
 
    <script src="js/lib/currency.min.js" defer></script>
+   <script src="js/lib/chart.min.js" defer></script>
+   <script src="js/lib/chartDatalabels.min.js" defer></script>
+
    <script src="js/components/input.js" defer></script>
    <script src="js/components/pop.js" defer></script>
-   <script src="js/script.js" defer></script>
+
+   <script type="module" src="js/script.js" defer></script>
+
 </head>
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="z-50">
+      <header class="relative z-50">
          <hgroup>
             <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[600ms]"
                onclick="javascript:slideSiete.jumpToSlide('06')">
@@ -35,99 +40,176 @@
                   <h4>Regresar</h4>
                </div>
             </button>
-            <h2 class="animate-fade-in-down animate-delay-500 animate-duration-slow">Resultados</h2>
+            <h2 class="animate-fade-in-left animate-delay-500 animate-duration-slow">Resultados</h2>
          </hgroup>
       </header>
 
-      <main class="z-50">
-         <article>
-            <h4 class="font-extrabold text-2xl text-lime-600">Población</h4>
-         </article>
+      <main class="relative z-50">
+         <section class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
+            <div class="form">
+               <table class="w-full table-auto">
+                  <thead>
+                     <tr>
+                        <th class="font-bold text-base text-orange-400 text-left">Población</th>
+                        <th colspan="3"><custom-input name="res-poblacion" type="calc" icon=""></custom-input></th>
+                        <th></th>
+                        <th></th>
+                     </tr>
+                     <tr>
+                        <th></th>
+                        <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
+                        <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                        <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td class="text-xs max-w-[150px]">Distribución de la cohorte por categoria de riesgo</td>
+                        <td><custom-input name="res-risk-bajo" type="calc" icon=""></custom-input></td>
+                        <td><custom-input name="res-risk-intermedio" type="calc" icon=""></custom-input></td>
+                        <td><custom-input name="res-risk-alto" type="calc" icon=""></custom-input></td>
+                     </tr>
+
+                     <tr>
+                        <td class="text-xs max-w-[200px] font-bold">Porcentaje versus el total</td>
+                        <td><custom-input name="res-percent-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="res-percent-intermedio" type="calc" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="res-percent-alto" type="calc" icon="porcentaje"></custom-input></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </section>
+
+         <div class="chart-home animate-fade-in-up animate-delay-900"></div>
+
+
+
+
       </main>
 
+      <section class="content-folder relative fade-out">
+         <section class="folder close" id="poblacion">
+            <header>
+               <button onclick="slideSiete.toggleFolder('poblacion')">
+                  <h4>Paciente</h4>
+                  <div>
+                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"/>
+                     </svg>
+                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z"/>
+                     </svg>
+                  </div>
+               </button>
+            </header>
+            <main class="folder-contents">
+               <h4 class="font-extrabold text-2xl text-lime-600">Costo total por paciente</h4>
+               <p></p>
+            </main>
+         </section>
+   
+         <section class="folder close" id="pocedimientos">
+            <header>
+               <button onclick="slideSiete.toggleFolder('pocedimientos')">
+                  <h4>Procedimientos</h4>
+                  <div>
+                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
+                     </svg>
+                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
+                     </svg>
+                  </div>
+               </button>
+            </header>
+            <main class="folder-contents">
+               <h4 class="font-extrabold text-2xl text-pink-600">Costo procedimientos anual de uso por paciente</h4>
+               <p></p>
+            </main>
+         </section>
+   
+         <section class="folder close" id="tecnologias">
+            <header>
+               <button onclick="slideSiete.toggleFolder('tecnologias')">
+                  <h4>Tecnologías</h4>
+                  <div>
+                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
+                     </svg>
+                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
+                     </svg>
+                  </div>
+               </button>
+            </header>
+            <main class="folder-contents">
+               <h4 class="font-extrabold text-2xl text-amber-500">Costo anual de tecnologías por paciente año</h4>
+               <p></p>
+            </main>
+         </section>
+   
+         <section class="folder close" id="cohorte">
+            <header>
+               <button onclick="slideSiete.toggleFolder('cohorte')">
+                  <h4>Cohorte</h4>
+                  <div>
+                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
+                     </svg>
+                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
+                     </svg>
+                  </div>
+               </button>
+            </header>
+            <main class="folder-contents">
+               <h4 class="font-extrabold text-2xl text-sky-600">COHORTE</h4>
+               <p></p>
+            </main>
+         </section>
+      </section>
+
+      
+      <section class="alert-conten alert-animate-down hidden z-[60]">
+         <div class="alert animate-fade-in-up animate-delay-100 animate-duration-slow">
+            <div class="max-w-lg inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-xl">
+                     <div class="bg-white px-4 pt-5 pb-4">
+                        <!-- Modal content -->
+                        <div class="flex flex-col items-start">
+                           <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100">
+                              <svg width="64px" height="64px" class="h-6 w-6 text-yellow-500" stroke="currentColor" fill="none" viewBox="0 0 24.00 24.00" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="0.45600000000000007">
+                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                 <g id="SVGRepo_iconCarrier">
+                                    <path fill="currentColor" d="M12 7.25C12.4142 7.25 12.75 7.58579 12.75 8V13C12.75 13.4142 12.4142 13.75 12 13.75C11.5858 13.75 11.25 13.4142 11.25 13V8C11.25 7.58579 11.5858 7.25 12 7.25Z"></path>
+                                    <path fill="currentColor" d="M12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17Z"></path>
+                                    <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M8.2944 4.47643C9.36631 3.11493 10.5018 2.25 12 2.25C13.4981 2.25 14.6336 3.11493 15.7056 4.47643C16.7598 5.81544 17.8769 7.79622 19.3063 10.3305L19.7418 11.1027C20.9234 13.1976 21.8566 14.8523 22.3468 16.1804C22.8478 17.5376 22.9668 18.7699 22.209 19.8569C21.4736 20.9118 20.2466 21.3434 18.6991 21.5471C17.1576 21.75 15.0845 21.75 12.4248 21.75H11.5752C8.91552 21.75 6.84239 21.75 5.30082 21.5471C3.75331 21.3434 2.52637 20.9118 1.79099 19.8569C1.03318 18.7699 1.15218 17.5376 1.65314 16.1804C2.14334 14.8523 3.07658 13.1977 4.25818 11.1027L4.69361 10.3307C6.123 7.79629 7.24019 5.81547 8.2944 4.47643ZM9.47297 5.40432C8.49896 6.64148 7.43704 8.51988 5.96495 11.1299L5.60129 11.7747C4.37507 13.9488 3.50368 15.4986 3.06034 16.6998C2.6227 17.8855 2.68338 18.5141 3.02148 18.9991C3.38202 19.5163 4.05873 19.8706 5.49659 20.0599C6.92858 20.2484 8.9026 20.25 11.6363 20.25H12.3636C15.0974 20.25 17.0714 20.2484 18.5034 20.0599C19.9412 19.8706 20.6179 19.5163 20.9785 18.9991C21.3166 18.5141 21.3773 17.8855 20.9396 16.6998C20.4963 15.4986 19.6249 13.9488 18.3987 11.7747L18.035 11.1299C16.5629 8.51987 15.501 6.64148 14.527 5.40431C13.562 4.17865 12.8126 3.75 12 3.75C11.1874 3.75 10.4379 4.17865 9.47297 5.40432Z"></path>
+                                 </g>
+                              </svg>
+                           </div>
+                           <div class="mt-3 ml-4 text-center">
+                              <h3 class="text-lg leading-6 font-bold text-button-text text-center">Datos no disponibles</h3>
+                              <div class="mt-2">
+                                 <p class="text-sm text-text-500"> No se pueden mostrar los resultados porque no se encontraron <span class="font-bold">datos almacenados</span>. Por favor, verifica la información y vuelve a intentarlo.</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="bg-slate-100 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button class="background-btn-orange button-orange-corner-md"
+                           onclick="javascript:slideSiete.jumpToSlide('01')">
+                           <div>
+                              <h4>Aceptar</h4>
+                           </div>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            
+         </div>
+      </section>
    </section>
 
-   <section class="content-folder fade-out">
-      <section class="folder close" id="poblacion">
-         <header>
-            <button onclick="slideSiete.toggleFolder('poblacion')">
-               <h4>Paciente</h4>
-               <div>
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"/>
-                  </svg>
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z"/>
-                  </svg>
-               </div>
-            </button>
-         </header>
-         <main class="folder-contents">
-            <h4 class="font-extrabold text-2xl text-lime-600">Costo total por paciente</h4>
-            <p></p>
-         </main>
-      </section>
-
-      <section class="folder close" id="pocedimientos">
-         <header>
-            <button onclick="slideSiete.toggleFolder('pocedimientos')">
-               <h4>Procedimientos</h4>
-               <div>
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
-                  </svg>
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
-                  </svg>
-               </div>
-            </button>
-         </header>
-         <main class="folder-contents">
-            <h4 class="font-extrabold text-2xl text-pink-600">Costo procedimientos anual de uso por paciente</h4>
-            <p></p>
-         </main>
-      </section>
-
-      <section class="folder close" id="tecnologias">
-         <header>
-            <button onclick="slideSiete.toggleFolder('tecnologias')">
-               <h4>Tecnologías</h4>
-               <div>
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
-                  </svg>
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
-                  </svg>
-               </div>
-            </button>
-         </header>
-         <main class="folder-contents">
-            <h4 class="font-extrabold text-2xl text-amber-500">Costo anual de tecnologías por paciente año</h4>
-            <p></p>
-         </main>
-      </section>
-
-      <section class="folder close" id="cohorte">
-         <header>
-            <button onclick="slideSiete.toggleFolder('cohorte')">
-               <h4>Cohorte</h4>
-               <div>
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
-                  </svg>
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
-                  </svg>
-               </div>
-            </button>
-         </header>
-         <main class="folder-contents">
-            <h4 class="font-extrabold text-2xl text-sky-600">COHORTE</h4>
-            <p></p>
-         </main>
-      </section>
-   </section>
 
 </body>
 </html>
