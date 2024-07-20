@@ -21,6 +21,191 @@
          "intermedio": 0,
          "alto": 0
       },
+      "tecnologias": {
+         "totalRiesgoBajo": 0.0,
+         "totalRiesgoIntermedio": 0.0,
+         "totalRiesgoAlto": 0.0,
+         "monoterapias":{
+            "title": "Monoterapia",
+            "id": "monoterapia",
+            "bajo": 0.0,
+            "intermedio": 0.0,
+            "alto": 0.0,
+            "terapias": [
+               {
+                  "nombre": "RIOCIGUAT",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "ERAs",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "iPDE-5",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "Selexipag",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "Treprostinil",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "Epoprostenol",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "Iloprost",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               }
+            ]
+         },
+         "terapiasDobles":{
+            "title": "Terapias combinadas (Dobles)",
+            "id": "biterapia",
+            "bajo": 0.0,
+            "intermedio": 0.0,
+            "alto": 0.0,
+            "terapias": [
+               {
+                  "nombre": "ERA - iPDE-5",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "ERA - Riociguat",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "ERA - Selexipag",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "ERA - Treprostinil",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "ERA - Epoprostenol",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "ERA - Iloprost",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "Riociguat - Selexipag",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "Riociguat - Treprostinil",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "Riociguat - Epoprostenol",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "Riociguat - Iloprost",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               }
+            ]
+         },
+         "terapiasTripes":{
+            "title": "Terapias combinadas (Triples)",
+            "id": "triterapia",
+            "bajo": 0.0,
+            "intermedio": 0.0,
+            "alto": 0.0,
+            "terapias": [
+               {
+                  "nombre": "ERA - iPDE-5 - Selexipag",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - iPDE-5 - Treprostinil",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - iPDE-5 - Epoprostenol",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - iPDE-5 - Iloprost",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Riociguat - Selexipag",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Riociguat - Treprostinil",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Riociguat - Epoprostenol",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ERA - Riociguat - Iloprost",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               }
+            ]
+         }
+      },
+      "complicaciones":[
+
+      ],
       "referencias": {
          "grupos": [
             {
@@ -58,6 +243,29 @@
                "riesgoAlto": 17
             }
          ]
+      },
+      "chartOptions":{
+         "backgroundColor": [
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 99, 132, 0.2)"
+         ],
+         "borderColor": [
+            "rgba(75, 192, 192, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 99, 132, 1)"
+         ],
+         "borderWidth": 1.5,
+         "title":{
+            "color": "rgba(251, 146, 60, 1)",
+            "font": {
+               "family": "'FSAlbert'",
+               "size": 18,
+               "style": "normal",
+               "weight": "bold",
+               "lineHeight": 2
+            }
+         }
       }
    }
 }

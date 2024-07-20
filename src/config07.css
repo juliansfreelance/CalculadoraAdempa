@@ -7,24 +7,21 @@
 *::-webkit-scrollbar {
    @apply w-1.5 h-1.5;
 }
-
 *::-webkit-scrollbar-track {
    @apply bg-slate-300
 }
-
 *::-webkit-scrollbar-thumb {
    @apply bg-green-400;
+}
+* {
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+   @apply antialiased !important;
+   @apply font-albert
 }
 
 html,
 body {
    @apply h-full w-full bg-slate-800;
-}
-
-* {
-   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-   @apply antialiased !important;
-   @apply font-albert
 }
 
 input {
@@ -40,9 +37,12 @@ input[type=number] {
 }
 
 .slide {
-   @apply w-[1024px] min-h-[768px] bg-white bg-fondo bg-cover bg-center flex flex-col gap-4
+   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-[4.5rem] relative
 }
 
+header {
+   @apply w-full px-16;
+}
 header hgroup {
    @apply w-full h-[80px] flex justify-between items-center
 }
@@ -50,76 +50,94 @@ header hgroup h2 {
    @apply w-fit h-full flex items-center font-extrabold text-center text-white text-3xl leading-none px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl
 }
 
-.tratamiento,
-.complicaciones {
-   @apply drop-shadow-md w-full
-}
-.tratamiento .form,
-.complicaciones .form {
-   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
-}
-.tratamiento .form {
-   @apply pr-4
-}
-.tratamiento .form table thead tr th,
-.complicaciones .form table thead tr th {
-   @apply leading-none py-2
-}
-.tratamiento .form table tbody tr td,
-.complicaciones .form table tbody tr td {
-   @apply leading-none py-1 px-1
-}
-.tratamiento .label,
-.complicaciones .label {
-   @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
-}
-.tratamiento .label h4,
-.complicaciones .label h4 {
-   @apply text-orange-400 font-extrabold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
+main {
+   @apply flex-grow px-24 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
 }
 
+.background-btn-blue {
+   @apply bg-gradient-to-tl from-[#005D73] from-20% to-[#009CC1]
+}
+.background-btn-blue div {
+   @apply bg-gradient-to-b from-[#00748F] from-40% to-white/25
+}
+
+.background-btn-gray {
+   @apply bg-gradient-to-b from-white to-button-bg1;
+}
+.background-btn-gray div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+
+.background-btn-orange {
+   @apply bg-gradient-to-tl from-[#F49306] from-20% to-[#F6C37E]
+}
+.background-btn-orange div {
+   @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
+}
+
+.button-gray-corner-md {
+   @apply p-1 border border-gray-400 shadow-md shadow-black/30 rounded-lg w-fit;
+}
+.button-gray-corner-md div {
+   @apply flex flex-row items-center justify-center gap-1 px-5 py-1 rounded-md;
+}
+.button-gray-corner-md div svg {
+   @apply text-button-text;
+}
+.button-gray-corner-md div h4 {
+   @apply text-button-text font-bold text-lg;
+}
+
+.button-gray-corner-full {
+   @apply p-[3px] border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit transition-all
+}
+.button-gray-corner-full div {
+   @apply flex flex-row items-center justify-center gap-1 px-16 py-0.5 rounded-full
+}
+.button-gray-corner-full div svg {
+   @apply text-button-text
+}
+.button-gray-corner-full div h4 {
+   @apply text-button-text font-bold text-base
+}
+
+.button-orange-corner-md {
+   @apply p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-lg w-fit
+}
+.button-orange-corner-md div {
+   @apply flex flex-row-reverse items-center justify-center gap-1 px-5 py-1 rounded-md !important;
+}
+.button-orange-corner-md div svg {
+   @apply text-white
+}
+.button-orange-corner-md div h4 {
+   @apply text-white font-bold text-lg
+}
+
+.button-orange-corner-full {
+   @apply p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-full w-fit
+}
+.button-orange-corner-full div {
+   @apply px-16 py-0.5 rounded-full
+}
+.button-orange-corner-full div svg {
+   @apply text-white
+}
+.button-orange-corner-full div h4 {
+   @apply text-white font-bold text-base
+}
 
 .btn-caso-ref {
-   @apply text-button-text bg-gradient-to-t from-button-bg2 to-button-bg4 border-t-[2px] border-button-bg2 p-1 shadow-md rounded-full
+   @apply w-fit text-button-text bg-gradient-to-t from-button-bg2 to-button-bg4 border-t-[2px] border-button-bg2 p-1 shadow-md rounded-full
 }
 .btn-caso-ref div {
-   @apply text-button-text px-2 drop-shadow-button
+   @apply text-button-text px-2 drop-shadow-button flex flex-row items-center justify-center
 }
 .btn-caso-ref div svg {
    @apply mr-2 -ml-1
 }
 .btn-caso-ref div h4 {
    @apply font-semibold text-sm leading-tight
-}
-
-.bg-button1 {
-   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 shadow-md shadow-black/40 rounded-lg
-}
-.bg-button1 div {
-   @apply text-button-text pl-7 pr-5 py-1 bg-gradient-to-b from-button-bg1 to-white rounded-md
-}
-.bg-button1 div svg {
-   @apply -ml-4 mr-2
-}
-
-.backaground-btn-orange {
-   @apply bg-gradient-to-tl from-[#F49306] from-20% to-[#F6C37E]
-}
-.backaground-btn-orange div {
-   @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
-}
-.button-orange-corner-md {
-   @apply p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-lg
-}
-
-.button-orange-corner-md div {
-   @apply px-5 py-1 rounded-md
-}
-.button-orange-corner-md div svg {
-   @apply text-white
-}
-.button-orange-corner-md div h4 {
-   @apply text-white font-bold text-lg mr-2
 }
 
 .input-insert {
@@ -141,7 +159,6 @@ header hgroup h2 {
    @apply absolute text-text-500 left-[10px] -mt-[24px]
 }
 
-
 .input-calc {
    @apply relative w-full
 }
@@ -160,7 +177,6 @@ header hgroup h2 {
 .input-calc .icon-money {
    @apply absolute text-text-500 left-[10px] -mt-[24px]
 }
-
 
 .input-edit {
    @apply relative w-full
@@ -181,63 +197,34 @@ header hgroup h2 {
    @apply absolute text-text-500 left-[10px] -mt-[24px]
 }
 
-.pop-conten {
-   @apply absolute flex flex-col justify-center items-center top-0 left-0 w-full h-full bg-pop-background/85 p-4
+.resultados {
+   @apply flex flex-col-reverse drop-shadow-md w-full;
 }
-.pop {
-   @apply flex flex-col-reverse  w-fit drop-shadow-md
-}
-.pop .pop-form {
+.resultados .form {
    @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
 }
-
-.pop .pop-form table thead tr th {
+.resultados .form table thead tr th {
    @apply leading-none py-2
 }
-.pop .pop-form table tbody tr td {
+.resultados .form table tbody tr td {
    @apply leading-none py-1 px-1
 }
-.pop .pop-form table tbody tr td:first-child {
-   @apply mr-2
-}
-
-.pop .pop-label {
+.resultados .label {
    @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
 }
-.pop .pop-label div {
-   @apply flex bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% pl-6 py-1 rounded-t-2xl
+.resultados .label h4 {
+   @apply text-orange-400 font-bold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
 }
-.pop .pop-label div h4 {
-   @apply text-orange-400 font-extrabold text-lg
+
+.chart-home {
+   @apply bg-white/80 px-6 pb-4 rounded-xl w-11/12 h-[335px] drop-shadow-md
 }
-.pop .pop-label div button {
-   @apply mx-3
+canvas {
+   @apply max-w-full max-h-full;
 }
 
 .content-folder {
-   @apply absolute w-[1024px] h-[768px] overflow-hidden z-10
-}
-.fade-in {
-   animation: animation-fade-in 600ms both;
-}
-@keyframes animation-fade-in {
-   0% {
-      background: rgb(221, 215, 209, 0);
-   }
-   100% {
-      background: rgb(221, 215, 209, 0.85);
-   }
-}
-.fade-out {
-   animation: animation-fade-out 600ms both;
-}
-@keyframes animation-fade-out {
-   0% {
-         background: rgb(221, 215, 209, 0.85);
-      }
-   100% {
-      background: rgb(221, 215, 209, 0);
-   }
+   @apply absolute w-[1024px] h-[768px] overflow-hidden z-10;
 }
 
 .folder {
@@ -246,24 +233,27 @@ header hgroup h2 {
    transition-timing-function: ease-in-out;
    @apply px-16 w-full drop-shadow-md absolute;
 }
-
 .folder header {
-   @apply w-full h-3 border-2 border-b-0 rounded-t-lg
+   @apply w-full h-3 border-2 border-b-0 rounded-t-lg px-0;
 }
 .folder header button {
-   @apply absolute w-fit border-2 border-b-0 pl-8 pr-4 py-2 rounded-t-lg -mt-[38px] flex justify-center items-center
+   @apply absolute w-fit border-2 border-b-0 pl-8 pr-4 py-2 rounded-t-lg -mt-[38px] flex justify-center items-center;
 }
 .folder header button h4 {
-   @apply font-extrabold text-base text-black/50 drop-shadow-folder-buttton-text leading-none
+   @apply font-extrabold text-base text-black/50 drop-shadow-folder-buttton-text leading-none;
+}
+
+.folder.open {
+   @apply mt-14;
 }
 .folder .icon {
-   @apply shadow-md rounded-full bg-white h-fit size-5 ml-2
+   @apply shadow-md rounded-full bg-white size-5 ml-2;
 }
 .folder.close .icon {
-   @apply text-green-600
+   @apply text-green-600;
 }
 .folder.open .icon {
-   @apply text-red-600
+   @apply text-red-600;
 }
 
 .folder.close header button div svg:first-child {
@@ -274,81 +264,112 @@ header hgroup h2 {
 }
 
 .folder-contents {
-   @apply bg-white/80 h-[620px] px-6 py-4 border-2 border-t-0 rounded-b-xl w-full text-text-500 text-sm
+   @apply bg-white/80 h-[620px] px-6 py-4 border-2 border-t-0 rounded-b-xl w-full text-text-500 text-sm;
 }
 
 #poblacion {
-   @apply  z-40;
-
+   @apply z-40;
 }
-#pocedimientos {
-   @apply  z-30;
-}
-#tecnologias {
-   @apply  z-20;
-}
-#cohorte {
-   @apply  z-10;
-}
-
 #poblacion header,
 #poblacion header button {
-   @apply bg-lime-600 border-lime-800
+   @apply bg-lime-600 border-lime-800;
+}
+#poblacion header button {
+   @apply ml-[91px]
 }
 #poblacion .folder-contents {
-   @apply border-lime-700
+   @apply border-lime-700;
 }
-
-#pocedimientos header,
-#pocedimientos header button {
-   @apply bg-pink-600 border-pink-800
-}
-#pocedimientos .folder-contents {
-   @apply border-pink-600
-}
-
-#tecnologias header,
-#tecnologias header button {
-   @apply bg-amber-500 border-amber-600
-}
-#tecnologias .folder-contents {
-   @apply border-amber-500
-}
-
-#cohorte header,
-#cohorte header button {
-   @apply bg-sky-600 border-sky-800
-}
-#cohorte .folder-contents {
-   @apply border-sky-600
-}
-
-.folder.open {
-   @apply mt-14;
-}
-
 #poblacion.close {
    @apply mt-[762px] z-40;
+}
+
+#pocedimientos {
+   @apply z-30;
+}
+#pocedimientos header,
+#pocedimientos header button {
+   @apply bg-pink-600 border-pink-800;
+}
+#pocedimientos header button {
+   @apply ml-[259px]
+}
+#pocedimientos .folder-contents {
+   @apply border-pink-600;
 }
 #pocedimientos.close {
    @apply mt-[756px] z-30;
 }
+
+#tecnologias {
+   @apply z-20;
+}
+#tecnologias header,
+#tecnologias header button {
+   @apply bg-amber-500 border-amber-600;
+}
+#tecnologias header button {
+   @apply ml-[474px]
+}
+#tecnologias .folder-contents {
+   @apply border-amber-500;
+}
 #tecnologias.close {
    @apply mt-[750px] z-20;
+}
+
+#cohorte {
+   @apply z-10;
+}
+#cohorte header,
+#cohorte header button {
+   @apply bg-sky-600 border-sky-800;
+}
+#cohorte header button {
+   @apply ml-[660px];
+}
+#cohorte .folder-contents {
+   @apply border-sky-600;
 }
 #cohorte.close {
    @apply mt-[744px] z-10;
 }
 
-#poblacion header button {
-   @apply ml-[91px]
+.chart-animate-fade-in {
+   @apply animate-fade-in animate-duration-slow animate-delay-200;
 }
-#pocedimientos header button {
-   @apply ml-[259px]
+.chart-animate-fade-out {
+   @apply animate-fade-out animate-duration-slower animate-delay-200;
 }
-#tecnologias header button {
-   @apply ml-[474px]
+
+.fade-in {
+   animation: animation-fade-in 600ms both;
 }
-#cohorte header button {
-   @apply ml-[660px]
+@keyframes animation-fade-in {
+   0% {background: rgb(221, 215, 209, 0);}
+   100% {background: rgb(221, 215, 209, 0.85);}
+}
+
+.fade-out {
+   animation: animation-fade-out 600ms both;
+}
+@keyframes animation-fade-out {
+   0% {background: rgb(221, 215, 209, 0.85);}
+   100% {background: rgb(221, 215, 209, 0);}
+}
+
+.alert-conten {
+   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex-col gap-4 justify-center items-center py-6 p-4;
+}
+.alert {
+   @apply flex flex-col-reverse w-fit drop-shadow-md
+}
+.alert h4 {
+   @apply font-extrabold text-button-text
+}
+.alert-animate-up {
+   @apply animate-fade-in animate-duration-slow
+}
+.alert-animate-down {
+   @apply animate-fade-out animate-duration-slow
 }
