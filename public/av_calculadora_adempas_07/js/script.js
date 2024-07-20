@@ -17,13 +17,12 @@ let slideSiete = {
       if (calculadoraData) {
          veeva.calculadora = await JSON.parse(calculadoraData);
          slideSiete.updateResult();
-         console.log(veeva);
       } else {
          const alert = document.querySelector('.alert-conten');
          alert.classList.replace('alert-animate-down', 'alert-animate-up');
          setTimeout(() => {
             alert.classList.replace('hidden', 'flex');
-         }, 500);
+         }, 1800);
       }
    },
 
@@ -120,7 +119,6 @@ let slideSiete = {
    },
 
    chartIni: function () {
-      console.log(veeva);
       const chartContainer = document.querySelector('.chart-home');
       setTimeout(() => {
          chartContainer.innerHTML = `<canvas id="chartHome" class="chart-animate-fade-in"></canvas>`;

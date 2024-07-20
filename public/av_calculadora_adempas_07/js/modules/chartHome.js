@@ -4,8 +4,6 @@ const chartHomeModule = {
       const names = ['Estadificación riesgo Bajo', 'Estadificación riesgo Intermedio', 'Estadificación riesgo Alto'];
       const valores = [veeva.calculadora.estadificacionPacientes.bajo, veeva.calculadora.estadificacionPacientes.intermedio, veeva.calculadora.estadificacionPacientes.alto];
 
-      console.log(veeva);
-
       Chart.defaults.font.family = "'FSAlbert'";
       const chartHome = new Chart(ctx, {
          type: 'bar',
@@ -43,13 +41,13 @@ const chartHomeModule = {
                title: {
                   display: true,
                   text: 'Distribución de la cohorte por categoria de riesgo',
-                  color: 'rgba(251, 146, 60, 1)',
+                  color: veeva.calculadora.chartOptions.title.color,
                   font: {
-                     family: "'FSAlbert'",
-                     size: 18,
-                     style: 'normal',
-                     weight: 'bold',
-                     lineHeight: 2
+                     family: veeva.calculadora.chartOptions.title.font.family,
+                     size: veeva.calculadora.chartOptions.title.font.size,
+                     style: veeva.calculadora.chartOptions.title.font.style,
+                     weight: veeva.calculadora.chartOptions.title.font.weight,
+                     lineHeight: veeva.calculadora.chartOptions.title.font.lineHeight,
                   }
                },
                tooltip: {
