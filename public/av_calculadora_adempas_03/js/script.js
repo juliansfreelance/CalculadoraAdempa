@@ -19,7 +19,7 @@ let slideTres = {
             <div>
             <button onclick="javascript:slideTres.jumToDoc('${enlace.zipName}', '${enlace.presentationCode}')"
                style="background-color: ${enlace.color}; border-color: ${enlace.border}">
-               <h5>${enlace.docName}</h5>
+               <h5 style="color: ${enlace.border}">${enlace.docName}</h5>
             </button>
             </div>
          </div>`;
