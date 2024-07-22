@@ -7,36 +7,36 @@
          "docName": "Nombre del documento a linkear",
          "zipName": "av_calculadora_adempas_01",
          "presentationCode": "00023200",
-         "color": "#db2777",
-         "border": "#9d174d"
+         "color": "rgba(255, 99, 132, 0.2)",
+         "border": "rgba(255, 99, 132, 1)"
       },
       {
          "docName": "Nombre del documento a linkear",
          "zipName": "av_calculadora_adempas_02",
          "presentationCode": "00023200",
-         "color": "#a21caf",
-         "border": "#701a75"
+         "color": "rgba(54, 162, 235, 0.2)",
+         "border": "rgba(54, 162, 235, 1)"
       },
       {
          "docName": "Nombre del documento a linkear",
          "zipName": "av_calculadora_adempas_03",
          "presentationCode": "00023200",
-         "color": "#0284c7",
-         "border": "#075985"
+         "color": "rgba(255, 206, 86, 0.2)",
+         "border": "rgba(255, 206, 86, 1)"
       },
       {
          "docName": "Nombre del documento a linkear",
          "zipName": "av_calculadora_adempas_04",
          "presentationCode": "00023200",
-         "color": "#16a34a",
-         "border": "#047857"
+         "color": "rgba(75, 192, 192, 0.2)",
+         "border": "rgba(75, 192, 192, 1)"
       },
       {
          "docName": "Nombre del documento a linkear",
          "zipName": "av_calculadora_adempas_05",
          "presentationCode": "00023200",
-         "color": "#eab308",
-         "border": "#ca8a04"
+         "color": "rgba(153, 102, 255, 0.2)",
+         "border": "rgba(153, 102, 255, 1)"
       }
    ]
 }

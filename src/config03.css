@@ -67,15 +67,14 @@ main {
    @apply flex flex-row-reverse;
 }
 .btn-enlaces div {
-   @apply h-[240px] w-[169px] border-l border-gray-800/40 overflow-hidden p-5 drop-shadow-links;
+   @apply h-[240px] w-[169px] border-l border-gray-800/40 overflow-hidden p-5;
 }
 .btn-enlaces button {
-   @apply h-[200px] w-[200px] shadow-sm shadow-black/40 p-4 pl-[40px] rounded-full -ml-[56px] border-4;
+   @apply h-[200px] w-[200px] shadow-md shadow-black/40 p-4 pl-[40px] rounded-full -ml-[56px] border-4;
 }
 
 .btn-enlaces button h5 {
-   @apply drop-shadow-folder-buttton-text text-black/50 font-bold leading-none text-lg
-
+   @apply font-bold leading-none text-lg drop-shadow-button-text-links
 }
 
 .bg-button1 {
