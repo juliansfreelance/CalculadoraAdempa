@@ -39,7 +39,7 @@
                   "alto": 0.0
                },
                {
-                  "nombre": "ERAs",
+                  "nombre": "ERA",
                   "bajo": 0.0,
                   "intermedio": 0.0,
                   "alto": 0.0
@@ -139,6 +139,12 @@
                },
                {
                   "nombre": "Riociguat - Iloprost",
+                  "bajo": 0.0,
+                  "intermedio": 0.0,
+                  "alto": 0.0
+               },
+               {
+                  "nombre": "iPDE-5 - Selexipag",
                   "bajo": 0.0,
                   "intermedio": 0.0,
                   "alto": 0.0
@@ -242,18 +248,202 @@
                "riesgoIntermedio": 68,
                "riesgoAlto": 17
             }
-         ]
+         ],
+         "tecnologias":{
+            "monoterapias": {
+               "terapias": [
+                  {
+                     "nombre": "RIOCIGUAT",
+                     "bajo": 10.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "ERA",
+                     "bajo": 20.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "iPDE-5",
+                     "bajo": 35.0,
+                     "intermedio": 5.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "Selexipag",
+                     "bajo": 25.0,
+                     "intermedio": 5.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "Treprostinil",
+                     "bajo": 10.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "Epoprostenol",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "Iloprost",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  }
+               ]
+            },
+            "terapiasDobles": {
+               "terapias": [
+                  {
+                     "nombre": "ERA - iPDE-5",
+                     "bajo": 0.0,
+                     "intermedio": 25.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "ERA - Riociguat",
+                     "bajo": 0.0,
+                     "intermedio": 40.0,
+                     "alto": 30.0
+                  },
+                  {
+                     "nombre": "ERA - Selexipag",
+                     "bajo": 0.0,
+                     "intermedio": 10.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "ERA - Treprostinil",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "ERA - Epoprostenol",
+                     "bajo": 0.0,
+                     "intermedio": 5.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "ERA - Iloprost",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "Riociguat - Selexipag",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "Riociguat - Treprostinil",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "Riociguat - Epoprostenol",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 5.0
+                  },
+                  {
+                     "nombre": "Riociguat - Iloprost",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "iPDE-5 - Selexipag",
+                     "bajo": 0.0,
+                     "intermedio": 10.0,
+                     "alto": 0.0
+                  }
+               ]
+            },
+            "terapiasTripes": {
+               "terapias": [
+                  {
+                     "nombre": "ERA - iPDE-5 - Selexipag",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 10.0
+                  },
+                  {
+                     "nombre": "ERA - iPDE-5 - Treprostinil",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 23.0
+                  },
+                  {
+                     "nombre": "ERA - iPDE-5 - Epoprostenol",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 10.0
+                  },
+                  {
+                     "nombre": "ERA - iPDE-5 - Iloprost",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 5.0
+                  },
+                  {
+                     "nombre": "ERA - Riociguat - Selexipag",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "nombre": "ERA - Riociguat - Treprostinil",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 10.0
+                  },
+                  {
+                     "nombre": "ERA - Riociguat - Epoprostenol",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 4.0
+                  },
+                  {
+                     "nombre": "ERA - Riociguat - Iloprost",
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 3.0
+                  }
+               ]
+            }
+         }
       },
       "chartOptions":{
-         "backgroundColor": [
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 99, 132, 0.2)"
-         ],
-         "borderColor": [
+         "chartHome":{
+            "type": "bar",
+            "title": "Distribución de la cohorte por categoria de riesgo",
+            "names": [
+               "Estadificación riesgo Bajo",
+               "Estadificación riesgo Intermedio",
+               "Estadificación riesgo Alto"
+            ],
+            "valores":[
+               "@root.calculadora.estadificacionPacientes.bajo",
+               "@root.calculadora.estadificacionPacientes.intermedio",
+               "@root.calculadora.estadificacionPacientes.alto"
+            ]
+         },
+         "colors": [
             "rgba(75, 192, 192, 1)",
             "rgba(54, 162, 235, 1)",
             "rgba(255, 99, 132, 1)"
+         ],
+         "colorsOpacity": [
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 99, 132, 0.2)"
          ],
          "borderWidth": 1.5,
          "title":{
