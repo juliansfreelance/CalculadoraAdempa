@@ -19,6 +19,7 @@
    <script src="js/lib/currency.min.js" defer></script>
    <script src="js/components/input.js" defer></script>
    <script src="js/components/pop.js" defer></script>
+   <script src="js/components/alert.js" defer></script>
    <script src="js/script.js" defer></script>
 </head>
 <body class="w-screen h-screen flex flex-col justify-center items-center">
@@ -99,7 +100,8 @@
 
                      <tr>
                         <td>
-                           <button class="btn-caso-ref">
+                           <button class="btn-caso-ref"
+                              onclick="javascript:slideSeis.openAlert('ref-tecnologias')">
                               <div>
                                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -157,7 +159,8 @@
 
                      <tr>
                         <td>
-                           <button class="btn-caso-ref">
+                           <button class="btn-caso-ref"
+                              onclick="javascript:slideSeis.openAlert('ref-complicaciones')">
                               <div>
                                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -202,6 +205,28 @@
       <custom-pop type="monoterapia" class="hidden"></custom-pop>
       <custom-pop type="biterapia" class="hidden"></custom-pop>
       <custom-pop type="triterapia" class="hidden"></custom-pop>
+
+      <custom-alert name="alert-ref-tecnologias" class="hidden"
+         type="warning"
+         title="Usar Datos de Referencia"
+         message="<p> Se utilizarán los <span>valores de referencia</span> para la <span>distribución y uso de tecnologías</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
+         actions='[
+            {"name": "Aceptar", "color": "orange", "handler": "slideSeis.syncTechnologyWithReference()"},
+            {"name": "Cancelar", "color": "gray", "handler": "slideSeis.closeAlert()"}]'>
+      </custom-alert>
+
+      <custom-alert name="alert-ref-complicaciones" class="hidden" type="warning" title="Usar Datos de Referencia"
+         message="<p> este no lo entiendo <span>esta pendiente</span> no encuentro el caso de referencia y habla de microcosteo</p>"
+         actions='[
+                  {"name": "Aceptar", "color": "orange", "handler": "slideSeis.syncComplicationsWithReference()"},
+                  {"name": "Cancelar", "color": "gray", "handler": "slideSeis.closeAlert()"}]'>
+      </custom-alert>
+
+      <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
+         message="<p> No puede continuar porque no se encontraron <span>datos almacenados</span>.<br>Por favor, verifica la información y vuelve a intentarlo.</p>"
+         actions='[{"name": "Aceptar", "color": "orange", "handler": "slideSeis.jumpToSlide(&apos;01&apos;)"}]'>
+      </custom-alert>
+
    </section>
 
 </body>

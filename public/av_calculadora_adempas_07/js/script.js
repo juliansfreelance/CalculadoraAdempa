@@ -13,9 +13,31 @@ import chartHomeModule from './modules/chartHome.js';
 let slideSiete = {
 
    ini: async function () {
+      const resolveReferences = (obj) => {
+         const resolvePath = (path, obj) => {
+            return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+         };
+         const traverseAndResolve = (currentObj, rootObj) => {
+            for (let key in currentObj) {
+               if (typeof currentObj[key] === 'string' && currentObj[key].startsWith('@root.')) {
+                  const path = currentObj[key].slice(6);  // Remove '@root.'
+                  currentObj[key] = resolvePath(path, rootObj);
+               } else if (typeof currentObj[key] === 'object' && currentObj[key] !== null) {
+                  traverseAndResolve(currentObj[key], rootObj);
+               }
+            }
+         };
+         const newObj = JSON.parse(JSON.stringify(obj)); // Create a deep copy to avoid mutating the original object
+         traverseAndResolve(newObj, newObj);
+         return newObj;
+      };
+
       const calculadoraData = localStorage.getItem('calculadora');
       if (calculadoraData) {
          veeva.calculadora = await JSON.parse(calculadoraData);
+         console.log('sin resolver', veeva.calculadora.chartOptions);
+         veeva = await resolveReferences(veeva);
+         console.log('resuelto', veeva.calculadora.chartOptions);
          slideSiete.updateResult();
       } else {
          const alert = document.querySelector('.alert-conten');
