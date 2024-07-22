@@ -16,7 +16,9 @@ let slideSeis = {
          veeva.calculadora = await JSON.parse(calculadoraData);
          document.dispatchEvent(new Event('configLoaded'));
       } else {
-         slideSeis.openAlert('bd-clear');
+         setTimeout(() => {
+            slideSeis.openAlert('bd-clear');
+         }, 1400);
       }
    },
 
