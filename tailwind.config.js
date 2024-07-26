@@ -37,10 +37,11 @@ module.exports = {
         'button-text-links': '1px 1px 0px rgba(0, 0, 0, 0.4)',
         'th-text': '1px 1px 1px rgba(0, 0, 0, 0.15)',
         'folder-buttton-text': '1.6px 1.6px 0px rgba(255, 255, 255, 0.7)',
-        'links': '-5px 0px 5px rgba(0, 0, 0, 0.6)'
+        'links': '-5px 0px 5px rgba(0, 0, 0, 0.4)'
       },
       boxShadow: {
-        'pop': '1px 2px 2px rgba(0, 0, 0, 0.2)'
+        'pop': '1px 2px 2px rgba(0, 0, 0, 0.2)',
+        'enlaces': '-5px 0px 5px rgba(0, 0, 0, 0.8)'
       },
       aspectRatio: {
         'ipad': '4 / 3',

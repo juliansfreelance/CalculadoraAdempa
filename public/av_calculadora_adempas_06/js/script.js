@@ -86,7 +86,7 @@ let slideSeis = {
                console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
             }
             break;
-         
+
          case 'bd-clear':
             if (customAlert) {
                customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
@@ -256,7 +256,7 @@ let slideSeis = {
          if (tecnologias[terapiasName]) {
             const terapia = tecnologias[terapiasName].terapias[index];
             if (terapia) {
-               input.value = terapia[riesgo];
+               input.value = slideSeis.formatToFloatString(terapia[riesgo]);
             }
          }
       });
@@ -265,6 +265,7 @@ let slideSeis = {
 
    validarForm: function() {
       console.log('Validacion slide 06 pendiente');
+      localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
       slideSeis.jumpToSlide('07');
    }
 };

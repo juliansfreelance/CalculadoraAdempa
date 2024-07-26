@@ -216,8 +216,9 @@ main {
    @apply text-orange-400 font-bold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
 }
 
-.chart-home {
-   @apply bg-white/80 px-6 pb-4 rounded-xl w-11/12 h-[335px] drop-shadow-md
+.chart-home,
+.chart-tecnology {
+   @apply bg-white/80 px-6 pb-4 rounded-xl w-11/12 h-[335px] drop-shadow-md place-self-center
 }
 canvas {
    @apply max-w-full max-h-full;
@@ -265,6 +266,10 @@ canvas {
 
 .folder-contents {
    @apply bg-white/80 h-[620px] px-6 py-4 border-2 border-t-0 rounded-b-xl w-full text-text-500 text-sm;
+}
+
+.folder-contents h4 {
+   @apply font-extrabold text-2xl mb-4
 }
 
 #poblacion {
@@ -358,18 +363,91 @@ canvas {
    100% {background: rgb(221, 215, 209, 0);}
 }
 
+
 .alert-conten {
-   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex-col gap-4 justify-center items-center py-6 p-4;
+   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center z-[60] top-0 left-0;
 }
-.alert {
+
+.alert-conten .alert {
    @apply flex flex-col-reverse w-fit drop-shadow-md
 }
-.alert h4 {
-   @apply font-extrabold text-button-text
+
+.alert-conten .alert .alert-contain {
+   @apply max-w-lg inline-block align-bottom rounded-xl text-left overflow-hidden shadow-xl
 }
-.alert-animate-up {
+
+.alert-conten .alert .alert-contain .alert-body {
+   @apply bg-white flex-col items-start px-4 pt-5 pb-4
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-icon {
+   @apply mx-auto flex-shrink-0 flex items-center justify-center w-fit p-3 rounded-full shadow-sm;
+}
+
+.alert-body.info .header-icon {
+   @apply bg-sky-100 text-sky-500
+}
+
+.alert-body.warning .header-icon {
+   @apply bg-yellow-100 text-yellow-500
+}
+
+.alert-body.danger .header-icon {
+   @apply bg-red-100 text-red-500
+}
+
+.alert-body.info .header-conten h3 {
+   @apply text-sky-500
+}
+
+.alert-body.warning .header-conten h3 {
+   @apply text-yellow-500
+}
+
+.alert-body.danger .header-conten h3 {
+   @apply text-red-500
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-title {
+   @apply mt-3 ml-4 text-center;
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-conten {
+   @apply mt-3 ml-4 text-center;
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-conten h3 {
+   @apply text-lg leading-6 font-bold text-center
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-conten article {
+   @apply mt-2
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-conten article p {
+   @apply text-sm text-text-500
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-conten article p span {
+   @apply font-bold
+}
+
+.alert-conten .alert .alert-contain .alert-footer {
+   @apply bg-slate-100 px-6 py-3 flex flex-row-reverse gap-4
+}
+
+.alert-animate-in {
    @apply animate-fade-in animate-duration-slow
 }
-.alert-animate-down {
+
+.alert-animate-out {
    @apply animate-fade-out animate-duration-slow
+}
+
+.alert-conten-animate-in {
+   @apply animate-fade-in-up animate-delay-200 animate-duration-slow
+}
+
+.alert-conten-animate-out {
+   @apply animate-fade-out-down animate-delay-200 animate-duration-slow
 }

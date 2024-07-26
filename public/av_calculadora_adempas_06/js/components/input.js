@@ -9,8 +9,10 @@ class customInput extends HTMLElement {
       this.icon = '';
       this.iconConten = '';
       this.decimalMode = false;
+      this.previousValue = '';
       this.handleBlur = this.handleBlur.bind(this);
       this.handleInput = this.handleInput.bind(this);
+      this.handleFocus = this.handleFocus.bind(this);
    }
 
    static get observedAttributes(){
@@ -88,12 +90,24 @@ class customInput extends HTMLElement {
       this.updateJsonValue(event.target.name, inputValue);
    }
 
+   handleFocus(event) {
+      // if (this.type === 'input-edit') {
+         this.previousValue = event.target.value;
+         event.target.value = '';
+      // }
+   }
+
    handleBlur(event) {
-      if (event.target.value !== '') {
-         let inputValue = event.target.value.replace(/[^\d,.]/g, '');
-         event.target.value = this.formatNumber(inputValue);
-         this.valor = this.formatNumber(inputValue);
-         this.updateJsonValue(event.target.name, inputValue);
+      const input = event.target;
+      const inputValue = input.value.replace(/[^\d,.]/g, '');
+      const formattedValue = this.formatNumber(inputValue);
+
+      if (input.value === '') {
+         input.value = this.previousValue;
+      } else if (input.value !== '') {
+         input.value = formattedValue;
+         this.valor = formattedValue;
+         this.updateJsonValue(input.name, inputValue);
       }
    }
 
@@ -153,6 +167,7 @@ class customInput extends HTMLElement {
          </div>`;
       const inputElement = this.querySelector('input');
       inputElement.addEventListener('input', this.handleInput);
+      inputElement.addEventListener('focus', this.handleFocus);
       inputElement.addEventListener('blur', this.handleBlur);
    }
 }

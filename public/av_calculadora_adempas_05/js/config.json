@@ -207,6 +207,188 @@
                   "alto": 0
                }
             ]
+         },
+         "costoPromedio": {
+            "totalRiesgoBajo": 0.0,
+            "totalRiesgoIntermedio": 0.0,
+            "totalRiesgoAlto": 0.0,
+            "monoterapias": {
+               "bajo": 0.0,
+               "intermedio": 0.0,
+               "alto": 0.0,
+               "terapias": [
+                  {
+                     "tratamientos": ["Riociguat"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["ERA"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["iPDE5"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["Selexipag"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["Trepostinilo"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["Epoprostenol"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["Iloprost"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  }
+               ]
+            },
+            "terapiasDobles": {
+               "bajo": 0.0,
+               "intermedio": 0.0,
+               "alto": 0.0,
+               "terapias": [
+                  {
+                     "tratamientos": ["ERA", "iPDE5"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["ERA", "Riociguat"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["ERA","Selexipag"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["ERA", "Trepostinilo"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["ERA", "Epoprostenol"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["ERA", "Iloprost"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["Riociguat", "Selexipag"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["Riociguat", "Trepostinilo"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["Riociguat", "Epoprostenol"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["Riociguat", "Iloprost"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  },
+                  {
+                     "tratamientos": ["iPDE5", "Selexipag"],
+                     "bajo": 0.0,
+                     "intermedio": 0.0,
+                     "alto": 0.0
+                  }
+               ]
+            },
+            "terapiasTripes": {
+               "bajo": 0.0,
+               "intermedio": 0.0,
+               "alto": 0.0,
+               "terapias": [
+                  {
+                     "tratamientos": ["ERA", "iPDE5", "Selexipag"],
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  {
+                     "tratamientos": ["ERA", "iPDE5", "Trepostinilo"],
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  {
+                     "tratamientos": ["ERA", "iPDE5", "Epoprostenol"],
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  {
+                     "tratamientos": ["ERA", "iPDE5", "Iloprost"],
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  {
+                     "tratamientos": ["ERA", "Riociguat", "Selexipag"],
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  {
+                     "tratamientos": ["ERA", "Riociguat", "Trepostinilo"],
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  {
+                     "tratamientos": ["ERA", "Riociguat", "Epoprostenol"],
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  {
+                     "tratamientos": ["ERA", "Riociguat", "Iloprost"],
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
+               ]
+            }
          }
       },
       "complicaciones":[
@@ -249,7 +431,74 @@
                "riesgoAlto": 17
             }
          ],
-         "tecnologias":{
+         "tecnologias": {
+            "tecnologia": {
+               "diasMes": 30,
+               "mesesYear": 13,
+               "Riociguat": {
+                  "principioActivo": "Riociguat",
+                  "viaAdmon":"Oral",
+                  "dosisDia": 3,
+                  "medida": "Tabletas",
+                  "costoUnitarioMinimo" : 95200,
+                  "costoUnitarioPromedio": 133033,
+                  "costoUnitarioMaximo": 137711
+               },
+               "ERA": {
+                  "principioActivo": "Bosentan",
+                  "viaAdmon": "Oral",
+                  "dosisDia": 2,
+                  "medida": "Tabletas",
+                  "costoUnitarioMinimo": 2600,
+                  "costoUnitarioPromedio": 58715,
+                  "costoUnitarioMaximo": 340000
+               },
+               "iPDE5": {
+                  "principioActivo": "Sildenafilo",
+                  "viaAdmon": "Oral",
+                  "medida": "Tabletas",
+                  "dosisDia": 3,
+                  "costoUnitarioMinimo": 120,
+                  "costoUnitarioPromedio": 4833,
+                  "costoUnitarioMaximo": 286430
+               },
+               "Selexipag": {
+                  "principioActivo": "Selexipag",
+                  "viaAdmon": "Oral",
+                  "medida": "Tabletas",
+                  "dosisDia": 2,
+                  "costoUnitarioMinimo": 155812,
+                  "costoUnitarioPromedio": 156627,
+                  "costoUnitarioMaximo": 163603
+               },
+               "Trepostinilo": {
+                  "principioActivo": "Treprostinil",
+                  "viaAdmon": "Infusión Subcutánea",
+                  "medida": "Ampollas",
+                  "dosisDia": 0.0666666666666667,
+                  "costoUnitarioMinimo": 6065689,
+                  "costoUnitarioPromedio": 27538228,
+                  "costoUnitarioMaximo": 30328445
+               },
+               "Epoprostenol": {
+                  "principioActivo": "Epoprostenol",
+                  "viaAdmon": "Infusion Intravenosa",
+                  "medida": "Ampollas",
+                  "dosisDia": 2.5,
+                  "costoUnitarioMinimo": 101108,
+                  "costoUnitarioPromedio": 107199,
+                  "costoUnitarioMaximo": 113290
+               },
+               "Iloprost": {
+                  "principioActivo": "Iloprost",
+                  "viaAdmon": "Inhalada",
+                  "medida": "Ampollas",
+                  "dosisDia": 5,
+                  "costoUnitarioMinimo": 54906,
+                  "costoUnitarioPromedio": 164683,
+                  "costoUnitarioMaximo": 324755
+               }
+            },
             "monoterapias": {
                "terapias": [
                   {
@@ -277,7 +526,7 @@
                      "alto": 0.0
                   },
                   {
-                     "nombre": "Treprostinil",
+                     "nombre": "Trepostinilo",
                      "bajo": 10.0,
                      "intermedio": 0.0,
                      "alto": 0.0
@@ -317,7 +566,7 @@
                      "alto": 0.0
                   },
                   {
-                     "nombre": "ERA - Treprostinil",
+                     "nombre": "ERA - Trepostinilo",
                      "bajo": 0.0,
                      "intermedio": 0.0,
                      "alto": 0.0
@@ -341,7 +590,7 @@
                      "alto": 0.0
                   },
                   {
-                     "nombre": "Riociguat - Treprostinil",
+                     "nombre": "Riociguat - Trepostinilo",
                      "bajo": 0.0,
                      "intermedio": 0.0,
                      "alto": 0.0
@@ -375,7 +624,7 @@
                      "alto": 10.0
                   },
                   {
-                     "nombre": "ERA - iPDE-5 - Treprostinil",
+                     "nombre": "ERA - iPDE-5 - Trepostinilo",
                      "bajo": 0.0,
                      "intermedio": 0.0,
                      "alto": 23.0
@@ -399,7 +648,7 @@
                      "alto": 0.0
                   },
                   {
-                     "nombre": "ERA - Riociguat - Treprostinil",
+                     "nombre": "ERA - Riociguat - Trepostinilo",
                      "bajo": 0.0,
                      "intermedio": 0.0,
                      "alto": 10.0
@@ -434,6 +683,16 @@
                "@root.calculadora.estadificacionPacientes.intermedio",
                "@root.calculadora.estadificacionPacientes.alto"
             ]
+         },
+         "chartTecnology": {
+            "type": "bar",
+            "title": "Costo anual de tecnologías por paciente al año",
+            "names": [
+               "Estadificación riesgo Bajo",
+               "Estadificación riesgo Intermedio",
+               "Estadificación riesgo Alto"
+            ],
+            "valores": []
          },
          "colors": [
             "rgba(75, 192, 192, 1)",
