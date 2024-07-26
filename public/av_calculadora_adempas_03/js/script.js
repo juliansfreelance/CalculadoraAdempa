@@ -16,7 +16,7 @@ let slideTres = {
       enlaces.forEach((enlace, index) => {
          let btn = `
          <div class="btn-enlaces animate-fade-in-up delay-${index+1} animate-duration-slower">
-            <div>
+            <div style="border-color: ${enlace.border}">
             <button onclick="javascript:slideTres.jumToDoc('${enlace.zipName}', '${enlace.presentationCode}')"
                style="background-color: ${enlace.color}; border-color: ${enlace.border}">
                <h5 style="color: ${enlace.border}">${enlace.docName}</h5>
