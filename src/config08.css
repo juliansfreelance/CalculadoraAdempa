@@ -1,0 +1,400 @@
+@import 'fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar {
+   @apply w-1.5 h-1.5;
+}
+*::-webkit-scrollbar-track {
+   @apply bg-slate-300
+}
+*::-webkit-scrollbar-thumb {
+   @apply bg-green-400;
+}
+* {
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+   @apply antialiased select-none !important;
+   @apply font-albert
+}
+
+html,
+body {
+   @apply bg-slate-800;
+}
+
+input {
+   @apply py-1 text-sm text-right !important;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+input[type=number] {
+   -moz-appearance: textfield;
+}
+
+.slide {
+   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6 relative
+}
+
+header hgroup {
+   @apply w-full h-fit flex justify-between items-center
+}
+header hgroup span {
+   @apply flex gap-4
+}
+header hgroup div {
+   @apply w-fit flex flex-col items-center gap-2 px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end
+}
+header hgroup div h2 {
+   @apply font-extrabold text-center text-white text-[22px] leading-none;
+}
+header hgroup div h3 {
+   @apply font-thin text-white text-base leading-none;
+}
+
+main {
+   @apply flex-grow px-7 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
+}
+
+.home-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
+}
+.home-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+.home-btn div {
+   @apply flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
+}
+.home-btn div svg {
+   @apply text-button-text;
+}
+
+.background-btn-blue {
+   @apply bg-gradient-to-tl from-[#005D73] from-20% to-[#009CC1]
+}
+.background-btn-blue div {
+   @apply bg-gradient-to-b from-[#00748F] from-40% to-white/25
+}
+
+.background-btn-gray {
+   @apply bg-gradient-to-b from-white to-button-bg1;
+}
+.background-btn-gray div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+
+.background-btn-orange {
+   @apply bg-gradient-to-tl from-[#F49306] from-20% to-[#F6C37E]
+}
+.background-btn-orange div {
+   @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
+}
+
+.button-gray-corner-md {
+   @apply p-1 border border-gray-400 shadow-md shadow-black/30 rounded-lg w-fit;
+}
+.button-gray-corner-md div {
+   @apply flex flex-row items-center justify-center gap-1 px-5 py-1 rounded-md;
+}
+.button-gray-corner-md div svg {
+   @apply text-button-text;
+}
+.button-gray-corner-md div h4 {
+   @apply text-button-text font-bold text-lg;
+}
+
+.button-gray-corner-full {
+   @apply p-[3px] border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit transition-all
+}
+.button-gray-corner-full div {
+   @apply flex flex-row items-center justify-center gap-1 px-16 py-0.5 rounded-full
+}
+.button-gray-corner-full div svg {
+   @apply text-button-text
+}
+.button-gray-corner-full div h4 {
+   @apply text-button-text font-bold text-base
+}
+
+.button-orange-corner-md {
+   @apply p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-lg w-fit
+}
+.button-orange-corner-md div {
+   @apply flex flex-row-reverse items-center justify-center gap-1 px-5 py-1 rounded-md !important;
+}
+.button-orange-corner-md div svg {
+   @apply text-white
+}
+.button-orange-corner-md div h4 {
+   @apply text-white font-bold text-lg
+}
+
+.button-orange-corner-full {
+   @apply p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-full w-fit
+}
+.button-orange-corner-full div {
+   @apply px-16 py-0.5 rounded-full
+}
+.button-orange-corner-full div svg {
+   @apply text-white
+}
+.button-orange-corner-full div h4 {
+   @apply text-white font-bold text-base
+}
+
+.btn-caso-ref {
+   @apply w-fit text-button-text bg-gradient-to-t from-button-bg2 to-button-bg4 border-t-[2px] border-button-bg2 p-1 shadow-md rounded-full
+}
+.btn-caso-ref div {
+   @apply text-button-text px-2 drop-shadow-button flex flex-row items-center justify-center
+}
+.btn-caso-ref div svg {
+   @apply mr-2 -ml-1
+}
+.btn-caso-ref div h4 {
+   @apply font-semibold text-sm leading-tight
+}
+
+.input-insert {
+   @apply relative w-full
+}
+.input-insert input {
+   @apply border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
+}
+.input-insert input.porcentaje {
+   @apply pr-8
+}
+.input-insert input.money {
+   @apply pl-8
+}
+.input-insert .icon-porcentaje {
+   @apply absolute text-text-500 right-[10px] -mt-[24px]
+}
+.input-insert .icon-money {
+   @apply absolute text-text-500 left-[10px] -mt-[24px]
+}
+
+.input-calc {
+   @apply relative w-full
+}
+.input-calc input {
+   @apply border-slate-400 bg-zinc-300 rounded-md block w-full
+}
+.input-calc input.porcentaje {
+   @apply pr-8
+}
+.input-calc input.money {
+   @apply pl-8
+}
+.input-calc .icon-porcentaje {
+   @apply absolute text-text-500 right-[10px] -mt-[24px]
+}
+.input-calc .icon-money {
+   @apply absolute text-text-500 left-[10px] -mt-[24px]
+}
+
+.input-edit {
+   @apply relative w-full
+}
+.input-edit input {
+   @apply border-slate-400 bg-introduccion-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
+}
+.input-edit input.porcentaje {
+   @apply pr-8
+}
+.input-edit input.money {
+   @apply pl-8
+}
+.input-edit .icon-porcentaje {
+   @apply absolute text-text-500 right-[10px] -mt-[24px]
+}
+.input-edit .icon-money {
+   @apply absolute text-text-500 left-[10px] -mt-[24px]
+}
+
+.complicaciones,
+.costos {
+   @apply flex-col-reverse drop-shadow-md w-full;
+}
+.complicaciones .form,
+.costos .form {
+   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
+}
+.costos .form {
+   @apply pr-2 !important
+}
+.complicaciones .form table,
+.costos .form table {
+   @apply border-spacing-x-1 border-spacing-y-1 border-separate;
+}
+.complicaciones .form table thead tr th,
+.costos .form table thead tr th {
+   @apply leading-none py-2
+}
+.complicaciones .form table tbody tr td,
+.costos .form table tbody tr td {
+   @apply leading-none py-1 px-1
+}
+.costos .form table tbody tr td:first-child {
+   @apply max-w-[13rem]
+}
+.complicaciones .form table tbody tr td.input-error,
+.costos .form table tbody tr td.input-error {
+   @apply bg-red-200 rounded-lg
+}
+.complicaciones .label,
+.costos .label {
+   @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
+}
+.complicaciones .label h4,
+.costos .label h4 {
+   @apply text-orange-400 font-bold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
+}
+
+.error {
+   @apply w-full px-4 text-red-500 leading-none text-xs italic text-center;
+}
+.error span {
+   @apply font-bold text-sm not-italic leading-none;
+}
+
+footer {
+   @apply w-full px-12 text-center flex items-center justify-between;
+}
+footer article p {
+   @apply font-normal leading-none text-center text-sm my-2 text-text-500
+}
+
+.pop-conten {
+   @apply w-[1024px] h-[768px] relative top-0 flex flex-col justify-center items-center bg-pop-background/85
+}
+.pop-conten {
+   @apply absolute
+}
+.pop {
+   @apply flex flex-col-reverse w-fit drop-shadow-md p-8
+}
+.pop .pop-form {
+   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
+}
+
+.pop .pop-form .thead {
+   width: calc(100% - 6px);
+}
+.pop .pop-form table tbody tr {
+   @apply rounded-l-md odd:bg-white/0 even:bg-gray-800/5;
+}
+
+
+.pop .pop-form table thead tr th {
+   @apply leading-none py-2
+}
+.pop .pop-form table tbody tr td {
+   @apply leading-none py-1 px-1
+}
+.pop .pop-form table tbody tr td,
+.pop .pop-form table thead tr th {
+   @apply w-[140px] !important
+}
+
+.pop .pop-form table tbody tr td:nth-child(1),
+.pop .pop-form table thead tr th:nth-child(1) {
+   @apply mr-2 w-[370px] pl-4 rounded-l-md !important
+}
+
+.pop .pop-label {
+   @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
+}
+.pop .pop-label div {
+   @apply flex bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% pl-6 py-1 rounded-t-2xl
+}
+.pop .pop-label div h4 {
+   @apply text-orange-400 font-bold text-lg
+}
+.pop .pop-label div button {
+   @apply mx-3
+}
+
+.pop-animate-up {
+   @apply animate-fade-in animate-duration-slow
+}
+
+.pop-animate-down {
+   @apply animate-fade-out animate-duration-slow
+}
+
+
+.alert-conten {
+   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center z-[60] top-0 left-0;
+}
+.alert-conten .alert {
+   @apply flex flex-col-reverse w-fit drop-shadow-md
+}
+.alert-conten .alert .alert-contain {
+   @apply max-w-lg inline-block align-bottom  rounded-xl text-left overflow-hidden shadow-xl
+}
+.alert-conten .alert .alert-contain .alert-body {
+   @apply bg-white flex-col items-start px-4 pt-5 pb-4
+}
+.alert-conten .alert .alert-contain .alert-body .header-icon {
+   @apply mx-auto flex-shrink-0 flex items-center justify-center w-fit p-3 rounded-full shadow-sm;
+}
+.alert-body.info .header-icon {
+   @apply bg-sky-100 text-sky-500
+}
+.alert-body.warning .header-icon {
+   @apply bg-yellow-100 text-yellow-500
+}
+.alert-body.danger .header-icon  {
+   @apply bg-red-100 text-red-500
+}
+
+.alert-body.info .header-conten h3 {
+   @apply text-sky-500
+}
+.alert-body.warning .header-conten h3 {
+   @apply text-yellow-500
+}
+.alert-body.danger .header-conten h3 {
+   @apply text-red-500
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-title
+{
+   @apply mt-3 ml-4 text-center;
+}
+.alert-conten .alert .alert-contain .alert-body .header-conten {
+   @apply mt-3 ml-4 text-center;
+}
+.alert-conten .alert .alert-contain .alert-body .header-conten h3 {
+   @apply text-lg leading-6 font-bold text-center
+}
+.alert-conten .alert .alert-contain .alert-body .header-conten article {
+   @apply mt-2
+}
+.alert-conten .alert .alert-contain .alert-body .header-conten article p {
+   @apply text-sm text-text-500
+}
+.alert-conten .alert .alert-contain .alert-body .header-conten article p span {
+   @apply font-bold
+}
+.alert-conten .alert .alert-contain .alert-footer{
+   @apply bg-slate-100 px-6 py-3 flex flex-row-reverse gap-4
+}
+.alert-animate-in {
+   @apply animate-fade-in animate-duration-slow
+}
+.alert-animate-out {
+   @apply animate-fade-out animate-duration-slow
+}
+
+.alert-conten-animate-in {
+   @apply animate-fade-in-up animate-delay-200 animate-duration-slow
+}
+.alert-conten-animate-out {
+   @apply animate-fade-out-down animate-delay-200 animate-duration-slow
+}
