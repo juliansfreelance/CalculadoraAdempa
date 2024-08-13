@@ -10,7 +10,7 @@
    <meta name='author' href="https://github.com/juliansfreelance" email="jcalderon.code@gmail.com" content='Julio Calderón - Desarrollador Front-end' />
    <meta name="description" content="Herramienta de costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica o de la Hipertensión Pulmonar por categoria de riesgo (HTP)" />
 
-   <title>AV Calculadora HTP Adempa | Costo complicaciones por paciente</title>
+   <title>AV Calculadora HTP Adempa | Costo Complicaciones por Paciente</title>
 
    <link rel="icon" type="image/ico" href="images/icon.png" />
 
@@ -49,77 +49,14 @@
             </span>
             <div class="animate-fade-in-left animate-delay-500 animate-duration-slow">
                <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
-               <h3>Costo complicaciones por paciente</h3>
+               <h3>Costo Complicaciones por Paciente</h3>
             </div>
          </hgroup>
       </header>
 
       <main>
 
-         <section class="complicaciones animate-fade-in-up animate-delay-900 animate-duration-slower flex">
-            <div class="form">
-               <!-- <article>
-                  <p class="font-normal leading-none text-center text-xs text-text-500">Si tiene el rubro no es por paquete con un solo costo, puedo dirigirse a Costo de complicaciones para realizar microcosteo</p>
-               </article> -->
-               <table class="w-full table-auto">
-                  <thead>
-                     <tr>
-                        <th class="font-bold text-base text-orange-400 text-left">Complicaciones</th>
-                        <th class="font-bold text-base text-green-500 text-center">Estadificación riesgo Bajo</th>
-                        <th class="font-bold text-base text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
-                        <th class="font-bold text-base text-red-500 text-center">Estadificación riesgo Alto</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td>Hospitalizaciones por causas diferentes<br>a falla cardiaca derecha</td>
-                        <td><custom-input name="complicacion-1-bajo" type="edit" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="complicacion-1-intermedio" type="edit" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="complicacion-1-alto" type="edit" icon="porcentaje"></custom-input></td>
-                     </tr>
-
-                     <tr>
-                        <td>Falla cardiaca en hospitalización general</td>
-                        <td><custom-input name="complicacion-2-bajo" type="edit" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="complicacion-2-intermedio" type="edit" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="complicacion-2-alto" type="edit" icon="porcentaje"></custom-input></td>
-                     </tr>
-
-                     <tr>
-                        <td>Falla cardiaca derecha de paciente Crítico</td>
-                        <td><custom-input name="complicacion-3-bajo" type="edit" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="complicacion-3-intermedio" type="edit" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="complicacion-3-alto" type="edit" icon="porcentaje"></custom-input></td>
-                     </tr>
-
-                     <tr>
-                        <td>
-                           <button class="btn-caso-ref"
-                              onclick="javascript:slideOcho.openAlert('ref-complicaciones')">
-                              <div>
-                                 <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                 </svg>
-                                 <h4>Caso de referencia</h4>
-                              </div>
-                           </button>
-                        </td>
-                        <td colspan="3">
-                           <div class="hidden error">Ingrese todas las <span>probabilidades</span> según la <span>complicación</span> correspondiente.</div>
-                        </td>
-
-                     </tr>
-
-                  </tbody>
-               </table>
-            </div>
-
-            <div class="label">
-               <h4>Probabilidad de complicaciones</h4>
-            </div>
-         </section>
-
-         <section class="costos animate-fade-in-up animate-delay-200 animate-duration-slower hidden">
+         <section class="costos animate-fade-in-up animate-delay-200 animate-duration-slower">
             <div class="form">
                <table class="w-full table-auto">
                   <thead>
@@ -139,7 +76,7 @@
                         <td><custom-input name="costo-1-alto" type="edit" icon="money"></custom-input></td>
                         <td></td>
                      </tr>
-         
+
                      <tr>
                         <td>Falla cardiaca en hospitalización general</td>
                         <td><custom-input name="costo-2-bajo" type="edit" icon="money"></custom-input></td>
@@ -147,7 +84,7 @@
                         <td><custom-input name="costo-2-alto" type="edit" icon="money"></custom-input></td>
                         <td></td>
                      </tr>
-         
+
                      <tr>
                         <td>Falla cardiaca derecha de paciente Crítico</td>
                         <td><custom-input name="costo-3-bajo" type="calc" icon="money"></custom-input></td>
@@ -174,15 +111,15 @@
                               </div>
                            </button>
                         </td>
-                        <td class="bg-slate-200 rounded-md total-bajo"><custom-input name="costo-total-bajo" type="calc" icon="money"></custom-input></td>
-                        <td class="bg-slate-200 rounded-md total-intermedio"><custom-input name="costo-total-intermedio" type="calc" icon="money"></custom-input></td>
-                        <td class="bg-slate-200 rounded-md total-alto"><custom-input name="costo-total-alto" type="calc" icon="money"></custom-input></td>
+                        <td class="bg-slate-200 rounded-md total-bajo"><custom-input name="total-bajo" type="calc" icon="money"></custom-input></td>
+                        <td class="bg-slate-200 rounded-md total-intermedio"><custom-input name="total-intermedio" type="calc" icon="money"></custom-input></td>
+                        <td class="bg-slate-200 rounded-md total-alto"><custom-input name="total-alto" type="calc" icon="money"></custom-input></td>
                      </tr>
 
                      <tr>
                         <td colspan="5" class="pt-2">
-                           <div class="error">Ingrese todos los <span>costos</span> según la <span>complicación</span> correspondiente.</div>
-                           <div class="flex error error-triple justify-center items-center gap-1">
+                           <div class="hidden error error-input">Ingrese todos los <span>costos</span> según la <span>complicación</span> correspondiente.</div>
+                           <div class="hidden error error-microcosteo justify-center items-center gap-1">
                               <p>Por favor, haz clic en el botón</p>
                               <div class="text-green-600 shadow-md rounded-full bg-white w-fit">
                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
@@ -226,14 +163,6 @@
          message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
          actions='[
             {"name": "Aceptar", "color": "orange", "handler": "slideOcho.jumpToSlide(&apos;01&apos;)"},
-            {"name": "Cancelar", "color": "gray", "handler": "slideOcho.closeAlert()"}
-         ]'>
-      </custom-alert>
-
-      <custom-alert name="alert-ref-complicaciones" class="hidden" type="info" title="Usar Datos de Referencia"
-         message="<p> Se utilizarán los <span>valores de referencia</span> para la <span>Probabilidad de Complicaciones</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
-         actions='[
-            {"name": "Aceptar", "color": "orange", "handler": "slideOcho.syncComplicationsWithReference()"},
             {"name": "Cancelar", "color": "gray", "handler": "slideOcho.closeAlert()"}
          ]'>
       </custom-alert>

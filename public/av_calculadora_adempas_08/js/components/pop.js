@@ -49,8 +49,6 @@ class customPop extends HTMLElement{
          <section class="pop-conten">
             <section class="pop animate-fade-in-up animate-delay-100 animate-duration-slow">
                <div class="pop-form relative">
-               <article class="w-full text-center text-sm leading-none"><p>Ingrese la cantidad por paciente</p></article>
-
                   <table class="thead">
                      <thead>
                         <tr>
@@ -80,6 +78,7 @@ class customPop extends HTMLElement{
                   </div>
                </div>
             </section>
+            <article class="w-full text-left text-text-500 text-sm leading-none pt-3"><ul class="list-disc ml-24"><li>Ingrese la cantidad por paciente</li></ul></article>
          </section>`;
          // slideOcho.updateInputTecnologias();
       });

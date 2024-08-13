@@ -69,16 +69,6 @@ let slideOcho = {
       const customAlertAlert = document.querySelector(`custom-alert[name="alert-${alert}"] .alert`);
       switch (alert) {
 
-         case 'ref-complicaciones':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-         break;
-
          case 'ref-microcosteo':
             if (customAlert) {
                customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
@@ -132,13 +122,47 @@ let slideOcho = {
    },
 
    updateInputComplications: function () {
-      const probabilidades = veeva.calculadora.complicaciones.probabilidades
-      const inputs = document.querySelectorAll('input[name^="complicacion"]');
-      inputs.forEach(input => {
-         const name = input.name;
-         const [tipo, index, riesgo] = name.split('-');
-         input.value = slideOcho.formatToFloatString(probabilidades[index - 1][riesgo]);
-      });
+      const costos = veeva.calculadora.complicaciones.costos;
+
+      const totalCostoBajo = document.querySelector("input[name='total-bajo']");
+      const totalCostoIntermedio = document.querySelector("input[name='total-intermedio']");
+      const totalCostoAlto = document.querySelector("input[name='total-alto']");
+
+      const costoOneBajo = document.querySelector("input[name='costo-1-bajo']");
+      const costoOneIntermedio = document.querySelector("input[name='costo-1-intermedio']");
+      const costoOneAlto = document.querySelector("input[name='costo-1-alto']");
+
+      const costoTwoBajo = document.querySelector("input[name='costo-2-bajo']");
+      const costoTwoIntermedio = document.querySelector("input[name='costo-2-intermedio']");
+      const costoTwoAlto = document.querySelector("input[name='costo-2-alto']");
+
+      const costoThreeBajo = document.querySelector("input[name='costo-3-bajo']");
+      const costoThreeIntermedio = document.querySelector("input[name='costo-3-intermedio']");
+      const costoThreeAlto = document.querySelector("input[name='costo-3-alto']");
+
+      costoOneBajo.value = slideOcho.formatToFloatString(costos[0].bajo)
+      costoOneIntermedio.value = slideOcho.formatToFloatString(costos[0].intermedio)
+      costoOneAlto.value = slideOcho.formatToFloatString(costos[0].alto)
+
+      costoTwoBajo.value = slideOcho.formatToFloatString(costos[1].bajo)
+      costoTwoIntermedio.value = slideOcho.formatToFloatString(costos[1].intermedio)
+      costoTwoAlto.value = slideOcho.formatToFloatString(costos[1].alto)
+
+      costoThreeBajo.value = slideOcho.formatToFloatString(costos[2].bajo)
+      costoThreeIntermedio.value = slideOcho.formatToFloatString(costos[2].intermedio)
+      costoThreeAlto.value = slideOcho.formatToFloatString(costos[2].alto)
+
+      totalCostoBajo.value = slideOcho.formatToFloatString(costos[3].bajo)
+      totalCostoIntermedio.value = slideOcho.formatToFloatString(costos[3].intermedio)
+      totalCostoAlto.value = slideOcho.formatToFloatString(costos[3].alto)
+
+      const customAlert = document.querySelector('custom-alert.block');
+      if (customAlert) {
+         setTimeout(() => {
+            slideOcho.validateTecnnology();
+            slideOcho.closeAlert();
+         }, 400);
+      }
    },
 
    syncComplicationsWithReference: function () {

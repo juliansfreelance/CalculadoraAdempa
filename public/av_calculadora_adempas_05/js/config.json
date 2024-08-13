@@ -412,7 +412,7 @@
                "alto": 0
             }
          ],
-         "costo": [
+         "costos": [
             {
                "nombre": "Hospitalizaciones por causas diferentes a falla cardiaca derecha",
                "bajo": 0,
@@ -427,6 +427,12 @@
             },
             {
                "nombre": "Falla cardiaca derecha de paciente Crítico",
+               "bajo": 0,
+               "intermedio": 0,
+               "alto": 0
+            },
+            {
+               "nombre": "Totales",
                "bajo": 0,
                "intermedio": 0,
                "alto": 0
