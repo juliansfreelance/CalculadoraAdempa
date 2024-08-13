@@ -10,199 +10,248 @@
    <meta name='author' href="https://github.com/juliansfreelance" email="jcalderon.code@gmail.com" content='Julio Calderón - Desarrollador Front-end' />
    <meta name="description" content="Herramienta de costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica o de la Hipertensión Pulmonar por categoria de riesgo (HTP)" />
 
-   <title>AV Calculadora HTP Adempa | Resultados</title>
+   <title>AV Calculadora HTP Adempa | Probabilidad de Complicaciones</title>
 
    <link rel="icon" type="image/ico" href="images/icon.png" />
 
    <link rel="stylesheet" href="css/style.css">
 
    <script src="js/lib/currency.min.js" defer></script>
-   <script src="js/lib/chart.min.js" defer></script>
-   <script src="js/lib/chartDatalabels.min.js" defer></script>
-
    <script src="js/components/input.js" defer></script>
+   <script src="js/components/pop.js" defer></script>
    <script src="js/components/alert.js" defer></script>
-
-   <script type="module" src="js/script.js" defer></script>
-
+   <script src="js/script.js" defer></script>
 </head>
-<body class="w-screen h-screen grid place-items-center">
+<body class="w-screen h-screen flex flex-col justify-center items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="relative z-50">
+      <header class=" w-full px-16">
          <hgroup>
-            <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[600ms]"
-               onclick="javascript:slideSiete.jumpToSlide('06')">
-               <div>
-                  <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
-                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                  </svg>
-                  <h4>Regresar</h4>
-               </div>
-            </button>
-            <h2 class="animate-fade-in-left animate-delay-500 animate-duration-slow">Resultados</h2>
+            <span>
+               <button class="home-btn animate-pulse-fade-in animate-delay-[600ms]" onclick="slideSiete.openAlert('reset')">
+                  <div>
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" />
+                     </svg>
+                  </div>
+               </button>
+               <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[600ms]"
+                  onclick="slideSiete.jumpToSlide('06')">
+                  <div>
+                     <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                     </svg>
+                     <h4>Regresar</h4>
+                  </div>
+               </button>
+            </span>
+            <div class="animate-fade-in-left animate-delay-500 animate-duration-slow">
+               <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
+               <h3>Probabilidad de Complicaciones</h3>
+            </div>
          </hgroup>
       </header>
 
-      <main class="relative z-50">
-         <section class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
+      <main>
+
+         <section class="complicaciones animate-fade-in-up animate-delay-900 animate-duration-slower flex">
             <div class="form">
+               <!-- <article>
+                  <p class="font-normal leading-none text-center text-xs text-text-500">Si tiene el rubro no es por paquete con un solo costo, puedo dirigirse a Costo de complicaciones para realizar microcosteo</p>
+               </article> -->
                <table class="w-full table-auto">
                   <thead>
                      <tr>
-                        <th class="font-bold text-base text-orange-400 text-left">Población</th>
-                        <th colspan="3"><custom-input name="res-poblacion" type="calc" icon=""></custom-input></th>
-                        <th></th>
-                        <th></th>
-                     </tr>
-                     <tr>
-                        <th></th>
-                        <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
-                        <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
-                        <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
+                        <th class="font-bold text-base text-orange-400 text-left">Complicaciones</th>
+                        <th class="font-bold text-base text-green-500 text-center">Estadificación riesgo Bajo</th>
+                        <th class="font-bold text-base text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                        <th class="font-bold text-base text-red-500 text-center">Estadificación riesgo Alto</th>
                      </tr>
                   </thead>
                   <tbody>
                      <tr>
-                        <td class="text-xs max-w-[150px]">Distribución de la cohorte por categoria de riesgo</td>
-                        <td><custom-input name="res-risk-bajo" type="calc" icon=""></custom-input></td>
-                        <td><custom-input name="res-risk-intermedio" type="calc" icon=""></custom-input></td>
-                        <td><custom-input name="res-risk-alto" type="calc" icon=""></custom-input></td>
+                        <td>Hospitalizaciones por causas diferentes<br>a falla cardiaca derecha</td>
+                        <td><custom-input name="complicacion-1-bajo" type="edit" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-1-intermedio" type="edit" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-1-alto" type="edit" icon="porcentaje"></custom-input></td>
                      </tr>
 
                      <tr>
-                        <td class="text-xs max-w-[200px] font-bold">Porcentaje versus el total</td>
-                        <td><custom-input name="res-percent-bajo" type="calc" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="res-percent-intermedio" type="calc" icon="porcentaje"></custom-input></td>
-                        <td><custom-input name="res-percent-alto" type="calc" icon="porcentaje"></custom-input></td>
+                        <td>Falla cardiaca en hospitalización general</td>
+                        <td><custom-input name="complicacion-2-bajo" type="edit" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-2-intermedio" type="edit" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-2-alto" type="edit" icon="porcentaje"></custom-input></td>
                      </tr>
+
+                     <tr>
+                        <td>Falla cardiaca derecha de paciente Crítico</td>
+                        <td><custom-input name="complicacion-3-bajo" type="edit" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-3-intermedio" type="edit" icon="porcentaje"></custom-input></td>
+                        <td><custom-input name="complicacion-3-alto" type="edit" icon="porcentaje"></custom-input></td>
+                     </tr>
+
+                     <tr>
+                        <td>
+                           <button class="btn-caso-ref"
+                              onclick="javascript:slideSiete.openAlert('ref-complicaciones')">
+                              <div>
+                                 <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                 </svg>
+                                 <h4>Caso de referencia</h4>
+                              </div>
+                           </button>
+                        </td>
+                        <td colspan="3">
+                           <div class="hidden error">Ingrese todas las <span>probabilidades</span> según la <span>complicación</span> correspondiente.</div>
+                        </td>
+
+                     </tr>
+
                   </tbody>
                </table>
             </div>
+
+            <div class="label">
+               <h4>Probabilidad de complicaciones</h4>
+            </div>
          </section>
 
-         <div class="chart-home animate-fade-in-up animate-delay-900"></div>
+         <section class="costos animate-fade-in-up animate-delay-200 animate-duration-slower hidden">
+            <div class="form">
+               <table class="w-full table-auto">
+                  <thead>
+                     <tr>
+                        <th class="font-bold text-base text-orange-400 text-left">Complicaciones</th>
+                        <th class="font-bold text-base text-green-500 text-center">Estadificación riesgo Bajo</th>
+                        <th class="font-bold text-base text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                        <th class="font-bold text-base text-red-500 text-center">Estadificación riesgo Alto</th>
+                        <th></th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>Hospitalizaciones por causas diferentesa falla cardiaca derecha</td>
+                        <td><custom-input name="costo-1-bajo" type="edit" icon="money"></custom-input></td>
+                        <td><custom-input name="costo-1-intermedio" type="edit" icon="money"></custom-input></td>
+                        <td><custom-input name="costo-1-alto" type="edit" icon="money"></custom-input></td>
+                        <td></td>
+                     </tr>
+         
+                     <tr>
+                        <td>Falla cardiaca en hospitalización general</td>
+                        <td><custom-input name="costo-2-bajo" type="edit" icon="money"></custom-input></td>
+                        <td><custom-input name="costo-2-intermedio" type="edit" icon="money"></custom-input></td>
+                        <td><custom-input name="costo-2-alto" type="edit" icon="money"></custom-input></td>
+                        <td></td>
+                     </tr>
+         
+                     <tr>
+                        <td>Falla cardiaca derecha de paciente Crítico</td>
+                        <td><custom-input name="costo-3-bajo" type="calc" icon="money"></custom-input></td>
+                        <td><custom-input name="costo-3-intermedio" type="calc" icon="money"></custom-input></td>
+                        <td><custom-input name="costo-3-alto" type="calc" icon="money"></custom-input></td>
+                        <td>
+                           <button onclick="javascript:slideSiete.popUp('microcosteo')" class="text-green-600 shadow-md rounded-full bg-white ">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                 <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
+                              </svg>
+                           </button>
+                        </td>
+                     </tr>
+
+                     <tr>
+                        <td>
+                           <button class="btn-caso-ref" onclick="javascript:slideSiete.openAlert('ref-microcosteo')">
+                              <div>
+                                 <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                 </svg>
+                                 <h4>Caso de referencia</h4>
+                              </div>
+                           </button>
+                        </td>
+                        <td class="bg-slate-200 rounded-md total-bajo"><custom-input name="costo-total-bajo" type="calc" icon="money"></custom-input></td>
+                        <td class="bg-slate-200 rounded-md total-intermedio"><custom-input name="costo-total-intermedio" type="calc" icon="money"></custom-input></td>
+                        <td class="bg-slate-200 rounded-md total-alto"><custom-input name="costo-total-alto" type="calc" icon="money"></custom-input></td>
+                     </tr>
+
+                     <tr>
+                        <td colspan="5" class="pt-2">
+                           <div class="error">Ingrese todos los <span>costos</span> según la <span>complicación</span> correspondiente.</div>
+                           <div class="flex error error-triple justify-center items-center gap-1">
+                              <p>Por favor, haz clic en el botón</p>
+                              <div class="text-green-600 shadow-md rounded-full bg-white w-fit">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd"></path>
+                                 </svg>
+                              </div>para la <span>complicación de falla cardiaca derecha</span> y realizar <span>microcosteo</span> por paciente.
+                           </div>
+                        </td>
+                     </tr>
+
+                  </tbody>
+               </table>
+            </div>
+            <div class="label">
+               <h4>Costo de paciente por complicación</h4>
+            </div>
+         </section>
 
       </main>
 
-      <section class="content-folder relative fade-out">
-         <section class="folder close" id="poblacion">
-            <header>
-               <button onclick="slideSiete.toggleFolder('poblacion')">
-                  <h4>Paciente</h4>
-                  <div>
-                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"/>
-                     </svg>
-                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z"/>
-                     </svg>
-                  </div>
-               </button>
-            </header>
-            <main class="folder-contents">
-               <h4 class="font-extrabold text-2xl text-lime-600">Costo total por paciente</h4>
-               <p></p>
-            </main>
-         </section>
+      <footer>
 
-         <section class="folder close" id="pocedimientos">
-            <header>
-               <button onclick="slideSiete.toggleFolder('pocedimientos')">
-                  <h4>Procedimientos</h4>
-                  <div>
-                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
-                     </svg>
-                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
-                     </svg>
-                  </div>
-               </button>
-            </header>
-            <main class="folder-contents">
-               <h4 class="font-extrabold text-2xl text-pink-600">Costo procedimientos anual de uso por paciente</h4>
-               <p></p>
-            </main>
-         </section>
+         <article class="animate-fade-in-right animate-delay-[1200ms] animate-duration-slower">
+            <p>Si no tiene datos de la institución, seleccione caso de referencia</p>
+         </article>
 
-         <section class="folder close" id="tecnologias">
-            <header>
-               <button onclick="slideSiete.toggleFolder('tecnologias')">
-                  <h4>Tecnologías</h4>
-                  <div>
-                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
-                     </svg>
-                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
-                     </svg>
-                  </div>
-               </button>
-            </header>
+         <button class="background-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[1200ms]"
+            onclick="javascript:slideSiete.validarForm()">
+            <div>
+               <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+               </svg>
+               <h4>Continuar</h4>
+            </div>
+         </button>
+      </footer>
 
-            <section class="folder-contents">
-               <h4 class="text-amber-500">Costo anual de tecnologías por paciente al año</h4>
-               <section class="flex-grow grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center">
-                  <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
-                     <div class="form">
-                        <table class="w-full table-auto">
-                           <thead>
-                              <tr>
-                                 <th></th>
-                                 <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
-                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
-                                 <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <tr>
-                                 <td class="text-xs max-w-[150px]">Costo anual de tecnologías por paciente año</td>
-                                 <td><custom-input name="res-tecno-bajo" type="calc" icon="money"></custom-input></td>
-                                 <td><custom-input name="res-tecno-intermedio" type="calc" icon="money"></custom-input></td>
-                                 <td><custom-input name="res-tecno-alto" type="calc" icon="money"></custom-input></td>
-                              </tr>
-                              <tr>
-                                 <td class="text-xs max-w-[200px] font-bold">Promedio Total</td>
-                                 <td colspan="3" class="bg-green-100 rounded-md"><custom-input name="res-tecno-promedio" type="calc" icon="money"></custom-input></td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                  </div>
-                  <div class="chart-tecnology animate-fade-in-up animate-delay-900"></div>
-               </section>
-            </section>
-         </section>
+      <custom-pop type="microcosteo" class="hidden"></custom-pop>
 
-         <section class="folder close" id="cohorte">
-            <header>
-               <button onclick="slideSiete.toggleFolder('cohorte')">
-                  <h4>Cohorte</h4>
-                  <div>
-                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
-                     </svg>
-                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
-                     </svg>
-                  </div>
-               </button>
-            </header>
-            <main class="folder-contents">
-               <h4 class="font-extrabold text-2xl text-sky-600">COHORTE</h4>
-               <p></p>
-            </main>
-         </section>
-      </section>
+      <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
+         message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
+         actions='[
+            {"name": "Aceptar", "color": "orange", "handler": "slideSiete.jumpToSlide(&apos;01&apos;)"},
+            {"name": "Cancelar", "color": "gray", "handler": "slideSiete.closeAlert()"}
+         ]'>
+      </custom-alert>
+
+      <custom-alert name="alert-ref-complicaciones" class="hidden" type="info" title="Usar Datos de Referencia"
+         message="<p> Se utilizarán los <span>valores de referencia</span> para la <span>Probabilidad de Complicaciones</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
+         actions='[
+            {"name": "Aceptar", "color": "orange", "handler": "slideSiete.syncComplicationsWithReference()"},
+            {"name": "Cancelar", "color": "gray", "handler": "slideSiete.closeAlert()"}
+         ]'>
+      </custom-alert>
+
+      <custom-alert name="alert-ref-microcosteo" class="hidden" type="info" title="Usar Datos de Referencia"
+         message="<p> Se utilizarán los <span>valores de referencia</span> para los <span>Costos de paciente por complicación</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
+         actions='[
+                  {"name": "Aceptar", "color": "orange", "handler": "slideSiete.syncCostosWithReference()"},
+                  {"name": "Cancelar", "color": "gray", "handler": "slideSiete.closeAlert()"}
+               ]'>
+      </custom-alert>
 
       <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
-         message="<p> No se pueden mostrar los resultados porque no se encontraron <span>datos almacenados</span>. Por favor, verifica la información y vuelve a intentarlo.</p>"
+         message="<p> No puede continuar porque no se encontraron <span>datos almacenados</span>.<br>Por favor, verifica la información y vuelve a intentarlo.</p>"
          actions='[{"name": "Aceptar", "color": "orange", "handler": "slideSiete.jumpToSlide(&apos;01&apos;)"}]'>
       </custom-alert>
 
    </section>
-
 
 </body>
 </html>

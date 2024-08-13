@@ -9,8 +9,10 @@ class customInput extends HTMLElement {
       this.icon = '';
       this.iconConten = '';
       this.decimalMode = false;
+      this.previousValue = '';
       this.handleBlur = this.handleBlur.bind(this);
       this.handleInput = this.handleInput.bind(this);
+      this.handleFocus = this.handleFocus.bind(this);
    }
 
    static get observedAttributes(){
@@ -60,9 +62,8 @@ class customInput extends HTMLElement {
    }
 
    formatNumber(val) {
-      console.log(val);
       const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
-      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
+      const FORMAT_ENTERO = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
       if (val !== '') {
          let inputValue = val.toString().replace(/[^\d,.]/g, '');
          let integer = parseFloat(inputValue.replace(/\./g, '').replace(/,/g, '.'));
@@ -71,7 +72,9 @@ class customInput extends HTMLElement {
    }
 
    handleInput(event) {
+      console.log('handleInput');
       let inputValue = event.target.value.replace(/[^\d,]/g, '');
+      console.log(inputValue);
       if (inputValue.includes(',')) {
          this.decimalMode = true;
       }
@@ -86,14 +89,41 @@ class customInput extends HTMLElement {
       }
       event.target.value = inputValue;
       this.valor = inputValue;
+      this.updateJsonValue(event.target.name, inputValue);
+   }
+
+   handleFocus(event) {
+      this.previousValue = event.target.value;
+      event.target.value = '';
    }
 
    handleBlur(event) {
-      if (event.target.value !== '') {
-         let inputValue = event.target.value.replace(/[^\d,.]/g, '');
-         event.target.value = this.formatNumber(inputValue);
-         this.valor = this.formatNumber(inputValue);
+      const input = event.target;
+      const inputValue = input.value.replace(/[^\d,.]/g, '');
+      const formattedValue = this.formatNumber(inputValue);
+
+      if (input.value === '') {
+         input.value = this.previousValue;
+      } else if (input.value !== '') {
+         input.value = formattedValue;
+         this.valor = formattedValue;
+         this.updateJsonValue(input.name, inputValue);
+         ('vamos: ', slideSiete.validateCounnt)
+         if (slideSiete.validateCounnt > 0) {
+            slideSiete.validateComplications();
+         }
       }
+   }
+
+   updateGlobalValues() {
+      slideSiete.actualizarInputs();
+   }
+
+   updateJsonValue(name, value) {
+      const probabilidades = veeva.calculadora.complicaciones.probabilidades
+      const [tipo, index, riesgo] = name.split('-');
+      probabilidades[index - 1][riesgo] = parseFloat(value.replace(',', '.'));
+      this.updateGlobalValues();
    }
 
    connectedCallback() {
@@ -113,7 +143,8 @@ class customInput extends HTMLElement {
             ${this.getIcon(this.icon)}
          </div>`;
       const inputElement = this.querySelector('input');
-      inputElement.addEventListener('input', this.handleInput);
+      // inputElement.addEventListener('input', this.handleInput);
+      inputElement.addEventListener('focus', this.handleFocus);
       inputElement.addEventListener('blur', this.handleBlur);
    }
 }

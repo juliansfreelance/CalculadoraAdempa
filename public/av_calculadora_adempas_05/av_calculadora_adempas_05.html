@@ -10,7 +10,7 @@
    <meta name='author' href="https://github.com/juliansfreelance" email="jcalderon.code@gmail.com" content='Julio Calderón - Desarrollador Front-end' />
    <meta name="description" content="Herramienta de costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica o de la Hipertensión Pulmonar por categoria de riesgo (HTP)" />
 
-   <title>AV Calculadora HTP Adempa | Población</title>
+   <title>AV Calculadora HTP Adempa | Población y Distribución por grupo de HTP</title>
 
    <link rel="icon" type="image/ico" href="images/icon.png" />
 
@@ -18,23 +18,27 @@
 
    <script src="js/lib/currency.min.js" defer></script>
    <script src="js/components/input.js" defer></script>
+   <script src="js/components/alert.js" defer></script>
    <script src="js/script.js" defer></script>
 </head>
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
       <header class="z-50 w-full px-16">
-         <hgroup class="animate-fade-in-down animate-delay-500 animate-duration-slow">
-            <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[600ms]"
-               onclick="slideCinco.jumpToSlide('01')">
-               <div>
-                  <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
-                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                  </svg>
-                  <h4>Regresar</h4>
-               </div>
-            </button>
-            <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
+         <hgroup>
+            <span>
+               <button class="home-btn animate-pulse-fade-in animate-delay-[600ms]" onclick="localStorage.getItem('calculadora') ? slideCinco.openAlert('reset') : slideCinco.jumpToSlide('01')">
+                  <div>
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z"/>
+                     </svg>
+                  </div>
+               </button>
+            </span>
+            <div class="animate-fade-in-left animate-delay-500 animate-duration-slow">
+               <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
+               <h3>Población y Distribución por grupo de HTP</h3>
+            </div>
          </hgroup>
       </header>
 
@@ -72,29 +76,29 @@
                <div class="input animate-fade-in-left animate-delay-[100ms]">
                   <label class="background-btn-blue label-blue" for="edit-HAP">
                      <div>
-                        <h4>Grupo I HAP</h4>
+                        <h4>Grupo 1 HAP</h4>
                      </div>
                   </label>
                   <custom-input name="edit-HAP" type="insert" icon="porcentaje"></custom-input>
-                  <span class="error hap-error hidden">Debe ingresar el Grupo I HAP</span>
+                  <span class="error hap-error hidden">Debe ingresar el Grupo 1 HAP</span>
                </div>
                <div class="input animate-fade-in-right animate-delay-[100ms]">
                   <label class="background-btn-blue label-blue" for="edit-HTCE">
                      <div>
-                        <h4>Grupo IV HTCE</h4>
+                        <h4>Grupo 4 HTCE</h4>
                      </div>
                   </label>
                   <custom-input name="edit-HTCE" type="insert" icon="porcentaje"></custom-input>
-                  <span class="error htce-error hidden">Debe ingresar el Grupo IV HTCE</span>
+                  <span class="error htce-error hidden">Debe ingresar el Grupo 4 HTCE</span>
                </div>
-               <span class="error grupos-error hidden">La suma de (Grupo I HAP) + (Grupo IV HTCE) debe ser igual a 100%.</span>
+               <span class="error grupos-error hidden">La suma de (Grupo 1 HAP) + (Grupo 4 HTCE) debe ser igual a 100%.</span>
             </div>
 
             <div class="htp-estudy hidden">
                <div class="input animate-fade-in-left animate-delay-[100ms]">
                   <label class="background-btn-blue label-blue" for="estudy-HAP">
                      <div>
-                        <h4>Grupo I HAP</h4>
+                        <h4>Grupo 1 HAP</h4>
                      </div>
                   </label>
                   <custom-input name="estudy-HAP" type="calc" icon="porcentaje"></custom-input>
@@ -102,7 +106,7 @@
                <div class="input animate-fade-in-right animate-delay-[100ms]">
                   <label class="background-btn-blue label-blue" for="estudy-HTCE">
                      <div>
-                        <h4>Grupo IV HTCE</h4>
+                        <h4>Grupo 4 HTCE</h4>
                      </div>
                   </label>
                   <custom-input name="estudy-HTCE" type="calc" icon="porcentaje"></custom-input>
@@ -128,25 +132,33 @@
          </article>
       </footer>
 
+      <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
+         message="<p> Si vuelves al inicio, se perderán todos los datos suministrados y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
+         actions='[
+            {"name": "Aceptar", "color": "orange", "handler": "slideCinco.jumpToSlide(&apos;01&apos;)"},
+            {"name": "Cancelar", "color": "gray", "handler": "slideCinco.closeAlert()"}
+         ]'>
+      </custom-alert>
+
    </section>
 
-   <section class="alert-conten alert-animate-down hidden">
-      <div class="alert animate-fade-in-up animate-delay-100 animate-duration-slow">
-         <div class="alert-form">
+   <section class="pop-conten pop-animate-down hidden">
+      <div class="pop animate-fade-in-up animate-delay-100 animate-duration-slow">
+         <div class="pop-form">
             <table class="w-full table-auto">
                <thead>
                   <tr>
                      <th class="font-bold text-base text-sky-600 text-left">Estudio</th>
-                     <th class="font-bold text-base text-sky-600 text-center">Grupo I HAP</th>
-                     <th class="font-bold text-base text-sky-600 text-center">Grupo IV HTCE</th>
+                     <th class="font-bold text-base text-sky-600 text-center">Grupo 1 HAP</th>
+                     <th class="font-bold text-base text-sky-600 text-center">Grupo 4 HTCE</th>
                      <th></th>
                   </tr>
                </thead>
-               <tbody class="alert-conten-body">
+               <tbody class="pop-conten-body">
                </tbody>
             </table>
          </div>
-         <div class="alert-label">
+         <div class="pop-label">
             <div>
                <h4>Distribución por grupo diagnóstico</h4>
                <button onclick="slideCinco.popDown()" class="text-red-600 shadow-md rounded-full bg-white h-fit">

@@ -63,7 +63,7 @@ class customInput extends HTMLElement {
 
    formatNumber(val) {
       const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
-      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
+      const FORMAT_ENTERO = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
       if (val !== '') {
          let inputValue = val.toString().replace(/[^\d,.]/g, '');
          let integer = parseFloat(inputValue.replace(/\./g, '').replace(/,/g, '.'));
@@ -108,6 +108,7 @@ class customInput extends HTMLElement {
          input.value = formattedValue;
          this.valor = formattedValue;
          this.updateJsonValue(input.name, inputValue);
+         slideSeis.validateTecnnology();
       }
    }
 
@@ -130,7 +131,7 @@ class customInput extends HTMLElement {
       veeva.calculadora.tecnologias.totalRiesgoBajo = veeva.calculadora.tecnologias.monoterapias.bajo + veeva.calculadora.tecnologias.terapiasDobles.bajo + veeva.calculadora.tecnologias.terapiasTripes.bajo;
       veeva.calculadora.tecnologias.totalRiesgoIntermedio = veeva.calculadora.tecnologias.monoterapias.intermedio + veeva.calculadora.tecnologias.terapiasDobles.intermedio + veeva.calculadora.tecnologias.terapiasTripes.intermedio;
       veeva.calculadora.tecnologias.totalRiesgoAlto = veeva.calculadora.tecnologias.monoterapias.alto + veeva.calculadora.tecnologias.terapiasDobles.alto + veeva.calculadora.tecnologias.terapiasTripes.alto;
-      
+
       slideSeis.updateInputTecnologias();
    }
 

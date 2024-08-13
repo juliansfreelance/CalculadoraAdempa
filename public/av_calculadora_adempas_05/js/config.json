@@ -391,9 +391,209 @@
             }
          }
       },
-      "complicaciones":[
-
-      ],
+      "complicaciones":{
+         "probabilidades" : [
+            {
+               "nombre": "Hospitalizaciones por causas diferentes a falla cardiaca derecha",
+               "bajo": 0,
+               "intermedio": 0,
+               "alto": 0
+            },
+            {
+               "nombre": "Falla cardiaca en hospitalización general",
+               "bajo": 0,
+               "intermedio": 0,
+               "alto": 0
+            },
+            {
+               "nombre": "Falla cardiaca derecha de paciente Crítico",
+               "bajo": 0,
+               "intermedio": 0,
+               "alto": 0
+            }
+         ],
+         "costo": [
+            {
+               "nombre": "Hospitalizaciones por causas diferentes a falla cardiaca derecha",
+               "bajo": 0,
+               "intermedio": 0,
+               "alto": 0
+            },
+            {
+               "nombre": "Falla cardiaca en hospitalización general",
+               "bajo": 0,
+               "intermedio": 0,
+               "alto": 0
+            },
+            {
+               "nombre": "Falla cardiaca derecha de paciente Crítico",
+               "bajo": 0,
+               "intermedio": 0,
+               "alto": 0
+            }
+         ],
+         "microcosteo": {
+            "title": "Microcosteo Complicación Falla cardíaca derecha",
+            "rubros":[
+               {
+                  "nombre": "Hemograma tipo IV",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "BUN",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Creatinina",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Potasio",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Sodio",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Gases arteriales",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Rx de torax",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Oxígeno por VM",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Dia de hospitalización en UCI",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Hospitalización General (Unipersonal complejidad alta)",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Nutrición enteral x día",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Ecocardiograma transtorácico seguimiento x 1",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Infusión furosemida aprox 10 mg h = 240 mg día",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Infusión dobutamina 5 mcg k min xa 70 kg = 504 mg dia",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Infusión milrinone 0.37 mcg k min xa 70 kg = 37 mg día",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Infusión levosimendan x 1 amp dosis única",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Infusión noradrenalina 0.2 mcg k min xa 70 kg = 20 mg día",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Infusión vasopresina 2 U h = 48 UI día",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "ECMO x día (cuidado diario)",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Canulación periférica (1 vez)",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Reacomodación ECMO (Cambios cánulas o configuración)",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Retiro ECMO (1 vez)",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Transfusión GRE x 1 U GRE",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Transfusión plaquetas aféresis",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Trasplante bilateral de pulmón",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               }
+            ]
+         }
+      },
+      "procedimientos": {
+         "bajo": 0,
+         "intermedio": 0,
+         "alto": 0,
+         "promedio": 0
+      },
       "referencias": {
          "grupos": [
             {
@@ -667,6 +867,179 @@
                   }
                ]
             }
+         },
+         "complicaciones": {
+            "probabilidades": [
+               {
+                  "nombre": "Hospitalizaciones por causas diferentes a falla cardiaca derecha",
+                  "bajo": 2.7,
+                  "intermedio": 25.1,
+                  "alto": 36.1
+               },
+               {
+                  "nombre": "Falla cardiaca en hospitalización general",
+                  "bajo": 2.2,
+                  "intermedio": 5.6,
+                  "alto": 9.0
+               },
+               {
+                  "nombre": "Falla cardiaca derecha de paciente Crítico",
+                  "bajo": 0.2,
+                  "intermedio": 2.8,
+                  "alto": 9.0
+               }
+            ],
+            "costo": [
+               {
+                  "nombre": "Hospitalizaciones por causas diferentes a falla cardiaca derecha",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Falla cardiaca en hospitalización general",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               },
+               {
+                  "nombre": "Falla cardiaca derecha de paciente Crítico",
+                  "bajo": 0,
+                  "intermedio": 0,
+                  "alto": 0
+               }
+            ],
+            "frecuencia":[
+               {
+                  "nombre": "Hospitalizaciones (Neumonía y No Neumonía) ",
+                  "valorUnitario": 11226089,
+                  "bajo": 1,
+                  "intermedio": 1.1,
+                  "alto": 1.15
+               },
+               {
+                  "nombre": "Falla cardiaca derecha",
+                  "valorUnitario": 6427887,
+                  "bajo": 1,
+                  "intermedio": 1.1,
+                  "alto": 1.15
+               }
+            ],
+            "microcosteo":[
+               {
+                  "nombre":"Hemograma tipo IV",
+                  "valorUnitario": 21397
+               },
+               {
+                  "nombre":"BUN",
+                  "valorUnitario": 10039
+               },
+               {
+                  "nombre":"Creatinina",
+                  "valorUnitario": 10039
+               },
+               {
+                  "nombre":"Potasio",
+                  "valorUnitario": 11547
+               },
+               {
+                  "nombre":"Sodio",
+                  "valorUnitario": 16260
+               },
+               {
+                  "nombre":"Gases arteriales",
+                  "valorUnitario": 24649
+               },
+               {
+                  "nombre":"Rx de torax",
+                  "valorUnitario": 27478
+               },
+               {
+                  "nombre":"Oxígeno por VM",
+                  "valorUnitario": 190820
+               },
+               {
+                  "nombre":"Dia de hospitalización en UCI",
+                  "valorUnitario": 722137
+               },
+               {
+                  "nombre":"Hospitalización General (Unipersonal complejidad alta)",
+                  "valorUnitario": 111447
+               },
+               {
+                  "nombre":"Nutrición enteral x día",
+                  "valorUnitario": 5413.10
+               },
+               {
+                  "nombre":"Ecocardiograma transtorácico seguimiento x 1",
+                  "valorUnitario": 122681
+               },
+               {
+                  "nombre":"Infusión furosemida aprox 10 mg h = 240 mg día",
+                  "valorUnitario": 56
+               },
+               {
+                  "nombre":"Infusión dobutamina 5 mcg k min xa 70 kg = 504 mg dia",
+                  "valorUnitario": 45
+               },
+               {
+                  "nombre":"Infusión milrinone 0.37 mcg k min xa 70 kg = 37 mg día",
+                  "valorUnitario": 89
+               },
+               {
+                  "nombre":"Infusión levosimendan x 1 amp dosis única",
+                  "valorUnitario": 1000000
+               },
+               {
+                  "nombre":"Infusión noradrenalina 0.2 mcg k min xa 70 kg = 20 mg día",
+                  "valorUnitario": 14
+               },
+               {
+                  "nombre":"Infusión vasopresina 2 U h = 48 UI día",
+                  "valorUnitario": 12
+               },
+               {
+                  "nombre":"ECMO x día (cuidado diario)",
+                  "valorUnitario": 2000000
+               },
+               {
+                  "nombre":"Canulación periférica (1 vez)",
+                  "valorUnitario": 666667
+               },
+               {
+                  "nombre":"Reacomodación ECMO (Cambios cánulas o configuración)",
+                  "valorUnitario": 666667
+               },
+               {
+                  "nombre":"Retiro ECMO (1 vez)",
+                  "valorUnitario": 666667
+               },
+               {
+                  "nombre":"Transfusión GRE x 1 U GRE",
+                  "valorUnitario": 154499
+               },
+               {
+                  "nombre":"Transfusión plaquetas aféresis",
+                  "valorUnitario": 35079
+               },
+               {
+                  "nombre":"Trasplante bilateral de pulmón",
+                  "valorUnitario": 822500000
+               }
+            ]
+         },
+         "procedimientos": {
+            "HAP":{
+               "bajo": 3093312,
+               "intermedio": 3561425,
+               "alto":  4455496
+            },
+            "HTEC": {
+               "bajo": 119460222,
+               "intermedio": 119928335,
+               "alto": 120822406
+
+            }
          }
       },
       "chartOptions":{
@@ -693,6 +1066,17 @@
                "Estadificación riesgo Alto"
             ],
             "valores": []
+         },
+         "chartProcedures":{
+            "type": "bar",
+            "title": "Costo procedimientos anual de uso por paciente",
+            "names": [
+               "Estadificación riesgo Bajo",
+               "Estadificación riesgo Intermedio",
+               "Estadificación riesgo Alto"
+            ],
+            "valores": []
+
          },
          "colors": [
             "rgba(75, 192, 192, 1)",
