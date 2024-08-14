@@ -30,6 +30,35 @@ let slideOcho = {
       });
    },
 
+   calcComplicationsRef: function () {
+      const costo = veeva.calculadora.referencias.complicaciones.costo;
+      const frecuencias = veeva.calculadora.referencias.complicaciones.frecuencia;
+      const microcosteo = veeva.calculadora.referencias.complicaciones.microcosteo;
+
+      frecuencias.forEach((frecuencia, index) => {
+         costo[index].bajo = frecuencia.valorUnitario * frecuencia.bajo;
+         costo[index].intermedio = frecuencia.valorUnitario * frecuencia.intermedio;
+         costo[index].alto = frecuencia.valorUnitario * frecuencia.alto;
+      });
+      microcosteo.forEach(item => {
+         item.costo.bajo = item.valorUnitario * item.cantidad.bajo;
+         item.costo.intermedio = item.valorUnitario * item.cantidad.intermedio;
+         item.costo.alto = item.valorUnitario * item.cantidad.alto;
+         costo[2].bajo += item.costo.bajo;
+         costo[2].intermedio += item.costo.intermedio;
+         costo[2].alto += item.costo.alto;
+      });
+      slideOcho.syncValorUnitRubrosWithReference()
+   },
+
+   syncValorUnitRubrosWithReference: function () {
+      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
+      const referencias = veeva.calculadora.referencias.complicaciones;
+      rubros.forEach((rubro, index) => {
+         rubro.valorUnitario = referencias.microcosteo[index].valorUnitario;
+      });
+   },
+
    jumpToSlide: function (slide) {
       slide === '02' ? localStorage.setItem('instrucciones', true) : localStorage.removeItem('instrucciones');
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
@@ -115,39 +144,21 @@ let slideOcho = {
       }
    },
 
-   formatNumber: function (val) {
-      const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
-      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
-      if (val !== '') {
-         let inputValue = val.toString().replace(/[^\d,.]/g, '');
-         let integer = parseFloat(inputValue.replace(/\./g, '').replace(/,/g, '.'));
-         return inputValue.indexOf(',') !== -1 ? FORMAT_DECIMAL(integer).format() : FORMAT_ENTERO(integer).format();
-      }
-   },
-
-   formatToFloatMoney: function(value) {
-      return slideOcho.formatNumber(parseInt(value));
-   },
-
-   formatToFloatString: function (value) {
-      let floatValue = parseFloat(value).toFixed(2);
-      return floatValue.replace('.', ',');
-   },
-
    updateInputCosts: function () {
+      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
       const costos = veeva.calculadora.complicaciones.costos;
       const costTypes = ['bajo', 'intermedio', 'alto'];
       const costGroups = ['costo-1', 'costo-2', 'costo-3'];
       const setValues = (group, values) => {
          costTypes.forEach((type, index) => {
-            document.querySelector(`input[name='${group}-${type}']`).value = slideOcho.formatToFloatMoney(values[type]);
+            document.querySelector(`input[name='${group}-${type}']`).value = FORMAT_ENTERO(values[type]).format();
          });
       };
       costGroups.forEach((group, index) => {
          setValues(group, costos[index]);
       });
       costTypes.forEach(type => {
-         document.querySelector(`input[name='total-${type}']`).value = slideOcho.formatToFloatMoney(costos[3][type]);
+         document.querySelector(`input[name='total-${type}']`).value = FORMAT_ENTERO(costos[3][type]).format();
       });
       const customAlert = document.querySelector('custom-alert.block');
       if (customAlert) {
@@ -162,29 +173,52 @@ let slideOcho = {
       const costos = veeva.calculadora.complicaciones.costos;
       const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
       const referencias = veeva.calculadora.referencias.complicaciones;
-
+      rubros.forEach((rubro, index) => {
+         rubro.cantidad.bajo = referencias.microcosteo[index].cantidad.bajo;
+         rubro.costo.bajo = referencias.microcosteo[index].costo.bajo;
+         rubro.cantidad.intermedio = referencias.microcosteo[index].cantidad.intermedio;
+         rubro.costo.intermedio = referencias.microcosteo[index].costo.intermedio;
+         rubro.cantidad.alto = referencias.microcosteo[index].cantidad.alto;
+         rubro.costo.alto = referencias.microcosteo[index].costo.alto;
+      });
       referencias.costo.forEach((referencia, index) => {
          costos[index].bajo = referencia.bajo;
          costos[index].intermedio = referencia.intermedio;
          costos[index].alto = referencia.alto;
       });
-      rubros.forEach((rubro, index) => {
-         rubro.bajo = referencias.microcosteo[index].cantidad.bajo;
-         rubro.intermedio = referencias.microcosteo[index].cantidad.intermedio;
-         rubro.alto = referencias.microcosteo[index].cantidad.alto;
+      costos[3].bajo = 0; costos[3].intermedio = 0; costos[3].alto = 0
+      costos.forEach((costo) => {
+         if (costo.nombre !== "Totales") {
+            costos[3].bajo += costo.bajo;
+            costos[3].intermedio += costo.intermedio;
+            costos[3].alto += costo.alto;
+         }
       });
+
       slideOcho.actualizarInputs()
    },
 
    actualizarInputs: function () {
+      const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
       const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
       const inputs = document.querySelectorAll('input[name^="microcosteo"]');
       inputs.forEach(input => {
       const name = input.name;
       const [tipo, index, riesgo] = name.split('-');
-         input.value = slideOcho.formatToFloatString(rubros[index][riesgo]);
+         input.value = FORMAT_DECIMAL(rubros[index].cantidad[riesgo]).format();
       });
       slideOcho.updateInputCosts();
+   },
+
+   calcMicrocosteo: function () {
+      const costo = veeva.calculadora.complicaciones.costos;
+      const microcosteo = veeva.calculadora.complicaciones.microcosteo.rubros;
+      costo[2].bajo = 0; costo[2].intermedio = 0; costo[2].alto = 0;
+      microcosteo.forEach(item => {
+         costo[2].bajo += item.costo.bajo;
+         costo[2].intermedio += item.costo.intermedio;
+         costo[2].alto += item.costo.alto;
+      });
    },
 
    validateCosts: function () {
@@ -225,6 +259,19 @@ let slideOcho = {
          localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
          slideOcho.jumpToSlide('09');
       }
+   },
+   prueba: function () {
+      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
+      const referencias = veeva.calculadora.referencias.complicaciones;
+      rubros.forEach((rubro, index) => {
+         rubro.cantidad.bajo = referencias.microcosteo[index].cantidad.bajo;
+         rubro.costo.bajo = referencias.microcosteo[index].costo.bajo;
+         rubro.cantidad.intermedio = referencias.microcosteo[index].cantidad.intermedio;
+         rubro.costo.intermedio = referencias.microcosteo[index].costo.intermedio;
+         rubro.cantidad.alto = referencias.microcosteo[index].cantidad.alto;
+         rubro.costo.alto = referencias.microcosteo[index].costo.alto;
+      });
+      slideOcho.actualizarInputs();
    }
 };
 
@@ -234,6 +281,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
       slideOcho.ini();
       setTimeout(() => {
+         slideOcho.calcComplicationsRef();
          slideOcho.updateInputCosts();
       }, 1000);
    });

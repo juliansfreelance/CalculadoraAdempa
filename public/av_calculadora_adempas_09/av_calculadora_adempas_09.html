@@ -64,7 +64,7 @@
                   </thead>
                   <tbody>
                      <tr>
-                        <td class="text-xs max-w-[150px]">Distribución de la cohorte por categoria de riesgo</td>
+                        <td class="text-xs">Distribución de la cohorte por categoria de riesgo</td>
                         <td><custom-input name="res-risk-bajo" type="calc" icon=""></custom-input></td>
                         <td><custom-input name="res-risk-intermedio" type="calc" icon=""></custom-input></td>
                         <td><custom-input name="res-risk-alto" type="calc" icon=""></custom-input></td>
@@ -100,10 +100,52 @@
                   </div>
                </button>
             </header>
-            <main class="folder-contents">
-               <h4 class="font-extrabold text-2xl text-lime-600">Costo total por paciente</h4>
-               <p></p>
-            </main>
+            <section class="folder-contents">
+               <h4 class="text-lime-600">Costo total por paciente</h4>
+               <section>
+                  <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
+                     <div class="form">
+                        <table class="w-full table-auto">
+                           <thead>
+                              <tr>
+                                 <th></th>
+                                 <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
+                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
+                                 <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td class="text-xs">Costo total por paciente</td>
+                                 <td><custom-input name="res-patient-bajo" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-patient-intermedio" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-patient-alto" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-patient-total" type="calc"></custom-input></td>
+                              </tr>
+                              <tr>
+                                 <td class="text-xs font-bold">Promedio Total</td>
+                                 <td colspan="4" class="bg-green-100 rounded-md"><custom-input name="res-patient-promedio" type="calc" icon="money"></custom-input></td>
+                              </tr>
+                              <tr>
+                                 <td colspan="3" class="text-xs">
+                                    <p>Representación <span class="font-bold text-green-500">Estadificación riesgo Bajo</span> versus total: <span class="font-bold patient-estadificacion-bajo"></span>%</p>
+                                    <p>Representación <span class="font-bold text-cyan-500">Estadificación riesgo Intermedio</span> versus total: <span class="font-bold patient-estadificacion-intermedio"></span>%</p>
+                                    <p>Representación <span class="font-bold text-red-500">Estadificación riesgo Alto</span> versus total: <span class="font-bold patient-estadificacion-alto"></span>%</p>
+                                 </td>
+                                 <td colspan="2" class="text-xs text-right">
+                                    <p>Representación <span class="font-bold text-amber-500">Tecnologías</span> versus total: <span class="font-bold patient-represent-tecno"></span>%</p>
+                                    <p>Representación <span class="font-bold text-pink-600">Procedimientos</span> versus total: <span class="font-bold patient-represent-proced"></span>%</p>
+                                    <p>Representación <span class="font-bold text-teal-600">Complicaciones</span> versus total: <span class="font-bold patient-represent-compli"></span>%</p>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="chart chart-patient animate-fade-in-up animate-delay-900"></div>
+               </section>
+            </section>
          </section>
 
          <section class="folder close" id="pocedimientos">
@@ -120,9 +162,9 @@
                   </div>
                </button>
             </header>
-            <main class="folder-contents">
-               <h4 class="font-extrabold text-2xl text-pink-600">Costo procedimientos anual de uso por paciente</h4>
-               <section class="flex-grow grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center">
+            <section class="folder-contents">
+               <h4 class="text-pink-600">Costo procedimientos anual de uso por paciente</h4>
+               <section>
                   <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
                      <div class="form">
                         <table class="w-full table-auto">
@@ -136,7 +178,7 @@
                            </thead>
                            <tbody>
                               <tr>
-                                 <td class="text-xs max-w-[150px]">Costo procedimientos anual de uso por paciente</td>
+                                 <td class="text-xs">Costo procedimientos anual de uso por paciente</td>
                                  <td><custom-input name="res-procedimientos-bajo" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-procedimientos-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-procedimientos-alto" type="calc" icon="money"></custom-input></td>
@@ -154,7 +196,7 @@
                   <div class="chart chart-procedures animate-fade-in-up animate-delay-900"></div>
                </section>
                <p></p>
-            </main>
+            </section>
          </section>
 
          <section class="folder close" id="tecnologias">
@@ -174,7 +216,7 @@
 
             <section class="folder-contents">
                <h4 class="text-amber-500">Costo anual de tecnologías por paciente al año</h4>
-               <section class="flex-grow grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center">
+               <section>
                   <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
                      <div class="form">
                         <table class="w-full table-auto">
@@ -188,7 +230,7 @@
                            </thead>
                            <tbody>
                               <tr>
-                                 <td class="text-xs max-w-[150px]">Costo anual de tecnologías por paciente año</td>
+                                 <td class="text-xs">Costo anual de tecnologías por paciente año</td>
                                  <td><custom-input name="res-tecno-bajo" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-tecno-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-tecno-alto" type="calc" icon="money"></custom-input></td>
@@ -220,10 +262,130 @@
                   </div>
                </button>
             </header>
-            <main class="folder-contents">
-               <h4 class="font-extrabold text-2xl text-sky-600">COHORTE</h4>
-               <p></p>
-            </main>
+            <section class="folder-contents">
+               <h4 class="text-sky-600">COHORTE</h4>
+               <section>
+                  <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
+                     <div class="form">
+                        <h5>Número de pacientes con complicaciones de la cohorte</h5>
+                        <table class="w-full table-auto">
+                           <thead>
+                              <tr>
+                                 <th></th>
+                                 <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
+                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
+                                 <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td class="text-xs">Hospitalizaciones por causas diferentes a falla cardiaca derecha</td>
+                                 <td><custom-input name="res-cohorte-1-1-bajo" type="calc"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-1-1-intermedio" type="calc"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-1-1-alto" type="calc"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-1-1-total" type="calc"></custom-input></td>
+                              </tr>
+                              <tr>
+                                 <td class="text-xs">Falla cardiaca en hospitalización general</td>
+                                 <td><custom-input name="res-cohorte-1-2-bajo" type="calc"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-1-2-intermedio" type="calc"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-1-2-alto" type="calc"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-1-2-total" type="calc"></custom-input></td>
+                              </tr>
+                              <tr>
+                                 <td class="text-xs">Falla cardiaca derecha de paciente Crítico</td>
+                                 <td><custom-input name="res-cohorte-1-3-bajo" type="calc"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-1-3-intermedio" type="calc"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-1-3-alto" type="calc"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-1-3-total" type="calc"></custom-input></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+
+                  <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
+                     <div class="form">
+                        <h5>Costo de complicaciones de la cohorte</h5>
+                        <table class="w-full table-auto">
+                           <thead>
+                              <tr>
+                                 <th></th>
+                                 <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
+                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
+                                 <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td class="text-xs">Hospitalizaciones por causas diferentes a falla cardiaca derecha</td>
+                                 <td><custom-input name="res-cohorte-2-1-bajo" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-2-1-intermedio" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-2-1-alto" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-2-1-total" type="calc" icon="money"></custom-input></td>
+                              </tr>
+                              <tr>
+                                 <td class="text-xs">Falla cardiaca en hospitalización general</td>
+                                 <td><custom-input name="res-cohorte-2-2-bajo" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-2-2-intermedio" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-2-2-alto" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-2-2-total" type="calc" icon="money"></custom-input></td>
+                              </tr>
+                              <tr>
+                                 <td class="text-xs">Falla cardiaca derecha de paciente Crítico</td>
+                                 <td><custom-input name="res-cohorte-2-3-bajo" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-2-3-intermedio" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-2-3-alto" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-2-3-total" type="calc" icon="money"></custom-input></td>
+                              </tr>
+                              <tr>
+                                 <td class="font-bold text-sm text-text-500">TOTAL</td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-2-4-bajo" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-2-4-intermedio" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-2-4-alto" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-2-4-total" type="calc" icon="money"></custom-input></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+
+                  <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
+                     <div class="form">
+                        <h5>Costo de la cohorte</h5>
+                        <table class="w-full table-auto">
+                           <thead>
+                              <tr>
+                                 <th></th>
+                                 <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
+                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
+                                 <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td class="text-xs">Costo de la cohorte</td>
+                                 <td><custom-input name="res-cohorte-3-1-bajo" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-3-1-intermedio" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-cohorte-3-1-alto" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-3-1-total" type="calc"
+                                       icon="money"></custom-input></td>
+                              </tr>
+                              <tr>
+                                 <td class="text-xs font-bold">Porcentaje versus el total</td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-3-2-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-3-2-intermedio" type="calc" icon="porcentaje"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-cohorte-3-2-alto" type="calc" icon="porcentaje"></custom-input></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </section>
+            </section>
          </section>
       </section>
 

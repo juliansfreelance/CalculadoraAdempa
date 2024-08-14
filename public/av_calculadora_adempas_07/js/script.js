@@ -187,14 +187,9 @@ let slideSiete = {
       ];
 
       inputs.forEach(({ value, parentTd }) => {
-         if (value === 0) {
-            parentTd.classList.add('input-error');
-            error.classList.remove('hidden');
-         } else {
-            parentTd.classList.remove('input-error');
-            error.classList.add('hidden');
-         }
+         value === 0 ? parentTd.classList.add('input-error') : parentTd.classList.remove('input-error');
       });
+      inputs.every(({ value }) => value !== 0) ? error.classList.add('hidden') : error.classList.remove('hidden');
 
       const validate = inputs.every(({ value }) => value !== 0);
       return validate;

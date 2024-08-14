@@ -1,28 +1,28 @@
-const chartHomeModule = {
-   chartIni: function (veeva) {
-      const ctx = document.getElementById('chartHome').getContext('2d');
-      const names = veeva.calculadora.chartOptions.chartHome.names;
-      const valores = veeva.calculadora.chartOptions.chartHome.valores;
+const chartPatientModule = {
+   chartPatient: function (veeva) {
+      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
 
-      const valorMinimo = Math.min(...valores);
-      const valorMaximo = Math.max(...valores);
+      const ctx = document.getElementById('chartPatient').getContext('2d');
+      const names = veeva.calculadora.chartOptions.chartPatient.names;
+      const valoresPatient = veeva.calculadora.chartOptions.chartPatient.valores;
 
-      
-      const valorMinimoDigitos = parseInt(valorMinimo).toString().length;
-      const valorMaximoDigitos = parseInt(valorMaximo).toString().length;
+      const valorMinimoPatient = Math.min(...valoresPatient);
+      const valorMaximoPatient = Math.max(...valoresPatient);
 
-      const min = Math.round(((valorMinimo - parseInt('1' + '0'.repeat(valorMinimoDigitos - 1))) / parseInt('1' + '0'.repeat(valorMinimoDigitos - 1)))) * parseInt('1' + '0'.repeat(valorMinimoDigitos - 1));
-      const max = Math.round(((parseInt('1' + '0'.repeat(valorMaximoDigitos - 1)) + valorMaximo) / (parseInt('1' + '0'.repeat(valorMaximoDigitos - 1)))) * parseInt('1' + '0'.repeat(valorMaximoDigitos - 1)) + 5);
+      const valorMinimoDigitosPatient = parseInt(valorMinimoPatient).toString().length;
+      const valorMaximoDigitosPatient = parseInt(valorMaximoPatient).toString().length;
 
+      const min = Math.round(((valorMinimoPatient - parseInt('1' + '0'.repeat(valorMinimoDigitosPatient - 1))) / parseInt('1' + '0'.repeat(valorMinimoDigitosPatient - 1)))) * parseInt('1' + '0'.repeat(valorMinimoDigitosPatient - 1));
+      const max = Math.round(((parseInt('1' + '0'.repeat(valorMaximoDigitosPatient - 1)) + valorMaximoPatient) / parseInt('1' + '0'.repeat(valorMaximoDigitosPatient - 1)))) * parseInt('1' + '0'.repeat(valorMaximoDigitosPatient - 1));
 
       Chart.defaults.font.family = "'FSAlbert'";
-      const chartHome = new Chart(ctx, {
-         type: veeva.calculadora.chartOptions.chartHome.type,
+      const chartPatient = new Chart(ctx, {
+         type: veeva.calculadora.chartOptions.chartPatient.type,
          data: {
             labels: names,
             datasets: [{
-               label: veeva.calculadora.chartOptions.chartHome.title,
-               data: valores,
+               label: veeva.calculadora.chartOptions.chartPatient.title,
+               data: valoresPatient,
                backgroundColor: veeva.calculadora.chartOptions.colorsOpacity,
                borderColor: veeva.calculadora.chartOptions.colors,
                borderWidth: veeva.calculadora.chartOptions.borderWidth,
@@ -34,7 +34,6 @@ const chartHomeModule = {
                y: {
                   min: min,
                   max: max,
-
                },
                x: {
                   ticks: {
@@ -49,8 +48,7 @@ const chartHomeModule = {
                   anchor: 'end',
                   align: 'end',
                   formatter: (value, context) => {
-                     const categorias = ['bajo', 'intermedio', 'alto'];
-                     let formato = `${value}% - ${veeva.calculadora.estadificacionCategoria[categorias[context.datasetIndex]]}`;
+                     let formato = `$ ${FORMAT_ENTERO(value).format()}`;
                      return formato;
                   },
                   color: veeva.calculadora.chartOptions.colors,
@@ -66,7 +64,7 @@ const chartHomeModule = {
                },
                title: {
                   display: true,
-                  text: veeva.calculadora.chartOptions.chartHome.title,
+                  text: veeva.calculadora.chartOptions.chartPatient.title,
                   color: veeva.calculadora.chartOptions.title.color,
                   font: {
                      family: veeva.calculadora.chartOptions.title.font.family,
@@ -79,9 +77,7 @@ const chartHomeModule = {
                tooltip: {
                   callbacks: {
                      label: function (context) {
-                        const categorias = ['bajo', 'intermedio', 'alto'];
-                        let formato = `  ${context.raw}% - ${veeva.calculadora.estadificacionCategoria[categorias[context.datasetIndex]]}`;
-                        return formato;
+                        return `  $ ${FORMAT_ENTERO(context.raw).format()}`;
                      }
                   }
                }
@@ -92,4 +88,4 @@ const chartHomeModule = {
    }
 };
 
-export default chartHomeModule;
+export default chartPatientModule;

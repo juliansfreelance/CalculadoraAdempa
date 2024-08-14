@@ -42,26 +42,6 @@ let slideCinco = {
             inputsElement.classList.replace('hidden', 'flex');
             htpEstudy.classList.replace('hidden', 'grid');
          }
-      } else {
-         // calcular costos de complicaciones Referencia
-         const costo = veeva.calculadora.referencias.complicaciones.costo
-         const frecuencias = veeva.calculadora.referencias.complicaciones.frecuencia;
-         const microcosteo = veeva.calculadora.referencias.complicaciones.microcosteo;
-
-         frecuencias.forEach((frecuencia, index) => {
-            costo[index].bajo = frecuencia.valorUnitario * frecuencia.bajo;
-            costo[index].intermedio = frecuencia.valorUnitario * frecuencia.intermedio;
-            costo[index].alto = frecuencia.valorUnitario * frecuencia.alto;
-         });
-         microcosteo.forEach(item => {
-            item.costo.bajo = item.valorUnitario * item.cantidad.bajo;
-            item.costo.intermedio = item.valorUnitario * item.cantidad.intermedio;
-            item.costo.alto = item.valorUnitario * item.cantidad.alto;
-            costo[2].bajo += item.costo.bajo;
-            costo[2].intermedio += item.costo.intermedio;
-            costo[2].alto += item.costo.alto;
-         });
-         console.log('Veeva desde el json: ', veeva);
       }
       inputElement.addEventListener('input', slideCinco.handleInput);
       inputElement.addEventListener('blur', slideCinco.handleBlur);

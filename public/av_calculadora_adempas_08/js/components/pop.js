@@ -20,9 +20,9 @@ class customPop extends HTMLElement{
             rubrosHTML += `
                <tr>
                   <td>${rubro.nombre}</td>
-                  <td><custom-input name="${this.type}-${i}-bajo" type="edit" valor="${this.formatToFloatString(rubro.bajo)}"></custom-input></td>
-                  <td><custom-input name="${this.type}-${i}-intermedio" type="edit" valor="${this.formatToFloatString(rubro.intermedio)}"></custom-input></td>
-                  <td><custom-input name="${this.type}-${i}-alto" type="edit" valor="${this.formatToFloatString(rubro.alto)}"></custom-input></td>
+                  <td><custom-input name="${this.type}-${i}-bajo" type="edit" valor="${this.formatToFloatString(rubro.cantidad.bajo)}"></custom-input></td>
+                  <td><custom-input name="${this.type}-${i}-intermedio" type="edit" valor="${this.formatToFloatString(rubro.cantidad.intermedio)}"></custom-input></td>
+                  <td><custom-input name="${this.type}-${i}-alto" type="edit" valor="${this.formatToFloatString(rubro.cantidad.alto)}"></custom-input></td>
                </tr>`;
          }
       });
@@ -77,7 +77,8 @@ class customPop extends HTMLElement{
                   </div>
                </div>
             </section>
-            <article class="w-full text-left text-text-500 text-sm leading-none pt-3"><ul class="list-disc ml-24"><li>Ingrese la cantidad por paciente</li></ul></article>
+            <article class="w-full text-left text-text-500 text-sm leading-none pt-3"><ul class="list-disc ml-24"><li>Ingrese la cantidad por paciente</li></ul>
+            <p onclick="slideOcho.prueba();">Prueba</p></article>
          </section>`;
          slideOcho.updateInputCosts();
       });

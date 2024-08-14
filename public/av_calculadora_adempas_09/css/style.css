@@ -972,6 +972,10 @@ select {
   margin-bottom: 1rem;
 }
 
+.ml-24 {
+  margin-left: 6rem;
+}
+
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -1033,6 +1037,10 @@ select {
   height: 2rem;
 }
 
+.h-\[400px\] {
+  height: 400px;
+}
+
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -1059,16 +1067,8 @@ select {
   width: 100vw;
 }
 
-.max-w-\[150px\] {
-  max-width: 150px;
-}
-
 .max-w-\[200px\] {
   max-width: 200px;
-}
-
-.flex-grow {
-  flex-grow: 1;
 }
 
 .table-auto {
@@ -1214,14 +1214,6 @@ select {
   list-style-type: disc;
 }
 
-.grid-flow-row {
-  grid-auto-flow: row;
-}
-
-.auto-rows-max {
-  grid-auto-rows: max-content;
-}
-
 .grid-cols-10 {
   grid-template-columns: repeat(10, minmax(0, 1fr));
 }
@@ -1266,10 +1258,6 @@ select {
   justify-content: space-between;
 }
 
-.justify-items-center {
-  justify-items: center;
-}
-
 .gap-0 {
   gap: 0px;
 }
@@ -1292,6 +1280,10 @@ select {
 
 .self-start {
   align-self: flex-start;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
 
 .rounded-full {
@@ -1354,6 +1346,10 @@ select {
   padding-top: 0.5rem;
 }
 
+.pt-3 {
+  padding-top: 0.75rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1362,9 +1358,8 @@ select {
   text-align: center;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
+.text-right {
+  text-align: right;
 }
 
 .text-4xl {
@@ -1484,6 +1479,11 @@ select {
   color: rgb(2 132 199 / var(--tw-text-opacity));
 }
 
+.text-teal-600 {
+  --tw-text-opacity: 1;
+  color: rgb(13 148 136 / var(--tw-text-opacity));
+}
+
 .text-text-500 {
   --tw-text-opacity: 1;
   color: rgb(109 109 109 / var(--tw-text-opacity));
@@ -1534,6 +1534,10 @@ select {
 
 .animate-delay-100 {
   animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
 }
 
 .animate-delay-500 {
@@ -1602,17 +1606,25 @@ select {
 }
 
 *::-webkit-scrollbar-track {
+  border-radius: 3px;
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 
 *::-webkit-scrollbar-thumb {
-  --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+  border-radius: 3px;
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  --tw-gradient-from: #dc2626 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(220 38 38 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #d97706 var(--tw-gradient-to-position);
 }
 
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+          user-select: none !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   font-family: FSAlbert
@@ -2122,6 +2134,10 @@ main {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.resultados:last-child {
+  margin-bottom: 1rem;
+}
+
 .resultados .form {
   width: 100%;
   border-radius: 0.75rem;
@@ -2136,17 +2152,31 @@ main {
   color: rgb(109 109 109 / var(--tw-text-opacity));
 }
 
+.resultados .form h5 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(251 146 60 / var(--tw-text-opacity));
+}
+
+.resultados .form table {
+  border-collapse: separate;
+  --tw-border-spacing-x: 0.25rem;
+  --tw-border-spacing-y: 0.25rem;
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
+}
+
 .resultados .form table thead tr th {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   line-height: 1;
 }
 
+.resultados .form table tbody tr:first-child {
+  width: 209px !important;
+}
+
 .resultados .form table tbody tr td {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
+  padding: 0.25rem;
   line-height: 1;
 }
 
@@ -2303,8 +2333,6 @@ canvas {
   border-width: 2px;
   border-top-width: 0px;
   background-color: rgb(255 255 255 / 0.8);
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: 0.875rem;
@@ -2314,10 +2342,27 @@ canvas {
 }
 
 .folder-contents h4 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
   font-weight: 800;
+}
+
+.folder-contents section {
+  margin-right: 0.75rem;
+  display: grid;
+  height: 560px;
+  flex-grow: 1;
+  grid-auto-flow: row;
+  grid-auto-rows: max-content;
+  align-content: flex-start;
+  justify-items: center;
+  gap: 1rem;
+  overflow-y: auto;
+  padding-left: 1.5rem;
+  padding-right: 0.25rem;
 }
 
 #poblacion {

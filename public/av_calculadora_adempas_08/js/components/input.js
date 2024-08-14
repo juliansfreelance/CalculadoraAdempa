@@ -72,7 +72,7 @@ class customInput extends HTMLElement {
    }
 
    handleFocus(event) {
-      this.previousValue = event.target.value;
+      this.previousValue = event.target.value.replace(/\./g, '');
       event.target.value = '';
    }
 
@@ -128,14 +128,15 @@ class customInput extends HTMLElement {
       switch (tipo) {
          case 'costo':
             const costos = complicaciones.costos;
-            costos[index -1][riesgo] = parseFloat(value.replace(',', '.'));
+            costos[index - 1][riesgo] = parseFloat(value.replace(',', '.'));
          break;
          case 'microcosteo':
-            const rubros = complicaciones.rubros;
-            rubros[index][riesgo] = parseFloat(value.replace(',', '.'));
+            const rubros = complicaciones.microcosteo.rubros;
+            rubros[index].cantidad[riesgo] = parseFloat(value.replace(',', '.'));
+            rubros[index].costo[riesgo] = parseFloat(value.replace(',', '.') * rubros[index].valorUnitario);
+            slideOcho.calcMicrocosteo();
          break;
       }
-      console.log(complicaciones);
       this.updateGlobalValues();
    }
 

@@ -443,153 +443,353 @@
             "rubros":[
                {
                   "nombre": "Hemograma tipo IV",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "BUN",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Creatinina",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Potasio",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Sodio",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Gases arteriales",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Rx de torax",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Oxígeno por VM",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Dia de hospitalización en UCI",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Hospitalización General (Unipersonal complejidad alta)",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Nutrición enteral x día",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Ecocardiograma transtorácico seguimiento x 1",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Infusión furosemida aprox 10 mg h = 240 mg día",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Infusión dobutamina 5 mcg k min xa 70 kg = 504 mg dia",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Infusión milrinone 0.37 mcg k min xa 70 kg = 37 mg día",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Infusión levosimendan x 1 amp dosis única",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Infusión noradrenalina 0.2 mcg k min xa 70 kg = 20 mg día",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Infusión vasopresina 2 U h = 48 UI día",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "ECMO x día (cuidado diario)",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Canulación periférica (1 vez)",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Reacomodación ECMO (Cambios cánulas o configuración)",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Retiro ECMO (1 vez)",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Transfusión GRE x 1 U GRE",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Transfusión plaquetas aféresis",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre": "Trasplante bilateral de pulmón",
-                  "bajo": 0,
-                  "intermedio": 0,
-                  "alto": 0
+                  "valorUnitario": 0,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                }
             ]
          }
@@ -931,25 +1131,6 @@
                   "alto": 1.15
                }
             ],
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             "microcosteo":[
                {
                   "nombre":"Hemograma tipo IV",
@@ -1332,9 +1513,9 @@
                "@root.calculadora.estadificacionPacientes.alto"
             ]
          },
-         "chartTecnology": {
+         "chartPatient": {
             "type": "bar",
-            "title": "Costo anual de tecnologías por paciente al año",
+            "title": "Costo total por paciente",
             "names": [
                "Estadificación riesgo Bajo",
                "Estadificación riesgo Intermedio",
@@ -1351,7 +1532,16 @@
                "Estadificación riesgo Alto"
             ],
             "valores": []
-
+         },
+         "chartTecnology": {
+            "type": "bar",
+            "title": "Costo anual de tecnologías por paciente al año",
+            "names": [
+               "Estadificación riesgo Bajo",
+               "Estadificación riesgo Intermedio",
+               "Estadificación riesgo Alto"
+            ],
+            "valores": []
          },
          "colors": [
             "rgba(75, 192, 192, 1)",

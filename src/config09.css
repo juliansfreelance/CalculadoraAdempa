@@ -8,14 +8,14 @@
    @apply w-1.5 h-1.5;
 }
 *::-webkit-scrollbar-track {
-   @apply bg-slate-300
+   @apply bg-slate-300 rounded-[3px]
 }
 *::-webkit-scrollbar-thumb {
-   @apply bg-green-400;
+   @apply bg-gradient-to-b from-red-600 to-amber-600 rounded-[3px]
 }
 * {
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-   @apply antialiased !important;
+   @apply antialiased select-none !important;
    @apply font-albert
 }
 
@@ -200,14 +200,26 @@ main {
 .resultados {
    @apply flex flex-col-reverse drop-shadow-md w-full;
 }
+.resultados:last-child {
+   @apply mb-4;
+}
 .resultados .form {
    @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
 }
+.resultados .form h5 {
+   @apply text-orange-400 font-bold text-base
+}
+.resultados .form table  {
+   @apply border-spacing-1 border-separate
+}
 .resultados .form table thead tr th {
-   @apply leading-none py-2
+   @apply leading-none
+}
+.resultados .form table tbody tr:first-child {
+   @apply w-[209px] !important
 }
 .resultados .form table tbody tr td {
-   @apply leading-none py-1 px-1
+   @apply leading-none p-1
 }
 .resultados .label {
    @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
@@ -265,11 +277,13 @@ canvas {
 }
 
 .folder-contents {
-   @apply bg-white/80 h-[620px] px-6 py-4 border-2 border-t-0 rounded-b-xl w-full text-text-500 text-sm;
+   @apply bg-white/80 h-[620px] py-4 border-2 border-t-0 rounded-b-xl w-full text-text-500 text-sm;
 }
-
 .folder-contents h4 {
-   @apply font-extrabold text-2xl mb-4
+   @apply font-extrabold text-xl mb-3 px-6
+}
+.folder-contents section {
+   @apply pl-6 mr-3 pr-1 flex-grow grid grid-flow-row auto-rows-max justify-items-center gap-4 content-start overflow-y-auto h-[560px];
 }
 
 #poblacion {
