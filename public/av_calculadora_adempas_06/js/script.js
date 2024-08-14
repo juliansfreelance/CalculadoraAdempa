@@ -9,6 +9,7 @@
 let veeva = {};
 
 let slideSeis = {
+   validateCounnt: 0,
 
    ini: async function () {
       const calculadoraData = localStorage.getItem('calculadora');
@@ -35,7 +36,7 @@ let slideSeis = {
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
       } else {
-         document.location = `/CalculadoraAdempa/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+         document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
       }
    },
 
@@ -77,7 +78,7 @@ let slideSeis = {
             }
             break;
 
-         case 'ref-complicaciones':
+         case 'reset':
             if (customAlert) {
                customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
                customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
@@ -155,6 +156,7 @@ let slideSeis = {
       const customAlert = document.querySelector('custom-alert.block');
       if (customAlert) {
          setTimeout(() => {
+            slideSeis.validateTecnnology();
             slideSeis.closeAlert();
          }, 400);
       }
@@ -231,15 +233,6 @@ let slideSeis = {
       slideSeis.actualizarInputs()
    },
 
-   syncComplicationsWithReference: function(){
-      const customAlert = document.querySelector('custom-alert.block');
-      if (customAlert) {
-         setTimeout(() => {
-            slideSeis.closeAlert();
-         }, 400);
-      }
-   },
-
    actualizarInputs: function() {
       const tecnologias = veeva.calculadora.tecnologias;
       const inputs = document.querySelectorAll('input.porcentaje');
@@ -263,10 +256,49 @@ let slideSeis = {
       slideSeis.updateInputTecnologias();
    },
 
+   validateTecnnology: function () {
+      slideSeis.validateCounnt++;
+      const getValues = (names) => {
+         return names.map(name => parseFloat(document.querySelector(`input[name="${name}"]`).value.replace(',', '.')));
+      };
+      const updateErrorState = (selector, hasError) => {
+         document.querySelector(selector).classList.replace(hasError ? 'hidden' : 'flex', hasError ? 'flex' : 'hidden');
+      };
+      const updateValidationState = (selector, hasError) => {
+         document.querySelector(selector).classList.replace(hasError ? 'bg-slate-200' : 'bg-red-200', hasError ? 'bg-red-200' : 'bg-slate-200');
+         document.querySelector(selector.replace('total', 'error')).classList.replace(hasError ? 'hidden' : 'block', hasError ? 'block' : 'hidden');
+      };
+      const [monoterapiaBajoValue, monoterapiaIntermedioValue, monoterapiaAltoValue] = getValues(['monoterapia-bajo', 'monoterapia-intermedio', 'monoterapia-alto']);
+      const [dobleBajoValue, dobleIntermedioValue, dobleAltoValue] = getValues(['doble-bajo', 'doble-intermedio', 'doble-alto']);
+      const [tripleBajoValue, tripleIntermedioValue, tripleAltoValue] = getValues(['triple-bajo', 'triple-intermedio', 'triple-alto']);
+      const [totalTecnologyBajoValue, totalTecnologyIntermedioValue, totalTecnologyAltoValue] = getValues(['total-bajo', 'total-intermedio', 'total-alto']);
+      const monoterapiaTotal = monoterapiaBajoValue + monoterapiaIntermedioValue + monoterapiaAltoValue;
+      const dobleTotal = dobleBajoValue + dobleIntermedioValue + dobleAltoValue;
+      const tripleTotal = tripleBajoValue + tripleIntermedioValue + tripleAltoValue;
+      updateErrorState('.error-monoterapia', monoterapiaTotal === 0);
+      updateErrorState('.error-doble', dobleTotal === 0);
+      updateErrorState('.error-triple', tripleTotal === 0);
+      if (monoterapiaTotal !== 0 && dobleTotal !== 0 && tripleTotal !== 0) {
+         updateValidationState('.total-bajo', totalTecnologyBajoValue !== 100);
+         updateValidationState('.total-intermedio', totalTecnologyIntermedioValue !== 100);
+         updateValidationState('.total-alto', totalTecnologyAltoValue !== 100);
+      }
+
+      let validate = (
+         totalTecnologyBajoValue === 100 &&
+         totalTecnologyIntermedioValue === 100 &&
+         totalTecnologyAltoValue === 100
+      );
+      return validate;
+   },
+
    validarForm: function() {
-      console.log('Validacion slide 06 pendiente');
-      localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
-      slideSeis.jumpToSlide('07');
+      const validateTecnnology = slideSeis.validateTecnnology();
+      console.log('validacion exitosa', validateTecnnology);
+      if (validateTecnnology === true) {
+         localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+         slideSeis.jumpToSlide('07');
+      }
    }
 };
 

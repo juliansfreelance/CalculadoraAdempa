@@ -40,18 +40,37 @@ input[type=number] {
    @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6 relative
 }
 
-header {
-   @apply w-full px-16;
-}
 header hgroup {
-   @apply w-full h-[80px] flex justify-between items-center
+   @apply w-full h-fit flex justify-between items-center
 }
-header hgroup h2 {
-   @apply w-fit h-full flex items-center font-extrabold text-center text-white text-2xl leading-none px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl
+header hgroup span {
+   @apply flex gap-4
+}
+header hgroup div {
+   @apply w-fit flex flex-col items-center gap-2 px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end
+}
+header hgroup div h2 {
+   @apply font-extrabold text-center text-white text-[22px] leading-none;
+}
+header hgroup div h3 {
+   @apply font-thin text-white text-base leading-none;
 }
 
 main {
    @apply flex-grow px-7 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
+}
+
+.home-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
+}
+.home-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+.home-btn div {
+   @apply flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
+}
+.home-btn div svg {
+   @apply text-button-text;
 }
 
 .background-btn-blue {
@@ -199,7 +218,7 @@ main {
 
 .tratamiento,
 .complicaciones {
-   @apply flex flex-col-reverse drop-shadow-md w-full !important;
+   @apply flex flex-col-reverse drop-shadow-md w-full;
 }
 .tratamiento .form,
 .complicaciones .form {
@@ -207,6 +226,9 @@ main {
 }
 .tratamiento .form {
    @apply pr-4
+}
+.tratamiento .form table {
+   @apply border-spacing-x-1 border-separate;
 }
 .tratamiento .form table thead tr th,
 .complicaciones .form table thead tr th {
@@ -223,6 +245,13 @@ main {
 .tratamiento .label h4,
 .complicaciones .label h4 {
    @apply text-orange-400 font-bold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
+}
+
+.error {
+   @apply w-full px-4 text-red-500 leading-none text-xs italic text-center;
+}
+.error span {
+   @apply font-bold text-sm not-italic leading-none;
 }
 
 footer {
@@ -347,4 +376,3 @@ footer article p {
 .alert-conten-animate-out {
    @apply animate-fade-out-down animate-delay-200 animate-duration-slow
 }
-

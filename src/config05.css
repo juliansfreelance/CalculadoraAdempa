@@ -40,16 +40,26 @@ input[type=number] {
 }
 
 .slide {
-   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6  z-0;
+   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6 relative
 }
 
 header hgroup {
-   @apply w-full h-[80px] flex justify-between items-center
+   @apply w-full h-fit flex justify-between items-center
+}
+header hgroup span {
+   @apply flex gap-4
 }
 
-header hgroup h2 {
-   @apply w-fit h-full flex items-center font-extrabold text-center text-white text-2xl leading-none px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl
+header hgroup div {
+   @apply w-fit flex flex-col items-center gap-2 px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end
 }
+header hgroup div h2 {
+   @apply font-extrabold text-center text-white text-[22px] leading-none;
+}
+header hgroup div h3 {
+   @apply font-thin text-white text-base leading-none;
+}
+
 
 main {
    @apply flex-grow mx-40 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
@@ -87,6 +97,20 @@ main {
 }
 .background-btn-orange div {
    @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
+}
+
+
+.home-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
+}
+.home-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+.home-btn div {
+   @apply flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
+}
+.home-btn div svg {
+   @apply text-button-text;
 }
 
 .button-gray-corner-md {
@@ -226,42 +250,109 @@ footer article p {
    @apply font-helvet font-light leading-none text-center text-xs mt-2
 }
 
-.alert-conten {
+.pop-conten {
    @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex-col gap-4 justify-center items-center py-6 p-4;
 }
-.alert {
+.pop {
    @apply flex flex-col-reverse w-fit drop-shadow-md
 }
-.alert h4 {
+.pop h4 {
    @apply font-extrabold text-button-text
 }
-.alert .alert-form {
+.pop .pop-form {
    @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
 }
-.alert .alert-form table thead tr th {
+.pop .pop-form table thead tr th {
    @apply leading-none py-2
 }
-.alert .alert-form table tbody tr td {
+.pop .pop-form table tbody tr td {
    @apply leading-none py-1 px-1
 }
-.alert .alert-form table tbody tr td:first-child {
+.pop .pop-form table tbody tr td:first-child {
    @apply mr-2
 }
-.alert .alert-label {
+.pop .pop-label {
    @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
 }
-.alert .alert-label div {
+.pop .pop-label div {
    @apply flex justify-center items-center bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% pl-6 py-1 rounded-t-2xl
 }
-.alert .alert-label div h4 {
+.pop .pop-label div h4 {
    @apply text-orange-400 font-extrabold text-lg
 }
-.alert .alert-label div button {
+.pop .pop-label div button {
    @apply mx-3
 }
-.alert-animate-up {
+.pop-animate-up {
    @apply animate-fade-in animate-duration-slow
 }
-.alert-animate-down {
+.pop-animate-down {
    @apply animate-fade-out animate-duration-slow
+}
+
+.alert-conten {
+   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center z-[60] top-0 left-0;
+}
+.alert-conten .alert {
+   @apply flex flex-col-reverse w-fit drop-shadow-md
+}
+.alert-conten .alert .alert-contain {
+   @apply max-w-lg inline-block align-bottom rounded-xl text-left overflow-hidden shadow-xl
+}
+.alert-conten .alert .alert-contain .alert-body {
+   @apply bg-white flex-col items-start px-4 pt-5 pb-4
+}
+.alert-conten .alert .alert-contain .alert-body .header-icon {
+   @apply mx-auto flex-shrink-0 flex items-center justify-center w-fit p-3 rounded-full shadow-sm;
+}
+.alert-body.info .header-icon {
+   @apply bg-sky-100 text-sky-500
+}
+.alert-body.warning .header-icon {
+   @apply bg-yellow-100 text-yellow-500
+}
+.alert-body.danger .header-icon {
+   @apply bg-red-100 text-red-500
+}
+.alert-body.info .header-conten h3 {
+   @apply text-sky-500
+}
+.alert-body.warning .header-conten h3 {
+   @apply text-yellow-500
+}
+.alert-body.danger .header-conten h3 {
+   @apply text-red-500
+}
+.alert-conten .alert .alert-contain .alert-body .header-title {
+   @apply mt-3 ml-4 text-center;
+}
+.alert-conten .alert .alert-contain .alert-body .header-conten {
+   @apply mt-3 ml-4 text-center;
+}
+.alert-conten .alert .alert-contain .alert-body .header-conten h3 {
+   @apply text-lg leading-6 font-bold text-center
+}
+.alert-conten .alert .alert-contain .alert-body .header-conten article {
+   @apply mt-2
+}
+.alert-conten .alert .alert-contain .alert-body .header-conten article p {
+   @apply text-sm text-text-500
+}
+.alert-conten .alert .alert-contain .alert-body .header-conten article p span {
+   @apply font-bold
+}
+.alert-conten .alert .alert-contain .alert-footer {
+   @apply bg-slate-100 px-6 py-3 flex flex-row-reverse gap-4
+}
+.alert-animate-in {
+   @apply animate-fade-in animate-duration-slow
+}
+.alert-animate-out {
+   @apply animate-fade-out animate-duration-slow
+}
+.alert-conten-animate-in {
+   @apply animate-fade-in-up animate-delay-200 animate-duration-slow
+}
+.alert-conten-animate-out {
+   @apply animate-fade-out-down animate-delay-200 animate-duration-slow
 }

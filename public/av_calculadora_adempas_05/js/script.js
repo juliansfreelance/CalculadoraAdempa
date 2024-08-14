@@ -7,7 +7,6 @@
  * Modified By:
  */
 let veeva = {};
-
 let slideCinco = {
 
    ini: async function () {
@@ -16,48 +15,36 @@ let slideCinco = {
       const inputsElement = document.querySelector('.content-inputs');
       const htpEdit = document.querySelector('.htp-edit');
       const htpEstudy = document.querySelector('.htp-estudy');
-
       const calculadoraData = localStorage.getItem('calculadora');
       if (calculadoraData) {
          veeva.calculadora = await JSON.parse(calculadoraData);
-         console.log(veeva);
-
+         console.log('Veeva desde el localStorage: ', veeva);
          inputElement.value = veeva.calculadora.poblacion;
-
          const updateButtonStyles = (index) => {
             buttonsElement[index].classList.replace('background-btn-gray', 'background-btn-orange');
             buttonsElement[index].classList.replace('button-gray-corner-full', 'button-orange-corner-full');
          };
-
          if (veeva.calculadora.grupos.conoceDistribucion) {
             updateButtonStyles(0);
-
             const hapEditValue = document.querySelector('input[name="edit-HAP"]');
             const htecEditValue = document.querySelector('input[name="edit-HTCE"]');
-
             hapEditValue.value = veeva.calculadora.grupos.HAP.toString().replace('.', ',');
             htecEditValue.value = veeva.calculadora.grupos.HTEC.toString().replace('.', ',');
-
             htpEdit.classList.replace('hidden', 'grid');
             inputsElement.classList.replace('hidden', 'flex');
          } else {
             updateButtonStyles(1);
-
             const hapEstudyValue = document.querySelector('input[name="estudy-HAP"]');
             const htecEstudyValue = document.querySelector('input[name="estudy-HTCE"]');
             const grupoSelected = veeva.calculadora.referencias.grupos.find(g => g.name === veeva.calculadora.grupos.study);
-
             hapEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HAP}`;
             htecEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HTEC}`;
-
             inputsElement.classList.replace('hidden', 'flex');
             htpEstudy.classList.replace('hidden', 'grid');
          }
       }
-
       inputElement.addEventListener('input', slideCinco.handleInput);
       inputElement.addEventListener('blur', slideCinco.handleBlur);
-
       buttonsElement.forEach(button => {
          button.addEventListener('click', slideCinco.handleButtonClick);
       });
@@ -123,21 +110,16 @@ let slideCinco = {
       const htpEdit = document.querySelector('.htp-edit');
       const htpEstudy = document.querySelector('.htp-estudy');
       const button = event.currentTarget;
-
       buttonsElement.forEach(btn => {
          btn.classList.replace('background-btn-orange', 'background-btn-gray');
          btn.classList.replace('button-orange-corner-full', 'button-gray-corner-full');
       });
-
       htpEdit.classList.replace('grid', 'hidden');
       htpEstudy.classList.replace('grid', 'hidden');
-
       button.classList.replace('background-btn-gray', 'background-btn-orange');
       button.classList.replace('button-gray-corner-full', 'button-orange-corner-full');
-
       const conoceDistribucion = button.value.trim().toLowerCase() === "true";
       veeva.calculadora.grupos.conoceDistribucion = conoceDistribucion;
-
       if (conoceDistribucion) {
          veeva.calculadora.grupos.HAP = 0;
          veeva.calculadora.grupos.HTEC = 0;
@@ -151,8 +133,8 @@ let slideCinco = {
    },
 
    popUp: function () {
-      const alert = document.querySelector('.alert-conten');
-      const alertBody = document.querySelector('.alert-conten-body');
+      const pop = document.querySelector('.pop-conten');
+      const alertBody = document.querySelector('.pop-conten-body');
       let gruposHTML = ''
       veeva.calculadora.referencias.grupos.forEach((grupo, i)  => {
          gruposHTML += `
@@ -171,16 +153,16 @@ let slideCinco = {
          `;
       });
       alertBody.innerHTML = gruposHTML;
-      alert.classList.replace('hidden', 'flex');
-      alert.classList.replace('alert-animate-down', 'alert-animate-up');
+      pop.classList.replace('hidden', 'flex');
+      pop.classList.replace('pop-animate-down', 'pop-animate-up');
    },
 
    popDown: function() {
-      const alert = document.querySelector('.alert-conten');
+      const pop = document.querySelector('.pop-conten');
       const buttonsElement = document.querySelectorAll('button[name="conoceGrupos"]');
-      alert.classList.replace('alert-animate-up', 'alert-animate-down');
+      pop.classList.replace('pop-animate-up', 'pop-animate-down');
       setTimeout(() => {
-         alert.classList.replace('flex', 'hidden');
+         pop.classList.replace('flex', 'hidden');
          buttonsElement.forEach(button => {
             button.classList.replace('background-btn-orange', 'background-btn-gray');
             button.classList.replace('button-orange-corner-full', 'button-gray-corner-full');
@@ -188,25 +170,65 @@ let slideCinco = {
       }, 500);
    },
 
+   openAlert: function (alert) {
+      const customAlert = document.querySelector(`custom-alert[name="alert-${alert}"]`);
+      const customAlertConten = document.querySelector(`custom-alert[name="alert-${alert}"] .alert-conten`);
+      const customAlertAlert = document.querySelector(`custom-alert[name="alert-${alert}"] .alert`);
+      switch (alert) {
+
+         case 'reset':
+            if (customAlert) {
+               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
+               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
+               customAlert.classList.replace('hidden', 'block');
+            } else {
+               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
+            }
+            break;
+
+         case 'bd-clear':
+            if (customAlert) {
+               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
+               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
+               customAlert.classList.replace('hidden', 'block');
+            } else {
+               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
+            }
+            break;
+      }
+   },
+
+   closeAlert: function () {
+      const customAlert = document.querySelector('custom-alert.block');
+      const customAlertConten = document.querySelector('custom-alert.block .alert-conten');
+      const customAlertAlert = document.querySelector('custom-alert.block .alert-conten .alert');
+      if (customAlert) {
+         customAlertConten.classList.replace('alert-animate-in', 'alert-animate-out');
+         customAlertAlert.classList.replace('alert-conten-animate-in', 'alert-conten-animate-out');
+         setTimeout(() => {
+            customAlert.classList.replace('block', 'hidden');
+         }, 600);
+      } else {
+         console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
+      }
+   },
+
+
    selectGrupo(grupo) {
-      const alert = document.querySelector('.alert-conten');
+      const pop = document.querySelector('.pop-conten');
       const inputsElement = document.querySelector('.content-inputs');
       const htpEstudy = document.querySelector('.htp-estudy');
       const hapEstudyValue = document.querySelector('input[name="estudy-HAP"]');
       const htecEstudyValue = document.querySelector('input[name="estudy-HTCE"]');
       const grupoSelected = veeva.calculadora.referencias.grupos.find(g => g.name === grupo);
-
-      alert.classList.replace('alert-animate-up', 'alert-animate-down');
-
+      pop.classList.replace('pop-animate-up', 'pop-animate-down');
       if (grupoSelected) {
          hapEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HAP}`;
          htecEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HTEC}`;
          const { HAP, HTEC, name } = grupoSelected;
-
          veeva.calculadora.grupos = { ...veeva.calculadora.grupos, HAP, HTEC, study: name };
-
          setTimeout(() => {
-            alert.classList.replace('flex', 'hidden');
+            pop.classList.replace('flex', 'hidden');
             inputsElement.classList.replace('hidden', 'flex');
             htpEstudy.classList.replace('hidden', 'grid');
          }, 500);
@@ -217,34 +239,25 @@ let slideCinco = {
 
    validarForm() {
       const { poblacion, grupos } = veeva.calculadora;
-
       const toggleError = (selector, condition) => {
          document.querySelector(selector).classList.replace(condition ? 'hidden' : 'block', condition ? 'block' : 'hidden');
       };
-
-      // Validar población
       toggleError('.input-poblacion .error', poblacion === 0);
-
-      // Validar grupos si se conoce la distribución
       if (grupos.conoceDistribucion) {
          const hapInput = document.querySelector('input[name="edit-HAP"]');
          const htecInput = document.querySelector('input[name="edit-HTCE"]');
          const hapEditValue = parseFloat(hapInput.value.replace(',', '.'));
          const htecEditValue = parseFloat(htecInput.value.replace(',', '.'));
-
          toggleError('.hap-error', !hapInput.value);
          toggleError('.htce-error', !htecInput.value);
-
          const inputsNotEmpty = hapInput.value && htecInput.value;
          const sumNot100 = hapEditValue + htecEditValue !== 100;
-
          if (inputsNotEmpty && sumNot100) {
             toggleError('.grupos-error', true);
          } else if (inputsNotEmpty && !sumNot100) {
             toggleError('.grupos-error', false);
             grupos.HAP = hapEditValue;
             grupos.HTEC = htecEditValue;
-
             if (poblacion !== 0) {
                slideCinco.estadificacionPacientes();
             }
@@ -257,44 +270,35 @@ let slideCinco = {
    estadificacionPacientes: function () {
       const escenarioIndex = veeva.calculadora.estadificacionEscenario[0];
       const estadificacionRef = veeva.calculadora.referencias.estadificacion[escenarioIndex];
-
       const riesgoBajo = parseFloat(estadificacionRef.riesgoBajo);
       const riesgoIntermedio = parseFloat(estadificacionRef.riesgoIntermedio);
       const riesgoAlto = parseFloat(estadificacionRef.riesgoAlto);
       const HAP = parseFloat(veeva.calculadora.grupos.HAP);
       const HTEC = parseFloat(veeva.calculadora.grupos.HTEC);
-
       const pacientesBajo = (((riesgoBajo * HAP) + (riesgoBajo * HTEC)))/100;
       const pacientesIntermedio = ((riesgoIntermedio * HAP) + (riesgoIntermedio * HTEC))/100;
       const pacientesAlto = ((riesgoAlto * HAP) + (riesgoAlto * HTEC)) / 100;
-
       veeva.calculadora.estadificacionPacientes.bajo = pacientesBajo;
       veeva.calculadora.estadificacionPacientes.intermedio = pacientesIntermedio;
       veeva.calculadora.estadificacionPacientes.alto = pacientesAlto;
-
       slideCinco.estadificacionCategoria();
    },
    estadificacionCategoria: function () {
       const poblacion = parseFloat(veeva.calculadora.poblacion);
-
       let pacientesBajo = veeva.calculadora.estadificacionPacientes.bajo;
       let pacientesIntermedio = veeva.calculadora.estadificacionPacientes.intermedio;
       let pacientesAlto = veeva.calculadora.estadificacionPacientes.alto;
-
       const categoriaBajo = (Math.floor(poblacion * pacientesBajo)) / 100;
       const categoriaIntermedio = (Math.floor(poblacion * pacientesIntermedio)) / 100;
       const categoriaAlto = (Math.floor(poblacion * pacientesAlto)) / 100;
-
       veeva.calculadora.estadificacionCategoria.bajo = categoriaBajo;
       veeva.calculadora.estadificacionCategoria.intermedio = categoriaIntermedio;
       veeva.calculadora.estadificacionCategoria.alto = categoriaAlto;
-
       console.log(veeva.calculadora);
       localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora))
       setTimeout(() => {
          slideCinco.jumpToSlide('06');
       }, 800);
-
    }
 }
 
