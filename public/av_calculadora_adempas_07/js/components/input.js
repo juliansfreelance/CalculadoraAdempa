@@ -71,10 +71,13 @@ class customInput extends HTMLElement {
       }
    }
 
+   handleFocus(event) {
+      this.previousValue = event.target.value;
+      event.target.value = '';
+   }
+
    handleInput(event) {
-      console.log('handleInput');
       let inputValue = event.target.value.replace(/[^\d,]/g, '');
-      console.log(inputValue);
       if (inputValue.includes(',')) {
          this.decimalMode = true;
       }
@@ -89,12 +92,6 @@ class customInput extends HTMLElement {
       }
       event.target.value = inputValue;
       this.valor = inputValue;
-      this.updateJsonValue(event.target.name, inputValue);
-   }
-
-   handleFocus(event) {
-      this.previousValue = event.target.value;
-      event.target.value = '';
    }
 
    handleBlur(event) {
@@ -104,26 +101,20 @@ class customInput extends HTMLElement {
 
       if (input.value === '') {
          input.value = this.previousValue;
+         this.updateJsonValue(input.name, this.previousValue);
       } else if (input.value !== '') {
          input.value = formattedValue;
          this.valor = formattedValue;
          this.updateJsonValue(input.name, inputValue);
-         ('vamos: ', slideSiete.validateCounnt)
-         if (slideSiete.validateCounnt > 0) {
-            slideSiete.validateComplications();
-         }
+         slideSiete.validateComplications();
       }
    }
 
-   updateGlobalValues() {
-      slideSiete.actualizarInputs();
-   }
-
    updateJsonValue(name, value) {
-      const probabilidades = veeva.calculadora.complicaciones.probabilidades
+      const probabilidades = veeva.calculadora.complicaciones.probabilidades;
       const [tipo, index, riesgo] = name.split('-');
       probabilidades[index - 1][riesgo] = parseFloat(value.replace(',', '.'));
-      this.updateGlobalValues();
+      slideSiete.actualizarInputs();
    }
 
    connectedCallback() {
@@ -143,7 +134,7 @@ class customInput extends HTMLElement {
             ${this.getIcon(this.icon)}
          </div>`;
       const inputElement = this.querySelector('input');
-      // inputElement.addEventListener('input', this.handleInput);
+      inputElement.addEventListener('input', this.handleInput);
       inputElement.addEventListener('focus', this.handleFocus);
       inputElement.addEventListener('blur', this.handleBlur);
    }

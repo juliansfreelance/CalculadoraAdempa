@@ -931,106 +931,375 @@
                   "alto": 1.15
                }
             ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             "microcosteo":[
                {
                   "nombre":"Hemograma tipo IV",
-                  "valorUnitario": 21397
+                  "valorUnitario": 21397.3832,
+                  "cantidad": {
+                     "bajo": 10,
+                     "intermedio": 12,
+                     "alto": 15
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"BUN",
-                  "valorUnitario": 10039
+                  "valorUnitario": 10038.8604,
+                  "cantidad": {
+                     "bajo": 10,
+                     "intermedio": 12,
+                     "alto": 15
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Creatinina",
-                  "valorUnitario": 10039
+                  "valorUnitario": 10038.8604,
+                  "cantidad": {
+                     "bajo": 10,
+                     "intermedio": 12,
+                     "alto": 15
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Potasio",
-                  "valorUnitario": 11547
+                  "valorUnitario": 11547.046,
+                  "cantidad": {
+                     "bajo": 10,
+                     "intermedio": 12,
+                     "alto": 15
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Sodio",
-                  "valorUnitario": 16260
+                  "valorUnitario": 16260.126,
+                  "cantidad": {
+                     "bajo": 10,
+                     "intermedio": 12,
+                     "alto": 15
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Gases arteriales",
-                  "valorUnitario": 24649
+                  "valorUnitario": 24649.4084,
+                  "cantidad": {
+                     "bajo": 10,
+                     "intermedio": 12,
+                     "alto": 15
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Rx de torax",
-                  "valorUnitario": 27478
+                  "valorUnitario": 27477.8,
+                  "cantidad": {
+                     "bajo": 10,
+                     "intermedio": 12,
+                     "alto": 15
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Oxígeno por VM",
-                  "valorUnitario": 190820
+                  "valorUnitario": 190820,
+                  "cantidad": {
+                     "bajo": 3,
+                     "intermedio": 5,
+                     "alto": 8
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Dia de hospitalización en UCI",
-                  "valorUnitario": 722137
+                  "valorUnitario": 722136.8,
+                  "cantidad": {
+                     "bajo": 10,
+                     "intermedio": 12,
+                     "alto": 15
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Hospitalización General (Unipersonal complejidad alta)",
-                  "valorUnitario": 111447
+                  "valorUnitario": 111447.35,
+                  "cantidad": {
+                     "bajo": 5,
+                     "intermedio": 5,
+                     "alto": 5
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Nutrición enteral x día",
-                  "valorUnitario": 5413.10
+                  "valorUnitario": 5413.10,
+                  "cantidad": {
+                     "bajo": 3,
+                     "intermedio": 5,
+                     "alto": 8
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Ecocardiograma transtorácico seguimiento x 1",
-                  "valorUnitario": 122681
+                  "valorUnitario": 122681.4724,
+                  "cantidad": {
+                     "bajo": 1,
+                     "intermedio": 1,
+                     "alto": 2
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Infusión furosemida aprox 10 mg h = 240 mg día",
-                  "valorUnitario": 56
+                  "valorUnitario": 56,
+                  "cantidad": {
+                     "bajo": 1440,
+                     "intermedio": 1680,
+                     "alto": 3600
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Infusión dobutamina 5 mcg k min xa 70 kg = 504 mg dia",
-                  "valorUnitario": 45
+                  "valorUnitario": 45,
+                  "cantidad": {
+                     "bajo": 1512,
+                     "intermedio": 2520,
+                     "alto": 2520
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Infusión milrinone 0.37 mcg k min xa 70 kg = 37 mg día",
-                  "valorUnitario": 89
+                  "valorUnitario": 89,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 111,
+                     "alto": 259
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Infusión levosimendan x 1 amp dosis única",
-                  "valorUnitario": 1000000
+                  "valorUnitario": 1000000,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 1
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Infusión noradrenalina 0.2 mcg k min xa 70 kg = 20 mg día",
-                  "valorUnitario": 14
+                  "valorUnitario": 14,
+                  "cantidad": {
+                     "bajo": 100,
+                     "intermedio": 180,
+                     "alto": 300
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Infusión vasopresina 2 U h = 48 UI día",
-                  "valorUnitario": 12
+                  "valorUnitario": 12,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 576
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"ECMO x día (cuidado diario)",
-                  "valorUnitario": 2000000
+                  "valorUnitario": 2000000,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 7
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Canulación periférica (1 vez)",
-                  "valorUnitario": 666667
+                  "valorUnitario": 666666.6667,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 1
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Reacomodación ECMO (Cambios cánulas o configuración)",
-                  "valorUnitario": 666667
+                  "valorUnitario": 666666.6667,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 1
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Retiro ECMO (1 vez)",
-                  "valorUnitario": 666667
+                  "valorUnitario": 666666.6667,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 1
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Transfusión GRE x 1 U GRE",
-                  "valorUnitario": 154499
+                  "valorUnitario": 154499.45,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 5
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Transfusión plaquetas aféresis",
-                  "valorUnitario": 35079
+                  "valorUnitario": 35078.75,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 2
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                },
                {
                   "nombre":"Trasplante bilateral de pulmón",
-                  "valorUnitario": 822500000
+                  "valorUnitario": 822500000,
+                  "cantidad": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0.3
+                  },
+                  "costo": {
+                     "bajo": 0,
+                     "intermedio": 0,
+                     "alto": 0
+                  }
                }
             ]
          },

@@ -169,6 +169,7 @@ let slideSiete = {
 
    validateComplications: function () {
       slideSiete.validateCounnt++;
+      const error = document.querySelector('.error-probabilidad');
       const getValues = (names) => {
          return names.map(name => {
             const input = document.querySelector(`input[name="${name}"]`);
@@ -188,8 +189,10 @@ let slideSiete = {
       inputs.forEach(({ value, parentTd }) => {
          if (value === 0) {
             parentTd.classList.add('input-error');
+            error.classList.remove('hidden');
          } else {
             parentTd.classList.remove('input-error');
+            error.classList.add('hidden');
          }
       });
 

@@ -70,6 +70,10 @@ class customInput extends HTMLElement {
          return inputValue.indexOf(',') !== -1 ? FORMAT_DECIMAL(integer).format() : FORMAT_ENTERO(integer).format();
       }
    }
+   handleFocus(event) {
+      this.previousValue = event.target.value;
+      event.target.value = '';
+   }
 
    handleInput(event) {
       let inputValue = event.target.value.replace(/[^\d,]/g, '');
@@ -87,14 +91,6 @@ class customInput extends HTMLElement {
       }
       event.target.value = inputValue;
       this.valor = inputValue;
-      this.updateJsonValue(event.target.name, inputValue);
-   }
-
-   handleFocus(event) {
-      // if (this.type === 'input-edit') {
-         this.previousValue = event.target.value;
-         event.target.value = '';
-      // }
    }
 
    handleBlur(event) {
@@ -104,12 +100,27 @@ class customInput extends HTMLElement {
 
       if (input.value === '') {
          input.value = this.previousValue;
+         this.updateJsonValue(input.name, this.previousValue);
       } else if (input.value !== '') {
          input.value = formattedValue;
          this.valor = formattedValue;
          this.updateJsonValue(input.name, inputValue);
          slideSeis.validateTecnnology();
       }
+   }
+
+   updateJsonValue(name, value) {
+      const path = name.split('-');
+      const terapiaIndex = parseInt(path[1]);
+      const field = path[2];
+      if (path[0] === 'monoterapia') {
+         veeva.calculadora.tecnologias.monoterapias.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
+      } else if (path[0] === 'biterapia') {
+         veeva.calculadora.tecnologias.terapiasDobles.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
+      } else if (path[0] === 'triterapia') {
+         veeva.calculadora.tecnologias.terapiasTripes.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
+      }
+      this.updateGlobalValues();
    }
 
    updateGlobalValues() {
@@ -133,21 +144,6 @@ class customInput extends HTMLElement {
       veeva.calculadora.tecnologias.totalRiesgoAlto = veeva.calculadora.tecnologias.monoterapias.alto + veeva.calculadora.tecnologias.terapiasDobles.alto + veeva.calculadora.tecnologias.terapiasTripes.alto;
 
       slideSeis.updateInputTecnologias();
-   }
-
-   updateJsonValue(name, value) {
-      const path = name.split('-');
-      const terapiaIndex = parseInt(path[1]);
-      const field = path[2];
-      value
-      if (path[0] === 'monoterapia') {
-         veeva.calculadora.tecnologias.monoterapias.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
-      } else if (path[0] === 'biterapia') {
-         veeva.calculadora.tecnologias.terapiasDobles.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
-      } else if (path[0] === 'triterapia') {
-         veeva.calculadora.tecnologias.terapiasTripes.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
-      }
-      this.updateGlobalValues();
    }
 
    connectedCallback() {

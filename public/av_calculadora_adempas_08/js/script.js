@@ -9,8 +9,6 @@
 let veeva = {};
 
 let slideOcho = {
-   validateCounnt: 0,
-
    ini: async function () {
       const calculadoraData = localStorage.getItem('calculadora');
       if (calculadoraData) {
@@ -116,84 +114,82 @@ let slideOcho = {
       }
    },
 
-   formatToFloatString: function(value) {
+   formatNumber: function (val) {
+      const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
+      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
+      if (val !== '') {
+         let inputValue = val.toString().replace(/[^\d,.]/g, '');
+         let integer = parseFloat(inputValue.replace(/\./g, '').replace(/,/g, '.'));
+         return inputValue.indexOf(',') !== -1 ? FORMAT_DECIMAL(integer).format() : FORMAT_ENTERO(integer).format();
+      }
+   },
+
+   formatToFloatMoney: function(value) {
+      return slideOcho.formatNumber(parseInt(value));
+   },
+
+   formatToFloatString: function (value) {
       let floatValue = parseFloat(value).toFixed(2);
       return floatValue.replace('.', ',');
    },
 
-   updateInputComplications: function () {
+   updateInputCosts: function () {
       const costos = veeva.calculadora.complicaciones.costos;
-
-      const totalCostoBajo = document.querySelector("input[name='total-bajo']");
-      const totalCostoIntermedio = document.querySelector("input[name='total-intermedio']");
-      const totalCostoAlto = document.querySelector("input[name='total-alto']");
-
-      const costoOneBajo = document.querySelector("input[name='costo-1-bajo']");
-      const costoOneIntermedio = document.querySelector("input[name='costo-1-intermedio']");
-      const costoOneAlto = document.querySelector("input[name='costo-1-alto']");
-
-      const costoTwoBajo = document.querySelector("input[name='costo-2-bajo']");
-      const costoTwoIntermedio = document.querySelector("input[name='costo-2-intermedio']");
-      const costoTwoAlto = document.querySelector("input[name='costo-2-alto']");
-
-      const costoThreeBajo = document.querySelector("input[name='costo-3-bajo']");
-      const costoThreeIntermedio = document.querySelector("input[name='costo-3-intermedio']");
-      const costoThreeAlto = document.querySelector("input[name='costo-3-alto']");
-
-      costoOneBajo.value = slideOcho.formatToFloatString(costos[0].bajo)
-      costoOneIntermedio.value = slideOcho.formatToFloatString(costos[0].intermedio)
-      costoOneAlto.value = slideOcho.formatToFloatString(costos[0].alto)
-
-      costoTwoBajo.value = slideOcho.formatToFloatString(costos[1].bajo)
-      costoTwoIntermedio.value = slideOcho.formatToFloatString(costos[1].intermedio)
-      costoTwoAlto.value = slideOcho.formatToFloatString(costos[1].alto)
-
-      costoThreeBajo.value = slideOcho.formatToFloatString(costos[2].bajo)
-      costoThreeIntermedio.value = slideOcho.formatToFloatString(costos[2].intermedio)
-      costoThreeAlto.value = slideOcho.formatToFloatString(costos[2].alto)
-
-      totalCostoBajo.value = slideOcho.formatToFloatString(costos[3].bajo)
-      totalCostoIntermedio.value = slideOcho.formatToFloatString(costos[3].intermedio)
-      totalCostoAlto.value = slideOcho.formatToFloatString(costos[3].alto)
-
+      const costTypes = ['bajo', 'intermedio', 'alto'];
+      const costGroups = ['costo-1', 'costo-2', 'costo-3'];
+      const setValues = (group, values) => {
+         costTypes.forEach((type, index) => {
+            document.querySelector(`input[name='${group}-${type}']`).value = slideOcho.formatToFloatMoney(values[type]);
+         });
+      };
+      costGroups.forEach((group, index) => {
+         setValues(group, costos[index]);
+      });
+      costTypes.forEach(type => {
+         document.querySelector(`input[name='total-${type}']`).value = slideOcho.formatToFloatMoney(costos[3][type]);
+      });
       const customAlert = document.querySelector('custom-alert.block');
       if (customAlert) {
          setTimeout(() => {
-            slideOcho.validateTecnnology();
+            slideOcho.validateCosts();
             slideOcho.closeAlert();
          }, 400);
       }
    },
 
-   syncComplicationsWithReference: function () {
-      const probabilidades = veeva.calculadora.complicaciones.probabilidades
-      const referencias = veeva.calculadora.referencias.complicaciones.probabilidades;
+   syncCostsWithReference: function () {
+      const costos = veeva.calculadora.complicaciones.costos;
+      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
+      const referencias = veeva.calculadora.referencias.complicaciones;
 
-      referencias.forEach((refProbabilidades, index) => {
-
-         probabilidades[index].bajo = referencias[index].bajo;
-         probabilidades[index].intermedio += referencias[index].intermedio;
-         probabilidades[index].alto += referencias[index].alto;
+      referencias.costo.forEach((referencia, index) => {
+         costos[index].bajo = referencia.bajo;
+         costos[index].intermedio = referencia.intermedio;
+         costos[index].alto = referencia.alto;
       });
-
-      console.log("Complicaciones actualizadas:", probabilidades);
+      rubros.forEach((rubro, index) => {
+         rubro.bajo = referencias.microcosteo[index].cantidad.bajo;
+         rubro.intermedio = referencias.microcosteo[index].cantidad.intermedio;
+         rubro.alto = referencias.microcosteo[index].cantidad.alto;
+      });
       slideOcho.actualizarInputs()
    },
 
-   actualizarInputs: function() {
-      slideOcho.updateInputComplications();
-      const customAlert = document.querySelector('custom-alert.block');
-      if (customAlert) {
-         setTimeout(() => {
-            slideOcho.validateComplications();
-            slideOcho.closeAlert();
-         }, 400);
-      }
+   actualizarInputs: function () {
+      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
+      const inputs = document.querySelectorAll('input[name^="microcosteo"]');
+      inputs.forEach(input => {
+      const name = input.name;
+      const [tipo, index, riesgo] = name.split('-');
+         input.value = slideOcho.formatToFloatString(rubros[index][riesgo]);
+      });
+      slideOcho.updateInputCosts();
    },
 
-   validateComplications: function () {
-      slideOcho.validateCounnt++;
-      const getValues = (names) => {
+   validateCosts: function () {
+      const error = document.querySelector('.error-input');
+      const errorMicroCost = document.querySelector('.error-microcosteo');
+      const getValuesInputs = (names) => {
          return names.map(name => {
             const input = document.querySelector(`input[name="${name}"]`);
             return {
@@ -202,39 +198,40 @@ let slideOcho = {
             };
          });
       };
-
       const inputs = [
-         ...getValues(['complicacion-1-bajo', 'complicacion-1-intermedio', 'complicacion-1-alto']),
-         ...getValues(['complicacion-2-bajo', 'complicacion-2-intermedio', 'complicacion-2-alto']),
-         ...getValues(['complicacion-3-bajo', 'complicacion-3-intermedio', 'complicacion-3-alto'])
-      ];
-
+         ...getValuesInputs(['costo-1-bajo', 'costo-1-intermedio', 'costo-1-alto']),
+         ...getValuesInputs(['costo-2-bajo', 'costo-2-intermedio', 'costo-2-alto'])
+      ]
+      const microcosteoInputs = [ ... getValuesInputs(['costo-3-bajo', 'costo-3-intermedio', 'costo-3-alto'])];
       inputs.forEach(({ value, parentTd }) => {
          if (value === 0) {
             parentTd.classList.add('input-error');
+            error.classList.remove('hidden');
          } else {
             parentTd.classList.remove('input-error');
+            error.classList.add('hidden');
          }
       });
-
-      const validate = inputs.every(({ value }) => value !== 0);
+      microcosteoInputs.forEach(({ value, parentTd }) => {
+         if (value === 0) {
+            parentTd.classList.add('input-error');
+            errorMicroCost.classList.replace('hidden', 'flex');
+         } else {
+            parentTd.classList.remove('input-error');
+            errorMicroCost.classList.replace('flex', 'hidden');
+         }
+      });
+      const validate = inputs.every(({ value }) => value !== 0) && microcosteoInputs.every(({ value }) => value !== 0);
       return validate;
    },
 
    validarForm: function() {
-      const validateComplications = slideOcho.validateComplications();
-      const title = document.querySelector('header hgroup div h3');
-      const complicaciones = document.querySelector('.complicaciones');
-      const costos = document.querySelector('.costos');
-      console.log('validacion exitosa', validateComplications);
-      if (validateComplications === true) {
-         title.innerHTML = "Costo complicaciones por paciente";
-         complicaciones.classList.replace('flex', 'hidden');
-         costos.classList.replace('hidden', 'flex');
+      const validateCosts = slideOcho.validateCosts();
+      console.log('validacion exitosa', validateCosts);
+      if (validateCosts === true) {
+         localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+         slideOcho.jumpToSlide('09');
       }
-
-      // localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
-      // slideOcho.jumpToSlide('08');
    }
 };
 
@@ -244,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
       slideOcho.ini();
       setTimeout(() => {
-         slideOcho.updateInputComplications();
+         slideOcho.updateInputCosts();
       }, 1000);
    });
 });
