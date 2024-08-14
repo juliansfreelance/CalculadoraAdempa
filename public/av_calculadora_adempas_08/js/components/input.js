@@ -71,6 +71,11 @@ class customInput extends HTMLElement {
       }
    }
 
+   handleFocus(event) {
+      this.previousValue = event.target.value;
+      event.target.value = '';
+   }
+
    handleInput(event) {
       let inputValue = event.target.value.replace(/[^\d,]/g, '');
       if (inputValue.includes(',')) {
@@ -87,50 +92,50 @@ class customInput extends HTMLElement {
       }
       event.target.value = inputValue;
       this.valor = inputValue;
-      this.updateJsonValue(event.target.name, inputValue);
-   }
-
-   handleFocus(event) {
-      this.previousValue = event.target.value;
-      event.target.value = '';
    }
 
    handleBlur(event) {
-      console.log('entro');
       const input = event.target;
       const inputValue = input.value.replace(/[^\d,.]/g, '');
       const formattedValue = this.formatNumber(inputValue);
-
       if (input.value === '') {
          input.value = this.previousValue;
+         this.updateJsonValue(input.name, this.previousValue);
       } else if (input.value !== '') {
          input.value = formattedValue;
          this.valor = formattedValue;
          this.updateJsonValue(input.name, inputValue);
-         ('vamos: ', slideOcho.validateCounnt)
-         if (slideOcho.validateCounnt > 0) {
-            slideOcho.validateCosts();
-         }
       }
    }
 
    updateGlobalValues() {
       const costos = veeva.calculadora.complicaciones.costos;
-         costos.forEach((costo, index) => {
-            if (costo.nombre !== "Totales") {
-               costos[3].bajo += costo.bajo;
-               costos[3].intermedio += costo.intermedio;
-               costos[3].alto += costo.alto;
-            }
-         })
+      costos[3].bajo = 0; costos[3].intermedio = 0; costos[3].alto = 0
+      costos.forEach((costo, index) => {
+         if (costo.nombre !== "Totales") {
+            costos[3].bajo += costo.bajo;
+            costos[3].intermedio += costo.intermedio;
+            costos[3].alto += costo.alto;
+         }
+      });
       slideOcho.updateInputCosts();
+      if(slideOcho.validateCounnt > 0) slideOcho.validateCosts();
    }
 
    updateJsonValue(name, value) {
-      console.log('object', name, value);
+      const complicaciones = veeva.calculadora.complicaciones;
       const [tipo, index, riesgo] = name.split('-');
-      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
-      rubros[index][riesgo] = parseFloat(value.replace(',', '.'));
+      switch (tipo) {
+         case 'costo':
+            const costos = complicaciones.costos;
+            costos[index -1][riesgo] = parseFloat(value.replace(',', '.'));
+         break;
+         case 'microcosteo':
+            const rubros = complicaciones.rubros;
+            rubros[index][riesgo] = parseFloat(value.replace(',', '.'));
+         break;
+      }
+      console.log(complicaciones);
       this.updateGlobalValues();
    }
 

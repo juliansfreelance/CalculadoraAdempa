@@ -9,6 +9,7 @@
 let veeva = {};
 
 let slideOcho = {
+   validateCounnt: 0,
    ini: async function () {
       const calculadoraData = localStorage.getItem('calculadora');
       if (calculadoraData) {
@@ -187,6 +188,7 @@ let slideOcho = {
    },
 
    validateCosts: function () {
+      slideOcho.validateCounnt++;
       const error = document.querySelector('.error-input');
       const errorMicroCost = document.querySelector('.error-microcosteo');
       const getValuesInputs = (names) => {
@@ -200,27 +202,18 @@ let slideOcho = {
       };
       const inputs = [
          ...getValuesInputs(['costo-1-bajo', 'costo-1-intermedio', 'costo-1-alto']),
-         ...getValuesInputs(['costo-2-bajo', 'costo-2-intermedio', 'costo-2-alto'])
+         ...getValuesInputs(['costo-2-bajo', 'costo-2-intermedio', 'costo-2-alto']),
+         ...getValuesInputs(['costo-3-bajo', 'costo-3-intermedio', 'costo-3-alto'])
       ]
-      const microcosteoInputs = [ ... getValuesInputs(['costo-3-bajo', 'costo-3-intermedio', 'costo-3-alto'])];
+      const microcosteoInputs = [...getValuesInputs(['costo-3-bajo', 'costo-3-intermedio', 'costo-3-alto'])];
       inputs.forEach(({ value, parentTd }) => {
-         if (value === 0) {
-            parentTd.classList.add('input-error');
-            error.classList.remove('hidden');
-         } else {
-            parentTd.classList.remove('input-error');
-            error.classList.add('hidden');
-         }
+         value === 0 ? parentTd.classList.add('input-error'): parentTd.classList.remove('input-error');
       });
+      inputs.every(({ value }) => value !== 0) ? error.classList.add('hidden') : error.classList.remove('hidden');
       microcosteoInputs.forEach(({ value, parentTd }) => {
-         if (value === 0) {
-            parentTd.classList.add('input-error');
-            errorMicroCost.classList.replace('hidden', 'flex');
-         } else {
-            parentTd.classList.remove('input-error');
-            errorMicroCost.classList.replace('flex', 'hidden');
-         }
+         value === 0 ? parentTd.classList.add('input-error') : parentTd.classList.remove('input-error');
       });
+      microcosteoInputs.every(({ value }) => value !== 0) ? errorMicroCost.classList.replace('flex', 'hidden') : errorMicroCost.classList.replace('hidden', 'flex');
       const validate = inputs.every(({ value }) => value !== 0) && microcosteoInputs.every(({ value }) => value !== 0);
       return validate;
    },

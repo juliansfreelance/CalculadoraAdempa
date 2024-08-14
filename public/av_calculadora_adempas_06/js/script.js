@@ -9,6 +9,7 @@
 let veeva = {};
 
 let slideSeis = {
+   validateCounnt: 0,
 
    ini: async function () {
       const calculadoraData = localStorage.getItem('calculadora');
@@ -256,6 +257,7 @@ let slideSeis = {
    },
 
    validateTecnnology: function () {
+      slideSeis.validateCounnt++;
       const getValues = (names) => {
          return names.map(name => parseFloat(document.querySelector(`input[name="${name}"]`).value.replace(',', '.')));
       };

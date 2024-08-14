@@ -105,7 +105,6 @@ class customInput extends HTMLElement {
          input.value = formattedValue;
          this.valor = formattedValue;
          this.updateJsonValue(input.name, inputValue);
-         slideSeis.validateTecnnology();
       }
    }
 
@@ -121,6 +120,7 @@ class customInput extends HTMLElement {
          veeva.calculadora.tecnologias.terapiasTripes.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
       }
       this.updateGlobalValues();
+      if (slideSeis.validateCounnt > 0) slideSeis.validateTecnnology();
    }
 
    updateGlobalValues() {

@@ -106,7 +106,6 @@ class customInput extends HTMLElement {
          input.value = formattedValue;
          this.valor = formattedValue;
          this.updateJsonValue(input.name, inputValue);
-         slideSiete.validateComplications();
       }
    }
 
@@ -115,6 +114,7 @@ class customInput extends HTMLElement {
       const [tipo, index, riesgo] = name.split('-');
       probabilidades[index - 1][riesgo] = parseFloat(value.replace(',', '.'));
       slideSiete.actualizarInputs();
+      if (slideSiete.validateCounnt > 0) slideSiete.validateComplications();
    }
 
    connectedCallback() {
