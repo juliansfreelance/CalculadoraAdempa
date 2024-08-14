@@ -63,7 +63,7 @@ let slideNueve = {
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
       } else {
-         document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+         document.location = `/CalculadoraAdempa/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
       }
    },
 
