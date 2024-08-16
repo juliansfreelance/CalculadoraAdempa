@@ -107,15 +107,15 @@ let slideOcho = {
             }
          break;
 
-            case 'reset':
-               if (customAlert) {
-                  customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-                  customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-                  customAlert.classList.replace('hidden', 'block');
-               } else {
-                  console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-               }
-            break;
+         case 'reset':
+            if (customAlert) {
+               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
+               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
+               customAlert.classList.replace('hidden', 'block');
+            } else {
+               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
+            }
+         break;
 
          case 'bd-clear':
             if (customAlert) {

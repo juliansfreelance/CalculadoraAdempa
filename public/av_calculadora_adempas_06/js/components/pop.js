@@ -55,7 +55,7 @@ class customPop extends HTMLElement{
                         <tr>
                            <th></th>
                            <th class="font-bold text-base text-green-500 text-center">Estadificación riesgo Bajo</th>
-                           <th class="font-bold text-base text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                           <th class="font-bold text-base text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                            <th class="font-bold text-base text-red-500 text-center">Estadificación riesgo Alto</th>
                         </tr>
                      </thead>

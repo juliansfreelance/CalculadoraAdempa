@@ -10,7 +10,8 @@ module.exports = {
       colors: {
         text: {
           '500': '#6d6d6d',
-          '600': '#820053'
+          '600': '#820053',
+          'intermedio': '#ffcf01'
         },
         menu: {
           '100': '#f0ece9',
@@ -48,6 +49,7 @@ module.exports = {
       },
       backgroundImage: {
         'fondo': "url('../images/fondo.png')",
+        'fondo-menu': "url('../images/fondo.jpg')",
       },
     },
   },
