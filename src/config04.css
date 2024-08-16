@@ -48,11 +48,11 @@ main {
    @apply bg-white/70 text-text-500 text-sm py-8 px-8 rounded-lg shadow-md shadow-black/40
 }
 .estadificaciones {
-   @apply grid grid-cols-3 gap-3 py-4 px-4 justify-center content-center text-center
+   @apply grid grid-cols-3 gap-3 py-4 px-4 justify-center content-center text-center shadow-sm shadow-black/40
 }
 .estadificacion
 {
-   @apply border-l-4 bg-slate-800/5 rounded-lg py-2
+   @apply border-l-4 bg-white rounded-lg py-2
 }
 .estadificacion h3
 {

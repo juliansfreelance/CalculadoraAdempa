@@ -29,7 +29,35 @@
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="relative z-50">
+      <header class=" w-full px-16 relative z-50">
+         <hgroup>
+            <span>
+               <button class="home-btn animate-pulse-fade-in animate-delay-[600ms]" onclick="slideNueve.openAlert('reset')">
+                  <div>
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" />
+                     </svg>
+                  </div>
+               </button>
+               <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[600ms]"
+                  onclick="slideNueve.jumpToSlide('08')">
+                  <div>
+                     <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                     </svg>
+                     <h4>Regresar</h4>
+                  </div>
+               </button>
+            </span>
+            <div class="animate-fade-in-left animate-delay-500 animate-duration-slow">
+               <h2>Resultados</h2>
+            </div>
+         </hgroup>
+      </header>
+
+      <!-- <header class="relative z-50">
          <hgroup>
             <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[600ms]"
                onclick="javascript:slideNueve.jumpToSlide('08')">
@@ -42,7 +70,7 @@
             </button>
             <h2 class="animate-fade-in-left animate-delay-500 animate-duration-slow">Resultados</h2>
          </hgroup>
-      </header>
+      </header> -->
 
       <main class="relative z-50">
          <section class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
@@ -58,7 +86,7 @@
                      <tr>
                         <th></th>
                         <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
-                        <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                        <th class="font-bold text-sm text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                         <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
                      </tr>
                   </thead>
@@ -101,7 +129,7 @@
                </button>
             </header>
             <section class="folder-contents">
-               <h4 class="text-lime-600">Costo total por paciente</h4>
+               <h4 class="text-[#679147]">Costo total por paciente</h4>
                <section>
                   <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
                      <div class="form">
@@ -110,7 +138,7 @@
                               <tr>
                                  <th></th>
                                  <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
-                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                                  <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
                                  <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
                               </tr>
@@ -130,7 +158,7 @@
                               <tr>
                                  <td colspan="3" class="text-xs">
                                     <p>Representación <span class="font-bold text-green-500">Estadificación riesgo Bajo</span> versus total: <span class="font-bold patient-estadificacion-bajo"></span>%</p>
-                                    <p>Representación <span class="font-bold text-cyan-500">Estadificación riesgo Intermedio</span> versus total: <span class="font-bold patient-estadificacion-intermedio"></span>%</p>
+                                    <p>Representación <span class="font-bold text-text-intermedio">Estadificación riesgo Intermedio</span> versus total: <span class="font-bold patient-estadificacion-intermedio"></span>%</p>
                                     <p>Representación <span class="font-bold text-red-500">Estadificación riesgo Alto</span> versus total: <span class="font-bold patient-estadificacion-alto"></span>%</p>
                                  </td>
                                  <td colspan="2" class="text-xs text-right">
@@ -163,7 +191,7 @@
                </button>
             </header>
             <section class="folder-contents">
-               <h4 class="text-pink-600">Costo procedimientos anual de uso por paciente</h4>
+               <h4 class="text-[#b6121b]">Costo procedimientos anual de uso por paciente</h4>
                <section>
                   <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
                      <div class="form">
@@ -172,7 +200,7 @@
                               <tr>
                                  <th></th>
                                  <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
-                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                                  <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
                               </tr>
                            </thead>
@@ -215,7 +243,7 @@
             </header>
 
             <section class="folder-contents">
-               <h4 class="text-amber-500">Costo anual de tecnologías por paciente al año</h4>
+               <h4 class="text-[#ffcf01]">Costo anual de tecnologías por paciente al año</h4>
                <section>
                   <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
                      <div class="form">
@@ -224,7 +252,7 @@
                               <tr>
                                  <th></th>
                                  <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
-                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                                  <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
                               </tr>
                            </thead>
@@ -273,7 +301,7 @@
                               <tr>
                                  <th></th>
                                  <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
-                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                                  <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
                                  <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
                               </tr>
@@ -313,7 +341,7 @@
                               <tr>
                                  <th></th>
                                  <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
-                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                                  <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
                                  <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
                               </tr>
@@ -360,7 +388,7 @@
                               <tr>
                                  <th></th>
                                  <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
-                                 <th class="font-bold text-sm text-cyan-500 text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                                  <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
                                  <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
                               </tr>
@@ -392,6 +420,14 @@
       <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
          message="<p> No se pueden mostrar los resultados porque no se encontraron <span>datos almacenados</span>. Por favor, verifica la información y vuelve a intentarlo.</p>"
          actions='[{"name": "Aceptar", "color": "orange", "handler": "slideNueve.jumpToSlide(&apos;01&apos;)"}]'>
+      </custom-alert>
+
+      <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
+         message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
+         actions='[
+                  {"name": "Aceptar", "color": "orange", "handler": "slideNueve.jumpToSlide(&apos;01&apos;)"},
+                  {"name": "Cancelar", "color": "gray", "handler": "slideNueve.closeAlert()"}
+               ]'>
       </custom-alert>
 
    </section>

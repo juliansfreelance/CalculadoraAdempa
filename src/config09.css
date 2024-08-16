@@ -40,18 +40,33 @@ input[type=number] {
    @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-[4.5rem] relative
 }
 
-header {
-   @apply w-full px-16;
-}
 header hgroup {
-   @apply w-full h-[80px] flex justify-between items-center
+   @apply w-full h-fit flex justify-between items-center
 }
-header hgroup h2 {
-   @apply w-fit h-full flex items-center font-extrabold text-center text-white text-3xl leading-none px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl
+header hgroup span {
+   @apply flex gap-4
+}
+header hgroup div {
+   @apply w-fit flex flex-col items-center gap-2 px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end
+}
+header hgroup div h2 {
+   @apply font-extrabold text-center text-white text-3xl leading-[4.4rem];
 }
 
 main {
    @apply flex-grow px-24 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
+}
+.home-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
+}
+.home-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+.home-btn div {
+   @apply flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
+}
+.home-btn div svg {
+   @apply text-button-text;
 }
 
 .background-btn-blue {
@@ -291,13 +306,13 @@ canvas {
 }
 #poblacion header,
 #poblacion header button {
-   @apply bg-lime-600 border-lime-800;
+   @apply bg-[#8fac74] border-[#679147];
 }
 #poblacion header button {
    @apply ml-[91px]
 }
 #poblacion .folder-contents {
-   @apply border-lime-700;
+   @apply border-[#679147];
 }
 #poblacion.close {
    @apply mt-[762px] z-40;
@@ -308,13 +323,13 @@ canvas {
 }
 #pocedimientos header,
 #pocedimientos header button {
-   @apply bg-pink-600 border-pink-800;
+   @apply bg-[#ca5d48] border-[#b6121b];
 }
 #pocedimientos header button {
    @apply ml-[259px]
 }
 #pocedimientos .folder-contents {
-   @apply border-pink-600;
+   @apply border-[#b6121b];
 }
 #pocedimientos.close {
    @apply mt-[756px] z-30;
@@ -325,13 +340,13 @@ canvas {
 }
 #tecnologias header,
 #tecnologias header button {
-   @apply bg-amber-500 border-amber-600;
+   @apply bg-[#ffdb69] border-[#ffcf01];
 }
 #tecnologias header button {
    @apply ml-[474px]
 }
 #tecnologias .folder-contents {
-   @apply border-amber-500;
+   @apply border-[#ffcf01];
 }
 #tecnologias.close {
    @apply mt-[750px] z-20;
@@ -342,13 +357,13 @@ canvas {
 }
 #cohorte header,
 #cohorte header button {
-   @apply bg-sky-600 border-sky-800;
+   @apply bg-[#0091ac] border-[#00718f];
 }
 #cohorte header button {
    @apply ml-[660px];
 }
 #cohorte .folder-contents {
-   @apply border-sky-600;
+   @apply border-[#00718f];
 }
 #cohorte.close {
    @apply mt-[744px] z-10;
