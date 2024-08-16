@@ -51,3 +51,9 @@ nav {
 .menu-item figure figcaption {
    @apply text-3xl text-text-500 font-extrabold leading-none pb-6 pt-3
 }
+footer{
+   @apply w-full text-slate-800 font-helvet text-right
+}
+footer article p {
+   @apply font-helvet !important;
+}

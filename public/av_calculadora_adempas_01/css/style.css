@@ -1302,11 +1302,6 @@ select {
   border-width: 1px;
 }
 
-.border-cyan-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(6 182 212 / var(--tw-border-opacity));
-}
-
 .border-green-500 {
   --tw-border-opacity: 1;
   border-color: rgb(34 197 94 / var(--tw-border-opacity));
@@ -1315,6 +1310,11 @@ select {
 .border-red-500 {
   --tw-border-opacity: 1;
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
+.border-text-intermedio {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 207 1 / var(--tw-border-opacity));
 }
 
 .bg-green-100 {
@@ -1428,6 +1428,21 @@ select {
   line-height: 1.25;
 }
 
+.text-\[\#679147\] {
+  --tw-text-opacity: 1;
+  color: rgb(103 145 71 / var(--tw-text-opacity));
+}
+
+.text-\[\#b6121b\] {
+  --tw-text-opacity: 1;
+  color: rgb(182 18 27 / var(--tw-text-opacity));
+}
+
+.text-\[\#ffcf01\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 207 1 / var(--tw-text-opacity));
+}
+
 .text-amber-500 {
   --tw-text-opacity: 1;
   color: rgb(245 158 11 / var(--tw-text-opacity));
@@ -1451,11 +1466,6 @@ select {
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
-}
-
-.text-lime-600 {
-  --tw-text-opacity: 1;
-  color: rgb(101 163 13 / var(--tw-text-opacity));
 }
 
 .text-orange-400 {
@@ -1496,6 +1506,11 @@ select {
 .text-text-600 {
   --tw-text-opacity: 1;
   color: rgb(130 0 83 / var(--tw-text-opacity));
+}
+
+.text-text-intermedio {
+  --tw-text-opacity: 1;
+  color: rgb(255 207 1 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -1580,8 +1595,8 @@ select {
   animation-delay: 1600ms;
 }
 
-.animate-delay-\[2300ms\] {
-  animation-delay: 2300ms;
+.animate-delay-\[2000ms\] {
+  animation-delay: 2000ms;
 }
 
 .animate-delay-\[600ms\] {
@@ -1594,10 +1609,6 @@ select {
 
 .animate-delay-\[800ms\] {
   animation-delay: 800ms;
-}
-
-.animate-delay-\[2000ms\] {
-  animation-delay: 2000ms;
 }
 
 .animate-duration-slow {
@@ -1750,6 +1761,18 @@ nav {
   line-height: 1;
   --tw-text-opacity: 1;
   color: rgb(109 109 109 / var(--tw-text-opacity));
+}
+
+footer {
+  width: 100%;
+  text-align: right;
+  font-family: Helvet;
+  --tw-text-opacity: 1;
+  color: rgb(30 41 59 / var(--tw-text-opacity));
+}
+
+footer article p {
+  font-family: Helvet !important;
 }
 
 .peer:focus ~ .peer-focus\:border-blue-300 {
