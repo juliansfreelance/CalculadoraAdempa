@@ -27,7 +27,7 @@ body {
 }
 
 .slide{
-   @apply w-[1024px] h-[768px] bg-fondo-menu bg-cover bg-center px-12 py-6 flex flex-col gap-7
+   @apply w-[1024px] h-[768px] bg-fondo-menu bg-cover bg-center px-12 py-6 pb-4 flex flex-col gap-6
 }
 
 header hgroup {
@@ -35,25 +35,26 @@ header hgroup {
 }
 
 nav {
-   @apply bg-white/50 px-12 py-16 rounded-3xl grid grid-cols-2 grid-rows-2 gap-8 self-center shadow-black/50 shadow-lg
+   @apply bg-white/50 px-12 pt-16 pb-4 rounded-3xl grid grid-cols-2 grid-rows-2 gap-y-6 gap-x-8 self-center shadow-black/50 shadow-lg w-[668px]
 }
 .menu-item {
    @apply w-[270px] h-[210px] bg-gradient-to-b from-menu-100 to-menu-200 shadow-black/40 shadow-lg p-2 rounded-[55px] hover:shadow-black/40 hover:shadow-xl transition-all
 }
-
 .menu-item figure {
    @apply w-full h-full bg-gradient-to-b from-white/50 to-transparent rounded-[50px] flex flex-col justify-end items-center
 }
 .menu-item figure img {
    @apply w-[100px] self-center drop-shadow-md
 }
-
 .menu-item figure figcaption {
    @apply text-3xl text-text-500 font-extrabold leading-none pb-6 pt-3
+}
+.ref {
+   @apply w-fit col-span-2 text-center leading-tight text-slate-800 font-helvet text-sm !important;
 }
 footer{
    @apply w-full text-slate-800 font-helvet text-right
 }
 footer article p {
-   @apply font-helvet !important;
+   @apply font-helvet text-sm !important;
 }

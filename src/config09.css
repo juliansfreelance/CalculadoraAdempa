@@ -298,7 +298,7 @@ canvas {
    @apply font-extrabold text-xl mb-3 px-6
 }
 .folder-contents section {
-   @apply pl-6 mr-3 pr-1 flex-grow grid grid-flow-row auto-rows-max justify-items-center gap-4 content-start overflow-y-auto h-[560px];
+   @apply pl-6 mr-3 pr-1 flex-grow grid grid-flow-row auto-rows-max justify-items-center gap-4 content-start overflow-y-auto h-[544px];
 }
 
 #poblacion {
@@ -381,14 +381,14 @@ canvas {
 }
 @keyframes animation-fade-in {
    0% {background: rgb(221, 215, 209, 0);}
-   100% {background: rgb(221, 215, 209, 0.85);}
+   100% {background: rgb(221, 215, 209, 0);}
 }
 
 .fade-out {
    animation: animation-fade-out 600ms both;
 }
 @keyframes animation-fade-out {
-   0% {background: rgb(221, 215, 209, 0.85);}
+   0% {background: rgb(221, 215, 209, 0);}
    100% {background: rgb(221, 215, 209, 0);}
 }
 
