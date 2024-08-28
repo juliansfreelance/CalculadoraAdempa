@@ -4,13 +4,12 @@
  * Agency: ÜlaIdeas
  * Created by: Julio Calderón
  * Developed By: Julio Calderón
- * Modified By:
+ * Modified By: Julio Calderón
  */
 let veeva = {};
 let slideSeis = {
 
    ini: async function () {
-      const inputElement = document.querySelector('input[name="poblacion"]');
       const buttonsElement = document.querySelectorAll('button[name="conoceGrupos"]');
       const inputsElement = document.querySelector('.content-inputs');
       const htpEdit = document.querySelector('.htp-edit');
@@ -19,7 +18,6 @@ let slideSeis = {
       if (calculadoraData) {
          veeva.calculadora = await JSON.parse(calculadoraData);
          console.log('Veeva desde el localStorage: ', veeva);
-         inputElement.value = veeva.calculadora.poblacion;
          const updateButtonStyles = (index) => {
             buttonsElement[index].classList.replace('background-btn-gray', 'background-btn-orange');
             buttonsElement[index].classList.replace('button-gray-corner-full', 'button-orange-corner-full');
@@ -43,8 +41,6 @@ let slideSeis = {
             htpEstudy.classList.replace('hidden', 'grid');
          }
       }
-      inputElement.addEventListener('input', slideSeis.handleInput);
-      inputElement.addEventListener('blur', slideSeis.handleBlur);
       buttonsElement.forEach(button => {
          button.addEventListener('click', slideSeis.handleButtonClick);
       });
@@ -60,7 +56,6 @@ let slideSeis = {
 
    jumpToSlide: function (slide) {
       localStorage.setItem('previousSlide', veeva.slide);
-      slide === '02' ? localStorage.setItem('instrucciones', true) : localStorage.removeItem('instrucciones');
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
       } else {
@@ -79,8 +74,7 @@ let slideSeis = {
    },
 
    handleInput: function (event) {
-      let inputValue;
-      event.target.id === 'poblacion' ? inputValue = event.target.value.replace(/[^\d]/g, '') : inputValue = event.target.value.replace(/[^\d,]/g, '');
+      let inputValue = event.target.value.replace(/[^\d,]/g, '');
       if (inputValue.includes(',')) {
          this.decimalMode = true;
       }
@@ -137,14 +131,15 @@ let slideSeis = {
       const pop = document.querySelector('.pop-conten');
       const alertBody = document.querySelector('.pop-conten-body');
       let gruposHTML = ''
-      veeva.calculadora.referencias.grupos.forEach((grupo, i)  => {
+      veeva.calculadora.referencias.estadificacion.forEach((estadifi, i)  => {
          gruposHTML += `
          <tr>
-            <td class="font-bold text-base text-text-500">${grupo.name}</td>
-            <td><custom-input name="" type="calc" valor="${grupo.HAP}" icon="porcentaje"></custom-input></td>
-            <td><custom-input name="" type="calc" valor="${grupo.HTEC}" icon="porcentaje"></custom-input></td>
+            <td class="text-sm text-text-500">${estadifi.name}</td>
+            <td><custom-input name="" type="calc" valor="${estadifi.riesgoBajo}" icon="porcentaje"></custom-input></td>
+            <td><custom-input name="" type="calc" valor="${estadifi.riesgoIntermedio}" icon="porcentaje"></custom-input></td>
+            <td><custom-input name="" type="calc" valor="${estadifi.riesgoAlto}" icon="porcentaje"></custom-input></td>
             <td>
-               <button onclick="slideSeis.selectGrupo('${grupo.name}')" class="text-green-600 shadow-md rounded-full p-0.5 bg-white ">
+               <button onclick="slideSeis.selectGrupo('${estadifi.name}')" class="text-green-600 shadow-md rounded-full p-0.5 bg-white ">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-circle-fill size-5" viewBox="0 0 16 16">
                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                   </svg>

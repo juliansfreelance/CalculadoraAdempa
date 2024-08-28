@@ -24,18 +24,25 @@
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="z-50 w-full px-16">
+      <header class="w-full px-16 relative z-50">
          <hgroup>
             <span>
-               <button class="home-btn animate-pulse-fade-in animate-delay-[600ms]" onclick="localStorage.getItem('calculadora') ? slideCinco.openAlert('reset') : slideCinco.jumpToSlide('01')">
+               <button class="home-btn animate-pulse-fade-in animate-delay-[600ms]"
+                  onclick="localStorage.getItem('calculadora') ? slideCinco.openAlert('reset') : slideCinco.jumpToSlide('01')">
                   <div>
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" />
                      </svg>
                   </div>
                </button>
+               <button class="ref-btn animate-fade-in-left animate-delay-[700ms]" onclick="slideCinco.jumpToSlide('12')">
+                  <div>
+                     <h4>IPP</h4>
+                  </div>
+               </button>
             </span>
-            <div class="animate-fade-in-left animate-delay-500 animate-duration-slow">
+            <div class="titulo animate-fade-in animate-delay-500 animate-duration-slow">
                <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
                <h3>Población y Distribución por grupo de HTP</h3>
             </div>

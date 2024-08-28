@@ -27,6 +27,6 @@ let slideUno = {
 document.addEventListener('DOMContentLoaded', function () {
    slideUno.loadConfig().then(() => {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
-      // localStorage.removeItem('calculadora');
+      localStorage.removeItem('calculadora');
    });
 });
