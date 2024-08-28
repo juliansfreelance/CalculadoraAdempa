@@ -21,7 +21,7 @@
 
 html,
 body {
-   @apply h-full w-full bg-slate-800;
+   @apply bg-slate-800;
 }
 
 input {
@@ -37,7 +37,7 @@ input[type=number] {
 }
 
 .slide {
-   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-[4.5rem] relative
+   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6 relative
 }
 
 header hgroup {
@@ -50,12 +50,16 @@ header hgroup div {
    @apply w-fit flex flex-col items-center gap-2 px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end
 }
 header hgroup div h2 {
-   @apply font-extrabold text-center text-white text-3xl leading-[4.4rem];
+   @apply font-extrabold text-center text-white text-[22px] leading-none;
+}
+header hgroup div h3 {
+   @apply font-thin text-white text-base leading-none;
 }
 
 main {
-   @apply flex-grow px-24 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
+   @apply flex-grow px-7 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
 }
+
 .home-btn {
    @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
 }
@@ -212,263 +216,170 @@ main {
    @apply absolute text-text-500 left-[10px] -mt-[24px]
 }
 
-.resultados {
+.costos {
    @apply flex flex-col-reverse drop-shadow-md w-full;
 }
-.resultados:last-child {
-   @apply mb-4;
-}
-.resultados .form {
+.costos .form {
    @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
 }
-.resultados .form h5 {
-   @apply text-orange-400 font-bold text-base
+.costos .form {
+   @apply pr-2 !important
 }
-.resultados .form table  {
-   @apply border-spacing-1 border-separate
+.costos .form table {
+   @apply border-spacing-x-1 border-spacing-y-1 border-separate;
 }
-.resultados .form table thead tr th {
-   @apply leading-none
+.costos .form table thead tr th {
+   @apply leading-none py-2
 }
-.resultados .form table tbody tr:first-child {
-   @apply w-[209px] !important
+.costos .form table tbody tr td {
+   @apply leading-none py-1 px-1
 }
-.resultados .form table tbody tr td {
-   @apply leading-none p-1
+.costos .form table tbody tr td:first-child {
+   @apply max-w-[13rem]
 }
-.resultados .label {
+.costos .form table tbody tr td.input-error {
+   @apply bg-red-200 rounded-lg
+}
+.costos .label {
    @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
 }
-.resultados .label h4 {
+.costos .label h4 {
    @apply text-orange-400 font-bold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
 }
 
-.chart {
-   @apply bg-white/80 px-6 pb-4 rounded-xl w-11/12 h-[335px] drop-shadow-md place-self-center
+.error {
+   @apply w-full px-4 text-red-500 leading-none text-xs italic text-center;
+}
+.error span {
+   @apply font-bold text-sm not-italic leading-none;
 }
 
-canvas {
-   @apply max-w-full max-h-full;
+footer {
+   @apply w-full px-12 text-center flex items-center justify-between;
+}
+footer article p {
+   @apply font-normal leading-none text-center text-sm my-2 text-text-500
 }
 
-.content-folder {
-   @apply absolute w-[1024px] h-[768px] overflow-hidden z-10;
+.pop-conten {
+   @apply w-[1024px] h-[768px] relative top-0 flex flex-col justify-center items-center bg-pop-background/85
+}
+.pop-conten {
+   @apply absolute p-8
+}
+.pop {
+   @apply flex flex-col-reverse w-fit drop-shadow-md
+}
+.pop .pop-form {
+   @apply bg-white/80 pl-6 pr-[18px] py-4 rounded-xl w-full text-text-500 text-sm
 }
 
-.folder {
-   transition-property: margin-top;
-   transition-duration: 600ms;
-   transition-timing-function: ease-in-out;
-   @apply px-16 w-full drop-shadow-md absolute;
+.pop .pop-form .thead {
+   width: calc(100% - 6px);
 }
-.folder header {
-   @apply w-full h-3 border-2 border-b-0 rounded-t-lg px-0;
-}
-.folder header button {
-   @apply absolute w-fit border-2 border-b-0 pl-8 pr-4 py-2 rounded-t-lg -mt-[38px] flex justify-center items-center;
-}
-.folder header button h4 {
-   @apply font-extrabold text-base text-black/50 drop-shadow-folder-buttton-text leading-none;
+.pop .pop-form table tbody tr {
+   @apply rounded-l-md odd:bg-white/0 even:bg-gray-800/5;
 }
 
-.folder.open {
-   @apply mt-14;
+
+.pop .pop-form table thead tr th {
+   @apply leading-none py-2
 }
-.folder .icon {
-   @apply shadow-md rounded-full bg-white size-5 ml-2;
+.pop .pop-form table tbody tr td {
+   @apply leading-none py-1 px-1
 }
-.folder.close .icon {
-   @apply text-green-600;
-}
-.folder.open .icon {
-   @apply text-red-600;
+.pop .pop-form table tbody tr td,
+.pop .pop-form table thead tr th {
+   @apply w-[140px] !important
 }
 
-.folder.close header button div svg:first-child {
-   @apply hidden;
-}
-.folder.open header button div svg:last-child {
-   @apply hidden;
+.pop .pop-form table tbody tr td:nth-child(1),
+.pop .pop-form table thead tr th:nth-child(1) {
+   @apply mr-2 w-[370px] pl-4 rounded-l-md !important
 }
 
-.folder-contents {
-   @apply bg-white/80 h-[620px] py-4 border-2 border-t-0 rounded-b-xl w-full text-text-500 text-sm;
+.pop .pop-label {
+   @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
 }
-.folder-contents h4 {
-   @apply font-extrabold text-xl mb-3 px-6
+.pop .pop-label div {
+   @apply flex bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% pl-6 py-1 rounded-t-2xl
 }
-.folder-contents section {
-   @apply pl-6 mr-3 pr-1 flex-grow grid grid-flow-row auto-rows-max justify-items-center gap-4 content-start overflow-y-auto h-[544px];
+.pop .pop-label div h4 {
+   @apply text-orange-400 font-bold text-lg
 }
-
-#poblacion {
-   @apply z-40;
-}
-#poblacion header,
-#poblacion header button {
-   @apply bg-[#8fac74] border-[#679147];
-}
-#poblacion header button {
-   @apply ml-[91px]
-}
-#poblacion .folder-contents {
-   @apply border-[#679147];
-}
-#poblacion.close {
-   @apply mt-[762px] z-40;
+.pop .pop-label div button {
+   @apply mx-3
 }
 
-#pocedimientos {
-   @apply z-30;
-}
-#pocedimientos header,
-#pocedimientos header button {
-   @apply bg-[#ca5d48] border-[#b6121b];
-}
-#pocedimientos header button {
-   @apply ml-[259px]
-}
-#pocedimientos .folder-contents {
-   @apply border-[#b6121b];
-}
-#pocedimientos.close {
-   @apply mt-[756px] z-30;
+.pop-animate-up {
+   @apply animate-fade-in animate-duration-slow
 }
 
-#tecnologias {
-   @apply z-20;
-}
-#tecnologias header,
-#tecnologias header button {
-   @apply bg-[#ffdb69] border-[#ffcf01];
-}
-#tecnologias header button {
-   @apply ml-[474px]
-}
-#tecnologias .folder-contents {
-   @apply border-[#ffcf01];
-}
-#tecnologias.close {
-   @apply mt-[750px] z-20;
-}
-
-#cohorte {
-   @apply z-10;
-}
-#cohorte header,
-#cohorte header button {
-   @apply bg-[#0091ac] border-[#00718f];
-}
-#cohorte header button {
-   @apply ml-[660px];
-}
-#cohorte .folder-contents {
-   @apply border-[#00718f];
-}
-#cohorte.close {
-   @apply mt-[744px] z-10;
-}
-
-.chart-animate-fade-in {
-   @apply animate-fade-in animate-duration-slow animate-delay-200;
-}
-.chart-animate-fade-out {
-   @apply animate-fade-out animate-duration-slower animate-delay-200;
-}
-
-.fade-in {
-   animation: animation-fade-in 600ms both;
-}
-@keyframes animation-fade-in {
-   0% {background: rgb(221, 215, 209, 0);}
-   100% {background: rgb(221, 215, 209, 0);}
-}
-
-.fade-out {
-   animation: animation-fade-out 600ms both;
-}
-@keyframes animation-fade-out {
-   0% {background: rgb(221, 215, 209, 0);}
-   100% {background: rgb(221, 215, 209, 0);}
+.pop-animate-down {
+   @apply animate-fade-out animate-duration-slow
 }
 
 
 .alert-conten {
    @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center z-[60] top-0 left-0;
 }
-
 .alert-conten .alert {
    @apply flex flex-col-reverse w-fit drop-shadow-md
 }
-
 .alert-conten .alert .alert-contain {
-   @apply max-w-lg inline-block align-bottom rounded-xl text-left overflow-hidden shadow-xl
+   @apply max-w-lg inline-block align-bottom  rounded-xl text-left overflow-hidden shadow-xl
 }
-
 .alert-conten .alert .alert-contain .alert-body {
    @apply bg-white flex-col items-start px-4 pt-5 pb-4
 }
-
 .alert-conten .alert .alert-contain .alert-body .header-icon {
    @apply mx-auto flex-shrink-0 flex items-center justify-center w-fit p-3 rounded-full shadow-sm;
 }
-
 .alert-body.info .header-icon {
    @apply bg-sky-100 text-sky-500
 }
-
 .alert-body.warning .header-icon {
    @apply bg-yellow-100 text-yellow-500
 }
-
-.alert-body.danger .header-icon {
+.alert-body.danger .header-icon  {
    @apply bg-red-100 text-red-500
 }
 
 .alert-body.info .header-conten h3 {
    @apply text-sky-500
 }
-
 .alert-body.warning .header-conten h3 {
    @apply text-yellow-500
 }
-
 .alert-body.danger .header-conten h3 {
    @apply text-red-500
 }
 
-.alert-conten .alert .alert-contain .alert-body .header-title {
+.alert-conten .alert .alert-contain .alert-body .header-title
+{
    @apply mt-3 ml-4 text-center;
 }
-
 .alert-conten .alert .alert-contain .alert-body .header-conten {
    @apply mt-3 ml-4 text-center;
 }
-
 .alert-conten .alert .alert-contain .alert-body .header-conten h3 {
    @apply text-lg leading-6 font-bold text-center
 }
-
 .alert-conten .alert .alert-contain .alert-body .header-conten article {
    @apply mt-2
 }
-
 .alert-conten .alert .alert-contain .alert-body .header-conten article p {
    @apply text-sm text-text-500
 }
-
 .alert-conten .alert .alert-contain .alert-body .header-conten article p span {
    @apply font-bold
 }
-
-.alert-conten .alert .alert-contain .alert-footer {
+.alert-conten .alert .alert-contain .alert-footer{
    @apply bg-slate-100 px-6 py-3 flex flex-row-reverse gap-4
 }
-
 .alert-animate-in {
    @apply animate-fade-in animate-duration-slow
 }
-
 .alert-animate-out {
    @apply animate-fade-out animate-duration-slow
 }
@@ -476,7 +387,6 @@ canvas {
 .alert-conten-animate-in {
    @apply animate-fade-in-up animate-delay-200 animate-duration-slow
 }
-
 .alert-conten-animate-out {
    @apply animate-fade-out-down animate-delay-200 animate-duration-slow
 }

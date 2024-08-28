@@ -59,6 +59,7 @@ let slideCinco = {
    },
 
    jumpToSlide: function (slide) {
+      localStorage.setItem('previousSlide', veeva.slide);
       slide === '02' ? localStorage.setItem('instrucciones', true) : localStorage.removeItem('instrucciones');
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;

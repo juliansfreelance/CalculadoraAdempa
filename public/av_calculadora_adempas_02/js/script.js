@@ -14,6 +14,7 @@ let slideDos = {
    },
 
    jumptoSlide: function (slide) {
+      localStorage.setItem('previousSlide', veeva.slide);
       if (slide === '01' && localStorage.getItem('instrucciones') !== null) slide = '05'; localStorage.removeItem('instrucciones');
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;

@@ -7,20 +7,47 @@
  * Modified By:
  */
 let veeva = {};
-
 let slideSeis = {
-   validateCounnt: 0,
 
    ini: async function () {
+      const inputElement = document.querySelector('input[name="poblacion"]');
+      const buttonsElement = document.querySelectorAll('button[name="conoceGrupos"]');
+      const inputsElement = document.querySelector('.content-inputs');
+      const htpEdit = document.querySelector('.htp-edit');
+      const htpEstudy = document.querySelector('.htp-estudy');
       const calculadoraData = localStorage.getItem('calculadora');
       if (calculadoraData) {
          veeva.calculadora = await JSON.parse(calculadoraData);
-         document.dispatchEvent(new Event('configLoaded'));
-      } else {
-         setTimeout(() => {
-            slideSeis.openAlert('bd-clear');
-         }, 1400);
+         console.log('Veeva desde el localStorage: ', veeva);
+         inputElement.value = veeva.calculadora.poblacion;
+         const updateButtonStyles = (index) => {
+            buttonsElement[index].classList.replace('background-btn-gray', 'background-btn-orange');
+            buttonsElement[index].classList.replace('button-gray-corner-full', 'button-orange-corner-full');
+         };
+         if (veeva.calculadora.grupos.conoceDistribucion) {
+            updateButtonStyles(0);
+            const hapEditValue = document.querySelector('input[name="edit-HAP"]');
+            const htecEditValue = document.querySelector('input[name="edit-HTCE"]');
+            hapEditValue.value = veeva.calculadora.grupos.HAP.toString().replace('.', ',');
+            htecEditValue.value = veeva.calculadora.grupos.HTEC.toString().replace('.', ',');
+            htpEdit.classList.replace('hidden', 'grid');
+            inputsElement.classList.replace('hidden', 'flex');
+         } else {
+            updateButtonStyles(1);
+            const hapEstudyValue = document.querySelector('input[name="estudy-HAP"]');
+            const htecEstudyValue = document.querySelector('input[name="estudy-HTCE"]');
+            const grupoSelected = veeva.calculadora.referencias.grupos.find(g => g.name === veeva.calculadora.grupos.study);
+            hapEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HAP}`;
+            htecEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HTEC}`;
+            inputsElement.classList.replace('hidden', 'flex');
+            htpEstudy.classList.replace('hidden', 'grid');
+         }
       }
+      inputElement.addEventListener('input', slideSeis.handleInput);
+      inputElement.addEventListener('blur', slideSeis.handleBlur);
+      buttonsElement.forEach(button => {
+         button.addEventListener('click', slideSeis.handleButtonClick);
+      });
    },
 
    loadConfig: function () {
@@ -32,6 +59,7 @@ let slideSeis = {
    },
 
    jumpToSlide: function (slide) {
+      localStorage.setItem('previousSlide', veeva.slide);
       slide === '02' ? localStorage.setItem('instrucciones', true) : localStorage.removeItem('instrucciones');
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
@@ -40,27 +68,107 @@ let slideSeis = {
       }
    },
 
-   popUp: function (pop) {
-      const customPop = document.querySelector(`custom-pop[type="${pop}"]`);
-      if (customPop) {
-         customPop.classList.remove('hidden', 'pop-animate-down');
-         customPop.classList.add('flex', 'pop-animate-up');
-      } else {
-         console.error(`No se encontró ningún elemento <custom-pop> con type="${pop}".`);
+   formatNumber: function (val) {
+      const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
+      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
+      if (val !== '') {
+         let inputValue = val.toString().replace(/[^\d,.]/g, '');
+         let integer = parseFloat(inputValue.replace(/\./g, '').replace(/,/g, '.'));
+         return inputValue.indexOf(',') !== -1 ? FORMAT_DECIMAL(integer).format() : FORMAT_ENTERO(integer).format();
       }
    },
 
-   popDown: function (pop) {
-      const customPop = document.querySelector(`custom-pop[type="${pop}"]`);
-      if (customPop) {
-         customPop.classList.remove('flex', 'pop-animate-up');
-         customPop.classList.add('pop-animate-down');
-         setTimeout(() => {
-            customPop.classList.add('hidden')
-         }, 600);
-      } else {
-         console.error(`No se encontró ningún elemento <custom-pop> con type="${pop}".`);
+   handleInput: function (event) {
+      let inputValue;
+      event.target.id === 'poblacion' ? inputValue = event.target.value.replace(/[^\d]/g, '') : inputValue = event.target.value.replace(/[^\d,]/g, '');
+      if (inputValue.includes(',')) {
+         this.decimalMode = true;
       }
+      if (this.decimalMode) {
+         let decimalIndex = inputValue.indexOf(',');
+         if (decimalIndex !== -1) {
+            let decimalPart = inputValue.substring(decimalIndex + 1);
+            if (decimalPart.length > 2) {
+               inputValue = inputValue.substring(0, decimalIndex + 3);
+            }
+         }
+      }
+      event.target.value = inputValue;
+      this.valor = inputValue;
+   },
+
+   handleBlur: function (event) {
+      if (event.target.value !== '') {
+         let inputValue = event.target.value.replace(/[^\d,.]/g, '');
+         veeva.calculadora.poblacion = parseInt(event.target.value);
+         event.target.value = slideSeis.formatNumber(inputValue);
+      }
+   },
+
+   handleButtonClick(event) {
+      const inputsElement = document.querySelector('.content-inputs');
+      const buttonsElement = document.querySelectorAll('button[name="conoceGrupos"]');
+      const htpEdit = document.querySelector('.htp-edit');
+      const htpEstudy = document.querySelector('.htp-estudy');
+      const button = event.currentTarget;
+      buttonsElement.forEach(btn => {
+         btn.classList.replace('background-btn-orange', 'background-btn-gray');
+         btn.classList.replace('button-orange-corner-full', 'button-gray-corner-full');
+      });
+      htpEdit.classList.replace('grid', 'hidden');
+      htpEstudy.classList.replace('grid', 'hidden');
+      button.classList.replace('background-btn-gray', 'background-btn-orange');
+      button.classList.replace('button-gray-corner-full', 'button-orange-corner-full');
+      const conoceDistribucion = button.value.trim().toLowerCase() === "true";
+      veeva.calculadora.grupos.conoceDistribucion = conoceDistribucion;
+      if (conoceDistribucion) {
+         veeva.calculadora.grupos.HAP = 0;
+         veeva.calculadora.grupos.HTEC = 0;
+         veeva.calculadora.grupos.study = "";
+         htpEdit.classList.replace('hidden', 'grid');
+         inputsElement.classList.replace('hidden', 'flex');
+      } else {
+         inputsElement.classList.replace('flex', 'hidden');
+         slideSeis.popUp();
+      }
+   },
+
+   popUp: function () {
+      const pop = document.querySelector('.pop-conten');
+      const alertBody = document.querySelector('.pop-conten-body');
+      let gruposHTML = ''
+      veeva.calculadora.referencias.grupos.forEach((grupo, i)  => {
+         gruposHTML += `
+         <tr>
+            <td class="font-bold text-base text-text-500">${grupo.name}</td>
+            <td><custom-input name="" type="calc" valor="${grupo.HAP}" icon="porcentaje"></custom-input></td>
+            <td><custom-input name="" type="calc" valor="${grupo.HTEC}" icon="porcentaje"></custom-input></td>
+            <td>
+               <button onclick="slideSeis.selectGrupo('${grupo.name}')" class="text-green-600 shadow-md rounded-full p-0.5 bg-white ">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-circle-fill size-5" viewBox="0 0 16 16">
+                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                  </svg>
+               </button>
+            </td>
+         </tr>
+         `;
+      });
+      alertBody.innerHTML = gruposHTML;
+      pop.classList.replace('hidden', 'flex');
+      pop.classList.replace('pop-animate-down', 'pop-animate-up');
+   },
+
+   popDown: function() {
+      const pop = document.querySelector('.pop-conten');
+      const buttonsElement = document.querySelectorAll('button[name="conoceGrupos"]');
+      pop.classList.replace('pop-animate-up', 'pop-animate-down');
+      setTimeout(() => {
+         pop.classList.replace('flex', 'hidden');
+         buttonsElement.forEach(button => {
+            button.classList.replace('background-btn-orange', 'background-btn-gray');
+            button.classList.replace('button-orange-corner-full', 'button-gray-corner-full');
+         });
+      }, 500);
    },
 
    openAlert: function (alert) {
@@ -68,15 +176,6 @@ let slideSeis = {
       const customAlertConten = document.querySelector(`custom-alert[name="alert-${alert}"] .alert-conten`);
       const customAlertAlert = document.querySelector(`custom-alert[name="alert-${alert}"] .alert`);
       switch (alert) {
-         case 'ref-tecnologias':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-            break;
 
          case 'reset':
             if (customAlert) {
@@ -115,193 +214,94 @@ let slideSeis = {
       }
    },
 
-   formatToFloatString: function(value) {
-      let floatValue = parseFloat(value).toFixed(2);
-      return floatValue.replace('.', ',');
-   },
 
-   updateInputTecnologias: function () {
-      const totalRiesgoBajo = document.querySelector("input[name='total-bajo']");
-      const totalRiesgoIntermedio = document.querySelector("input[name='total-intermedio']");
-      const totalRiesgoAlto = document.querySelector("input[name='total-alto']");
-
-      const monoterapiaBajo = document.querySelector("input[name='monoterapia-bajo']");
-      const monoterapiaIntermedio = document.querySelector("input[name='monoterapia-intermedio']");
-      const monoterapiaAlto = document.querySelector("input[name='monoterapia-alto']");
-
-      const dobleBajo = document.querySelector("input[name='doble-bajo']");
-      const dobleIntermedio = document.querySelector("input[name='doble-intermedio']");
-      const dobleAlto = document.querySelector("input[name='doble-alto']");
-
-      const tripleBajo = document.querySelector("input[name='triple-bajo']");
-      const tripleIntermedio = document.querySelector("input[name='triple-intermedio']");
-      const tripleAlto = document.querySelector("input[name='triple-alto']");
-
-      monoterapiaBajo.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.monoterapias.bajo);
-      monoterapiaIntermedio.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.monoterapias.intermedio);
-      monoterapiaAlto.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.monoterapias.alto);
-
-      dobleBajo.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasDobles.bajo);
-      dobleIntermedio.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasDobles.intermedio);
-      dobleAlto.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasDobles.alto);
-
-      tripleBajo.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasTripes.bajo);
-      tripleIntermedio.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasTripes.intermedio);
-      tripleAlto.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.terapiasTripes.alto);
-
-      totalRiesgoBajo.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.totalRiesgoBajo);
-      totalRiesgoIntermedio.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.totalRiesgoIntermedio);
-      totalRiesgoAlto.value = slideSeis.formatToFloatString(veeva.calculadora.tecnologias.totalRiesgoAlto);
-
-      const customAlert = document.querySelector('custom-alert.block');
-      if (customAlert) {
+   selectGrupo(grupo) {
+      const pop = document.querySelector('.pop-conten');
+      const inputsElement = document.querySelector('.content-inputs');
+      const htpEstudy = document.querySelector('.htp-estudy');
+      const hapEstudyValue = document.querySelector('input[name="estudy-HAP"]');
+      const htecEstudyValue = document.querySelector('input[name="estudy-HTCE"]');
+      const grupoSelected = veeva.calculadora.referencias.grupos.find(g => g.name === grupo);
+      pop.classList.replace('pop-animate-up', 'pop-animate-down');
+      if (grupoSelected) {
+         hapEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HAP}`;
+         htecEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HTEC}`;
+         const { HAP, HTEC, name } = grupoSelected;
+         veeva.calculadora.grupos = { ...veeva.calculadora.grupos, HAP, HTEC, study: name };
          setTimeout(() => {
-            slideSeis.validateTecnnology();
-            slideSeis.closeAlert();
-         }, 400);
+            pop.classList.replace('flex', 'hidden');
+            inputsElement.classList.replace('hidden', 'flex');
+            htpEstudy.classList.replace('hidden', 'grid');
+         }, 500);
+      } else {
+         console.error('Grupo no encontrado:', grupo);
       }
    },
 
-   syncTechnologyWithReference: function () {
-
-      const tecnologias = veeva.calculadora.tecnologias;
-      const referencias = veeva.calculadora.referencias.tecnologias;
-
-      // Reset totals
-      tecnologias.totalRiesgoBajo = 0;
-      tecnologias.totalRiesgoIntermedio = 0;
-      tecnologias.totalRiesgoAlto = 0;
-
-      // Update monoterapias
-      tecnologias.monoterapias.bajo = 0;
-      tecnologias.monoterapias.intermedio = 0;
-      tecnologias.monoterapias.alto = 0;
-      referencias.monoterapias.terapias.forEach((refTerapia, index) => {
-         const tecTerapia = tecnologias.monoterapias.terapias[index];
-         tecTerapia.bajo = refTerapia.bajo;
-         tecTerapia.intermedio = refTerapia.intermedio;
-         tecTerapia.alto = refTerapia.alto;
-
-         tecnologias.monoterapias.bajo += tecTerapia.bajo;
-         tecnologias.monoterapias.intermedio += tecTerapia.intermedio;
-         tecnologias.monoterapias.alto += tecTerapia.alto;
-
-         tecnologias.totalRiesgoBajo += tecTerapia.bajo;
-         tecnologias.totalRiesgoIntermedio += tecTerapia.intermedio;
-         tecnologias.totalRiesgoAlto += tecTerapia.alto;
-      });
-
-      // Update terapias dobles
-      tecnologias.terapiasDobles.bajo = 0;
-      tecnologias.terapiasDobles.intermedio = 0;
-      tecnologias.terapiasDobles.alto = 0;
-      referencias.terapiasDobles.terapias.forEach((refTerapia, index) => {
-         const tecTerapia = tecnologias.terapiasDobles.terapias[index];
-         tecTerapia.bajo = refTerapia.bajo;
-         tecTerapia.intermedio = refTerapia.intermedio;
-         tecTerapia.alto = refTerapia.alto;
-
-         tecnologias.terapiasDobles.bajo += tecTerapia.bajo;
-         tecnologias.terapiasDobles.intermedio += tecTerapia.intermedio;
-         tecnologias.terapiasDobles.alto += tecTerapia.alto;
-
-         tecnologias.totalRiesgoBajo += tecTerapia.bajo;
-         tecnologias.totalRiesgoIntermedio += tecTerapia.intermedio;
-         tecnologias.totalRiesgoAlto += tecTerapia.alto;
-      });
-
-      // Update terapias triples
-      tecnologias.terapiasTripes.bajo = 0;
-      tecnologias.terapiasTripes.intermedio = 0;
-      tecnologias.terapiasTripes.alto = 0;
-      referencias.terapiasTripes.terapias.forEach((refTerapia, index) => {
-         const tecTerapia = tecnologias.terapiasTripes.terapias[index];
-         tecTerapia.bajo = refTerapia.bajo;
-         tecTerapia.intermedio = refTerapia.intermedio;
-         tecTerapia.alto = refTerapia.alto;
-
-         tecnologias.terapiasTripes.bajo += tecTerapia.bajo;
-         tecnologias.terapiasTripes.intermedio += tecTerapia.intermedio;
-         tecnologias.terapiasTripes.alto += tecTerapia.alto;
-
-         tecnologias.totalRiesgoBajo += tecTerapia.bajo;
-         tecnologias.totalRiesgoIntermedio += tecTerapia.intermedio;
-         tecnologias.totalRiesgoAlto += tecTerapia.alto;
-      });
-
-      console.log("Tecnologías actualizadas:", tecnologias);
-      slideSeis.actualizarInputs()
-   },
-
-   actualizarInputs: function() {
-      const tecnologias = veeva.calculadora.tecnologias;
-      const inputs = document.querySelectorAll('input.porcentaje');
-
-      inputs.forEach(input => {
-         const name = input.name;
-         const [tipo, index, riesgo] = name.split('-');
-         const terapiaMap = {
-            monoterapia: "monoterapias",
-            biterapia: "terapiasDobles",
-            triterapia: "terapiasTripes",
-         }
-         const terapiasName = terapiaMap[tipo] || null;
-         if (tecnologias[terapiasName]) {
-            const terapia = tecnologias[terapiasName].terapias[index];
-            if (terapia) {
-               input.value = slideSeis.formatToFloatString(terapia[riesgo]);
+   validarForm() {
+      const { poblacion, grupos } = veeva.calculadora;
+      const toggleError = (selector, condition) => {
+         document.querySelector(selector).classList.replace(condition ? 'hidden' : 'block', condition ? 'block' : 'hidden');
+      };
+      toggleError('.input-poblacion .error', poblacion === 0);
+      if (grupos.conoceDistribucion) {
+         const hapInput = document.querySelector('input[name="edit-HAP"]');
+         const htecInput = document.querySelector('input[name="edit-HTCE"]');
+         const hapEditValue = parseFloat(hapInput.value.replace(',', '.'));
+         const htecEditValue = parseFloat(htecInput.value.replace(',', '.'));
+         toggleError('.hap-error', !hapInput.value);
+         toggleError('.htce-error', !htecInput.value);
+         const inputsNotEmpty = hapInput.value && htecInput.value;
+         const sumNot100 = hapEditValue + htecEditValue !== 100;
+         if (inputsNotEmpty && sumNot100) {
+            toggleError('.grupos-error', true);
+         } else if (inputsNotEmpty && !sumNot100) {
+            toggleError('.grupos-error', false);
+            grupos.HAP = hapEditValue;
+            grupos.HTEC = htecEditValue;
+            if (poblacion !== 0) {
+               slideSeis.estadificacionPacientes();
             }
          }
-      });
-      slideSeis.updateInputTecnologias();
-   },
-
-   validateTecnnology: function () {
-      slideSeis.validateCounnt++;
-      const getValues = (names) => {
-         return names.map(name => parseFloat(document.querySelector(`input[name="${name}"]`).value.replace(',', '.')));
-      };
-      const updateErrorState = (selector, hasError) => {
-         document.querySelector(selector).classList.replace(hasError ? 'hidden' : 'flex', hasError ? 'flex' : 'hidden');
-      };
-      const updateValidationState = (selector, hasError) => {
-         document.querySelector(selector).classList.replace(hasError ? 'bg-slate-200' : 'bg-red-200', hasError ? 'bg-red-200' : 'bg-slate-200');
-         document.querySelector(selector.replace('total', 'error')).classList.replace(hasError ? 'hidden' : 'block', hasError ? 'block' : 'hidden');
-      };
-      const [monoterapiaBajoValue, monoterapiaIntermedioValue, monoterapiaAltoValue] = getValues(['monoterapia-bajo', 'monoterapia-intermedio', 'monoterapia-alto']);
-      const [dobleBajoValue, dobleIntermedioValue, dobleAltoValue] = getValues(['doble-bajo', 'doble-intermedio', 'doble-alto']);
-      const [tripleBajoValue, tripleIntermedioValue, tripleAltoValue] = getValues(['triple-bajo', 'triple-intermedio', 'triple-alto']);
-      const [totalTecnologyBajoValue, totalTecnologyIntermedioValue, totalTecnologyAltoValue] = getValues(['total-bajo', 'total-intermedio', 'total-alto']);
-      const monoterapiaTotal = monoterapiaBajoValue + monoterapiaIntermedioValue + monoterapiaAltoValue;
-      const dobleTotal = dobleBajoValue + dobleIntermedioValue + dobleAltoValue;
-      const tripleTotal = tripleBajoValue + tripleIntermedioValue + tripleAltoValue;
-      updateErrorState('.error-monoterapia', monoterapiaTotal === 0);
-      updateErrorState('.error-doble', dobleTotal === 0);
-      updateErrorState('.error-triple', tripleTotal === 0);
-      if (monoterapiaTotal !== 0 && dobleTotal !== 0 && tripleTotal !== 0) {
-         updateValidationState('.total-bajo', totalTecnologyBajoValue !== 100);
-         updateValidationState('.total-intermedio', totalTecnologyIntermedioValue !== 100);
-         updateValidationState('.total-alto', totalTecnologyAltoValue !== 100);
+      } else if (poblacion !== 0) {
+         slideSeis.estadificacionPacientes();
       }
-
-      let validate = (
-         totalTecnologyBajoValue === 100 &&
-         totalTecnologyIntermedioValue === 100 &&
-         totalTecnologyAltoValue === 100
-      );
-      return validate;
    },
 
-   validarForm: function() {
-      const validateTecnnology = slideSeis.validateTecnnology();
-      console.log('validacion exitosa', validateTecnnology);
-      if (validateTecnnology === true) {
-         localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+   estadificacionPacientes: function () {
+      const escenarioIndex = veeva.calculadora.estadificacionEscenario[0];
+      const estadificacionRef = veeva.calculadora.referencias.estadificacion[escenarioIndex];
+      const riesgoBajo = parseFloat(estadificacionRef.riesgoBajo);
+      const riesgoIntermedio = parseFloat(estadificacionRef.riesgoIntermedio);
+      const riesgoAlto = parseFloat(estadificacionRef.riesgoAlto);
+      const HAP = parseFloat(veeva.calculadora.grupos.HAP);
+      const HTEC = parseFloat(veeva.calculadora.grupos.HTEC);
+      const pacientesBajo = (((riesgoBajo * HAP) + (riesgoBajo * HTEC)))/100;
+      const pacientesIntermedio = ((riesgoIntermedio * HAP) + (riesgoIntermedio * HTEC))/100;
+      const pacientesAlto = ((riesgoAlto * HAP) + (riesgoAlto * HTEC)) / 100;
+      veeva.calculadora.estadificacionPacientes.bajo = pacientesBajo;
+      veeva.calculadora.estadificacionPacientes.intermedio = pacientesIntermedio;
+      veeva.calculadora.estadificacionPacientes.alto = pacientesAlto;
+      slideSeis.estadificacionCategoria();
+   },
+   estadificacionCategoria: function () {
+      const poblacion = parseFloat(veeva.calculadora.poblacion);
+      let pacientesBajo = veeva.calculadora.estadificacionPacientes.bajo;
+      let pacientesIntermedio = veeva.calculadora.estadificacionPacientes.intermedio;
+      let pacientesAlto = veeva.calculadora.estadificacionPacientes.alto;
+      const categoriaBajo = (Math.floor(poblacion * pacientesBajo)) / 100;
+      const categoriaIntermedio = (Math.floor(poblacion * pacientesIntermedio)) / 100;
+      const categoriaAlto = (Math.floor(poblacion * pacientesAlto)) / 100;
+      veeva.calculadora.estadificacionCategoria.bajo = categoriaBajo;
+      veeva.calculadora.estadificacionCategoria.intermedio = categoriaIntermedio;
+      veeva.calculadora.estadificacionCategoria.alto = categoriaAlto;
+      console.log(veeva.calculadora);
+      localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora))
+      setTimeout(() => {
          slideSeis.jumpToSlide('07');
-      }
+      }, 800);
    }
-};
-
+}
 
 document.addEventListener('DOMContentLoaded', function () {
    slideSeis.loadConfig().then(() => {
@@ -309,3 +309,5 @@ document.addEventListener('DOMContentLoaded', function () {
       slideSeis.ini();
    });
 });
+
+

@@ -14,7 +14,8 @@ let slideCuatro = {
          });
    },
 
-   jumptoSlide: function(slide) {
+   jumptoSlide: function (slide) {
+      localStorage.setItem('previousSlide', veeva.slide);
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
       } else {

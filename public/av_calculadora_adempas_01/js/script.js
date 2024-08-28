@@ -13,6 +13,7 @@ let slideUno = {
    },
 
    jumptoSlide: function (slide) {
+      localStorage.setItem('previousSlide', veeva.slide);
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
       } else {
@@ -26,6 +27,6 @@ let slideUno = {
 document.addEventListener('DOMContentLoaded', function () {
    slideUno.loadConfig().then(() => {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
-      localStorage.removeItem('calculadora');
+      // localStorage.removeItem('calculadora');
    });
 });

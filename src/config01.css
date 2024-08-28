@@ -49,9 +49,20 @@ nav {
 .menu-item figure figcaption {
    @apply text-3xl text-text-500 font-extrabold leading-none pb-6 pt-3
 }
+
 .ref {
-   @apply w-fit col-span-2 text-center leading-tight text-slate-800 font-helvet text-sm !important;
+   @apply w-fit col-span-2 text-center leading-none text-slate-800 font-helvet text-xs flex flex-row-reverse justify-center items-center px-[70px] relative gap-2 !important;
 }
+.ref .ref-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit h-fit mx-1;
+}
+.ref .ref-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white flex flex-row items-center justify-center gap-1 w-7 h-7 p-1 rounded-full;
+}
+.ref .ref-btn div h4 {
+   @apply text-button-text font-bold text-xs;
+}
+
 footer{
    @apply w-full text-slate-800 font-helvet text-right
 }

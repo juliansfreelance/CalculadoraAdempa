@@ -1,52 +1,24 @@
+"use strict";
 /**
  * Lab: Bayer
  * Agency: ÜlaIdeas
  * Created by: Julio Calderón
  * Developed By: Julio Calderón
  * Modified By:
-*/
-"use strict";
-import chartHomeModule from './modules/chartHome.js';
-import chartPatientModule from './modules/chartPatient.js';
-import chartProceduresModule from './modules/chartProcedures.js';
-import chartTecnologyModule from './modules/chartTecnology.js';
-
+ */
 let veeva = {};
 
 let slideNueve = {
-
-   ini: function () {
-      const resolveReferences = (obj) => {
-         const resolvePath = (path, obj) => {
-            return path.split('.').reduce((acc, part) => acc && acc[part], obj);
-         };
-         const traverseAndResolve = (currentObj, rootObj) => {
-            for (let key in currentObj) {
-               if (typeof currentObj[key] === 'string' && currentObj[key].startsWith('@root.')) {
-                  const path = currentObj[key].slice(6);
-                  currentObj[key] = resolvePath(path, rootObj);
-               } else if (typeof currentObj[key] === 'object' && currentObj[key] !== null) {
-                  traverseAndResolve(currentObj[key], rootObj);
-               }
-            }
-         };
-         const newObj = JSON.parse(JSON.stringify(obj));
-         traverseAndResolve(newObj, newObj);
-         return newObj;
-      };
-
+   validateCounnt: 0,
+   ini: async function () {
       const calculadoraData = localStorage.getItem('calculadora');
       if (calculadoraData) {
-         veeva.calculadora = JSON.parse(calculadoraData);
-         veeva = resolveReferences(veeva);
-         slideNueve.getTotalCostsByProcedures();
-         slideNueve.getTotalCostsByTechnology();
+         veeva.calculadora = await JSON.parse(calculadoraData);
+         document.dispatchEvent(new Event('configLoaded'));
       } else {
-         const alert = document.querySelector('.alert-conten');
-         alert.classList.replace('alert-animate-down', 'alert-animate-up');
          setTimeout(() => {
             slideNueve.openAlert('bd-clear');
-         }, 1600);
+         }, 1400);
       }
    },
 
@@ -58,8 +30,37 @@ let slideNueve = {
       });
    },
 
-   jumpToSlide: function(slide) {
-      slide === '02' ? localStorage.setItem('instrucciones', true) : localStorage.removeItem('instrucciones');
+   calcComplicationsRef: function () {
+      const costo = veeva.calculadora.referencias.complicaciones.costo;
+      const frecuencias = veeva.calculadora.referencias.complicaciones.frecuencia;
+      const microcosteo = veeva.calculadora.referencias.complicaciones.microcosteo;
+
+      frecuencias.forEach((frecuencia, index) => {
+         costo[index].bajo = frecuencia.valorUnitario * frecuencia.bajo;
+         costo[index].intermedio = frecuencia.valorUnitario * frecuencia.intermedio;
+         costo[index].alto = frecuencia.valorUnitario * frecuencia.alto;
+      });
+      microcosteo.forEach(item => {
+         item.costo.bajo = item.valorUnitario * item.cantidad.bajo;
+         item.costo.intermedio = item.valorUnitario * item.cantidad.intermedio;
+         item.costo.alto = item.valorUnitario * item.cantidad.alto;
+         costo[2].bajo += item.costo.bajo;
+         costo[2].intermedio += item.costo.intermedio;
+         costo[2].alto += item.costo.alto;
+      });
+      slideNueve.syncValorUnitRubrosWithReference()
+   },
+
+   syncValorUnitRubrosWithReference: function () {
+      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
+      const referencias = veeva.calculadora.referencias.complicaciones;
+      rubros.forEach((rubro, index) => {
+         rubro.valorUnitario = referencias.microcosteo[index].valorUnitario;
+      });
+   },
+
+   jumpToSlide: function (slide) {
+      localStorage.setItem('previousSlide', veeva.slide);
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
       } else {
@@ -67,20 +68,20 @@ let slideNueve = {
       }
    },
 
-   popUp: function(pop) {
+   popUp: function (pop) {
       const customPop = document.querySelector(`custom-pop[type="${pop}"]`);
       if (customPop) {
          customPop.classList.remove('hidden', 'pop-animate-down');
-         customPop.classList.add('block', 'pop-animate-up');
+         customPop.classList.add('flex', 'pop-animate-up');
       } else {
          console.error(`No se encontró ningún elemento <custom-pop> con type="${pop}".`);
       }
    },
 
-   popDown: function(pop) {
+   popDown: function (pop) {
       const customPop = document.querySelector(`custom-pop[type="${pop}"]`);
       if (customPop) {
-         customPop.classList.remove('block', 'pop-animate-up');
+         customPop.classList.remove('flex', 'pop-animate-up');
          customPop.classList.add('pop-animate-down');
          setTimeout(() => {
             customPop.classList.add('hidden')
@@ -96,7 +97,7 @@ let slideNueve = {
       const customAlertAlert = document.querySelector(`custom-alert[name="alert-${alert}"] .alert`);
       switch (alert) {
 
-         case 'bd-clear':
+         case 'ref-microcosteo':
             if (customAlert) {
                customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
                customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
@@ -104,7 +105,7 @@ let slideNueve = {
             } else {
                console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
             }
-            break;
+         break;
 
          case 'reset':
             if (customAlert) {
@@ -114,7 +115,17 @@ let slideNueve = {
             } else {
                console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
             }
-            break;
+         break;
+
+         case 'bd-clear':
+            if (customAlert) {
+               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
+               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
+               customAlert.classList.replace('hidden', 'block');
+            } else {
+               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
+            }
+         break;
       }
    },
 
@@ -133,276 +144,145 @@ let slideNueve = {
       }
    },
 
-   toggleFolder: function(folderId) {
-      const headerElement = document.querySelector('.slide header');
-      const mainElement = document.querySelector('.slide main');
-      const contentFolder = document.querySelector('.content-folder');
-      const folder = document.getElementById(folderId);
-      const openFolders = document.querySelectorAll('.folder.open');
-      const chartContainers = document.querySelectorAll('.chart');
-
-      chartContainers.forEach(chartContainer => {
-         if (!chartContainer.classList.contains('chart-home')) {
-            chartContainer.innerHTML = '';
-         }
+   updateInputCosts: function () {
+      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
+      const costos = veeva.calculadora.complicaciones.costos;
+      const costTypes = ['bajo', 'intermedio', 'alto'];
+      const costGroups = ['costo-1', 'costo-2', 'costo-3'];
+      const setValues = (group, values) => {
+         costTypes.forEach((type, index) => {
+            document.querySelector(`input[name='${group}-${type}']`).value = FORMAT_ENTERO(values[type]).format();
+         });
+      };
+      costGroups.forEach((group, index) => {
+         setValues(group, costos[index]);
       });
-
-      openFolders.forEach(openFolder => {
-         if (openFolder.id !== folderId) {
-            openFolder.classList.replace('open', 'close');
-         }
+      costTypes.forEach(type => {
+         document.querySelector(`input[name='total-${type}']`).value = FORMAT_ENTERO(costos[3][type]).format();
       });
-      if (folder.classList.contains('open')) {
+      const customAlert = document.querySelector('custom-alert.block');
+      if (customAlert) {
          setTimeout(() => {
-            headerElement.classList.replace('z-10','z-50');
-            mainElement.classList.replace('z-10', 'z-50');
-         }, 560);
-         folder.classList.replace('open', 'close');
-         contentFolder.classList.replace('fade-in', 'fade-out');
-      } else {
-         headerElement.classList.replace('z-50', 'z-10');
-         mainElement.classList.replace('z-50', 'z-10');
-         contentFolder.classList.replace('fade-out', 'fade-in');
-         folder.classList.replace('close', 'open');
-         slideNueve.chartTecnology();
-         slideNueve.chartProcedures();
-         slideNueve.chartPatient();
+            slideNueve.validateCosts();
+            slideNueve.closeAlert();
+         }, 400);
       }
    },
 
-   getTotalCostsByProcedures: function () {
-      const { calculadora } = veeva;
-      calculadora.procedimientos.bajo = Math.round(((calculadora.referencias.procedimientos.HAP.bajo * calculadora.grupos.HAP) + (calculadora.referencias.procedimientos.HTEC.bajo * calculadora.grupos.HTEC)) / 100);
-      calculadora.procedimientos.intermedio = Math.round(((calculadora.referencias.procedimientos.HAP.intermedio * calculadora.grupos.HAP) + (calculadora.referencias.procedimientos.HTEC.intermedio * calculadora.grupos.HTEC)) / 100);
-      calculadora.procedimientos.alto = Math.round(((calculadora.referencias.procedimientos.HAP.alto * calculadora.grupos.HAP) + (calculadora.referencias.procedimientos.HTEC.alto * calculadora.grupos.HTEC)) / 100);
-      calculadora.procedimientos.promedio = parseFloat(((calculadora.procedimientos.bajo + calculadora.procedimientos.intermedio + calculadora.procedimientos.alto) / 3).toFixed(2));
-      calculadora.chartOptions.chartProcedures.valores = [calculadora.procedimientos.bajo, calculadora.procedimientos.intermedio, calculadora.procedimientos.alto];
-   },
-
-   getTotalCostsByTechnology: function () {
-      const { calculadora } = veeva;
-      const costoPromedio = calculadora.tecnologias.costoPromedio;
-      const { diasMes, mesesYear } = calculadora.referencias.tecnologias.tecnologia;
-      const tecnologias = ['monoterapias', 'terapiasDobles', 'terapiasTripes'];
-      const riegos = ['bajo', 'intermedio', 'alto'];
-      tecnologias.forEach(type => {
-         costoPromedio[type].terapias.forEach((terapia, terapiaIndex) => {
-            terapia.tratamientos.forEach(tratamiento => {
-               riegos.forEach(riesgo => {
-                  const { costoUnitarioPromedio, dosisDia } = calculadora.referencias.tecnologias.tecnologia[tratamiento];
-                  const costoDia = costoUnitarioPromedio * dosisDia;
-                  const costoMes = costoDia * diasMes;
-                  const costoYear = costoMes * mesesYear;
-                  const valorRiesgo = calculadora.tecnologias[type].terapias[terapiaIndex][riesgo];
-                  const costoTratamiento = (costoYear * valorRiesgo) / 100;
-                  const costoTratamientoRounded = Math.round(costoTratamiento);
-                  const costoTratamientoFormatted = parseFloat(costoTratamiento.toFixed(2));
-                  if (riesgo === 'bajo') {
-                     costoPromedio[type].bajo += costoTratamientoRounded;
-                     costoPromedio.totalRiesgoBajo += costoTratamientoRounded;
-                  } else if (riesgo === 'intermedio') {
-                     costoPromedio[type].intermedio += costoTratamientoRounded;
-                     costoPromedio.totalRiesgoIntermedio += costoTratamientoRounded;
-                  } else if (riesgo === 'alto') {
-                     costoPromedio[type].alto += costoTratamientoRounded;
-                     costoPromedio.totalRiesgoAlto += costoTratamientoRounded;
-                  }
-                  costoPromedio[type].terapias[terapiaIndex][riesgo] += costoTratamientoFormatted;
-               });
-            });
-         });
+   syncCostsWithReference: function () {
+      const costos = veeva.calculadora.complicaciones.costos;
+      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
+      const referencias = veeva.calculadora.referencias.complicaciones;
+      rubros.forEach((rubro, index) => {
+         rubro.cantidad.bajo = referencias.microcosteo[index].cantidad.bajo;
+         rubro.costo.bajo = referencias.microcosteo[index].costo.bajo;
+         rubro.cantidad.intermedio = referencias.microcosteo[index].cantidad.intermedio;
+         rubro.costo.intermedio = referencias.microcosteo[index].costo.intermedio;
+         rubro.cantidad.alto = referencias.microcosteo[index].cantidad.alto;
+         rubro.costo.alto = referencias.microcosteo[index].costo.alto;
       });
-      veeva.calculadora.chartOptions.chartTecnology.valores = [veeva.calculadora.tecnologias.costoPromedio.totalRiesgoBajo, veeva.calculadora.tecnologias.costoPromedio.totalRiesgoIntermedio, veeva.calculadora.tecnologias.costoPromedio.totalRiesgoAlto];
-      slideNueve.updateResult();
+      referencias.costo.forEach((referencia, index) => {
+         costos[index].bajo = referencia.bajo;
+         costos[index].intermedio = referencia.intermedio;
+         costos[index].alto = referencia.alto;
+      });
+      costos[3].bajo = 0; costos[3].intermedio = 0; costos[3].alto = 0
+      costos.forEach((costo) => {
+         if (costo.nombre !== "Totales") {
+            costos[3].bajo += costo.bajo;
+            costos[3].intermedio += costo.intermedio;
+            costos[3].alto += costo.alto;
+         }
+      });
+
+      slideNueve.actualizarInputs()
    },
 
-   updateResult: function () {
-      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
-      const { calculadora } = veeva;
-
-      const resPoblacion = document.querySelector("input[name='res-poblacion']");
-      resPoblacion.value = calculadora.poblacion;
-
-      const resRiskBajo = document.querySelector("input[name='res-risk-bajo']");
-      const resRiskIntermedio = document.querySelector("input[name='res-risk-intermedio']");
-      const resRiskAlto = document.querySelector("input[name='res-risk-alto']");
-      resRiskBajo.value = calculadora.estadificacionCategoria.bajo;
-      resRiskIntermedio.value = calculadora.estadificacionCategoria.intermedio;
-      resRiskAlto.value = calculadora.estadificacionCategoria.alto;
-
-      const resPercentBajo = document.querySelector("input[name='res-percent-bajo']");
-      const resPercentIntermedio = document.querySelector("input[name='res-percent-intermedio']");
-      const resPercentAlto = document.querySelector("input[name='res-percent-alto']");
-      const costoPromedio = calculadora.tecnologias.costoPromedio;
-      resPercentBajo.value = calculadora.estadificacionPacientes.bajo;
-      resPercentIntermedio.value = calculadora.estadificacionPacientes.intermedio;
-      resPercentAlto.value = calculadora.estadificacionPacientes.alto;
-
-      const resTecnoBajo = document.querySelector("input[name='res-tecno-bajo']");
-      const resTecnoIntermedio = document.querySelector("input[name='res-tecno-intermedio']");
-      const resTecnoAlto = document.querySelector("input[name='res-tecno-alto']");
-      const resTecnoPromedio = document.querySelector("input[name='res-tecno-promedio']");
-      resTecnoBajo.value = FORMAT_ENTERO(costoPromedio.totalRiesgoBajo).format();
-      resTecnoIntermedio.value = FORMAT_ENTERO(costoPromedio.totalRiesgoIntermedio).format();
-      resTecnoAlto.value = FORMAT_ENTERO(costoPromedio.totalRiesgoAlto).format();
-      resTecnoPromedio.value = FORMAT_ENTERO(Math.round((costoPromedio.totalRiesgoBajo + costoPromedio.totalRiesgoIntermedio + costoPromedio.totalRiesgoAlto) / 3)).format();
-
-      const resProcedureBajo = document.querySelector("input[name='res-procedimientos-bajo']");
-      const resProcedureIntermedio = document.querySelector("input[name='res-procedimientos-intermedio']");
-      const resProcedureAlto = document.querySelector("input[name='res-procedimientos-alto']");
-      const resProcedurePromedio = document.querySelector("input[name='res-procedimientos-promedio']");
-      const costoProcedimiento = calculadora.procedimientos;
-      resProcedureBajo.value = FORMAT_ENTERO(costoProcedimiento.bajo).format();
-      resProcedureIntermedio.value = FORMAT_ENTERO(costoProcedimiento.intermedio).format();
-      resProcedureAlto.value = FORMAT_ENTERO(costoProcedimiento.alto).format();
-      resProcedurePromedio.value = FORMAT_ENTERO(costoProcedimiento.promedio).format();
-
-      const resPatientBajo = document.querySelector("input[name='res-patient-bajo']");
-      const resPatientIntermedio = document.querySelector("input[name='res-patient-intermedio']");
-      const resPatientAlto = document.querySelector("input[name='res-patient-alto']");
-      const resPatientTotal = document.querySelector("input[name='res-patient-total']");
-      const resPatientPromedio = document.querySelector("input[name='res-patient-promedio']");
-      const resPatientEstBajo = document.querySelector(".patient-estadificacion-bajo");
-      const resPatientEstInter = document.querySelector(".patient-estadificacion-intermedio");
-      const resPatientEstAlto = document.querySelector(".patient-estadificacion-alto");
-      const resPatientTecno = document.querySelector(".patient-represent-tecno");
-      const resPatientProced = document.querySelector(".patient-represent-proced");
-      const resPatientCompli = document.querySelector(".patient-represent-compli");
-      resPatientBajo.value = FORMAT_ENTERO(costoPromedio.totalRiesgoBajo + costoProcedimiento.bajo + veeva.calculadora.complicaciones.costos[3].bajo).format();
-      resPatientIntermedio.value = FORMAT_ENTERO(costoPromedio.totalRiesgoIntermedio + costoProcedimiento.intermedio + veeva.calculadora.complicaciones.costos[3].intermedio).format();
-      resPatientAlto.value = FORMAT_ENTERO(costoPromedio.totalRiesgoAlto + costoProcedimiento.alto + veeva.calculadora.complicaciones.costos[3].alto).format()
-      resPatientPromedio.value = FORMAT_ENTERO(Math.round((parseInt(resPatientBajo.value.replace(/\./g, '')) + parseInt(resPatientIntermedio.value.replace(/\./g, '')) + parseInt(resPatientAlto.value.replace(/\./g, ''))) / 3)).format();
-      resPatientTotal.value = FORMAT_ENTERO(Math.round(parseInt(resPatientBajo.value.replace(/\./g, '')) + parseInt(resPatientIntermedio.value.replace(/\./g, '')) + parseInt(resPatientAlto.value.replace(/\./g, '')))).format();
-      resPatientEstBajo.innerHTML = Math.round((parseInt(resPatientBajo.value.replace(/\./g, '')) / parseInt(resPatientTotal.value.replace(/\./g, ''))) * 100);
-      resPatientEstInter.innerHTML = Math.round((parseInt(resPatientIntermedio.value.replace(/\./g, '')) / parseInt(resPatientTotal.value.replace(/\./g, ''))) * 100);
-      resPatientEstAlto.innerHTML = Math.round((parseInt(resPatientAlto.value.replace(/\./g, '')) / parseInt(resPatientTotal.value.replace(/\./g, ''))) * 100);
-      resPatientTecno.innerHTML = Math.round((parseInt(resTecnoPromedio.value.replace(/\./g, '')) / parseInt(resPatientPromedio.value.replace(/\./g, ''))) * 100);
-      resPatientProced.innerHTML = Math.round((parseInt(resProcedurePromedio.value.replace(/\./g, '')) / parseInt(resPatientPromedio.value.replace(/\./g, ''))) * 100);
-      let promedioComplicaciones = ((veeva.calculadora.complicaciones.costos[3].bajo + veeva.calculadora.complicaciones.costos[3].intermedio + veeva.calculadora.complicaciones.costos[3].alto) / 3);
-      resPatientCompli.innerHTML = Math.round((promedioComplicaciones / parseInt(resPatientPromedio.value.replace(/\./g, ''))) * 100);
-
-      const resCohortePacienteOneBajo = document.querySelector("input[name='res-cohorte-1-1-bajo']");
-      const resCohortePacienteOneIntermedio = document.querySelector("input[name='res-cohorte-1-1-intermedio']");
-      const resCohortePacienteOneAlto = document.querySelector("input[name='res-cohorte-1-1-alto']");
-      const resCohortePacienteOneTotal = document.querySelector("input[name='res-cohorte-1-1-total']");
-      resCohortePacienteOneBajo.value = Math.ceil((calculadora.estadificacionCategoria.bajo * calculadora.complicaciones.probabilidades[0].bajo)/100);
-      resCohortePacienteOneIntermedio.value = Math.ceil((calculadora.estadificacionCategoria.intermedio * calculadora.complicaciones.probabilidades[0].intermedio)/100);
-      resCohortePacienteOneAlto.value = Math.ceil((calculadora.estadificacionCategoria.alto * calculadora.complicaciones.probabilidades[0].alto)/100);
-      resCohortePacienteOneTotal.value = parseInt(resCohortePacienteOneBajo.value) + parseInt(resCohortePacienteOneIntermedio.value) + parseInt(resCohortePacienteOneAlto.value);
-
-      const resCohortePacienteTwoBajo = document.querySelector("input[name='res-cohorte-1-2-bajo']");
-      const resCohortePacienteTwoIntermedio = document.querySelector("input[name='res-cohorte-1-2-intermedio']");
-      const resCohortePacienteTwoAlto = document.querySelector("input[name='res-cohorte-1-2-alto']");
-      const resCohortePacienteTwoTotal = document.querySelector("input[name='res-cohorte-1-2-total']");
-      resCohortePacienteTwoBajo.value = Math.ceil((calculadora.estadificacionCategoria.bajo * calculadora.complicaciones.probabilidades[1].bajo) / 100);
-      resCohortePacienteTwoIntermedio.value = Math.ceil((calculadora.estadificacionCategoria.intermedio * calculadora.complicaciones.probabilidades[1].intermedio) / 100);
-      resCohortePacienteTwoAlto.value = Math.ceil((calculadora.estadificacionCategoria.alto * calculadora.complicaciones.probabilidades[1].alto) / 100);
-      resCohortePacienteTwoTotal.value = parseInt(resCohortePacienteTwoBajo.value) + parseInt(resCohortePacienteTwoIntermedio.value) + parseInt(resCohortePacienteTwoAlto.value);
-
-      const resCohortePacienteThreeBajo = document.querySelector("input[name='res-cohorte-1-3-bajo']");
-      const resCohortePacienteThreeIntermedio = document.querySelector("input[name='res-cohorte-1-3-intermedio']");
-      const resCohortePacienteThreeAlto = document.querySelector("input[name='res-cohorte-1-3-alto']");
-      const resCohortePacienteThreeTotal = document.querySelector("input[name='res-cohorte-1-3-total']");
-      resCohortePacienteThreeBajo.value = Math.ceil((calculadora.estadificacionCategoria.bajo * calculadora.complicaciones.probabilidades[2].bajo) / 100);
-      resCohortePacienteThreeIntermedio.value = Math.ceil((calculadora.estadificacionCategoria.intermedio * calculadora.complicaciones.probabilidades[2].intermedio) / 100);
-      resCohortePacienteThreeAlto.value = Math.ceil((calculadora.estadificacionCategoria.alto * calculadora.complicaciones.probabilidades[2].alto) / 100);
-      resCohortePacienteThreeTotal.value = parseInt(resCohortePacienteThreeBajo.value) + parseInt(resCohortePacienteThreeIntermedio.value) + parseInt(resCohortePacienteThreeAlto.value);
-
-      const resCohorteComplicationOneBajo = document.querySelector("input[name='res-cohorte-2-1-bajo']");
-      const resCohorteComplicationOneIntermedio = document.querySelector("input[name='res-cohorte-2-1-intermedio']");
-      const resCohorteComplicationOneAlto = document.querySelector("input[name='res-cohorte-2-1-alto']");
-      const resCohorteComplicationOneTotal = document.querySelector("input[name='res-cohorte-2-1-total']");
-      resCohorteComplicationOneBajo.value = FORMAT_ENTERO(calculadora.complicaciones.costos[0].bajo * parseInt(resCohortePacienteOneBajo.value)).format();
-      resCohorteComplicationOneIntermedio.value = FORMAT_ENTERO(calculadora.complicaciones.costos[0].intermedio * parseInt(resCohortePacienteOneIntermedio.value)).format();
-      resCohorteComplicationOneAlto.value = FORMAT_ENTERO(calculadora.complicaciones.costos[0].alto * parseInt(resCohortePacienteOneAlto.value)).format();
-      resCohorteComplicationOneTotal.value = FORMAT_ENTERO(parseInt(resCohorteComplicationOneBajo.value.replace(/\./g, '')) + parseInt(resCohorteComplicationOneIntermedio.value.replace(/\./g, '')) + parseInt(resCohorteComplicationOneAlto.value.replace(/\./g, ''))).format();
-
-      const resCohorteComplicationTwoBajo = document.querySelector("input[name='res-cohorte-2-2-bajo']");
-      const resCohorteComplicationTwoIntermedio = document.querySelector("input[name='res-cohorte-2-2-intermedio']");
-      const resCohorteComplicationTwoAlto = document.querySelector("input[name='res-cohorte-2-2-alto']");
-      const resCohorteComplicationTwoTotal = document.querySelector("input[name='res-cohorte-2-2-total']");
-      resCohorteComplicationTwoBajo.value = FORMAT_ENTERO(calculadora.complicaciones.costos[1].bajo * parseInt(resCohortePacienteTwoBajo.value)).format();
-      resCohorteComplicationTwoIntermedio.value = FORMAT_ENTERO(calculadora.complicaciones.costos[1].intermedio * parseInt(resCohortePacienteTwoIntermedio.value)).format();
-      resCohorteComplicationTwoAlto.value = FORMAT_ENTERO(calculadora.complicaciones.costos[1].alto * parseInt(resCohortePacienteTwoAlto.value)).format();
-      resCohorteComplicationTwoTotal.value = FORMAT_ENTERO(parseInt(resCohorteComplicationTwoBajo.value.replace(/\./g, '')) + parseInt(resCohorteComplicationTwoIntermedio.value.replace(/\./g, '')) + parseInt(resCohorteComplicationTwoAlto.value.replace(/\./g, ''))).format();
-
-      const resCohorteComplicationThreeBajo = document.querySelector("input[name='res-cohorte-2-3-bajo']");
-      const resCohorteComplicationThreeIntermedio = document.querySelector("input[name='res-cohorte-2-3-intermedio']");
-      const resCohorteComplicationThreeAlto = document.querySelector("input[name='res-cohorte-2-3-alto']");
-      const resCohorteComplicationThreeTotal = document.querySelector("input[name='res-cohorte-2-3-total']");
-      resCohorteComplicationThreeBajo.value = FORMAT_ENTERO(calculadora.complicaciones.costos[2].bajo * parseInt(resCohortePacienteThreeBajo.value)).format();
-      resCohorteComplicationThreeIntermedio.value = FORMAT_ENTERO(calculadora.complicaciones.costos[2].intermedio * parseInt(resCohortePacienteThreeIntermedio.value)).format();
-      resCohorteComplicationThreeAlto.value = FORMAT_ENTERO(calculadora.complicaciones.costos[2].alto * parseInt(resCohortePacienteThreeAlto.value)).format();
-      resCohorteComplicationThreeTotal.value = FORMAT_ENTERO(parseInt(resCohorteComplicationThreeBajo.value.replace(/\./g, '')) + parseInt(resCohorteComplicationThreeIntermedio.value.replace(/\./g, '')) + parseInt(resCohorteComplicationThreeAlto.value.replace(/\./g, ''))).format();
-
-      const resCohorteComplicationFourBajo = document.querySelector("input[name='res-cohorte-2-4-bajo']");
-      const resCohorteComplicationFourIntermedio = document.querySelector("input[name='res-cohorte-2-4-intermedio']");
-      const resCohorteComplicationFourAlto = document.querySelector("input[name='res-cohorte-2-4-alto']");
-      const resCohorteComplicationFourTotal = document.querySelector("input[name='res-cohorte-2-4-total']");
-      resCohorteComplicationFourBajo.value = FORMAT_ENTERO(parseInt(resCohorteComplicationOneBajo.value.replace(/\./g, '')) + parseInt(resCohorteComplicationTwoBajo.value.replace(/\./g, '')) + parseInt(resCohorteComplicationThreeBajo.value.replace(/\./g, ''))).format();
-      resCohorteComplicationFourIntermedio.value = FORMAT_ENTERO(parseInt(resCohorteComplicationOneIntermedio.value.replace(/\./g, '')) + parseInt(resCohorteComplicationTwoIntermedio.value.replace(/\./g, '')) + parseInt(resCohorteComplicationThreeIntermedio.value.replace(/\./g, ''))).format();
-      resCohorteComplicationFourAlto.value = FORMAT_ENTERO(parseInt(resCohorteComplicationOneAlto.value.replace(/\./g, '')) + parseInt(resCohorteComplicationTwoAlto.value.replace(/\./g, '')) + parseInt(resCohorteComplicationThreeAlto.value.replace(/\./g, ''))).format();
-      resCohorteComplicationFourTotal.value = FORMAT_ENTERO(parseInt(resCohorteComplicationOneTotal.value.replace(/\./g, '')) + parseInt(resCohorteComplicationTwoTotal.value.replace(/\./g, '')) + parseInt(resCohorteComplicationThreeTotal.value.replace(/\./g, ''))).format();
-
-      const resCohorteTotalBajo = document.querySelector("input[name='res-cohorte-3-1-bajo']");
-      const resCohorteTotalIntermedio = document.querySelector("input[name='res-cohorte-3-1-intermedio']");
-      const resCohorteTotalAlto = document.querySelector("input[name='res-cohorte-3-1-alto']");
-      const resCohorteTotalTotal = document.querySelector("input[name='res-cohorte-3-1-total']");
-      resCohorteTotalBajo.value = FORMAT_ENTERO((calculadora.estadificacionCategoria.bajo * costoPromedio.totalRiesgoBajo) + (calculadora.estadificacionCategoria.bajo * costoProcedimiento.bajo) + parseInt(resCohorteComplicationFourBajo.value.replace(/\./g, ''))).format();
-      resCohorteTotalIntermedio.value = FORMAT_ENTERO((calculadora.estadificacionCategoria.intermedio * costoPromedio.totalRiesgoIntermedio) + (calculadora.estadificacionCategoria.intermedio * costoProcedimiento.intermedio) + parseInt(resCohorteComplicationFourIntermedio.value.replace(/\./g, ''))).format();
-      resCohorteTotalAlto.value = FORMAT_ENTERO((calculadora.estadificacionCategoria.alto * costoPromedio.totalRiesgoAlto) + (calculadora.estadificacionCategoria.alto * costoProcedimiento.alto) + parseInt(resCohorteComplicationFourAlto.value.replace(/\./g, ''))).format();
-      resCohorteTotalTotal.value = FORMAT_ENTERO(parseInt(resCohorteTotalBajo.value.replace(/\./g, '')) + parseInt(resCohorteTotalIntermedio.value.replace(/\./g, '')) + parseInt(resCohorteTotalAlto.value.replace(/\./g, ''))).format();
-
-      const resCohortePorcentajeBajo = document.querySelector("input[name='res-cohorte-3-2-bajo']");
-      const resCohortePorcentajeIntermedio = document.querySelector("input[name='res-cohorte-3-2-intermedio']");
-      const resCohortePorcentajeAlto = document.querySelector("input[name='res-cohorte-3-2-alto']");
-      resCohortePorcentajeBajo.value = FORMAT_ENTERO(Math.round(parseInt(resCohorteTotalBajo.value.replace(/\./g, '')) / parseInt(resCohorteTotalTotal.value.replace(/\./g, '')) * 100)).format();
-      resCohortePorcentajeIntermedio.value = FORMAT_ENTERO(Math.round(parseInt(resCohorteTotalIntermedio.value.replace(/\./g, '')) / parseInt(resCohorteTotalTotal.value.replace(/\./g, '')) * 100)).format();
-      resCohortePorcentajeAlto.value = FORMAT_ENTERO(Math.floor(parseInt(resCohorteTotalAlto.value.replace(/\./g, '')) / parseInt(resCohorteTotalTotal.value.replace(/\./g, '')) * 100)).format();
-
-      veeva.calculadora.chartOptions.chartPatient.valores = [parseInt(resPatientBajo.value.replace(/\./g, '')), parseInt(resPatientIntermedio.value.replace(/\./g, '')), parseInt(resPatientAlto.value.replace(/\./g, ''))]
-      slideNueve.chartIni();
+   actualizarInputs: function () {
+      const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
+      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
+      const inputs = document.querySelectorAll('input[name^="microcosteo"]');
+      inputs.forEach(input => {
+      const name = input.name;
+      const [tipo, index, riesgo] = name.split('-');
+         input.value = FORMAT_DECIMAL(rubros[index].cantidad[riesgo]).format();
+      });
+      slideNueve.updateInputCosts();
    },
 
-   chartIni: function () {
-      const chartContainer = document.querySelector('.chart-home');
-      setTimeout(() => {
-         chartContainer.innerHTML = `<canvas id="chartHome" class="chart-animate-fade-in"></canvas>`;
-         chartHomeModule.chartIni(veeva);
-      }, 1600);
+   calcMicrocosteo: function () {
+      const costo = veeva.calculadora.complicaciones.costos;
+      const microcosteo = veeva.calculadora.complicaciones.microcosteo.rubros;
+      costo[2].bajo = 0; costo[2].intermedio = 0; costo[2].alto = 0;
+      microcosteo.forEach(item => {
+         costo[2].bajo += item.costo.bajo;
+         costo[2].intermedio += item.costo.intermedio;
+         costo[2].alto += item.costo.alto;
+      });
    },
 
-   chartPatient: function () {
-      const chartContainer = document.querySelector('.chart-patient');
-      setTimeout(() => {
-         chartContainer.innerHTML = `<canvas id="chartPatient" class="chart-animate-fade-in"></canvas>`;
-         chartPatientModule.chartPatient(veeva);
-      }, 600);
+   validateCosts: function () {
+      slideNueve.validateCounnt++;
+      const error = document.querySelector('.error-input');
+      const errorMicroCost = document.querySelector('.error-microcosteo');
+      const getValuesInputs = (names) => {
+         return names.map(name => {
+            const input = document.querySelector(`input[name="${name}"]`);
+            return {
+               value: parseFloat(input.value.replace(',', '.')),
+               parentTd: input.closest('td')
+            };
+         });
+      };
+      const inputs = [
+         ...getValuesInputs(['costo-1-bajo', 'costo-1-intermedio', 'costo-1-alto']),
+         ...getValuesInputs(['costo-2-bajo', 'costo-2-intermedio', 'costo-2-alto']),
+         ...getValuesInputs(['costo-3-bajo', 'costo-3-intermedio', 'costo-3-alto'])
+      ]
+      const microcosteoInputs = [...getValuesInputs(['costo-3-bajo', 'costo-3-intermedio', 'costo-3-alto'])];
+      inputs.forEach(({ value, parentTd }) => {
+         value === 0 ? parentTd.classList.add('input-error'): parentTd.classList.remove('input-error');
+      });
+      inputs.every(({ value }) => value !== 0) ? error.classList.add('hidden') : error.classList.remove('hidden');
+      microcosteoInputs.forEach(({ value, parentTd }) => {
+         value === 0 ? parentTd.classList.add('input-error') : parentTd.classList.remove('input-error');
+      });
+      microcosteoInputs.every(({ value }) => value !== 0) ? errorMicroCost.classList.replace('flex', 'hidden') : errorMicroCost.classList.replace('hidden', 'flex');
+      const validate = inputs.every(({ value }) => value !== 0) && microcosteoInputs.every(({ value }) => value !== 0);
+      return validate;
    },
 
-   chartTecnology: function () {
-      const chartContainer = document.querySelector('.chart-tecnology');
-      setTimeout(() => {
-         chartContainer.innerHTML = `<canvas id="chartTecnology" class="chart-animate-fade-in"></canvas>`;
-         chartTecnologyModule.chartTecnology(veeva);
-      }, 600);
+   validarForm: function() {
+      const validateCosts = slideNueve.validateCosts();
+      console.log('validacion exitosa', validateCosts);
+      if (validateCosts === true) {
+         localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+         slideNueve.jumpToSlide('10');
+      }
    },
-
-   chartProcedures: function () {
-      const chartContainer = document.querySelector('.chart-procedures');
-      setTimeout(() => {
-         chartContainer.innerHTML = `<canvas id="chartProcedures" class="chart-animate-fade-in"></canvas>`;
-         chartProceduresModule.chartProcedures(veeva);
-      }, 600);
+   prueba: function () {
+      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
+      const referencias = veeva.calculadora.referencias.complicaciones;
+      rubros.forEach((rubro, index) => {
+         rubro.cantidad.bajo = referencias.microcosteo[index].cantidad.bajo;
+         rubro.costo.bajo = referencias.microcosteo[index].costo.bajo;
+         rubro.cantidad.intermedio = referencias.microcosteo[index].cantidad.intermedio;
+         rubro.costo.intermedio = referencias.microcosteo[index].costo.intermedio;
+         rubro.cantidad.alto = referencias.microcosteo[index].cantidad.alto;
+         rubro.costo.alto = referencias.microcosteo[index].costo.alto;
+      });
+      slideNueve.actualizarInputs();
    }
 };
 
-window.slideNueve = slideNueve;
-window.veeva = veeva;
 
 document.addEventListener('DOMContentLoaded', function () {
    slideNueve.loadConfig().then(() => {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
       slideNueve.ini();
+      setTimeout(() => {
+         slideNueve.calcComplicationsRef();
+         slideNueve.updateInputCosts();
+      }, 1000);
    });
 });

@@ -1,0 +1,496 @@
+@import 'fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar {
+   @apply w-1.5 h-1.5;
+}
+*::-webkit-scrollbar-track {
+   @apply bg-slate-300 rounded-[3px]
+}
+*::-webkit-scrollbar-thumb {
+   @apply bg-gradient-to-b from-red-600 to-amber-600 rounded-[3px]
+}
+* {
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+   @apply antialiased select-none !important;
+   @apply font-albert
+}
+
+html,
+body {
+   @apply h-full w-full bg-slate-800;
+}
+
+input {
+   @apply py-1 text-sm text-right !important;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+input[type=number] {
+   -moz-appearance: textfield;
+}
+
+.slide {
+   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-[4.5rem] relative
+}
+
+header hgroup {
+   @apply w-full flex justify-end items-start relative;
+}
+header hgroup span {
+   @apply flex flex-wrap gap-x-4 gap-y-2 w-[255px] absolute left-0 pt-4
+}
+header hgroup button {
+   @apply h-fit
+}
+header hgroup .titulo {
+   @apply w-fit flex flex-col items-center justify-center gap-2 px-16 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end h-[87px] justify-self-end
+}
+header hgroup div h2 {
+   @apply font-extrabold text-center text-white text-3xl
+}
+
+main {
+   @apply flex-grow px-24 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
+}
+
+.home-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
+}
+.home-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+.home-btn div {
+   @apply flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
+}
+.home-btn div svg {
+   @apply text-button-text;
+}
+
+.ref-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit mx-1;
+}
+.ref-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white flex flex-row items-center justify-center gap-1 w-7 h-7 p-1 rounded-full;
+}
+.ref-btn div h4 {
+   @apply text-button-text font-bold text-xs;
+}
+
+.background-btn-blue {
+   @apply bg-gradient-to-tl from-[#005D73] from-20% to-[#009CC1]
+}
+.background-btn-blue div {
+   @apply bg-gradient-to-b from-[#00748F] from-40% to-white/25
+}
+
+.background-btn-gray {
+   @apply bg-gradient-to-b from-white to-button-bg1;
+}
+.background-btn-gray div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+
+.background-btn-orange {
+   @apply bg-gradient-to-tl from-[#F49306] from-20% to-[#F6C37E]
+}
+.background-btn-orange div {
+   @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
+}
+
+.button-gray-corner-md {
+   @apply p-1 border border-gray-400 shadow-md shadow-black/30 rounded-lg w-fit;
+}
+.button-gray-corner-md div {
+   @apply flex flex-row items-center justify-center gap-1 px-5 py-1 rounded-md;
+}
+.button-gray-corner-md div svg {
+   @apply text-button-text;
+}
+.button-gray-corner-md div h4 {
+   @apply text-button-text font-bold text-lg;
+}
+
+.button-gray-corner-full {
+   @apply p-[3px] border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit transition-all
+}
+.button-gray-corner-full div {
+   @apply flex flex-row items-center justify-center gap-1 px-16 py-0.5 rounded-full
+}
+.button-gray-corner-full div svg {
+   @apply text-button-text
+}
+.button-gray-corner-full div h4 {
+   @apply text-button-text font-bold text-base
+}
+
+.button-orange-corner-md {
+   @apply p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-lg w-fit
+}
+.button-orange-corner-md div {
+   @apply flex flex-row-reverse items-center justify-center gap-1 px-5 py-1 rounded-md !important;
+}
+.button-orange-corner-md div svg {
+   @apply text-white
+}
+.button-orange-corner-md div h4 {
+   @apply text-white font-bold text-lg
+}
+
+.button-orange-corner-full {
+   @apply p-[3px] border border-[#F8971D] shadow-md shadow-black/30 rounded-full w-fit
+}
+.button-orange-corner-full div {
+   @apply px-16 py-0.5 rounded-full
+}
+.button-orange-corner-full div svg {
+   @apply text-white
+}
+.button-orange-corner-full div h4 {
+   @apply text-white font-bold text-base
+}
+
+.btn-caso-ref {
+   @apply w-fit text-button-text bg-gradient-to-t from-button-bg2 to-button-bg4 border-t-[2px] border-button-bg2 p-1 shadow-md rounded-full
+}
+.btn-caso-ref div {
+   @apply text-button-text px-2 drop-shadow-button flex flex-row items-center justify-center
+}
+.btn-caso-ref div svg {
+   @apply mr-2 -ml-1
+}
+.btn-caso-ref div h4 {
+   @apply font-semibold text-sm leading-tight
+}
+
+.input-insert {
+   @apply relative w-full
+}
+.input-insert input {
+   @apply border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
+}
+.input-insert input.porcentaje {
+   @apply pr-8
+}
+.input-insert input.money {
+   @apply pl-8
+}
+.input-insert .icon-porcentaje {
+   @apply absolute text-text-500 right-[10px] -mt-[24px]
+}
+.input-insert .icon-money {
+   @apply absolute text-text-500 left-[10px] -mt-[24px]
+}
+
+.input-calc {
+   @apply relative w-full
+}
+.input-calc input {
+   @apply border-slate-400 bg-zinc-300 rounded-md block w-full
+}
+.input-calc input.porcentaje {
+   @apply pr-8
+}
+.input-calc input.money {
+   @apply pl-8
+}
+.input-calc .icon-porcentaje {
+   @apply absolute text-text-500 right-[10px] -mt-[24px]
+}
+.input-calc .icon-money {
+   @apply absolute text-text-500 left-[10px] -mt-[24px]
+}
+
+.input-edit {
+   @apply relative w-full
+}
+.input-edit input {
+   @apply border-slate-400 bg-introduccion-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
+}
+.input-edit input.porcentaje {
+   @apply pr-8
+}
+.input-edit input.money {
+   @apply pl-8
+}
+.input-edit .icon-porcentaje {
+   @apply absolute text-text-500 right-[10px] -mt-[24px]
+}
+.input-edit .icon-money {
+   @apply absolute text-text-500 left-[10px] -mt-[24px]
+}
+
+.resultados {
+   @apply flex flex-col-reverse drop-shadow-md w-full;
+}
+.resultados:last-child {
+   @apply mb-4;
+}
+.resultados .form {
+   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
+}
+.resultados .form h5 {
+   @apply text-orange-400 font-bold text-base
+}
+.resultados .form table  {
+   @apply border-spacing-1 border-separate
+}
+.resultados .form table thead tr th {
+   @apply leading-none
+}
+.resultados .form table tbody tr:first-child {
+   @apply w-[209px] !important
+}
+.resultados .form table tbody tr td {
+   @apply leading-none p-1
+}
+.resultados .label {
+   @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
+}
+.resultados .label h4 {
+   @apply text-orange-400 font-bold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
+}
+
+.chart {
+   @apply bg-white/80 px-6 pb-4 rounded-xl w-11/12 h-[335px] drop-shadow-md place-self-center
+}
+
+canvas {
+   @apply max-w-full max-h-full;
+}
+
+.content-folder {
+   @apply absolute w-[1024px] h-[768px] overflow-hidden z-10;
+}
+
+.folder {
+   transition-property: margin-top;
+   transition-duration: 600ms;
+   transition-timing-function: ease-in-out;
+   @apply px-16 w-full drop-shadow-md absolute;
+}
+.folder header {
+   @apply w-full h-3 border-2 border-b-0 rounded-t-lg px-0;
+}
+.folder header button {
+   @apply absolute w-fit border-2 border-b-0 pl-8 pr-4 py-2 rounded-t-lg -mt-[38px] flex justify-center items-center;
+}
+.folder header button h4 {
+   @apply font-extrabold text-base text-black/50 drop-shadow-folder-buttton-text leading-none;
+}
+
+.folder.open {
+   @apply mt-14;
+}
+.folder .icon {
+   @apply shadow-md rounded-full bg-white size-5 ml-2;
+}
+.folder.close .icon {
+   @apply text-green-600;
+}
+.folder.open .icon {
+   @apply text-red-600;
+}
+
+.folder.close header button div svg:first-child {
+   @apply hidden;
+}
+.folder.open header button div svg:last-child {
+   @apply hidden;
+}
+
+.folder-contents {
+   @apply bg-white/80 h-[620px] py-4 border-2 border-t-0 rounded-b-xl w-full text-text-500 text-sm;
+}
+.folder-contents h4 {
+   @apply font-extrabold text-xl mb-3 px-6
+}
+.folder-contents section {
+   @apply pl-6 mr-3 pr-1 flex-grow grid grid-flow-row auto-rows-max justify-items-center gap-4 content-start overflow-y-auto h-[544px];
+}
+
+#poblacion {
+   @apply z-40;
+}
+#poblacion header,
+#poblacion header button {
+   @apply bg-[#8fac74] border-[#679147];
+}
+#poblacion header button {
+   @apply ml-[91px]
+}
+#poblacion .folder-contents {
+   @apply border-[#679147];
+}
+#poblacion.close {
+   @apply mt-[762px] z-40;
+}
+
+#pocedimientos {
+   @apply z-30;
+}
+#pocedimientos header,
+#pocedimientos header button {
+   @apply bg-[#ca5d48] border-[#b6121b];
+}
+#pocedimientos header button {
+   @apply ml-[259px]
+}
+#pocedimientos .folder-contents {
+   @apply border-[#b6121b];
+}
+#pocedimientos.close {
+   @apply mt-[756px] z-30;
+}
+
+#tecnologias {
+   @apply z-20;
+}
+#tecnologias header,
+#tecnologias header button {
+   @apply bg-[#ffdb69] border-[#ffcf01];
+}
+#tecnologias header button {
+   @apply ml-[474px]
+}
+#tecnologias .folder-contents {
+   @apply border-[#ffcf01];
+}
+#tecnologias.close {
+   @apply mt-[750px] z-20;
+}
+
+#cohorte {
+   @apply z-10;
+}
+#cohorte header,
+#cohorte header button {
+   @apply bg-[#0091ac] border-[#00718f];
+}
+#cohorte header button {
+   @apply ml-[660px];
+}
+#cohorte .folder-contents {
+   @apply border-[#00718f];
+}
+#cohorte.close {
+   @apply mt-[744px] z-10;
+}
+
+/* .chart-animate-fade-in {
+   @apply animate-fade-in animate-duration-slow animate-delay-200;
+}
+.chart-animate-fade-out {
+   @apply animate-fade-out animate-duration-slower animate-delay-200;
+} */
+
+.fade-in {
+   animation: animation-fade-in 600ms both;
+}
+@keyframes animation-fade-in {
+   0% {background: rgb(221, 215, 209, 0);}
+   100% {background: rgb(221, 215, 209, 0.4);}
+}
+
+.fade-out {
+   animation: animation-fade-out 600ms both;
+}
+@keyframes animation-fade-out {
+   0% {background: rgb(221, 215, 209, 0.4);}
+   100% {background: rgb(221, 215, 209, 0);}
+}
+
+
+.alert-conten {
+   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center z-[60] top-0 left-0;
+}
+
+.alert-conten .alert {
+   @apply flex flex-col-reverse w-fit drop-shadow-md
+}
+
+.alert-conten .alert .alert-contain {
+   @apply max-w-lg inline-block align-bottom rounded-xl text-left overflow-hidden shadow-xl
+}
+
+.alert-conten .alert .alert-contain .alert-body {
+   @apply bg-white flex-col items-start px-4 pt-5 pb-4
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-icon {
+   @apply mx-auto flex-shrink-0 flex items-center justify-center w-fit p-3 rounded-full shadow-sm;
+}
+
+.alert-body.info .header-icon {
+   @apply bg-sky-100 text-sky-500
+}
+
+.alert-body.warning .header-icon {
+   @apply bg-yellow-100 text-yellow-500
+}
+
+.alert-body.danger .header-icon {
+   @apply bg-red-100 text-red-500
+}
+
+.alert-body.info .header-conten h3 {
+   @apply text-sky-500
+}
+
+.alert-body.warning .header-conten h3 {
+   @apply text-yellow-500
+}
+
+.alert-body.danger .header-conten h3 {
+   @apply text-red-500
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-title {
+   @apply mt-3 ml-4 text-center;
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-conten {
+   @apply mt-3 ml-4 text-center;
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-conten h3 {
+   @apply text-lg leading-6 font-bold text-center
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-conten article {
+   @apply mt-2
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-conten article p {
+   @apply text-sm text-text-500
+}
+
+.alert-conten .alert .alert-contain .alert-body .header-conten article p span {
+   @apply font-bold
+}
+
+.alert-conten .alert .alert-contain .alert-footer {
+   @apply bg-slate-100 px-6 py-3 flex flex-row-reverse gap-4
+}
+
+/* .alert-animate-in {
+   @apply animate-fade-in animate-duration-slow
+}
+
+.alert-animate-out {
+   @apply animate-fade-out animate-duration-slow
+}
+
+.alert-conten-animate-in {
+   @apply animate-fade-in-up animate-delay-200 animate-duration-slow
+}
+
+.alert-conten-animate-out {
+   @apply animate-fade-out-down animate-delay-200 animate-duration-slow
+} */

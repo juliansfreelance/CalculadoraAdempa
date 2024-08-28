@@ -1,6 +1,6 @@
 {
   "name": "calculadoraadempa",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "keywords": [],
   "author": "",
   "license": "MIT",
@@ -8,15 +8,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scanTailwind01": "npx tailwindcss -i ./src/config01.css -o ./public/av_calculadora_adempas_01/css/style.css --watch",
-    "scanTailwind02": "npx tailwindcss -i ./src/config02.css -o ./public/av_calculadora_adempas_02/css/style.css --watch",
-    "scanTailwind03": "npx tailwindcss -i ./src/config03.css -o ./public/av_calculadora_adempas_03/css/style.css --watch",
-    "scanTailwind04": "npx tailwindcss -i ./src/config04.css -o ./public/av_calculadora_adempas_04/css/style.css --watch",
-    "scanTailwind05": "npx tailwindcss -i ./src/config05.css -o ./public/av_calculadora_adempas_05/css/style.css --watch",
-    "scanTailwind06": "npx tailwindcss -i ./src/config06.css -o ./public/av_calculadora_adempas_06/css/style.css --watch",
-    "scanTailwind07": "npx tailwindcss -i ./src/config07.css -o ./public/av_calculadora_adempas_07/css/style.css --watch",
-    "scanTailwind08": "npx tailwindcss -i ./src/config08.css -o ./public/av_calculadora_adempas_08/css/style.css --watch",
-    "scanTailwind09": "npx tailwindcss -i ./src/config09.css -o ./public/av_calculadora_adempas_09/css/style.css --watch"
+    "devSlide01": "npx tailwindcss -i ./src/config01.css -o ./public/av_calculadora_adempas_01/css/style.css --watch",
+    "devSlide02": "npx tailwindcss -i ./src/config02.css -o ./public/av_calculadora_adempas_02/css/style.css --watch",
+    "devSlide03": "npx tailwindcss -i ./src/config03.css -o ./public/av_calculadora_adempas_03/css/style.css --watch",
+    "devSlide04": "npx tailwindcss -i ./src/config04.css -o ./public/av_calculadora_adempas_04/css/style.css --watch",
+    "devSlide05": "npx tailwindcss -i ./src/config05.css -o ./public/av_calculadora_adempas_05/css/style.css --watch",
+    "devSlide06": "npx tailwindcss -i ./src/config06.css -o ./public/av_calculadora_adempas_06/css/style.css --watch",
+    "devSlide07": "npx tailwindcss -i ./src/config07.css -o ./public/av_calculadora_adempas_07/css/style.css --watch",
+    "devSlide08": "npx tailwindcss -i ./src/config08.css -o ./public/av_calculadora_adempas_08/css/style.css --watch",
+    "devSlide09": "npx tailwindcss -i ./src/config09.css -o ./public/av_calculadora_adempas_09/css/style.css --watch",
+    "devSlide10": "npx tailwindcss -i ./src/config10.css -o ./public/av_calculadora_adempas_10/css/style.css --watch",
+    "devSlide11": "npx tailwindcss -i ./src/config11.css -o ./public/av_calculadora_adempas_11/css/style.css --watch",
+    "devSlide12": "npx tailwindcss -i ./src/config12.css -o ./public/av_calculadora_adempas_12/css/style.css --watch"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",

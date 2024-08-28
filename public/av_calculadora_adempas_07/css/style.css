@@ -2183,16 +2183,17 @@ main {
   color: rgb(109 109 109 / var(--tw-text-opacity));
 }
 
-.complicaciones,
-.costos {
+.tratamiento,
+.complicaciones {
+  display: flex;
   width: 100%;
   flex-direction: column-reverse;
   --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.complicaciones .form,
-.costos .form {
+.tratamiento .form,
+.complicaciones .form {
   width: 100%;
   border-radius: 0.75rem;
   background-color: rgb(255 255 255 / 0.8);
@@ -2206,27 +2207,25 @@ main {
   color: rgb(109 109 109 / var(--tw-text-opacity));
 }
 
-.costos .form {
-  padding-right: 0.5rem !important;
+.tratamiento .form {
+  padding-right: 1rem;
 }
 
-.complicaciones .form table,
-.costos .form table {
+.tratamiento .form table {
   border-collapse: separate;
   --tw-border-spacing-x: 0.25rem;
-  --tw-border-spacing-y: 0.25rem;
   border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
 }
 
-.complicaciones .form table thead tr th,
-.costos .form table thead tr th {
+.tratamiento .form table thead tr th,
+.complicaciones .form table thead tr th {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   line-height: 1;
 }
 
-.complicaciones .form table tbody tr td,
-.costos .form table tbody tr td {
+.tratamiento .form table tbody tr td,
+.complicaciones .form table tbody tr td {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.25rem;
@@ -2234,19 +2233,8 @@ main {
   line-height: 1;
 }
 
-.costos .form table tbody tr td:first-child {
-  max-width: 13rem;
-}
-
-.complicaciones .form table tbody tr td.input-error,
-.costos .form table tbody tr td.input-error {
-  border-radius: 0.5rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
-}
-
-.complicaciones .label,
-.costos .label {
+.tratamiento .label,
+.complicaciones .label {
   margin-left: 2rem;
   width: -moz-fit-content;
   width: fit-content;
@@ -2260,8 +2248,8 @@ main {
   padding: 0.25rem;
 }
 
-.complicaciones .label h4,
-.costos .label h4 {
+.tratamiento .label h4,
+.complicaciones .label h4 {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
@@ -2342,7 +2330,6 @@ footer article p {
   width: -moz-fit-content;
   width: fit-content;
   flex-direction: column-reverse;
-  padding: 2rem;
   --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -2361,23 +2348,6 @@ footer article p {
   color: rgb(109 109 109 / var(--tw-text-opacity));
 }
 
-.pop .pop-form .thead {
-  width: calc(100% - 6px);
-}
-
-.pop .pop-form table tbody tr {
-  border-top-left-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem;
-}
-
-.pop .pop-form table tbody tr:nth-child(odd) {
-  background-color: rgb(255 255 255 / 0);
-}
-
-.pop .pop-form table tbody tr:nth-child(even) {
-  background-color: rgb(31 41 55 / 0.05);
-}
-
 .pop .pop-form table thead tr th {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -2392,18 +2362,8 @@ footer article p {
   line-height: 1;
 }
 
-.pop .pop-form table tbody tr td,
-.pop .pop-form table thead tr th {
-  width: 140px !important;
-}
-
-.pop .pop-form table tbody tr td:nth-child(1),
-.pop .pop-form table thead tr th:nth-child(1) {
-  margin-right: 0.5rem !important;
-  width: 370px !important;
-  border-top-left-radius: 0.375rem !important;
-  border-bottom-left-radius: 0.375rem !important;
-  padding-left: 1rem !important;
+.pop .pop-form table tbody tr td:first-child {
+  margin-right: 0.5rem;
 }
 
 .pop .pop-label {

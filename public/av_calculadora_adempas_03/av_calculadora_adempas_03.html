@@ -19,33 +19,31 @@
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="z-50 w-full px-16">
-         <hgroup class="animate-fade-in-left animate-delay-500 animate-duration-slow">
-            <button class="bg-button1 w-fit animate-pulse-fade-in animate-delay-[1000ms]"
-               onclick="javascript:slideTres.jumptoSlide('01')">
-               <div class="flex flex-row items-center justify-center">
-                  <i>
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
-                        class="size-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      <header class="w-full px-16 relative z-50">
+         <hgroup>
+            <span>
+               <button class="home-btn animate-pulse-fade-in animate-delay-[600ms]" onclick="slideTres.jumptoSlide('01')">
+                  <div>
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" />
                      </svg>
-                  </i>
-                  <h4 class=" font-bold text-lg">Regresar</h4>
-               </div>
-            </button>
-            <h2>Bases teóricas</h2>
+                  </div>
+               </button>
+               <button class="ref-btn animate-pulse-fade-in animate-delay-[800ms]" onclick="slideTres.jumptoSlide('12')">
+                  <div>
+                     <h4>IPP</h4>
+                  </div>
+               </button>
+            </span>
+            <div class="titulo animate-fade-in-left animate-delay-500 animate-duration-slow">
+               <h2>Introducción</h2>
+            </div>
          </hgroup>
       </header>
 
-      <main id="container">
-         
-      </main>
-
-
-
-      <footer class="w-full px-16 text-center flex flex-col items-center gap-4">
-         
-      </footer>
+      <main id="container"></main>
+      <footer class="w-full px-16 text-center flex flex-col items-center gap-4"></footer>
 
    </section>
 </body>
