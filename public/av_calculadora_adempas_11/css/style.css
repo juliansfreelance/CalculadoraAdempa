@@ -1387,6 +1387,10 @@ select {
   padding-top: 0.75rem;
 }
 
+.pl-8 {
+  padding-left: 2rem;
+}
+
 .text-left {
   text-align: left;
 }

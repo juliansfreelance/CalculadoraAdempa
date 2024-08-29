@@ -252,13 +252,14 @@ let slideDiez = {
       return validate;
    },
 
-   validarForm: function() {
-      const validateCosts = slideDiez.validateCosts();
-      console.log('validacion exitosa', validateCosts);
-      if (validateCosts === true) {
-         localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
-         slideDiez.jumpToSlide('11');
-      }
+   validarForm: function () {
+      slideDiez.jumpToSlide('11');
+      // const validateCosts = slideDiez.validateCosts();
+      // console.log('validacion exitosa', validateCosts);
+      // if (validateCosts === true) {
+      //    localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+      //    slideDiez.jumpToSlide('11');
+      // }
    },
    prueba: function () {
       const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
