@@ -996,6 +996,10 @@ select {
   margin-top: 0.25rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .block {
   display: block;
 }
@@ -1644,16 +1648,16 @@ select {
   animation-delay: 300ms;
 }
 
+.animate-delay-\[500ms\] {
+  animation-delay: 500ms;
+}
+
 .animate-delay-\[600ms\] {
   animation-delay: 600ms;
 }
 
 .animate-delay-\[700ms\] {
   animation-delay: 700ms;
-}
-
-.animate-delay-\[750ms\] {
-  animation-delay: 750ms;
 }
 
 .animate-delay-\[800ms\] {
@@ -1800,6 +1804,8 @@ header hgroup div h3 {
 main {
   margin-left: 10rem;
   margin-right: 10rem;
+  margin-top: 2.5rem;
+  margin-bottom: 5rem;
   display: grid;
   flex-grow: 1;
   grid-auto-flow: row;

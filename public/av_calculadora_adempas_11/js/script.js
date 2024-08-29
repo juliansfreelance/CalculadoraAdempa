@@ -9,6 +9,7 @@
 import chartHomeModule from './modules/chartHome.js';
 import chartPatientModule from './modules/chartPatient.js';
 import chartProceduresModule from './modules/chartProcedures.js';
+import chartComplicationsModule from './modules/chartComplications.js';
 import chartTecnologyModule from './modules/chartTecnology.js';
 
 let veeva = {};
@@ -167,6 +168,7 @@ let slideOnce = {
          slideOnce.chartTecnology();
          slideOnce.chartProcedures();
          slideOnce.chartPatient();
+         slideOnce.chartComplications();
       }
    },
 
@@ -281,6 +283,55 @@ let slideOnce = {
       let promedioComplicaciones = ((veeva.calculadora.complicaciones.costos[3].bajo + veeva.calculadora.complicaciones.costos[3].intermedio + veeva.calculadora.complicaciones.costos[3].alto) / 3);
       resPatientCompli.innerHTML = Math.round((promedioComplicaciones / parseInt(resPatientPromedio.value.replace(/\./g, ''))) * 100);
 
+      const costosCompli = calculadora.complicaciones.costos;
+      const resCompliOneBajo = document.querySelector("input[name='res-compli-1-bajo']");
+      const resCompliOneIntermedio = document.querySelector("input[name='res-compli-1-intermedio']");
+      const resCompliOneAlto = document.querySelector("input[name='res-compli-1-alto']");
+      const resCompliOneTotal = document.querySelector("input[name='res-compli-1-total']");
+      resCompliOneBajo.value = FORMAT_ENTERO(costosCompli[0].bajo).format();
+      resCompliOneIntermedio.value = FORMAT_ENTERO(costosCompli[0].intermedio).format();
+      resCompliOneAlto.value = FORMAT_ENTERO(costosCompli[0].alto).format();
+      resCompliOneTotal.value = FORMAT_ENTERO(Math.round((costosCompli[0].bajo + costosCompli[0].intermedio + costosCompli[0].alto) / 3)).format();
+
+      const resCompliTwoBajo = document.querySelector("input[name='res-compli-2-bajo']");
+      const resCompliTwoIntermedio = document.querySelector("input[name='res-compli-2-intermedio']");
+      const resCompliTwoAlto = document.querySelector("input[name='res-compli-2-alto']");
+      const resCompliTwoTotal = document.querySelector("input[name='res-compli-2-total']");
+      resCompliTwoBajo.value = FORMAT_ENTERO(costosCompli[1].bajo).format();
+      resCompliTwoIntermedio.value = FORMAT_ENTERO(costosCompli[1].intermedio).format();
+      resCompliTwoAlto.value = FORMAT_ENTERO(costosCompli[1].alto).format();
+      resCompliTwoTotal.value = FORMAT_ENTERO(Math.round((costosCompli[1].bajo + costosCompli[1].intermedio + costosCompli[1].alto) / 3)).format();
+
+      const resCompliThreeBajo = document.querySelector("input[name='res-compli-3-bajo']");
+      const resCompliThreeIntermedio = document.querySelector("input[name='res-compli-3-intermedio']");
+      const resCompliThreeAlto = document.querySelector("input[name='res-compli-3-alto']");
+      const resCompliThreeTotal = document.querySelector("input[name='res-compli-3-total']");
+      resCompliThreeBajo.value = FORMAT_ENTERO(costosCompli[2].bajo).format();
+      resCompliThreeIntermedio.value = FORMAT_ENTERO(costosCompli[2].intermedio).format();
+      resCompliThreeAlto.value = FORMAT_ENTERO(costosCompli[2].alto).format();
+      resCompliThreeTotal.value = FORMAT_ENTERO(Math.round((costosCompli[2].bajo + costosCompli[2].intermedio + costosCompli[2].alto) / 3)).format();
+
+      const resCompliTotalBajo = document.querySelector("input[name='res-compli-total-bajo']");
+      const resCompliTotalIntermedio = document.querySelector("input[name='res-compli-total-intermedio']");
+      const resCompliTotalAlto = document.querySelector("input[name='res-compli-total-alto']");
+      const resCompliTotalTotal = document.querySelector("input[name='res-compli-total-total']");
+      resCompliTotalBajo.value = FORMAT_ENTERO(costosCompli[3].bajo).format();
+      resCompliTotalIntermedio.value = FORMAT_ENTERO(costosCompli[3].intermedio).format();
+      resCompliTotalAlto.value = FORMAT_ENTERO(costosCompli[3].alto).format();
+      resCompliTotalTotal.value = FORMAT_ENTERO(Math.round((costosCompli[3].bajo + costosCompli[3].intermedio + costosCompli[3].alto) / 3)).format();
+
+      const resCompliVsBajo = document.querySelector("input[name='res-compli-vs-bajo']");
+      const resCompliVsIntermedio = document.querySelector("input[name='res-compli-vs-intermedio']");
+      const resCompliVsAlto = document.querySelector("input[name='res-compli-vs-alto']");
+      resCompliVsBajo.value = Math.round((parseInt(resCompliTotalBajo.value.replace(/\./g, '')) / parseInt(resCompliTotalTotal.value.replace(/\./g, ''))) * 100);
+      resCompliVsIntermedio.value = Math.round((parseInt(resCompliTotalIntermedio.value.replace(/\./g, '')) / parseInt(resCompliTotalTotal.value.replace(/\./g, ''))) * 100);
+      resCompliVsAlto.value = Math.round((parseInt(resCompliTotalAlto.value.replace(/\./g, '')) / parseInt(resCompliTotalTotal.value.replace(/\./g, ''))) * 100);
+
+      const resCompliAltoPromedio = document.querySelector("input[name='res-compli-alto-promedio']");
+      resCompliAltoPromedio.value = Math.round((costosCompli[2].alto / parseInt(resPatientPromedio.value.replace(/\./g, ''))) * 100);
+
+      calculadora.chartOptions.chartComplications.valores = [costosCompli[3].bajo, costosCompli[3].intermedio, costosCompli[3].alto];
+
       const resCohortePacienteOneBajo = document.querySelector("input[name='res-cohorte-1-1-bajo']");
       const resCohortePacienteOneIntermedio = document.querySelector("input[name='res-cohorte-1-1-intermedio']");
       const resCohortePacienteOneAlto = document.querySelector("input[name='res-cohorte-1-1-alto']");
@@ -360,7 +411,7 @@ let slideOnce = {
       resCohortePorcentajeIntermedio.value = FORMAT_ENTERO(Math.round(parseInt(resCohorteTotalIntermedio.value.replace(/\./g, '')) / parseInt(resCohorteTotalTotal.value.replace(/\./g, '')) * 100)).format();
       resCohortePorcentajeAlto.value = FORMAT_ENTERO(Math.floor(parseInt(resCohorteTotalAlto.value.replace(/\./g, '')) / parseInt(resCohorteTotalTotal.value.replace(/\./g, '')) * 100)).format();
 
-      veeva.calculadora.chartOptions.chartPatient.valores = [parseInt(resPatientBajo.value.replace(/\./g, '')), parseInt(resPatientIntermedio.value.replace(/\./g, '')), parseInt(resPatientAlto.value.replace(/\./g, ''))]
+      calculadora.chartOptions.chartPatient.valores = [parseInt(resPatientBajo.value.replace(/\./g, '')), parseInt(resPatientIntermedio.value.replace(/\./g, '')), parseInt(resPatientAlto.value.replace(/\./g, ''))]
       slideOnce.chartIni();
    },
 
@@ -393,6 +444,14 @@ let slideOnce = {
       setTimeout(() => {
          chartContainer.innerHTML = `<canvas id="chartProcedures" class="chart-animate-fade-in"></canvas>`;
          chartProceduresModule.chartProcedures(veeva);
+      }, 600);
+   },
+
+   chartComplications: function () {
+      const chartContainer = document.querySelector('.chart-complications');
+      setTimeout(() => {
+         chartContainer.innerHTML = `<canvas id="chartComplications" class="chart-animate-fade-in"></canvas>`;
+         chartComplicationsModule.chartComplications(veeva);
       }, 600);
    }
 };

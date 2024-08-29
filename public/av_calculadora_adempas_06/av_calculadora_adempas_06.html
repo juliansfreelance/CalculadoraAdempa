@@ -10,7 +10,7 @@
    <meta name='author' href="https://github.com/juliansfreelance" email="jcalderon.code@gmail.com" content='Julio Calderón - Desarrollador Front-end' />
    <meta name="description" content="Herramienta de costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica o de la Hipertensión Pulmonar por categoria de riesgo (HTP)" />
 
-   <title>AV Calculadora HTP Adempa | Población y Distribución por grupo de HTP</title>
+   <title>AV Calculadora HTP Adempa | Distribución por estadificación de riesgo</title>
 
    <link rel="icon" type="image/ico" href="images/icon.png" />
 
@@ -60,7 +60,7 @@
 
       <main>
 
-         <div class="HTP-ask animate-fade-in-up animate-delay-[200ms] transition-all">
+         <div class="risk-ask animate-fade-in-up animate-delay-[200ms] transition-all">
             <h3>Distribución por estadificación de riesgo</h3><p>¿Conoce usted sus distribución de cada categoria de riesgo?</p>
             <div>
                <button name="conoceGrupos" type="button" value="true" class="background-btn-gray button-gray-corner-full animate-fade-in-left animate-delay-[300ms]"><div><h4>SI</h4></div></button>
@@ -69,7 +69,7 @@
          </div>
 
          <section class="content-inputs hidden">
-            <div class="htp-edit hidden">
+            <div class="risk-edit hidden">
                <div class="input animate-fade-in-left animate-delay-[100ms]">
                   <label class="background-btn-blue label-blue" for="edit-risk-low">
                      <div class="title">
@@ -103,38 +103,38 @@
                <span class="error grupos-error hidden">La suma de las categoria riesgo debe ser igual a 100%.</span>
             </div>
 
-            <div class="htp-estudy hidden">
+            <div class="risk-estudy hidden">
                <div class="input animate-fade-in-left animate-delay-[100ms]">
-                  <label class="background-btn-blue label-blue" for="estudy-HAP">
+                  <label class="background-btn-blue label-blue" for="estudy-risk-low">
                      <div class="title">
                         <div class="point low"></div>
                         <h4>Estadificación<br>Riesgo Bajo</h4>
                      </div>
                   </label>
-                  <custom-input name="estudy-HAP" type="calc" icon="porcentaje"></custom-input>
+                  <custom-input name="estudy-risk-low" type="calc" icon="porcentaje"></custom-input>
                </div>
                <div class="input animate-fade-in-right animate-delay-[100ms]">
-                  <label class="background-btn-blue label-blue" for="estudy-HTCE">
+                  <label class="background-btn-blue label-blue" for="estudy-risk-intermediate">
                      <div class="title">
                         <div class="point intermediate"></div>
                         <h4>Estadificación<br>Riesgo Intermedio</h4>
                      </div>
                   </label>
-                  <custom-input name="estudy-HTCE" type="calc" icon="porcentaje"></custom-input>
+                  <custom-input name="estudy-risk-intermediate" type="calc" icon="porcentaje"></custom-input>
                </div>
                <div class="input animate-fade-in-right animate-delay-[100ms]">
-                  <label class="background-btn-blue label-blue" for="estudy-HTCE">
+                  <label class="background-btn-blue label-blue" for="estudy-risk-high">
                      <div class="title">
                         <div class="point high"></div>
                         <h4>Estadificación<br>Riesgo Alto</h4>
                      </div>
                   </label>
-                  <custom-input name="estudy-HTCE" type="calc" icon="porcentaje"></custom-input>
+                  <custom-input name="estudy-risk-high" type="calc" icon="porcentaje"></custom-input>
                </div>
             </div>
 
 
-            <button class="background-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[600ms]"
+            <button class="background-btn-orange button-orange-corner-md mt-10 animate-pulse-fade-in animate-delay-[600ms]"
                onclick="slideSeis.validarForm()">
                <div>
                   <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
@@ -147,12 +147,12 @@
          </section>
       </main>
 
-      <footer>
-         <article class="animate-fade-in-up animate-delay-[1300ms] animate-duration-slower">
+      <!-- <footer>
+         <article class="animate-fade-in-up animate-delay-[500ms] animate-duration-slower">
             <p>Costos procedimientos por paciente = Recurso en salud * Proporción de uso por estadificación de riesgo * Costo unitario. La proporción de uso de recursos según estadificación de riesgo está basada en la literatura (38) y el costo unitario basado en el tarifario del Instituto de Seguridad Social de Colombia de 2001 más el 35% de inflación estimado desde año a la actualidad (39)</p>
             <p>38. Zozaya N., et al. The economic burden of pulmonary arterial hypertension in Spain. BMC Pulm Med. 2022 Mar 26;22(1):105.39. Ministerio de Salud. ACUERDO No. 256 DE 2.001. URL disponible: https://lexsaludcolombia.files.wordpress.com/2010/10/tarifas-iss-2001.pdf.</p>
          </article>
-      </footer>
+      </footer> -->
 
       <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
          message="<p> Si vuelves al inicio, se perderán todos los datos suministrados y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"

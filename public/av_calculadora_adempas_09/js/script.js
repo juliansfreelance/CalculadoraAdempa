@@ -260,6 +260,7 @@ let slideNueve = {
          slideNueve.jumpToSlide('10');
       }
    },
+
    prueba: function () {
       const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
       const referencias = veeva.calculadora.referencias.complicaciones;

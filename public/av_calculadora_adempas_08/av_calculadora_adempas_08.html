@@ -24,10 +24,10 @@
 <body class="w-screen h-screen flex flex-col justify-center items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class=" w-full px-16">
+      <header class="w-full px-16 relative z-50">
          <hgroup>
             <span>
-               <button class="home-btn animate-pulse-fade-in animate-delay-[600ms]" onclick="slideSiete.openAlert('reset')">
+               <button class="home-btn animate-pulse-fade-in animate-delay-[600ms]" onclick="slideOcho.openAlert('reset')">
                   <div>
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -35,8 +35,8 @@
                      </svg>
                   </div>
                </button>
-               <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[600ms]"
-                  onclick="slideSiete.jumpToSlide('06')">
+               <button class="background-btn-gray button-gray-corner-md animate-fade-in-left animate-delay-[600ms]"
+                  onclick="slideOcho.jumpToSlide('07')">
                   <div>
                      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                         stroke="currentColor">
@@ -45,8 +45,13 @@
                      <h4>Regresar</h4>
                   </div>
                </button>
+               <button class="ref-btn animate-fade-in-up animate-delay-[600ms]" onclick="slideOcho.jumpToSlide('12')">
+                  <div>
+                     <h4>IPP</h4>
+                  </div>
+               </button>
             </span>
-            <div class="animate-fade-in-left animate-delay-500 animate-duration-slow">
+            <div class="titulo animate-fade-in animate-delay-500 animate-duration-slow">
                <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
                <h3>Probabilidad de Complicaciones</h3>
             </div>
@@ -91,7 +96,7 @@
                      <tr>
                         <td>
                            <button class="btn-caso-ref"
-                              onclick="javascript:slideSiete.openAlert('ref-complicaciones')">
+                              onclick="javascript:slideOcho.openAlert('ref-complicaciones')">
                               <div>
                                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -124,7 +129,7 @@
          </article>
 
          <button class="background-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[1200ms]"
-            onclick="javascript:slideSiete.validarForm()">
+            onclick="javascript:slideOcho.validarForm()">
             <div>
                <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -137,30 +142,30 @@
       <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
          message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
          actions='[
-            {"name": "Aceptar", "color": "orange", "handler": "slideSiete.jumpToSlide(&apos;01&apos;)"},
-            {"name": "Cancelar", "color": "gray", "handler": "slideSiete.closeAlert()"}
+            {"name": "Aceptar", "color": "orange", "handler": "slideOcho.jumpToSlide(&apos;01&apos;)"},
+            {"name": "Cancelar", "color": "gray", "handler": "slideOcho.closeAlert()"}
          ]'>
       </custom-alert>
 
       <custom-alert name="alert-ref-complicaciones" class="hidden" type="info" title="Usar Datos de Referencia"
          message="<p> Se utilizarán los <span>valores de referencia</span> para la <span>Probabilidad de Complicaciones</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
          actions='[
-            {"name": "Aceptar", "color": "orange", "handler": "slideSiete.syncComplicationsWithReference()"},
-            {"name": "Cancelar", "color": "gray", "handler": "slideSiete.closeAlert()"}
+            {"name": "Aceptar", "color": "orange", "handler": "slideOcho.syncComplicationsWithReference()"},
+            {"name": "Cancelar", "color": "gray", "handler": "slideOcho.closeAlert()"}
          ]'>
       </custom-alert>
 
       <custom-alert name="alert-ref-microcosteo" class="hidden" type="info" title="Usar Datos de Referencia"
          message="<p> Se utilizarán los <span>valores de referencia</span> para los <span>Costos de paciente por complicación</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
          actions='[
-                  {"name": "Aceptar", "color": "orange", "handler": "slideSiete.syncCostosWithReference()"},
-                  {"name": "Cancelar", "color": "gray", "handler": "slideSiete.closeAlert()"}
+                  {"name": "Aceptar", "color": "orange", "handler": "slideOcho.syncCostosWithReference()"},
+                  {"name": "Cancelar", "color": "gray", "handler": "slideOcho.closeAlert()"}
                ]'>
       </custom-alert>
 
       <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
          message="<p> No puede continuar porque no se encontraron <span>datos almacenados</span>.<br>Por favor, verifica la información y vuelve a intentarlo.</p>"
-         actions='[{"name": "Aceptar", "color": "orange", "handler": "slideSiete.jumpToSlide(&apos;01&apos;)"}]'>
+         actions='[{"name": "Aceptar", "color": "orange", "handler": "slideOcho.jumpToSlide(&apos;01&apos;)"}]'>
       </custom-alert>
 
    </section>

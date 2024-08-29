@@ -1538,7 +1538,17 @@
          },
          "chartProcedures":{
             "type": "bar",
-            "title": "Costo procedimientos anual de uso por paciente",
+            "title": "Costo anual procedimientos por paciente",
+            "names": [
+               "Estadificación riesgo Bajo",
+               "Estadificación riesgo Intermedio",
+               "Estadificación riesgo Alto"
+            ],
+            "valores": []
+         },
+         "chartComplications":{
+            "type": "bar",
+            "title": "Costo anual complicaciones por paciente",
             "names": [
                "Estadificación riesgo Bajo",
                "Estadificación riesgo Intermedio",

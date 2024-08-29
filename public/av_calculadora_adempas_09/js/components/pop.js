@@ -77,8 +77,9 @@ class customPop extends HTMLElement{
                   </div>
                </div>
             </section>
-            <article class="w-full text-left text-text-500 text-sm leading-none pt-3"><ul class="list-disc ml-24"><li>Ingrese la cantidad por paciente</li></ul>
-            <p onclick="slideNueve.prueba();">Prueba</p></article>
+            <article class="w-full text-left text-text-500 text-sm leading-none pt-3">
+            <ul class="list-disc ml-24"><li>Ingrese la cantidad por paciente</li></ul>
+            </article>
          </section>`;
          slideNueve.updateInputCosts();
       });

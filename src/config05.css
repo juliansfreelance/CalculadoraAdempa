@@ -63,7 +63,7 @@ header hgroup div h3 {
 }
 
 main {
-   @apply flex-grow mx-40 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
+   @apply flex-grow mx-40 my-10 mb-20 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
 }
 
 .HTP-ask {

@@ -27,7 +27,7 @@
       <header class="w-full px-16 relative z-50">
          <hgroup>
             <span>
-               <button class="home-btn animate-pulse-fade-in animate-delay-[600ms]"
+               <button class="home-btn animate-pulse-fade-in animate-delay-100"
                   onclick="localStorage.getItem('calculadora') ? slideCinco.openAlert('reset') : slideCinco.jumpToSlide('01')">
                   <div>
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
@@ -36,13 +36,13 @@
                      </svg>
                   </div>
                </button>
-               <button class="ref-btn animate-fade-in-left animate-delay-[700ms]" onclick="slideCinco.jumpToSlide('12')">
+               <button class="ref-btn animate-fade-in-left animate-delay-[100ms]" onclick="slideCinco.jumpToSlide('12')">
                   <div>
                      <h4>IPP</h4>
                   </div>
                </button>
             </span>
-            <div class="titulo animate-fade-in animate-delay-500 animate-duration-slow">
+            <div class="titulo animate-fade-in-left animate-delay-100 animate-duration-slow">
                <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
                <h3>Población y Distribución por grupo de HTP</h3>
             </div>
@@ -51,11 +51,11 @@
 
       <main>
 
-         <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[750ms] transition-all" onclick="slideCinco.jumpToSlide('02')">
+         <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[100ms] transition-all" onclick="slideCinco.jumpToSlide('02')">
             <div><h4>Instrucciones</h4></div>
          </button>
 
-         <div class="input-poblacion animate-fade-in-down animate-delay-[800ms] transition-all">
+         <div class="input-poblacion animate-fade-in-down animate-delay-[100ms] transition-all">
             <label for="poblacion" class="background-btn-orange z-10 peer-focus:border-blue-300 peer-focus:ring peer-focus:ring-blue-200 peer-focus:ring-opacity-50">
                <div class="flex flex-row items-center justify-center">
                   <i>
@@ -70,11 +70,11 @@
             <span class="error hidden">Debe ingresar la población o debe ser mayor a 0</span>
          </div>
 
-         <div class="HTP-ask animate-fade-in-up animate-delay-[800ms] transition-all">
+         <div class="HTP-ask animate-fade-in-up animate-delay-[200ms] transition-all">
             <h3>Distribución por grupo de HTP</h3><p>¿Conoce usted sus grupos?</p>
             <div>
-               <button name="conoceGrupos" type="button" value="true" class="background-btn-gray button-gray-corner-full animate-fade-in-left animate-delay-[1100ms]"><div><h4>SI</h4></div></button>
-               <button name="conoceGrupos" type="button" value="false" class="background-btn-gray button-gray-corner-full animate-fade-in-right animate-delay-[1100ms]"><div><h4>NO</h4></div></button>
+               <button name="conoceGrupos" type="button" value="true" class="background-btn-gray button-gray-corner-full animate-fade-in-left animate-delay-[300ms]"><div><h4>SI</h4></div></button>
+               <button name="conoceGrupos" type="button" value="false" class="background-btn-gray button-gray-corner-full animate-fade-in-right animate-delay-[300ms]"><div><h4>NO</h4></div></button>
             </div>
          </div>
 
@@ -132,12 +132,12 @@
          </section>
       </main>
 
-      <footer>
-         <article class="animate-fade-in-up animate-delay-[1300ms] animate-duration-slower">
+      <!-- <footer>
+         <article class="animate-fade-in-up animate-delay-[500ms] animate-duration-slower">
             <p>Costos procedimientos por paciente = Recurso en salud * Proporción de uso por estadificación de riesgo * Costo unitario. La proporción de uso de recursos según estadificación de riesgo está basada en la literatura (38) y el costo unitario basado en el tarifario del Instituto de Seguridad Social de Colombia de 2001 más el 35% de inflación estimado desde año a la actualidad (39)</p>
             <p>38. Zozaya N., et al. The economic burden of pulmonary arterial hypertension in Spain. BMC Pulm Med. 2022 Mar 26;22(1):105.39. Ministerio de Salud. ACUERDO No. 256 DE 2.001. URL disponible: https://lexsaludcolombia.files.wordpress.com/2010/10/tarifas-iss-2001.pdf.</p>
          </article>
-      </footer>
+      </footer> -->
 
       <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
          message="<p> Si vuelves al inicio, se perderán todos los datos suministrados y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"

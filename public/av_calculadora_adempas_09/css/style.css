@@ -939,6 +939,10 @@ select {
   z-index: 10;
 }
 
+.z-40 {
+  z-index: 40;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -990,6 +994,10 @@ select {
 
 .mt-1 {
   margin-top: 0.25rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .block {
@@ -1077,6 +1085,22 @@ select {
 
 .table-auto {
   table-layout: auto;
+}
+
+@keyframes bounce-fade-in {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-bounce-fade-in {
+  animation: bounce-fade-in 0.6s ease-out both;
 }
 
 @keyframes fade-in {
@@ -1346,6 +1370,19 @@ select {
   padding-right: 4rem;
 }
 
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.pl-8 {
+  padding-left: 2rem;
+}
+
+.pr-16 {
+  padding-right: 4rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -1412,6 +1449,10 @@ select {
   font-weight: 100;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .italic {
   font-style: italic;
 }
@@ -1426,6 +1467,21 @@ select {
 
 .leading-tight {
   line-height: 1.25;
+}
+
+.text-\[\#679147\] {
+  --tw-text-opacity: 1;
+  color: rgb(103 145 71 / var(--tw-text-opacity));
+}
+
+.text-\[\#b6121b\] {
+  --tw-text-opacity: 1;
+  color: rgb(182 18 27 / var(--tw-text-opacity));
+}
+
+.text-\[\#ffcf01\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 207 1 / var(--tw-text-opacity));
 }
 
 .text-amber-500 {
@@ -1451,11 +1507,6 @@ select {
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
-}
-
-.text-lime-600 {
-  --tw-text-opacity: 1;
-  color: rgb(101 163 13 / var(--tw-text-opacity));
 }
 
 .text-orange-400 {
@@ -1557,10 +1608,6 @@ select {
   animation-delay: 900ms;
 }
 
-.animate-delay-\[1000ms\] {
-  animation-delay: 1000ms;
-}
-
 .animate-delay-\[100ms\] {
   animation-delay: 100ms;
 }
@@ -1585,16 +1632,32 @@ select {
   animation-delay: 1600ms;
 }
 
+.animate-delay-\[1800ms\] {
+  animation-delay: 1800ms;
+}
+
 .animate-delay-\[2000ms\] {
   animation-delay: 2000ms;
+}
+
+.animate-delay-\[200ms\] {
+  animation-delay: 200ms;
+}
+
+.animate-delay-\[300ms\] {
+  animation-delay: 300ms;
+}
+
+.animate-delay-\[500ms\] {
+  animation-delay: 500ms;
 }
 
 .animate-delay-\[600ms\] {
   animation-delay: 600ms;
 }
 
-.animate-delay-\[750ms\] {
-  animation-delay: 750ms;
+.animate-delay-\[700ms\] {
+  animation-delay: 700ms;
 }
 
 .animate-delay-\[800ms\] {
@@ -1678,27 +1741,42 @@ input[type=number] {
 }
 
 header hgroup {
+  position: relative;
   display: flex;
-  height: -moz-fit-content;
-  height: fit-content;
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
 
 header hgroup span {
+  position: absolute;
+  left: 0px;
   display: flex;
-  gap: 1rem;
+  width: 255px;
+  flex-wrap: wrap;
+  align-items: center;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  row-gap: 0.5rem;
+  padding-top: 1rem;
 }
 
-header hgroup div {
+header hgroup button {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+header hgroup .titulo {
   display: flex;
+  height: 87px;
   width: -moz-fit-content;
   width: fit-content;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   align-self: flex-end;
+  justify-self: end;
   border-bottom-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
@@ -1708,8 +1786,6 @@ header hgroup div {
   --tw-gradient-to: #d97706 var(--tw-gradient-to-position);
   padding-left: 4rem;
   padding-right: 4rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
 }
 
 header hgroup div h2 {
@@ -1763,11 +1839,6 @@ main {
 }
 
 .home-btn div {
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
-  --tw-gradient-from: #DFE0E4 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(223 224 228 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #fff var(--tw-gradient-to-position);
   display: flex;
   height: 2.25rem;
   width: 2.25rem;
@@ -1776,10 +1847,62 @@ main {
   justify-content: center;
   gap: 0.25rem;
   border-radius: 9999px;
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  --tw-gradient-from: #DFE0E4 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(223 224 228 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #fff var(--tw-gradient-to-position);
   padding: 0.25rem;
 }
 
 .home-btn div svg {
+  --tw-text-opacity: 1;
+  color: rgb(248 151 29 / var(--tw-text-opacity));
+}
+
+.ref-btn {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 9999px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  --tw-gradient-from: #fff var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #DFE0E4 var(--tw-gradient-to-position);
+  padding: 0.25rem;
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-color: rgb(0 0 0 / 0.3);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.ref-btn div {
+  display: flex;
+  height: 1.75rem;
+  width: 1.75rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  --tw-gradient-from: #DFE0E4 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(223 224 228 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #fff var(--tw-gradient-to-position);
+  padding: 0.25rem;
+}
+
+.ref-btn div h4 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(248 151 29 / var(--tw-text-opacity));
 }

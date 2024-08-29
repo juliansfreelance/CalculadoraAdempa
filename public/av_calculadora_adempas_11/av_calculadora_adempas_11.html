@@ -29,7 +29,7 @@
 <body class="w-screen h-screen grid place-items-center">
    <section class="slide animate-fade-in animate-duration-slow">
 
-      <header class="w-full pl-8 pr-16 relative z-50">
+      <header class="w-full px-16 relative z-50">
          <hgroup>
             <span>
                <button class="home-btn animate-pulse-fade-in animate-delay-[600ms]" onclick="slideOnce.openAlert('reset')">
@@ -104,6 +104,7 @@
       </main>
 
       <section class="content-folder relative fade-out">
+
          <section class="folder close" id="poblacion">
             <header>
                <button onclick="slideOnce.toggleFolder('poblacion')">
@@ -181,7 +182,7 @@
                </button>
             </header>
             <section class="folder-contents">
-               <h4 class="text-[#b6121b]">Costo procedimientos anual de uso por paciente</h4>
+               <h4 class="text-[#b6121b]">Costo anual procedimientos por paciente</h4>
                <section>
                   <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
                      <div class="form">
@@ -196,7 +197,7 @@
                            </thead>
                            <tbody>
                               <tr>
-                                 <td class="text-xs">Costo procedimientos anual de uso por paciente</td>
+                                 <td class="text-xs">Costo anual procedimientos por paciente</td>
                                  <td><custom-input name="res-procedimientos-bajo" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-procedimientos-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-procedimientos-alto" type="calc" icon="money"></custom-input></td>
@@ -217,6 +218,98 @@
             </section>
          </section>
 
+         <section class="folder close" id="complicaciones">
+            <header>
+               <button onclick="slideOnce.toggleFolder('complicaciones')">
+                  <h4>Complicaciones</h4>
+                  <div>
+                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" />
+                     </svg>
+                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
+                     </svg>
+                  </div>
+               </button>
+            </header>
+         
+            <section class="folder-contents">
+               <h4 class="text-[#810053]">Costo anual complicaciónes por paciente</h4>
+               <section>
+                  <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
+                     <div class="form">
+                        <table class="w-full table-auto">
+                           <thead>
+                              <tr>
+                                 <th></th>
+                                 <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
+                                 <th class="font-bold text-sm text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
+                                 <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
+                                 <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td class="text-xs w-[150px]">Hospitalizaciones</td>
+                                 <td><custom-input name="res-compli-1-bajo" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-compli-1-intermedio" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-compli-1-alto" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md">
+                                    <custom-input name="res-compli-1-total" type="calc" icon="money"></custom-input>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td class="text-xs w-[150px]">Falla cardiaca en hospitalización general</td>
+                                 <td><custom-input name="res-compli-2-bajo" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-compli-2-intermedio" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-compli-2-alto" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md">
+                                    <custom-input name="res-compli-2-total" type="calc" icon="money"></custom-input>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td class="text-xs w-[150px]">Falla cardiaca derecha de paciente Crítico</td>
+                                 <td><custom-input name="res-compli-3-bajo" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-compli-3-intermedio" type="calc" icon="money"></custom-input></td>
+                                 <td><custom-input name="res-compli-3-alto" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md">
+                                    <custom-input name="res-compli-3-total" type="calc" icon="money"></custom-input>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td class="font-bold text-sm text-text-500 w-[150px]">TOTAL</td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-compli-total-bajo" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-compli-total-intermedio" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-compli-total-alto" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-compli-total-total" type="calc" icon="money"></custom-input></td>
+                              </tr>
+
+                              <tr>
+                                 <td class="text-xs font-bold w-[150px]">Porcentaje versus el total</td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-compli-vs-bajo" type="calc" icon="porcentaje"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-compli-vs-intermedio" type="calc" icon="porcentaje"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md"><custom-input name="res-compli-vs-alto" type="calc" icon="porcentaje"></custom-input></td>
+                              </tr>
+                              <tr>
+                                 <td colspan="3"class="text-xs max-w-[200px] font-bold">Porcentaje paciente crítico versus promedio costo total paciente</td>
+                                 <td class="bg-green-100 rounded-md">
+                                    <custom-input name="res-compli-alto-promedio" type="calc" icon="porcentaje"></custom-input>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="chart chart-complications animate-fade-in-up animate-delay-900"></div>
+               </section>
+            </section>
+         </section>
+
          <section class="folder close" id="tecnologias">
             <header>
                <button onclick="slideOnce.toggleFolder('tecnologias')">
@@ -233,7 +326,7 @@
             </header>
 
             <section class="folder-contents">
-               <h4 class="text-[#ffcf01]">Costo anual de tecnologías por paciente al año</h4>
+               <h4 class="text-[#ffcf01]">Costo anual tecnologías por paciente</h4>
                <section>
                   <div class="resultados animate-fade-in-right animate-delay-900 animate-duration-slower">
                      <div class="form">
@@ -248,7 +341,7 @@
                            </thead>
                            <tbody>
                               <tr>
-                                 <td class="text-xs">Costo anual de tecnologías por paciente año</td>
+                                 <td class="text-xs">Costo anual tecnologías por paciente</td>
                                  <td><custom-input name="res-tecno-bajo" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-tecno-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-tecno-alto" type="calc" icon="money"></custom-input></td>
