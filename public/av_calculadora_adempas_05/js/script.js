@@ -50,60 +50,6 @@ let slideCinco = {
       });
    },
 
-   loadConfig: function () {
-      return fetch('js/config.json').then(response => response.json()).then(data => {
-         veeva = data;
-      }).catch(error => {
-         console.error('Error al cargar la configuración:', error);
-      });
-   },
-
-   jumpToSlide: function (slide) {
-      slide === '02' ? localStorage.setItem('instrucciones', true) : localStorage.removeItem('instrucciones');
-      if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
-         document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
-      } else {
-         document.location = `/CalculadoraAdempa/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
-      }
-   },
-
-   formatNumber: function (val) {
-      const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
-      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
-      if (val !== '') {
-         let inputValue = val.toString().replace(/[^\d,.]/g, '');
-         let integer = parseFloat(inputValue.replace(/\./g, '').replace(/,/g, '.'));
-         return inputValue.indexOf(',') !== -1 ? FORMAT_DECIMAL(integer).format() : FORMAT_ENTERO(integer).format();
-      }
-   },
-
-   handleInput: function (event) {
-      let inputValue;
-      event.target.id === 'poblacion' ? inputValue = event.target.value.replace(/[^\d]/g, '') : inputValue = event.target.value.replace(/[^\d,]/g, '');
-      if (inputValue.includes(',')) {
-         this.decimalMode = true;
-      }
-      if (this.decimalMode) {
-         let decimalIndex = inputValue.indexOf(',');
-         if (decimalIndex !== -1) {
-            let decimalPart = inputValue.substring(decimalIndex + 1);
-            if (decimalPart.length > 2) {
-               inputValue = inputValue.substring(0, decimalIndex + 3);
-            }
-         }
-      }
-      event.target.value = inputValue;
-      this.valor = inputValue;
-   },
-
-   handleBlur: function (event) {
-      if (event.target.value !== '') {
-         let inputValue = event.target.value.replace(/[^\d,.]/g, '');
-         veeva.calculadora.poblacion = parseInt(event.target.value);
-         event.target.value = slideCinco.formatNumber(inputValue);
-      }
-   },
-
    handleButtonClick(event) {
       const inputsElement = document.querySelector('.content-inputs');
       const buttonsElement = document.querySelectorAll('button[name="conoceGrupos"]');
@@ -170,50 +116,6 @@ let slideCinco = {
       }, 500);
    },
 
-   openAlert: function (alert) {
-      const customAlert = document.querySelector(`custom-alert[name="alert-${alert}"]`);
-      const customAlertConten = document.querySelector(`custom-alert[name="alert-${alert}"] .alert-conten`);
-      const customAlertAlert = document.querySelector(`custom-alert[name="alert-${alert}"] .alert`);
-      switch (alert) {
-
-         case 'reset':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-            break;
-
-         case 'bd-clear':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-            break;
-      }
-   },
-
-   closeAlert: function () {
-      const customAlert = document.querySelector('custom-alert.block');
-      const customAlertConten = document.querySelector('custom-alert.block .alert-conten');
-      const customAlertAlert = document.querySelector('custom-alert.block .alert-conten .alert');
-      if (customAlert) {
-         customAlertConten.classList.replace('alert-animate-in', 'alert-animate-out');
-         customAlertAlert.classList.replace('alert-conten-animate-in', 'alert-conten-animate-out');
-         setTimeout(() => {
-            customAlert.classList.replace('block', 'hidden');
-         }, 600);
-      } else {
-         console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-      }
-   },
-
-
    selectGrupo(grupo) {
       const pop = document.querySelector('.pop-conten');
       const inputsElement = document.querySelector('.content-inputs');
@@ -259,46 +161,116 @@ let slideCinco = {
             grupos.HAP = hapEditValue;
             grupos.HTEC = htecEditValue;
             if (poblacion !== 0) {
-               slideCinco.estadificacionPacientes();
+               localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+               setTimeout(() => {
+                  slideCinco.jumpToSlide('06');
+               }, 800);
             }
          }
       } else if (poblacion !== 0) {
-         slideCinco.estadificacionPacientes();
+         localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+         setTimeout(() => {
+            slideCinco.jumpToSlide('06');
+         }, 800);
       }
    },
 
-   estadificacionPacientes: function () {
-      const escenarioIndex = veeva.calculadora.estadificacionEscenario[0];
-      const estadificacionRef = veeva.calculadora.referencias.estadificacion[escenarioIndex];
-      const riesgoBajo = parseFloat(estadificacionRef.riesgoBajo);
-      const riesgoIntermedio = parseFloat(estadificacionRef.riesgoIntermedio);
-      const riesgoAlto = parseFloat(estadificacionRef.riesgoAlto);
-      const HAP = parseFloat(veeva.calculadora.grupos.HAP);
-      const HTEC = parseFloat(veeva.calculadora.grupos.HTEC);
-      const pacientesBajo = (((riesgoBajo * HAP) + (riesgoBajo * HTEC)))/100;
-      const pacientesIntermedio = ((riesgoIntermedio * HAP) + (riesgoIntermedio * HTEC))/100;
-      const pacientesAlto = ((riesgoAlto * HAP) + (riesgoAlto * HTEC)) / 100;
-      veeva.calculadora.estadificacionPacientes.bajo = pacientesBajo;
-      veeva.calculadora.estadificacionPacientes.intermedio = pacientesIntermedio;
-      veeva.calculadora.estadificacionPacientes.alto = pacientesAlto;
-      slideCinco.estadificacionCategoria();
+   openAlert: function (alert) {
+      const customAlert = document.querySelector(`custom-alert[name="alert-${alert}"]`);
+      const customAlertConten = document.querySelector(`custom-alert[name="alert-${alert}"] .alert-conten`);
+      const customAlertAlert = document.querySelector(`custom-alert[name="alert-${alert}"] .alert`);
+      switch (alert) {
+
+         case 'reset':
+            if (customAlert) {
+               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
+               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
+               customAlert.classList.replace('hidden', 'block');
+            } else {
+               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
+            }
+            break;
+
+         case 'bd-clear':
+            if (customAlert) {
+               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
+               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
+               customAlert.classList.replace('hidden', 'block');
+            } else {
+               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
+            }
+            break;
+      }
    },
-   estadificacionCategoria: function () {
-      const poblacion = parseFloat(veeva.calculadora.poblacion);
-      let pacientesBajo = veeva.calculadora.estadificacionPacientes.bajo;
-      let pacientesIntermedio = veeva.calculadora.estadificacionPacientes.intermedio;
-      let pacientesAlto = veeva.calculadora.estadificacionPacientes.alto;
-      const categoriaBajo = (Math.floor(poblacion * pacientesBajo)) / 100;
-      const categoriaIntermedio = (Math.floor(poblacion * pacientesIntermedio)) / 100;
-      const categoriaAlto = (Math.floor(poblacion * pacientesAlto)) / 100;
-      veeva.calculadora.estadificacionCategoria.bajo = categoriaBajo;
-      veeva.calculadora.estadificacionCategoria.intermedio = categoriaIntermedio;
-      veeva.calculadora.estadificacionCategoria.alto = categoriaAlto;
-      console.log(veeva.calculadora);
-      localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora))
-      setTimeout(() => {
-         slideCinco.jumpToSlide('06');
-      }, 800);
+
+   closeAlert: function () {
+      const customAlert = document.querySelector('custom-alert.block');
+      const customAlertConten = document.querySelector('custom-alert.block .alert-conten');
+      const customAlertAlert = document.querySelector('custom-alert.block .alert-conten .alert');
+      if (customAlert) {
+         customAlertConten.classList.replace('alert-animate-in', 'alert-animate-out');
+         customAlertAlert.classList.replace('alert-conten-animate-in', 'alert-conten-animate-out');
+         setTimeout(() => {
+            customAlert.classList.replace('block', 'hidden');
+         }, 600);
+      } else {
+         console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
+      }
+   },
+
+   formatNumber: function (val) {
+      const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
+      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
+      if (val !== '') {
+         let inputValue = val.toString().replace(/[^\d,.]/g, '');
+         let integer = parseFloat(inputValue.replace(/\./g, '').replace(/,/g, '.'));
+         return inputValue.indexOf(',') !== -1 ? FORMAT_DECIMAL(integer).format() : FORMAT_ENTERO(integer).format();
+      }
+   },
+
+   handleInput: function (event) {
+      let inputValue;
+      event.target.id === 'poblacion' ? inputValue = event.target.value.replace(/[^\d]/g, '') : inputValue = event.target.value.replace(/[^\d,]/g, '');
+      if (inputValue.includes(',')) {
+         this.decimalMode = true;
+      }
+      if (this.decimalMode) {
+         let decimalIndex = inputValue.indexOf(',');
+         if (decimalIndex !== -1) {
+            let decimalPart = inputValue.substring(decimalIndex + 1);
+            if (decimalPart.length > 2) {
+               inputValue = inputValue.substring(0, decimalIndex + 3);
+            }
+         }
+      }
+      event.target.value = inputValue;
+      this.valor = inputValue;
+   },
+
+   handleBlur: function (event) {
+      if (event.target.value !== '') {
+         let inputValue = event.target.value.replace(/[^\d,.]/g, '');
+         veeva.calculadora.poblacion = parseInt(event.target.value);
+         event.target.value = slideCinco.formatNumber(inputValue);
+      }
+   },
+
+   loadConfig: function () {
+      return fetch('js/config.json').then(response => response.json()).then(data => {
+         veeva = data;
+      }).catch(error => {
+         console.error('Error al cargar la configuración:', error);
+      });
+   },
+
+   jumpToSlide: function (slide) {
+      localStorage.setItem('previousSlide', veeva.slide);
+      slide === '02' ? localStorage.setItem('instrucciones', true) : localStorage.removeItem('instrucciones');
+      if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
+         document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
+      } else {
+         document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+      }
    }
 }
 

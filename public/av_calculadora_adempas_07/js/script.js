@@ -32,6 +32,7 @@ let slideSiete = {
    },
 
    jumpToSlide: function (slide) {
+      localStorage.setItem('previousSlide', veeva.slide);
       slide === '02' ? localStorage.setItem('instrucciones', true) : localStorage.removeItem('instrucciones');
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
@@ -68,8 +69,7 @@ let slideSiete = {
       const customAlertConten = document.querySelector(`custom-alert[name="alert-${alert}"] .alert-conten`);
       const customAlertAlert = document.querySelector(`custom-alert[name="alert-${alert}"] .alert`);
       switch (alert) {
-
-         case 'ref-complicaciones':
+         case 'ref-tecnologias':
             if (customAlert) {
                customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
                customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
@@ -77,9 +77,9 @@ let slideSiete = {
             } else {
                console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
             }
-         break;
-         
-         case 'ref-microcosteo':
+            break;
+
+         case 'reset':
             if (customAlert) {
                customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
                customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
@@ -87,16 +87,6 @@ let slideSiete = {
             } else {
                console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
             }
-         break;
-
-            case 'reset':
-               if (customAlert) {
-                  customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-                  customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-                  customAlert.classList.replace('hidden', 'block');
-               } else {
-                  console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-               }
             break;
 
          case 'bd-clear':
@@ -107,7 +97,7 @@ let slideSiete = {
             } else {
                console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
             }
-         break;
+            break;
       }
    },
 
@@ -131,73 +121,182 @@ let slideSiete = {
       return floatValue.replace('.', ',');
    },
 
-   updateInputComplications: function () {
-      const probabilidades = veeva.calculadora.complicaciones.probabilidades
-      const inputs = document.querySelectorAll('input[name^="complicacion"]');
-      inputs.forEach(input => {
-         const name = input.name;
-         const [tipo, index, riesgo] = name.split('-');
-         input.value = slideSiete.formatToFloatString(probabilidades[index - 1][riesgo]);
-      });
-   },
+   updateInputTecnologias: function () {
+      const totalRiesgoBajo = document.querySelector("input[name='total-bajo']");
+      const totalRiesgoIntermedio = document.querySelector("input[name='total-intermedio']");
+      const totalRiesgoAlto = document.querySelector("input[name='total-alto']");
 
-   syncComplicationsWithReference: function () {
-      const probabilidades = veeva.calculadora.complicaciones.probabilidades
-      const referencias = veeva.calculadora.referencias.complicaciones.probabilidades;
+      const monoterapiaBajo = document.querySelector("input[name='monoterapia-bajo']");
+      const monoterapiaIntermedio = document.querySelector("input[name='monoterapia-intermedio']");
+      const monoterapiaAlto = document.querySelector("input[name='monoterapia-alto']");
 
-      referencias.forEach((refProbabilidades, index) => {
+      const dobleBajo = document.querySelector("input[name='doble-bajo']");
+      const dobleIntermedio = document.querySelector("input[name='doble-intermedio']");
+      const dobleAlto = document.querySelector("input[name='doble-alto']");
 
-         probabilidades[index].bajo = referencias[index].bajo;
-         probabilidades[index].intermedio += referencias[index].intermedio;
-         probabilidades[index].alto += referencias[index].alto;
-      });
+      const tripleBajo = document.querySelector("input[name='triple-bajo']");
+      const tripleIntermedio = document.querySelector("input[name='triple-intermedio']");
+      const tripleAlto = document.querySelector("input[name='triple-alto']");
 
-      console.log("Complicaciones actualizadas:", probabilidades);
-      slideSiete.actualizarInputs()
-   },
+      monoterapiaBajo.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.monoterapias.bajo);
+      monoterapiaIntermedio.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.monoterapias.intermedio);
+      monoterapiaAlto.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.monoterapias.alto);
 
-   actualizarInputs: function() {
-      slideSiete.updateInputComplications();
+      dobleBajo.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.terapiasDobles.bajo);
+      dobleIntermedio.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.terapiasDobles.intermedio);
+      dobleAlto.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.terapiasDobles.alto);
+
+      tripleBajo.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.terapiasTripes.bajo);
+      tripleIntermedio.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.terapiasTripes.intermedio);
+      tripleAlto.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.terapiasTripes.alto);
+
+      totalRiesgoBajo.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.totalRiesgoBajo);
+      totalRiesgoIntermedio.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.totalRiesgoIntermedio);
+      totalRiesgoAlto.value = slideSiete.formatToFloatString(veeva.calculadora.tecnologias.totalRiesgoAlto);
+
       const customAlert = document.querySelector('custom-alert.block');
       if (customAlert) {
          setTimeout(() => {
-            slideSiete.validateComplications();
+            slideSiete.validateTecnnology();
             slideSiete.closeAlert();
          }, 400);
       }
    },
 
-   validateComplications: function () {
-      slideSiete.validateCounnt++;
-      const error = document.querySelector('.error-probabilidad');
-      const getValues = (names) => {
-         return names.map(name => {
-            const input = document.querySelector(`input[name="${name}"]`);
-            return {
-               value: parseFloat(input.value.replace(',', '.')),
-               parentTd: input.closest('td')
-            };
-         });
-      };
+   syncTechnologyWithReference: function () {
 
-      const inputs = [
-         ...getValues(['complicacion-1-bajo', 'complicacion-1-intermedio', 'complicacion-1-alto']),
-         ...getValues(['complicacion-2-bajo', 'complicacion-2-intermedio', 'complicacion-2-alto']),
-         ...getValues(['complicacion-3-bajo', 'complicacion-3-intermedio', 'complicacion-3-alto'])
-      ];
+      const tecnologias = veeva.calculadora.tecnologias;
+      const referencias = veeva.calculadora.referencias.tecnologias;
 
-      inputs.forEach(({ value, parentTd }) => {
-         value === 0 ? parentTd.classList.add('input-error') : parentTd.classList.remove('input-error');
+      // Reset totals
+      tecnologias.totalRiesgoBajo = 0;
+      tecnologias.totalRiesgoIntermedio = 0;
+      tecnologias.totalRiesgoAlto = 0;
+
+      // Update monoterapias
+      tecnologias.monoterapias.bajo = 0;
+      tecnologias.monoterapias.intermedio = 0;
+      tecnologias.monoterapias.alto = 0;
+      referencias.monoterapias.terapias.forEach((refTerapia, index) => {
+         const tecTerapia = tecnologias.monoterapias.terapias[index];
+         tecTerapia.bajo = refTerapia.bajo;
+         tecTerapia.intermedio = refTerapia.intermedio;
+         tecTerapia.alto = refTerapia.alto;
+
+         tecnologias.monoterapias.bajo += tecTerapia.bajo;
+         tecnologias.monoterapias.intermedio += tecTerapia.intermedio;
+         tecnologias.monoterapias.alto += tecTerapia.alto;
+
+         tecnologias.totalRiesgoBajo += tecTerapia.bajo;
+         tecnologias.totalRiesgoIntermedio += tecTerapia.intermedio;
+         tecnologias.totalRiesgoAlto += tecTerapia.alto;
       });
-      inputs.every(({ value }) => value !== 0) ? error.classList.add('hidden') : error.classList.remove('hidden');
 
-      const validate = inputs.every(({ value }) => value !== 0);
+      // Update terapias dobles
+      tecnologias.terapiasDobles.bajo = 0;
+      tecnologias.terapiasDobles.intermedio = 0;
+      tecnologias.terapiasDobles.alto = 0;
+      referencias.terapiasDobles.terapias.forEach((refTerapia, index) => {
+         const tecTerapia = tecnologias.terapiasDobles.terapias[index];
+         tecTerapia.bajo = refTerapia.bajo;
+         tecTerapia.intermedio = refTerapia.intermedio;
+         tecTerapia.alto = refTerapia.alto;
+
+         tecnologias.terapiasDobles.bajo += tecTerapia.bajo;
+         tecnologias.terapiasDobles.intermedio += tecTerapia.intermedio;
+         tecnologias.terapiasDobles.alto += tecTerapia.alto;
+
+         tecnologias.totalRiesgoBajo += tecTerapia.bajo;
+         tecnologias.totalRiesgoIntermedio += tecTerapia.intermedio;
+         tecnologias.totalRiesgoAlto += tecTerapia.alto;
+      });
+
+      // Update terapias triples
+      tecnologias.terapiasTripes.bajo = 0;
+      tecnologias.terapiasTripes.intermedio = 0;
+      tecnologias.terapiasTripes.alto = 0;
+      referencias.terapiasTripes.terapias.forEach((refTerapia, index) => {
+         const tecTerapia = tecnologias.terapiasTripes.terapias[index];
+         tecTerapia.bajo = refTerapia.bajo;
+         tecTerapia.intermedio = refTerapia.intermedio;
+         tecTerapia.alto = refTerapia.alto;
+
+         tecnologias.terapiasTripes.bajo += tecTerapia.bajo;
+         tecnologias.terapiasTripes.intermedio += tecTerapia.intermedio;
+         tecnologias.terapiasTripes.alto += tecTerapia.alto;
+
+         tecnologias.totalRiesgoBajo += tecTerapia.bajo;
+         tecnologias.totalRiesgoIntermedio += tecTerapia.intermedio;
+         tecnologias.totalRiesgoAlto += tecTerapia.alto;
+      });
+
+      console.log("Tecnologías actualizadas:", tecnologias);
+      slideSiete.actualizarInputs()
+   },
+
+   actualizarInputs: function() {
+      const tecnologias = veeva.calculadora.tecnologias;
+      const inputs = document.querySelectorAll('input.porcentaje');
+
+      inputs.forEach(input => {
+         const name = input.name;
+         const [tipo, index, riesgo] = name.split('-');
+         const terapiaMap = {
+            monoterapia: "monoterapias",
+            biterapia: "terapiasDobles",
+            triterapia: "terapiasTripes",
+         }
+         const terapiasName = terapiaMap[tipo] || null;
+         if (tecnologias[terapiasName]) {
+            const terapia = tecnologias[terapiasName].terapias[index];
+            if (terapia) {
+               input.value = slideSiete.formatToFloatString(terapia[riesgo]);
+            }
+         }
+      });
+      slideSiete.updateInputTecnologias();
+   },
+
+   validateTecnnology: function () {
+      slideSiete.validateCounnt++;
+      const getValues = (names) => {
+         return names.map(name => parseFloat(document.querySelector(`input[name="${name}"]`).value.replace(',', '.')));
+      };
+      const updateErrorState = (selector, hasError) => {
+         document.querySelector(selector).classList.replace(hasError ? 'hidden' : 'flex', hasError ? 'flex' : 'hidden');
+      };
+      const updateValidationState = (selector, hasError) => {
+         document.querySelector(selector).classList.replace(hasError ? 'bg-slate-200' : 'bg-red-200', hasError ? 'bg-red-200' : 'bg-slate-200');
+         document.querySelector(selector.replace('total', 'error')).classList.replace(hasError ? 'hidden' : 'block', hasError ? 'block' : 'hidden');
+      };
+      const [monoterapiaBajoValue, monoterapiaIntermedioValue, monoterapiaAltoValue] = getValues(['monoterapia-bajo', 'monoterapia-intermedio', 'monoterapia-alto']);
+      const [dobleBajoValue, dobleIntermedioValue, dobleAltoValue] = getValues(['doble-bajo', 'doble-intermedio', 'doble-alto']);
+      const [tripleBajoValue, tripleIntermedioValue, tripleAltoValue] = getValues(['triple-bajo', 'triple-intermedio', 'triple-alto']);
+      const [totalTecnologyBajoValue, totalTecnologyIntermedioValue, totalTecnologyAltoValue] = getValues(['total-bajo', 'total-intermedio', 'total-alto']);
+      const monoterapiaTotal = monoterapiaBajoValue + monoterapiaIntermedioValue + monoterapiaAltoValue;
+      const dobleTotal = dobleBajoValue + dobleIntermedioValue + dobleAltoValue;
+      const tripleTotal = tripleBajoValue + tripleIntermedioValue + tripleAltoValue;
+      updateErrorState('.error-monoterapia', monoterapiaTotal === 0);
+      updateErrorState('.error-doble', dobleTotal === 0);
+      updateErrorState('.error-triple', tripleTotal === 0);
+      if (monoterapiaTotal !== 0 && dobleTotal !== 0 && tripleTotal !== 0) {
+         updateValidationState('.total-bajo', totalTecnologyBajoValue !== 100);
+         updateValidationState('.total-intermedio', totalTecnologyIntermedioValue !== 100);
+         updateValidationState('.total-alto', totalTecnologyAltoValue !== 100);
+      }
+
+      let validate = (
+         totalTecnologyBajoValue === 100 &&
+         totalTecnologyIntermedioValue === 100 &&
+         totalTecnologyAltoValue === 100
+      );
       return validate;
    },
 
    validarForm: function() {
-      const validateComplications = slideSiete.validateComplications();
-      if (validateComplications === true) {
+      const validateTecnnology = slideSiete.validateTecnnology();
+      console.log('validacion exitosa', validateTecnnology);
+      if (validateTecnnology === true) {
          localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
          slideSiete.jumpToSlide('08');
       }
@@ -209,8 +308,5 @@ document.addEventListener('DOMContentLoaded', function () {
    slideSiete.loadConfig().then(() => {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
       slideSiete.ini();
-      setTimeout(() => {
-         slideSiete.updateInputComplications();
-      }, 1000);
    });
 });

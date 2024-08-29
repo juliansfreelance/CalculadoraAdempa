@@ -44,14 +44,16 @@ input[type=number] {
 }
 
 header hgroup {
-   @apply w-full h-fit flex justify-between items-center
+   @apply w-full flex justify-end items-start relative;
 }
 header hgroup span {
-   @apply flex gap-4
+   @apply flex flex-wrap items-center gap-x-4 gap-y-2 w-[255px] absolute left-0 pt-4
 }
-
-header hgroup div {
-   @apply w-fit flex flex-col items-center gap-2 px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end
+header hgroup button {
+   @apply h-fit
+}
+header hgroup .titulo {
+   @apply w-fit flex flex-col items-center justify-center gap-2 px-16 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end h-[87px] justify-self-end
 }
 header hgroup div h2 {
    @apply font-extrabold text-center text-white text-[22px] leading-none;
@@ -60,9 +62,8 @@ header hgroup div h3 {
    @apply font-thin text-white text-base leading-none;
 }
 
-
 main {
-   @apply flex-grow mx-40 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
+   @apply flex-grow mx-40 my-10 mb-20 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
 }
 
 .HTP-ask {
@@ -99,7 +100,6 @@ main {
    @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
 }
 
-
 .home-btn {
    @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
 }
@@ -111,6 +111,16 @@ main {
 }
 .home-btn div svg {
    @apply text-button-text;
+}
+
+.ref-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit mx-1;
+}
+.ref-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white flex flex-row items-center justify-center gap-1 w-7 h-7 p-1 rounded-full;
+}
+.ref-btn div h4 {
+   @apply text-button-text font-bold text-xs;
 }
 
 .button-gray-corner-md {

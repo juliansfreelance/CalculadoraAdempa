@@ -1,0 +1,75 @@
+@import 'fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar {
+   @apply w-1.5 h-1.5;
+}
+
+*::-webkit-scrollbar-track {
+   @apply bg-slate-300
+}
+
+*::-webkit-scrollbar-thumb {
+   @apply bg-green-400;
+}
+
+html,
+body {
+   @apply bg-slate-800;
+}
+
+* {
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+   @apply select-none antialiased font-albert !important;
+}
+
+.slide {
+   @apply w-[1024px] h-[768px] flex flex-col gap-4 bg-white bg-fondo bg-cover bg-center pb-16 z-0;
+}
+
+header hgroup {
+   @apply w-full h-[80px] flex justify-between items-start
+}
+header hgroup h2 {
+   @apply w-fit h-full flex items-center font-extrabold text-center text-white text-3xl leading-none px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl
+}
+
+main {
+   @apply flex-grow mx-16 flex flex-wrap justify-around content-around pt-10;
+}
+
+.consideraciones {
+   @apply w-[644px] py-8 px-8 rounded-lg flex flex-col items-center bg-white/20 shadow-md shadow-black/10 relative;
+}
+.consideraciones h4 {
+   @apply text-text-500 text-base font-albert text-center leading-tight
+}
+.consideraciones a {
+   @apply w-2/5 text-center mb-4
+}
+.consideraciones a img {
+   @apply w-full
+}
+.consideraciones p {
+   @apply leading-tight text-text-500 text-center text-sm font-albert
+}
+.consideraciones a {
+   @apply text-cyan-500
+}
+.consideraciones p:last-child {
+   @apply pt-4
+}
+
+
+.back-button {
+   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 shadow-md shadow-black/40 rounded-lg border border-gray-400
+}
+.back-button div {
+   @apply text-button-text pl-7 pr-5 py-1 bg-gradient-to-b from-button-bg1 to-white rounded-md
+}
+.back-button div i {
+   @apply -ml-4 mr-2
+}

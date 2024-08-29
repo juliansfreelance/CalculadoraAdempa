@@ -52,15 +52,46 @@ body {
 }
 
 header hgroup {
-   @apply w-full h-[80px] flex justify-between items-center
+   @apply w-full flex justify-end items-start relative;
 }
-
-header hgroup h2 {
-   @apply w-fit h-full flex items-center font-extrabold text-center text-white text-3xl leading-none px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl
+header hgroup span {
+   @apply flex flex-wrap items-center gap-x-4 gap-y-2 w-[255px] absolute left-0 pt-4
+}
+header hgroup button {
+   @apply h-fit
+}
+header hgroup .titulo {
+   @apply w-fit flex flex-col items-center justify-center gap-2 px-16 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end h-[87px] justify-self-end
+}
+header hgroup div h2 {
+   @apply font-extrabold text-center text-white text-3xl
 }
 
 main {
    @apply flex-grow mx-16 flex flex-wrap justify-around content-around;
+}
+
+.home-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
+}
+.home-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+.home-btn div {
+   @apply flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
+}
+.home-btn div svg {
+   @apply text-button-text;
+}
+
+.ref-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit mx-1;
+}
+.ref-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white flex flex-row items-center justify-center gap-1 w-7 h-7 p-1 rounded-full;
+}
+.ref-btn div h4 {
+   @apply text-button-text font-bold text-xs;
 }
 
 .btn-enlaces {

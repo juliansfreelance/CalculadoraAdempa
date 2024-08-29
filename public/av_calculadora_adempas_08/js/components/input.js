@@ -72,7 +72,7 @@ class customInput extends HTMLElement {
    }
 
    handleFocus(event) {
-      this.previousValue = event.target.value.replace(/\./g, '');
+      this.previousValue = event.target.value;
       event.target.value = '';
    }
 
@@ -98,6 +98,7 @@ class customInput extends HTMLElement {
       const input = event.target;
       const inputValue = input.value.replace(/[^\d,.]/g, '');
       const formattedValue = this.formatNumber(inputValue);
+
       if (input.value === '') {
          input.value = this.previousValue;
          this.updateJsonValue(input.name, this.previousValue);
@@ -108,36 +109,12 @@ class customInput extends HTMLElement {
       }
    }
 
-   updateGlobalValues() {
-      const costos = veeva.calculadora.complicaciones.costos;
-      costos[3].bajo = 0; costos[3].intermedio = 0; costos[3].alto = 0
-      costos.forEach((costo, index) => {
-         if (costo.nombre !== "Totales") {
-            costos[3].bajo += costo.bajo;
-            costos[3].intermedio += costo.intermedio;
-            costos[3].alto += costo.alto;
-         }
-      });
-      slideOcho.updateInputCosts();
-      if(slideOcho.validateCounnt > 0) slideOcho.validateCosts();
-   }
-
    updateJsonValue(name, value) {
-      const complicaciones = veeva.calculadora.complicaciones;
+      const probabilidades = veeva.calculadora.complicaciones.probabilidades;
       const [tipo, index, riesgo] = name.split('-');
-      switch (tipo) {
-         case 'costo':
-            const costos = complicaciones.costos;
-            costos[index - 1][riesgo] = parseFloat(value.replace(',', '.'));
-         break;
-         case 'microcosteo':
-            const rubros = complicaciones.microcosteo.rubros;
-            rubros[index].cantidad[riesgo] = parseFloat(value.replace(',', '.'));
-            rubros[index].costo[riesgo] = parseFloat(value.replace(',', '.') * rubros[index].valorUnitario);
-            slideOcho.calcMicrocosteo();
-         break;
-      }
-      this.updateGlobalValues();
+      probabilidades[index - 1][riesgo] = parseFloat(value.replace(',', '.'));
+      slideOcho.actualizarInputs();
+      if (slideOcho.validateCounnt > 0) slideOcho.validateComplications();
    }
 
    connectedCallback() {

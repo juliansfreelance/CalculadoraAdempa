@@ -15,7 +15,7 @@
 }
 * {
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-   @apply antialiased select-none !important;
+   @apply select-none antialiased !important;
    @apply font-albert
 }
 
@@ -41,13 +41,16 @@ input[type=number] {
 }
 
 header hgroup {
-   @apply w-full h-fit flex justify-between items-center
+   @apply w-full flex justify-end items-start relative;
 }
 header hgroup span {
-   @apply flex gap-4
+   @apply flex flex-wrap items-center gap-x-4 gap-y-2 w-[255px] absolute left-0 pt-4
 }
-header hgroup div {
-   @apply w-fit flex flex-col items-center gap-2 px-16 py-2 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end
+header hgroup button {
+   @apply h-fit
+}
+header hgroup .titulo {
+   @apply w-fit flex flex-col items-center justify-center gap-2 px-16 bg-gradient-to-r from-red-600 to-amber-600 rounded-b-3xl self-end h-[87px] justify-self-end
 }
 header hgroup div h2 {
    @apply font-extrabold text-center text-white text-[22px] leading-none;
@@ -71,6 +74,16 @@ main {
 }
 .home-btn div svg {
    @apply text-button-text;
+}
+
+.ref-btn {
+   @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit mx-1;
+}
+.ref-btn div {
+   @apply bg-gradient-to-b from-button-bg1 to-white flex flex-row items-center justify-center gap-1 w-7 h-7 p-1 rounded-full;
+}
+.ref-btn div h4 {
+   @apply text-button-text font-bold text-xs;
 }
 
 .background-btn-blue {
@@ -216,42 +229,34 @@ main {
    @apply absolute text-text-500 left-[10px] -mt-[24px]
 }
 
-.complicaciones,
-.costos {
-   @apply flex-col-reverse drop-shadow-md w-full;
+.tratamiento,
+.complicaciones {
+   @apply flex flex-col-reverse drop-shadow-md w-full;
 }
-.complicaciones .form,
-.costos .form {
+.tratamiento .form,
+.complicaciones .form {
    @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
 }
-.costos .form {
-   @apply pr-2 !important
+.tratamiento .form {
+   @apply pr-4
 }
-.complicaciones .form table,
-.costos .form table {
-   @apply border-spacing-x-1 border-spacing-y-1 border-separate;
+.tratamiento .form table {
+   @apply border-spacing-x-1 border-separate;
 }
-.complicaciones .form table thead tr th,
-.costos .form table thead tr th {
+.tratamiento .form table thead tr th,
+.complicaciones .form table thead tr th {
    @apply leading-none py-2
 }
-.complicaciones .form table tbody tr td,
-.costos .form table tbody tr td {
+.tratamiento .form table tbody tr td,
+.complicaciones .form table tbody tr td {
    @apply leading-none py-1 px-1
 }
-.costos .form table tbody tr td:first-child {
-   @apply max-w-[13rem]
-}
-.complicaciones .form table tbody tr td.input-error,
-.costos .form table tbody tr td.input-error {
-   @apply bg-red-200 rounded-lg
-}
-.complicaciones .label,
-.costos .label {
+.tratamiento .label,
+.complicaciones .label {
    @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
 }
-.complicaciones .label h4,
-.costos .label h4 {
+.tratamiento .label h4,
+.complicaciones .label h4 {
    @apply text-orange-400 font-bold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
 }
 
@@ -276,19 +281,11 @@ footer article p {
    @apply absolute
 }
 .pop {
-   @apply flex flex-col-reverse w-fit drop-shadow-md p-8
+   @apply flex flex-col-reverse  w-fit drop-shadow-md
 }
 .pop .pop-form {
    @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
 }
-
-.pop .pop-form .thead {
-   width: calc(100% - 6px);
-}
-.pop .pop-form table tbody tr {
-   @apply rounded-l-md odd:bg-white/0 even:bg-gray-800/5;
-}
-
 
 .pop .pop-form table thead tr th {
    @apply leading-none py-2
@@ -296,14 +293,8 @@ footer article p {
 .pop .pop-form table tbody tr td {
    @apply leading-none py-1 px-1
 }
-.pop .pop-form table tbody tr td,
-.pop .pop-form table thead tr th {
-   @apply w-[140px] !important
-}
-
-.pop .pop-form table tbody tr td:nth-child(1),
-.pop .pop-form table thead tr th:nth-child(1) {
-   @apply mr-2 w-[370px] pl-4 rounded-l-md !important
+.pop .pop-form table tbody tr td:first-child {
+   @apply mr-2
 }
 
 .pop .pop-label {

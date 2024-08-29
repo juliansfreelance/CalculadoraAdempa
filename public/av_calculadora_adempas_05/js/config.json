@@ -10,6 +10,13 @@
          "HAP": 0,
          "HTEC": 0
       },
+      "estadificacion": {
+         "conoceDistribucion": false,
+         "study": "",
+         "riesgoBajo": 0,
+         "riesgoIntermedio": 0,
+         "riesgoAlto": 0
+      },
       "estadificacionEscenario": [0],
       "estadificacionPacientes": {
          "bajo": 0,
@@ -819,22 +826,28 @@
          ],
          "estadificacion": [
             {
-               "name": "Datos presentados de Centros de referencia en HTP",
+               "name": "Centros de referencia HTP",
                "riesgoBajo": 35.18,
                "riesgoIntermedio": 54.55,
-               "riesgoAlto": 10.28
+               "riesgoAlto": 10.28,
+               "fuente": "Datos presentados de Centros de referencia en HTP",
+               "IPP": ""
             },
             {
-               "name": "Adv Ther.2019;36(9):2351-63",
+               "name": "Adv Ther.2019",
                "riesgoBajo": 33,
                "riesgoIntermedio": 45,
-               "riesgoAlto": 22
+               "riesgoAlto": 22,
+               "fuente": "Adv Ther.2019;36(9):2351-2363",
+               "IPP": ""
             },
             {
                "name": "Cadiovid",
                "riesgoBajo": 15,
                "riesgoIntermedio": 68,
-               "riesgoAlto": 17
+               "riesgoAlto": 17,
+               "fuente": "Cadiovid",
+               "IPP": ""
             }
          ],
          "tecnologias": {
@@ -1525,7 +1538,17 @@
          },
          "chartProcedures":{
             "type": "bar",
-            "title": "Costo procedimientos anual de uso por paciente",
+            "title": "Costo anual procedimientos por paciente",
+            "names": [
+               "Estadificación riesgo Bajo",
+               "Estadificación riesgo Intermedio",
+               "Estadificación riesgo Alto"
+            ],
+            "valores": []
+         },
+         "chartComplications":{
+            "type": "bar",
+            "title": "Costo anual complicaciones por paciente",
             "names": [
                "Estadificación riesgo Bajo",
                "Estadificación riesgo Intermedio",
