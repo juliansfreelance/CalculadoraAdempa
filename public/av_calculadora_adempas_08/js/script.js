@@ -149,8 +149,8 @@ let slideOcho = {
       referencias.forEach((refProbabilidades, index) => {
 
          probabilidades[index].bajo = referencias[index].bajo;
-         probabilidades[index].intermedio += referencias[index].intermedio;
-         probabilidades[index].alto += referencias[index].alto;
+         probabilidades[index].intermedio = referencias[index].intermedio;
+         probabilidades[index].alto = referencias[index].alto;
       });
 
       console.log("Complicaciones actualizadas:", probabilidades);

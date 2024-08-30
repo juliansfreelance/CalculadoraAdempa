@@ -243,60 +243,60 @@
                         <table class="w-full table-auto">
                            <thead>
                               <tr>
-                                 <th></th>
+                                 <th class="text-xs"></th>
                                  <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
                                  <th class="font-bold text-sm text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                                  <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
-                                 <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
+                                 <th class="font-bold text-sm text-text-500 text-center hidden">TOTAL</th>
                               </tr>
                            </thead>
                            <tbody>
                               <tr>
-                                 <td class="text-xs w-[150px]">Hospitalizaciones</td>
+                                 <td class="text-xs">Hospitalizaciones</td>
                                  <td><custom-input name="res-compli-1-bajo" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-compli-1-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-compli-1-alto" type="calc" icon="money"></custom-input></td>
-                                 <td class="bg-green-100 rounded-md">
+                                 <td class="bg-green-100 rounded-md hidden">
                                     <custom-input name="res-compli-1-total" type="calc" icon="money"></custom-input>
                                  </td>
                               </tr>
 
                               <tr>
-                                 <td class="text-xs w-[150px]">Falla cardiaca en hospitalización general</td>
+                                 <td class="text-xs">Falla cardiaca en hospitalización general</td>
                                  <td><custom-input name="res-compli-2-bajo" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-compli-2-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-compli-2-alto" type="calc" icon="money"></custom-input></td>
-                                 <td class="bg-green-100 rounded-md">
+                                 <td class="bg-green-100 rounded-md hidden">
                                     <custom-input name="res-compli-2-total" type="calc" icon="money"></custom-input>
                                  </td>
                               </tr>
 
                               <tr>
-                                 <td class="text-xs w-[150px]">Falla cardiaca derecha de paciente Crítico</td>
+                                 <td class="text-xs">Falla cardiaca derecha de paciente Crítico</td>
                                  <td><custom-input name="res-compli-3-bajo" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-compli-3-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-compli-3-alto" type="calc" icon="money"></custom-input></td>
-                                 <td class="bg-green-100 rounded-md">
+                                 <td class="bg-green-100 rounded-md hidden">
                                     <custom-input name="res-compli-3-total" type="calc" icon="money"></custom-input>
                                  </td>
                               </tr>
 
                               <tr>
-                                 <td class="font-bold text-sm text-text-500 w-[150px]">TOTAL</td>
+                                 <td class="font-bold text-sm text-text-500">TOTAL</td>
                                  <td class="bg-green-100 rounded-md"><custom-input name="res-compli-total-bajo" type="calc" icon="money"></custom-input></td>
                                  <td class="bg-green-100 rounded-md"><custom-input name="res-compli-total-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td class="bg-green-100 rounded-md"><custom-input name="res-compli-total-alto" type="calc" icon="money"></custom-input></td>
-                                 <td class="bg-green-100 rounded-md"><custom-input name="res-compli-total-total" type="calc" icon="money"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md hidden"><custom-input name="res-compli-total-total" type="calc" icon="money"></custom-input></td>
                               </tr>
 
                               <tr>
-                                 <td class="text-xs font-bold w-[150px]">Porcentaje versus el total</td>
+                                 <td class="text-xs font-bold">Porcentaje versus el total</td>
                                  <td class="bg-green-100 rounded-md"><custom-input name="res-compli-vs-bajo" type="calc" icon="porcentaje"></custom-input></td>
                                  <td class="bg-green-100 rounded-md"><custom-input name="res-compli-vs-intermedio" type="calc" icon="porcentaje"></custom-input></td>
                                  <td class="bg-green-100 rounded-md"><custom-input name="res-compli-vs-alto" type="calc" icon="porcentaje"></custom-input></td>
                               </tr>
                               <tr>
-                                 <td colspan="3"class="text-xs max-w-[200px] font-bold">Porcentaje paciente crítico versus promedio costo total paciente</td>
+                                 <td colspan="3"class="text-xs font-bold">Porcentaje paciente crítico versus promedio costo total paciente</td>
                                  <td class="bg-green-100 rounded-md">
                                     <custom-input name="res-compli-alto-promedio" type="calc" icon="porcentaje"></custom-input>
                                  </td>
