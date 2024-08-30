@@ -19,7 +19,8 @@
     "devSlide09": "npx tailwindcss -i ./src/config09.css -o ./public/av_calculadora_adempas_09/css/style.css --watch",
     "devSlide10": "npx tailwindcss -i ./src/config10.css -o ./public/av_calculadora_adempas_10/css/style.css --watch",
     "devSlide11": "npx tailwindcss -i ./src/config11.css -o ./public/av_calculadora_adempas_11/css/style.css --watch",
-    "devSlide12": "npx tailwindcss -i ./src/config12.css -o ./public/av_calculadora_adempas_12/css/style.css --watch"
+    "devSlide12": "npx tailwindcss -i ./src/config12.css -o ./public/av_calculadora_adempas_12/css/style.css --watch",
+    "devSlide13": "npx tailwindcss -i ./src/config13.css -o ./public/av_calculadora_adempas_13/css/style.css --watch"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",

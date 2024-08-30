@@ -866,11 +866,11 @@
                "IPP": ""
             },
             {
-               "name": "Cadiovid",
+               "name": "Cardiovid",
                "riesgoBajo": 15,
                "riesgoIntermedio": 68,
                "riesgoAlto": 17,
-               "fuente": "Cadiovid",
+               "fuente": "Cardiovid",
                "IPP": ""
             }
          ],
