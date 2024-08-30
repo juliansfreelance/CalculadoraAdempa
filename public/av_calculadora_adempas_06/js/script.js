@@ -38,10 +38,10 @@ let slideSeis = {
                const riskLowEstudyValue = document.querySelector('input[name="estudy-risk-low"]');
                const riskIntermediateValue = document.querySelector('input[name="estudy-risk-intermediate"]');
                const riskHighEstudyValue = document.querySelector('input[name="estudy-risk-high"]');
-               const grupoSelected = veeva.calculadora.referencias.estadificacion.find(g => g.name === veeva.calculadora.estadificacion.study);
-               riskLowEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HAP}`;
-               riskIntermediateValue.value = `${grupoSelected.name} - ${grupoSelected.HTEC}`;
-               riskHighEstudyValue.value = `${grupoSelected.name} - ${grupoSelected.HTEC}`;
+               const estadificacionSelected = veeva.calculadora.referencias.estadificacion.find(es => es.name === veeva.calculadora.estadificacion.study);
+               riskLowEstudyValue.value = `${estadificacionSelected.riesgoBajo}`;
+               riskIntermediateValue.value = `${estadificacionSelected.riesgoIntermedio}`;
+               riskHighEstudyValue.value = `${estadificacionSelected.riesgoAlto}`;
                inputsElement.classList.replace('hidden', 'flex');
                riskEstudy.classList.replace('hidden', 'grid');
             }
@@ -127,6 +127,7 @@ let slideSeis = {
       const riskLowEstudyValue = document.querySelector('input[name="estudy-risk-low"]');
       const riskIntermediateValue = document.querySelector('input[name="estudy-risk-intermediate"]');
       const riskHighEstudyValue = document.querySelector('input[name="estudy-risk-high"]');
+      
       const estadificacionSelected = veeva.calculadora.referencias.estadificacion.find(es => es.name === estadificacion);
       pop.classList.replace('pop-animate-up', 'pop-animate-down');
       if (estadificacionSelected) {

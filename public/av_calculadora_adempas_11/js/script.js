@@ -40,7 +40,6 @@ let slideOnce = {
       if (calculadoraData) {
          veeva.calculadora = JSON.parse(calculadoraData);
          veeva = resolveReferences(veeva);
-         slideOnce.getTotalCostsByProcedures();
          slideOnce.getTotalCostsByTechnology();
       } else {
          const alert = document.querySelector('.alert-conten');
@@ -172,15 +171,6 @@ let slideOnce = {
       }
    },
 
-   getTotalCostsByProcedures: function () {
-      const { calculadora } = veeva;
-      calculadora.procedimientos.bajo = Math.round(((calculadora.referencias.procedimientos.HAP.bajo * calculadora.grupos.HAP) + (calculadora.referencias.procedimientos.HTEC.bajo * calculadora.grupos.HTEC)) / 100);
-      calculadora.procedimientos.intermedio = Math.round(((calculadora.referencias.procedimientos.HAP.intermedio * calculadora.grupos.HAP) + (calculadora.referencias.procedimientos.HTEC.intermedio * calculadora.grupos.HTEC)) / 100);
-      calculadora.procedimientos.alto = Math.round(((calculadora.referencias.procedimientos.HAP.alto * calculadora.grupos.HAP) + (calculadora.referencias.procedimientos.HTEC.alto * calculadora.grupos.HTEC)) / 100);
-      calculadora.procedimientos.promedio = parseFloat(((calculadora.procedimientos.bajo + calculadora.procedimientos.intermedio + calculadora.procedimientos.alto) / 3).toFixed(2));
-      calculadora.chartOptions.chartProcedures.valores = [calculadora.procedimientos.bajo, calculadora.procedimientos.intermedio, calculadora.procedimientos.alto];
-   },
-
    getTotalCostsByTechnology: function () {
       const { calculadora } = veeva;
       const costoPromedio = calculadora.tecnologias.costoPromedio;
@@ -222,6 +212,8 @@ let slideOnce = {
       const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
       const { calculadora } = veeva;
 
+      console.log(calculadora);
+
       const resPoblacion = document.querySelector("input[name='res-poblacion']");
       resPoblacion.value = calculadora.poblacion;
 
@@ -253,7 +245,7 @@ let slideOnce = {
       const resProcedureIntermedio = document.querySelector("input[name='res-procedimientos-intermedio']");
       const resProcedureAlto = document.querySelector("input[name='res-procedimientos-alto']");
       const resProcedurePromedio = document.querySelector("input[name='res-procedimientos-promedio']");
-      const costoProcedimiento = calculadora.procedimientos;
+      const costoProcedimiento = calculadora.procedimientos.totales;
       resProcedureBajo.value = FORMAT_ENTERO(costoProcedimiento.bajo).format();
       resProcedureIntermedio.value = FORMAT_ENTERO(costoProcedimiento.intermedio).format();
       resProcedureAlto.value = FORMAT_ENTERO(costoProcedimiento.alto).format();
