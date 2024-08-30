@@ -1,7 +1,7 @@
 "use strict";
 let veeva = {};
 let slideTres = {
-   loadConfig: function() {
+   loadConfig: function () {
       return fetch('js/config.json')
          .then(response => response.json())
          .then(data => {
@@ -11,20 +11,43 @@ let slideTres = {
             console.error('Error al cargar la configuración:', error);
          });
    },
-   uploadDocuments: function(enlaces) {
-      let containerBotonesHTML = document.getElementById('container');
-      enlaces.forEach((enlace, index) => {
-         let btn = `
-         <div class="btn-enlaces animate-fade-in-up delay-${index+1} animate-duration-slower">
-            <div style="border-color: ${enlace.border}">
-            <button onclick="javascript:slideTres.jumToDoc('${enlace.zipName}', '${enlace.presentationCode}')"
-               style="background-color: ${enlace.color}; border-color: ${enlace.border}">
-               <h5 style="color: ${enlace.border}">${enlace.docName}</h5>
-            </button>
-            </div>
-         </div>`;
-         containerBotonesHTML.insertAdjacentHTML('beforeend', btn);
-      });
+   uploadPages: async function () {
+      try {
+         // Obtener la lista de archivos en el directorio 'marcoTeorico'
+         const response = await fetch('images/marcoTeorico/');
+         const fileList = await response.text();
+
+         // Parsear el listado de archivos (esto depende del formato de respuesta de tu servidor)
+         // Este ejemplo asume que obtienes una lista de archivos en formato HTML, JSON, etc.
+         const parser = new DOMParser();
+         const doc = parser.parseFromString(fileList, 'text/html');
+         const links = doc.querySelectorAll('a'); // Suponiendo que los archivos están listados como enlaces
+
+         const imageFiles = Array.from(links)
+            .map(link => link.getAttribute('href'))
+            .filter(href => href.endsWith('.jpg'))
+            .sort((a, b) => {
+               // Extraer el número del archivo y ordenar
+               const numA = parseInt(a.match(/page(\d+)\.jpg/)[1], 10);
+               const numB = parseInt(b.match(/page(\d+)\.jpg/)[1], 10);
+               return numA - numB;
+            });
+
+         const contentsDiv = document.querySelector('.contents');
+         contentsDiv.innerHTML = ''; // Limpiar el contenido previo
+
+         imageFiles.forEach(file => {
+            const cleanedPath = file.substring(1);
+            const parts = cleanedPath.split("/");
+            file = parts.pop();
+            const imgElement = document.createElement('img');
+            imgElement.src = `./images/marcoTeorico/${file}`;
+            imgElement.alt = `Marco teórico ${file}`;
+            contentsDiv.appendChild(imgElement);
+         });
+      } catch (error) {
+         console.error('Error al cargar las imágenes:', error);
+      }
    },
    jumptoSlide: function (slide) {
       localStorage.setItem('previousSlide', veeva.slide);
@@ -34,7 +57,7 @@ let slideTres = {
          document.location = `/CalculadoraAdempa/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
       }
    },
-   jumToDoc: function(doc, zip) {
+   jumToDoc: function (doc, zip) {
       if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
          document.location = `veeva:gotoSlide(${doc}.zip,${zip})`;
       } else {
@@ -46,6 +69,6 @@ let slideTres = {
 document.addEventListener('DOMContentLoaded', function () {
    slideTres.loadConfig().then(() => {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
-      slideTres.uploadDocuments(veeva.enlaces);
+      slideTres.uploadPages();
    });
 });

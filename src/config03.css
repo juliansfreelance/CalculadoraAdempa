@@ -4,37 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
-.delay-1 {
-   animation-delay: 900ms
-}
-
-.delay-2 {
-   animation-delay: 1100ms
-}
-
-.delay-3 {
-   animation-delay: 1300ms
-}
-
-.delay-4 {
-   animation-delay: 1500ms
-}
-
-.delay-5 {
-   animation-delay: 1700ms
-}
-
-
 *::-webkit-scrollbar {
    @apply w-1.5 h-1.5;
 }
 
 *::-webkit-scrollbar-track {
-   @apply bg-slate-300
+   @apply bg-slate-300 rounded-[3px]
 }
 
 *::-webkit-scrollbar-thumb {
-   @apply bg-green-400;
+   @apply bg-gradient-to-b from-red-600 to-amber-600 rounded-[3px]
+}
+
+* {
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+   @apply antialiased select-none !important;
+   @apply font-albert
 }
 
 html,
@@ -42,13 +27,8 @@ body {
    @apply bg-slate-800;
 }
 
-* {
-   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-   @apply select-none antialiased font-albert !important;
-}
-
 .slide {
-   @apply w-[1024px] h-[768px] flex flex-col gap-6 bg-white bg-fondo bg-cover bg-center pb-16 z-0;
+   @apply w-[1024px] h-[768px] flex flex-col gap-6 bg-white bg-fondo bg-cover bg-center pb-6 z-0;
 }
 
 header hgroup {
@@ -94,31 +74,52 @@ main {
    @apply text-button-text font-bold text-xs;
 }
 
-.btn-enlaces {
-   @apply flex flex-row-reverse;
+.pop {
+   @apply flex flex-col-reverse w-fit drop-shadow-md
 }
-.btn-enlaces div {
-   @apply h-[240px] w-[169px] border-l-4 overflow-hidden p-5
+.pop h4 {
+   @apply font-extrabold text-button-text relative
 }
-.btn-enlaces::after {
-   content: ' ';
-   @apply relative h-60 w-[1px] top-1 left-1 shadow-enlaces;
-}
-
-.btn-enlaces button {
-   @apply h-[200px] w-[200px] shadow-md shadow-black/40 p-4 pl-[40px] rounded-full -ml-[56px] border-4;
+.pop .pop-content {
+   @apply w-full bg-white/80 px-6 py-4 rounded-xl text-text-500 text-sm  relative
 }
 
-.btn-enlaces button h5 {
-   @apply font-bold leading-none text-lg drop-shadow-button-text-links
+.pop .pop-content .contents {
+   @apply h-[550px] overflow-auto block pr-1 z-10 rounded-l-lg
 }
 
-.bg-button1 {
-   @apply text-button-text bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/40 rounded-lg
+.pop .pop-content .contents img {
+   @apply mb-2 w-[750px]
 }
-.bg-button1 div {
-   @apply text-button-text pl-7 pr-5 py-1 bg-gradient-to-b from-button-bg1 to-white rounded-md
+.pop .pop-content .contents img:last-child {
+   @apply mb-0
 }
-.bg-button1 div i {
-   @apply -ml-4 mr-2
+
+.pop .pop-content::before {
+   content: '';
+   @apply absolute w-[750px] h-9 z-20
+}
+.pop .pop-content::after {
+   content: '';
+   @apply absolute bottom-4 w-[750px] h-9 z-20
+}
+.pop .pop-content::before {
+   @apply bg-gradient-to-b from-white/80 to-white/0 rounded-tl-lg
+}
+
+.pop .pop-content::after {
+   @apply bg-gradient-to-b from-white/0 to-white/80 rounded-bl-lg
+}
+
+.pop .pop-label {
+   @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
+}
+.pop .pop-label div {
+   @apply flex justify-center items-center bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 pt-2 rounded-t-2xl
+}
+.pop .pop-label div h4 {
+   @apply text-orange-400 font-extrabold text-lg
+}
+.pop .pop-label div button {
+   @apply mx-3
 }
