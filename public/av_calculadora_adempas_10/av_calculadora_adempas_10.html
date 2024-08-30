@@ -10,13 +10,14 @@
    <meta name='author' href="https://github.com/juliansfreelance" email="jcalderon.code@gmail.com" content='Julio Calderón - Desarrollador Front-end' />
    <meta name="description" content="Herramienta de costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica o de la Hipertensión Pulmonar por categoria de riesgo (HTP)" />
 
-   <title>AV Calculadora HTP Adempa | Costo Procedimientos por Paciente</title>
+   <title>AV Calculadora HTP Adempa | Costo Procedimientos por Paciente HAP</title>
 
    <link rel="icon" type="image/ico" href="images/icon.png" />
 
    <link rel="stylesheet" href="css/style.css">
 
    <script src="js/lib/currency.min.js" defer></script>
+   <script src="js/lib/alpine.min.js" defer></script>
    <script src="js/components/input.js" defer></script>
    <script src="js/components/pop.js" defer></script>
    <script src="js/components/alert.js" defer></script>
@@ -46,7 +47,7 @@
                      <h4>Regresar</h4>
                   </div>
                </button>
-               <button class="ref-btn animate-fade-in-up animate-delay-[600ms]" onclick="slideDiez.jumpToSlide('12')">
+               <button class="ref-btn animate-fade-in-up animate-delay-[600ms]" onclick="slideDiez.jumpToSlide('13')">
                   <div>
                      <h4>IPP</h4>
                   </div>
@@ -54,102 +55,84 @@
             </span>
             <div class="titulo animate-fade-in animate-delay-500 animate-duration-slow">
                <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
-               <h3>Costo Procedimientos por Paciente</h3>
+               <h3>Costo Procedimientos por Paciente HAP</h3>
             </div>
          </hgroup>
       </header>
 
-      <main>
-
-         <!-- <section class="costos animate-fade-in-up animate-delay-200 animate-duration-slower">
+      <main class="animate-fade-in-up animate-delay-[800ms] animate-duration-slower">
+         <section class="costos">
             <div class="form">
-               <table class="w-full table-auto">
+               <table class="thead">
                   <thead>
                      <tr>
-                        <th class="font-bold text-base text-orange-400 text-left">Complicaciones</th>
+                        <th class="font-bold text-base text-orange-400 text-left">Recurso</th>
                         <th class="font-bold text-base text-green-500 text-center">Estadificación riesgo Bajo</th>
                         <th class="font-bold text-base text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                         <th class="font-bold text-base text-red-500 text-center">Estadificación riesgo Alto</th>
-                        <th></th>
                      </tr>
                   </thead>
-                  <tbody>
-                     <tr>
-                        <td>Hospitalizaciones por causas diferentesa falla cardiaca derecha</td>
-                        <td><custom-input name="costo-1-bajo" type="edit" icon="money"></custom-input></td>
-                        <td><custom-input name="costo-1-intermedio" type="edit" icon="money"></custom-input></td>
-                        <td><custom-input name="costo-1-alto" type="edit" icon="money"></custom-input></td>
-                        <td></td>
-                     </tr>
-
-                     <tr>
-                        <td>Falla cardiaca en hospitalización general</td>
-                        <td><custom-input name="costo-2-bajo" type="edit" icon="money"></custom-input></td>
-                        <td><custom-input name="costo-2-intermedio" type="edit" icon="money"></custom-input></td>
-                        <td><custom-input name="costo-2-alto" type="edit" icon="money"></custom-input></td>
-                        <td></td>
-                     </tr>
-
-                     <tr>
-                        <td>Falla cardiaca derecha de paciente Crítico</td>
-                        <td><custom-input name="costo-3-bajo" type="edit" icon="money"></custom-input></td>
-                        <td><custom-input name="costo-3-intermedio" type="edit" icon="money"></custom-input></td>
-                        <td><custom-input name="costo-3-alto" type="edit" icon="money"></custom-input></td>
-                        <td>
-                           <button onclick="javascript:slideDiez.popUp('microcosteo')" class="text-green-600 shadow-md rounded-full bg-white ">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                                 <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" />
-                              </svg>
-                           </button>
-                        </td>
-                     </tr>
-
-                     <tr>
-                        <td>
-                           <button class="btn-caso-ref" onclick="javascript:slideDiez.openAlert('ref-microcosteo')">
-                              <div>
-                                 <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                 </svg>
-                                 <h4>Caso de referencia</h4>
-                              </div>
-                           </button>
-                        </td>
-                        <td class="bg-slate-200 rounded-md total-bajo"><custom-input name="total-bajo" type="calc" icon="money"></custom-input></td>
-                        <td class="bg-slate-200 rounded-md total-intermedio"><custom-input name="total-intermedio" type="calc" icon="money"></custom-input></td>
-                        <td class="bg-slate-200 rounded-md total-alto"><custom-input name="total-alto" type="calc" icon="money"></custom-input></td>
-                     </tr>
-
-                     <tr>
-                        <td colspan="5" class="pt-2">
-                           <div class="hidden error error-input">Ingrese todos los <span>costos</span> según la <span>complicación</span> correspondiente.</div>
-                           <div class="hidden error error-microcosteo justify-center items-center gap-1">
-                              <p>Por favor, haz clic en el botón</p>
-                              <div class="text-green-600 shadow-md rounded-full bg-white w-fit">
-                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
-                                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd"></path>
-                                 </svg>
-                              </div>para la <span>Falla cardiaca derecha de paciente Crítico</span> y realiza el <span>microcosteo por paciente</span>.
-                           </div>
-                        </td>
-                     </tr>
-
+               </table>
+               <table class="w-fit table-auto">
+                  <tbody class="tableHAP overflow-y-scroll block">
                   </tbody>
                </table>
             </div>
-            <div class="label">
-               <h4>Costo de paciente por complicación</h4>
+            <div class="flex flex-row-reverse justify-end items-center gap-2">
+               <button class="btn-caso-ref" onclick="javascript:slideDiez.popUp('recursos-HAP')">
+                  <div>
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                     </svg>
+                     <h4>Ver referencia</h4>
+                  </div>
+               </button>
+               <div class="label">
+                  <h4>Costo anual por paciente HAP</h4>
+               </div>
             </div>
-         </section> -->
+         </section>
+
+         <section class="total">
+            <div class="form">
+               <table class="w-full border-separate border-spacing-x-1 pr-[10px]">
+                  <tbody>
+                     <tr>
+                        <td class="font-bold text-base text-text-500 text-left">TOTAL</td>
+                        <td class="bg-green-100 rounded-md"><custom-input name="total-HAP-bajo" type="calc" icon="money"></custom-input></td>
+                        <td class="bg-green-100 rounded-md"><custom-input name="total-HAP-intermedio" type="calc" icon="money"></custom-input></td>
+                        <td class="bg-green-100 rounded-md"><custom-input name="total-HAP-alto" type="calc" icon="money"></custom-input></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <div x-data="sliderRange" class="slider-range">
+                  <div class="w-4/5 mx-auto mt-2 pb-4">
+                     <div class="text-center text-sm text-text-500 font-bold" x-text="`${prices[value].text}`"></div>
+                     <div class="relative flex items-center" :style="`--progress:${progress};--segments-width:${segmentsWidth}`">
+                        <div class="content-range" aria-hidden="true" x-cloak></div>
+                        <input type="range" min="0" :max="prices.length - 1" x-model="value">
+                     </div>
+                     <div>
+                        <ul>
+                           <template x-for="(price, index) in prices" :key="index">
+                              <li class="relative"><span class="absolute -translate-x-1/2" x-text="price.money"></span></li>
+                           </template>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
 
       </main>
 
       <footer>
-         
          <div>
-            <div></div>
-            <button class="background-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[1200ms] mb-4"
+            <article class="animate-fade-in-right animate-delay-[1200ms]">
+               <p class="text-base">Usa el control deslizante para ajustar los totales de cada estadificación de riesgo.</p>
+            </article>
+            <button class="background-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[1200ms]"
                onclick="javascript:slideDiez.validarForm()">
                <div>
                   <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
@@ -158,15 +141,10 @@
                   <h4>Continuar</h4>
                </div>
             </button>
-         </div>
-         <article class="ref animate-fade-in-up animate-delay-[1200ms] animate-duration-slower">
-            <p><span class="font-bold">Costos procedimientos por paciente =</span> Recurso en salud * Proporción de uso por estadificación de riesgo * Costo unitario.<br>La proporción de uso de recursos según estadificación de riesgo está basada en la literatura (38) y el costo unitario basado en el tarifario del Instituto de Seguridad Social de Colombia de 2001 más el 35% de inflación estimado desde año a la actualidad (39).</p>
-            <p>38. Zozaya N., et al. The economic burden of pulmonary arterial hypertension in Spain. BMC Pulm Med. 2022 Mar 26;22(1):105.39. Ministerio de Salud. ACUERDO No. 256 DE 2.001. URL disponible: https://lexsaludcolombia.files.wordpress.com/2010/10/tarifas-iss-2001.pdf.</p>
-         </article>
 
       </footer>
 
-      <custom-pop type="microcosteo" class="hidden"></custom-pop>
+      <custom-pop type="recursos-HAP" class="hidden z-50"></custom-pop>
 
       <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
          message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
@@ -176,20 +154,84 @@
          ]'>
       </custom-alert>
 
-      <custom-alert name="alert-ref-microcosteo" class="hidden" type="info" title="Usar Datos de Referencia"
-         message="<p> Se utilizarán los <span>valores de referencia</span> para los <span>Costos de paciente por complicación</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
-         actions='[
-                  {"name": "Aceptar", "color": "orange", "handler": "slideDiez.syncCostsWithReference()"},
-                  {"name": "Cancelar", "color": "gray", "handler": "slideDiez.closeAlert()"}
-               ]'>
-      </custom-alert>
-
       <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
          message="<p> No puede continuar porque no se encontraron <span>datos almacenados</span>.<br>Por favor, verifica la información y vuelve a intentarlo.</p>"
          actions='[{"name": "Aceptar", "color": "orange", "handler": "slideDiez.jumpToSlide(&apos;01&apos;)"}]'>
       </custom-alert>
 
    </section>
+
+   <script defer>
+      document.addEventListener('alpine:init', () => {
+         Alpine.data('sliderRange', () => ({
+            value: 5,
+            prices: [
+               {
+                  money: '-250K',
+                  text: 'Menos $250.000 COP para los totales de cada estadificación de riesgo.'
+               },
+               {
+                  money: '-200K',
+                  text: 'Menos $200.000 COP para los totales de cada estadificación de riesgo.'
+               },
+               {
+                  money: '-150K',
+                  text: 'Menos $150.000 COP para los totales de cada estadificación de riesgo.'
+               },
+               {
+                  money: '-100K',
+                  text: 'Menos $100.000 COP para los totales de cada estadificación de riesgo.'
+               },
+               {
+                  money: '-50K',
+                  text: 'Menos $50.000 COP para los totales de cada estadificación de riesgo.'
+               },
+               {
+                  money: '0',
+                  text: 'Sin modificaciones'
+               },
+               {
+                  money: '+50K',
+                  text: 'Más $50.000 COP para los totales de cada estadificación de riesgo.'
+               },
+               {
+                  money: '+100K',
+                  text: 'Más $100.000 COP para los totales de cada estadificación de riesgo.'
+               },
+               {
+                  money: '+150K',
+                  text: 'Más $150.000 COP para los totales de cada estadificación de riesgo.'
+               },
+               {
+                  money: '+200K',
+                  text: 'Más $200.000 COP para los totales de cada estadificación de riesgo.'
+               },
+               {
+                  money: '+250K',
+                  text: 'Más $250.000 COP para los totales de cada estadificación de riesgo.'
+               },
+            ],
+            segmentsWidth: '100%',
+            progress: '0%',
+            segments: 1,
+            calculateProgress() {
+               this.segmentsWidth = 100 / this.segments + '%'
+               this.progress = 100 / this.segments * this.value + '%'
+               typeof slideDiez !== 'undefined' ? slideDiez.updateTotales(this.prices[this.value], this.value) : setTimeout(() => { slideDiez.updateTotales(this.prices[this.value], this.value) }, 3000);
+            },
+            updateValue(newValue) {
+               this.value = newValue;
+               this.calculateProgress();
+            },
+            init() {
+               this.segments = this.prices.length - 1
+               this.calculateProgress()
+               this.$watch('value', () => this.calculateProgress());
+               window.updateSliderValue = (newValue) => this.updateValue(newValue);
+            },
+         }))
+      })
+   </script>
 
 </body>
 </html>

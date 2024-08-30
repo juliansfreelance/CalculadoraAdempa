@@ -15,6 +15,7 @@ let slideDiez = {
       if (calculadoraData) {
          veeva.calculadora = await JSON.parse(calculadoraData);
          document.dispatchEvent(new Event('configLoaded'));
+         if(veeva.calculadora.procedimientos.indexSliderHAP !== 5) updateSliderValue(veeva.calculadora.procedimientos.indexSliderHAP);
       } else {
          setTimeout(() => {
             slideDiez.openAlert('bd-clear');
@@ -22,50 +23,116 @@ let slideDiez = {
       }
    },
 
-   loadConfig: function () {
-      return fetch('js/config.json').then(response => response.json()).then(data => {
-         veeva = data;
-      }).catch(error => {
-         console.error('Error al cargar la configuración:', error);
+   calcCostProcedimientos: function () {
+      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
+      const tableHAP = document.querySelector('.tableHAP');
+      // const tableHTEC = document.querySelector('.tableHPTEC');
+      let procedimientosHAP = veeva.calculadora.referencias.procedimientos.HAP;
+      let procedimientosHTEC = veeva.calculadora.referencias.procedimientos.HTEC;
+      veeva.calculadora.procedimientos.HAPTotal.bajo = 0;
+      veeva.calculadora.procedimientos.HAPTotal.intermedio = 0;
+      veeva.calculadora.procedimientos.HAPTotal.alto = 0;
+      veeva.calculadora.procedimientos.HTECTotal.bajo = 0;
+      veeva.calculadora.procedimientos.HTECTotal.intermedio = 0;
+      veeva.calculadora.procedimientos.HTECTotal.alto = 0;
+      procedimientosHAP.forEach((procedimiento, index) => {
+         let calculoBajo = procedimiento.bajo * procedimiento.costoUnitario;
+         let calculoIntermedio = procedimiento.intermedio * procedimiento.costoUnitario;
+         let calculoAlto = procedimiento.alto * procedimiento.costoUnitario;
+         veeva.calculadora.procedimientos.HAP.push({
+            recurso: procedimiento.recurso,
+            bajo: calculoBajo,
+            intermedio: calculoIntermedio,
+            alto: calculoAlto
+         });
+         veeva.calculadora.procedimientos.HAPTotal.bajo += calculoBajo;
+         veeva.calculadora.procedimientos.HAPTotal.intermedio += calculoIntermedio;
+         veeva.calculadora.procedimientos.HAPTotal.alto += calculoAlto;
       });
+      veeva.calculadora.procedimientos.HAPTotalSlider.bajo = veeva.calculadora.procedimientos.HAPTotal.bajo;
+      veeva.calculadora.procedimientos.HAPTotalSlider.intermedio = veeva.calculadora.procedimientos.HAPTotal.intermedio;
+      veeva.calculadora.procedimientos.HAPTotalSlider.alto = veeva.calculadora.procedimientos.HAPTotal.alto;
+      procedimientosHTEC.forEach((procedimiento, index) => {
+         let calculoBajo = procedimiento.bajo * procedimiento.costoUnitario;
+         let calculoIntermedio = procedimiento.intermedio * procedimiento.costoUnitario;
+         let calculoAlto = procedimiento.alto * procedimiento.costoUnitario;
+         veeva.calculadora.procedimientos.HTEC.push({
+            recurso: procedimiento.recurso,
+            bajo: calculoBajo,
+            intermedio: calculoIntermedio,
+            alto: calculoAlto
+         });
+         veeva.calculadora.procedimientos.HTECTotal.bajo += calculoBajo;
+         veeva.calculadora.procedimientos.HTECTotal.intermedio += calculoIntermedio;
+         veeva.calculadora.procedimientos.HTECTotal.alto += calculoAlto;
+      });
+      veeva.calculadora.procedimientos.HTECTotalSlider.bajo = veeva.calculadora.procedimientos.HTECTotal.bajo;
+      veeva.calculadora.procedimientos.HTECTotalSlider.intermedio = veeva.calculadora.procedimientos.HTECTotal.intermedio;
+      veeva.calculadora.procedimientos.HTECTotalSlider.alto = veeva.calculadora.procedimientos.HTECTotal.alto ;
+      const { totales, HAPTotal, HTECTotal } = veeva.calculadora.procedimientos;
+      const { HTEC, HAP } = veeva.calculadora.grupos
+      totales.bajo = Math.round(((HAPTotal.bajo * HAP) + (HTECTotal.bajo * HTEC)) / 100);
+      totales.intermedio = Math.round(((HAPTotal.intermedio * HAP) + (HTECTotal.intermedio * HTEC)) / 100);
+      totales.alto = Math.round(((HAPTotal.alto * HAP) + (HTECTotal.alto * HTEC)) / 100);
+      totales.promedio = parseFloat(((totales.bajo + totales.intermedio + totales.alto) / 3).toFixed(2));
+      veeva.calculadora.chartOptions.chartProcedures.valores = [totales.bajo, totales.intermedio, totales.alto];
+      slideDiez.drawTable(veeva.calculadora.procedimientos.HAP, tableHAP);
+      const totalHAPBajo = document.querySelector("input[name='total-HAP-bajo']");
+      const totalHAPIntermedio = document.querySelector("input[name='total-HAP-intermedio']");
+      const totalHAPAlto = document.querySelector("input[name='total-HAP-alto']");
+      totalHAPBajo.value = FORMAT_ENTERO(HAPTotal.bajo).format();
+      totalHAPIntermedio.value = FORMAT_ENTERO(HAPTotal.intermedio).format();
+      totalHAPAlto.value = FORMAT_ENTERO(HAPTotal.alto).format();
    },
 
-   calcComplicationsRef: function () {
-      const costo = veeva.calculadora.referencias.complicaciones.costo;
-      const frecuencias = veeva.calculadora.referencias.complicaciones.frecuencia;
-      const microcosteo = veeva.calculadora.referencias.complicaciones.microcosteo;
-
-      frecuencias.forEach((frecuencia, index) => {
-         costo[index].bajo = frecuencia.valorUnitario * frecuencia.bajo;
-         costo[index].intermedio = frecuencia.valorUnitario * frecuencia.intermedio;
-         costo[index].alto = frecuencia.valorUnitario * frecuencia.alto;
+   drawTable: function (procedimientos, tabla) {
+      const FORMAT_ENTERO = value => currency(value, { precision: 4, symbol: '', decimal: ',', separator: '.' });
+      let procedimientosHTML = '';
+      procedimientos.forEach((procedimiento, i) => {
+         procedimientosHTML += `
+            <tr>
+               <td>${procedimiento.recurso}</td>
+               <td><custom-input name="HAP-${i}-bajo" type="calc" valor="${FORMAT_ENTERO(procedimiento.bajo).format()}" icon="money"></custom-input></td>
+               <td><custom-input name="HAP-${i}-intermedio" type="calc" valor="${FORMAT_ENTERO(parseInt(procedimiento.intermedio)).format()}" icon="money"></custom-input></td>
+               <td><custom-input name="HAP-${i}-alto" type="calc" valor="${FORMAT_ENTERO(parseInt(procedimiento.alto)).format()}" icon="money"></custom-input></td>
+            </tr>`;
       });
-      microcosteo.forEach(item => {
-         item.costo.bajo = item.valorUnitario * item.cantidad.bajo;
-         item.costo.intermedio = item.valorUnitario * item.cantidad.intermedio;
-         item.costo.alto = item.valorUnitario * item.cantidad.alto;
-         costo[2].bajo += item.costo.bajo;
-         costo[2].intermedio += item.costo.intermedio;
-         costo[2].alto += item.costo.alto;
-      });
-      slideDiez.syncValorUnitRubrosWithReference()
+      tabla.innerHTML = procedimientosHTML;
    },
 
-   syncValorUnitRubrosWithReference: function () {
-      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
-      const referencias = veeva.calculadora.referencias.complicaciones;
-      rubros.forEach((rubro, index) => {
-         rubro.valorUnitario = referencias.microcosteo[index].valorUnitario;
-      });
+   validarForm: function () {
+      setTimeout(() => {
+         localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+         slideDiez.jumpToSlide('11');
+      }, 800);
    },
-
-   jumpToSlide: function (slide) {
-      localStorage.setItem('previousSlide', veeva.slide);
-      if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
-         document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
-      } else {
-         document.location = `/CalculadoraAdempa/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+   updateTotales: function (value, index) {
+      const totalHAPBajo = document.querySelector("input[name='total-HAP-bajo']");
+      const totalHAPIntermedio = document.querySelector("input[name='total-HAP-intermedio']");
+      const totalHAPAlto = document.querySelector("input[name='total-HAP-alto']");
+      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
+      let { HAPTotal, HAPTotalSlider } = veeva.calculadora.procedimientos;
+      HAPTotal.bajo = HAPTotalSlider.bajo;
+      HAPTotal.intermedio = HAPTotalSlider.intermedio;
+      HAPTotal.alto = HAPTotalSlider.alto;
+      if(index !== 5){veeva.calculadora.procedimientos.indexSliderHAP = index}
+      if (value.money !== '0') {
+         const selectedPrice = value;
+         const operation = selectedPrice.money.charAt(0);
+         const amount = parseInt(selectedPrice.money.slice(1).replace('K', '000'));
+         if (operation === '+') {
+            HAPTotal.bajo += amount;
+            HAPTotal.intermedio += amount;
+            HAPTotal.alto += amount;
+         } else if (operation === '-') {
+            HAPTotal.bajo -= amount;
+            HAPTotal.intermedio -= amount;
+            HAPTotal.alto -= amount;
+         }
       }
+      totalHAPBajo.value = FORMAT_ENTERO(HAPTotal.bajo).format();
+      totalHAPIntermedio.value = FORMAT_ENTERO(HAPTotal.intermedio).format();
+      totalHAPAlto.value = FORMAT_ENTERO(HAPTotal.alto).format();
    },
 
    popUp: function (pop) {
@@ -144,146 +211,30 @@ let slideDiez = {
       }
    },
 
-   updateInputCosts: function () {
-      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
-      const costos = veeva.calculadora.complicaciones.costos;
-      const costTypes = ['bajo', 'intermedio', 'alto'];
-      const costGroups = ['costo-1', 'costo-2', 'costo-3'];
-      const setValues = (group, values) => {
-         costTypes.forEach((type, index) => {
-            document.querySelector(`input[name='${group}-${type}']`).value = FORMAT_ENTERO(values[type]).format();
-         });
-      };
-      costGroups.forEach((group, index) => {
-         setValues(group, costos[index]);
+   loadConfig: function () {
+      return fetch('js/config.json').then(response => response.json()).then(data => {
+         veeva = data;
+      }).catch(error => {
+         console.error('Error al cargar la configuración:', error);
       });
-      costTypes.forEach(type => {
-         document.querySelector(`input[name='total-${type}']`).value = FORMAT_ENTERO(costos[3][type]).format();
-      });
-      const customAlert = document.querySelector('custom-alert.block');
-      if (customAlert) {
-         setTimeout(() => {
-            slideDiez.validateCosts();
-            slideDiez.closeAlert();
-         }, 400);
+   },
+
+   jumpToSlide: function (slide) {
+      localStorage.setItem('previousSlide', veeva.slide);
+      if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
+         document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
+      } else {
+         document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
       }
-   },
-
-   syncCostsWithReference: function () {
-      const costos = veeva.calculadora.complicaciones.costos;
-      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
-      const referencias = veeva.calculadora.referencias.complicaciones;
-      rubros.forEach((rubro, index) => {
-         rubro.cantidad.bajo = referencias.microcosteo[index].cantidad.bajo;
-         rubro.costo.bajo = referencias.microcosteo[index].costo.bajo;
-         rubro.cantidad.intermedio = referencias.microcosteo[index].cantidad.intermedio;
-         rubro.costo.intermedio = referencias.microcosteo[index].costo.intermedio;
-         rubro.cantidad.alto = referencias.microcosteo[index].cantidad.alto;
-         rubro.costo.alto = referencias.microcosteo[index].costo.alto;
-      });
-      referencias.costo.forEach((referencia, index) => {
-         costos[index].bajo = referencia.bajo;
-         costos[index].intermedio = referencia.intermedio;
-         costos[index].alto = referencia.alto;
-      });
-      costos[3].bajo = 0; costos[3].intermedio = 0; costos[3].alto = 0
-      costos.forEach((costo) => {
-         if (costo.nombre !== "Totales") {
-            costos[3].bajo += costo.bajo;
-            costos[3].intermedio += costo.intermedio;
-            costos[3].alto += costo.alto;
-         }
-      });
-
-      slideDiez.actualizarInputs()
-   },
-
-   actualizarInputs: function () {
-      const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
-      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
-      const inputs = document.querySelectorAll('input[name^="microcosteo"]');
-      inputs.forEach(input => {
-      const name = input.name;
-      const [tipo, index, riesgo] = name.split('-');
-         input.value = FORMAT_DECIMAL(rubros[index].cantidad[riesgo]).format();
-      });
-      slideDiez.updateInputCosts();
-   },
-
-   calcMicrocosteo: function () {
-      const costo = veeva.calculadora.complicaciones.costos;
-      const microcosteo = veeva.calculadora.complicaciones.microcosteo.rubros;
-      costo[2].bajo = 0; costo[2].intermedio = 0; costo[2].alto = 0;
-      microcosteo.forEach(item => {
-         costo[2].bajo += item.costo.bajo;
-         costo[2].intermedio += item.costo.intermedio;
-         costo[2].alto += item.costo.alto;
-      });
-   },
-
-   validateCosts: function () {
-      slideDiez.validateCounnt++;
-      const error = document.querySelector('.error-input');
-      const errorMicroCost = document.querySelector('.error-microcosteo');
-      const getValuesInputs = (names) => {
-         return names.map(name => {
-            const input = document.querySelector(`input[name="${name}"]`);
-            return {
-               value: parseFloat(input.value.replace(',', '.')),
-               parentTd: input.closest('td')
-            };
-         });
-      };
-      const inputs = [
-         ...getValuesInputs(['costo-1-bajo', 'costo-1-intermedio', 'costo-1-alto']),
-         ...getValuesInputs(['costo-2-bajo', 'costo-2-intermedio', 'costo-2-alto']),
-         ...getValuesInputs(['costo-3-bajo', 'costo-3-intermedio', 'costo-3-alto'])
-      ]
-      const microcosteoInputs = [...getValuesInputs(['costo-3-bajo', 'costo-3-intermedio', 'costo-3-alto'])];
-      inputs.forEach(({ value, parentTd }) => {
-         value === 0 ? parentTd.classList.add('input-error'): parentTd.classList.remove('input-error');
-      });
-      inputs.every(({ value }) => value !== 0) ? error.classList.add('hidden') : error.classList.remove('hidden');
-      microcosteoInputs.forEach(({ value, parentTd }) => {
-         value === 0 ? parentTd.classList.add('input-error') : parentTd.classList.remove('input-error');
-      });
-      microcosteoInputs.every(({ value }) => value !== 0) ? errorMicroCost.classList.replace('flex', 'hidden') : errorMicroCost.classList.replace('hidden', 'flex');
-      const validate = inputs.every(({ value }) => value !== 0) && microcosteoInputs.every(({ value }) => value !== 0);
-      return validate;
-   },
-
-   validarForm: function () {
-      slideDiez.jumpToSlide('11');
-      // const validateCosts = slideDiez.validateCosts();
-      // console.log('validacion exitosa', validateCosts);
-      // if (validateCosts === true) {
-      //    localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
-      //    slideDiez.jumpToSlide('11');
-      // }
-   },
-   prueba: function () {
-      const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
-      const referencias = veeva.calculadora.referencias.complicaciones;
-      rubros.forEach((rubro, index) => {
-         rubro.cantidad.bajo = referencias.microcosteo[index].cantidad.bajo;
-         rubro.costo.bajo = referencias.microcosteo[index].costo.bajo;
-         rubro.cantidad.intermedio = referencias.microcosteo[index].cantidad.intermedio;
-         rubro.costo.intermedio = referencias.microcosteo[index].costo.intermedio;
-         rubro.cantidad.alto = referencias.microcosteo[index].cantidad.alto;
-         rubro.costo.alto = referencias.microcosteo[index].costo.alto;
-      });
-      slideDiez.actualizarInputs();
    }
 };
-
 
 document.addEventListener('DOMContentLoaded', function () {
    slideDiez.loadConfig().then(() => {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
       slideDiez.ini();
       setTimeout(() => {
-         slideDiez.calcComplicationsRef();
-         slideDiez.updateInputCosts();
+         slideDiez.calcCostProcedimientos();
       }, 1000);
    });
 });

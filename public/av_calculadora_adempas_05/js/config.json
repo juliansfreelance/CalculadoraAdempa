@@ -17,7 +17,6 @@
          "riesgoIntermedio": 0,
          "riesgoAlto": 0
       },
-      "estadificacionEscenario": [0],
       "estadificacionPacientes": {
          "bajo": 0,
          "intermedio": 0,
@@ -802,10 +801,36 @@
          }
       },
       "procedimientos": {
-         "bajo": 0,
-         "intermedio": 0,
-         "alto": 0,
-         "promedio": 0
+         "HAP": [],
+         "HTEC": [],
+         "HAPTotal": {
+            "bajo": 0,
+            "intermedio": 0,
+            "alto": 0
+         },
+         "HTECTotal": {
+            "bajo": 0,
+            "intermedio": 0,
+            "alto": 0
+         },
+         "HAPTotalSlider": {
+            "bajo": 0,
+            "intermedio": 0,
+            "alto": 0
+         },
+         "HTECTotalSlider": {
+            "bajo": 0,
+            "intermedio": 0,
+            "alto": 0
+         },
+         "totales":{
+            "bajo": 0,
+            "intermedio": 0,
+            "alto": 0,
+            "promedio": 0
+         },
+         "indexSliderHAP": 5,
+         "indexSliderHTEC": 5
       },
       "referencias": {
          "grupos": [
@@ -842,11 +867,11 @@
                "IPP": ""
             },
             {
-               "name": "Cadiovid",
+               "name": "Cardiovid",
                "riesgoBajo": 15,
                "riesgoIntermedio": 68,
                "riesgoAlto": 17,
-               "fuente": "Cadiovid",
+               "fuente": "Cardiovid",
                "IPP": ""
             }
          ],
@@ -1498,6 +1523,390 @@
             ]
          },
          "procedimientos": {
+            "HAP": [
+            {
+               "recurso": "General",
+               "bajo": 2.6,
+               "intermedio": 3.8,
+               "alto": 5.9,
+               "costoUnitario": 24272.362
+            },
+            {
+               "recurso": "Nutrición",
+               "bajo": 2.8,
+               "intermedio": 5.5,
+               "alto": 8.8,
+               "costoUnitario": 10651.5608
+            },
+            {
+               "recurso": "Especialista",
+               "bajo": 2.8,
+               "intermedio": 4.2,
+               "alto": 7.1,
+               "costoUnitario": 24272.362
+            },
+            {
+               "recurso": "Visita Urgencias",
+               "bajo": 3.5,
+               "intermedio": 3.6,
+               "alto": 7.2,
+               "costoUnitario": 47130.8
+            },
+            {
+               "recurso": "Electrocardiograma",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 26487.5096
+            },
+            {
+               "recurso": "Test cardiopulmonar de ejercicio",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 185271.1748
+            },
+            {
+               "recurso": "Test de caminata 6 min",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 177683.116
+            },
+            {
+               "recurso": "Ecocardiograma",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 2,
+               "costoUnitario": 122681.4724
+            },
+            {
+               "recurso": "Hemograma",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 21397.3832
+            },
+            {
+               "recurso": "BUN",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 10038.8604
+            },
+            {
+               "recurso": "Creatinina",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 10038.8604
+            },
+            {
+               "recurso": "Sodio",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 11547.046
+            },
+            {
+               "recurso": "Potaso",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 16260.126
+            },
+            {
+               "recurso": "Transaminasa glutamicopiruvica o alanino amino transferasa [TGP-ALT]",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 8813.4596
+            },
+            {
+               "recurso": "Transaminasa glutamico oxalacetica o aspartato amino transferasa [TGO-AST]",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 8813.4596
+            },
+            {
+               "recurso": "Tiempo De Protrombina",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 0
+            },
+            {
+               "recurso": "Bilirrubinas total y directa",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 9756.0756
+            },
+            {
+               "recurso": "NT PRO BNP",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 70696.2
+            },
+            {
+               "recurso": "Hormona estimulante de tiroides (TSH)",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 46565.2304
+            },
+            {
+               "recurso": "Troponina T cuantitativa",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 76163.3728
+            },
+            {
+               "recurso": "Análisis de gases arteriales",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 2,
+               "costoUnitario": 24649.4084
+            },
+            {
+               "recurso": "Cateterismo arterial corazon",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 939929.5444
+            },
+            {
+               "recurso": "Angiograma",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 208577.25
+            },
+            {
+               "recurso": "Radigráfia de torax",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 2,
+               "costoUnitario": 27477.8
+            },
+            {
+               "recurso": "TAC Tórax simple",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 2,
+               "costoUnitario": 92102.5
+            },
+            {
+               "recurso": "Gamagrafia VQ",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 2,
+               "costoUnitario": 115211.25
+            }
+            ],
+            "HTEC": [
+            {
+               "recurso": "General",
+               "bajo": 2.6,
+               "intermedio": 3.8,
+               "alto": 5.9,
+               "costoUnitario": 24272.362
+            },
+            {
+               "recurso": "Enfermería",
+               "bajo": 2.8,
+               "intermedio": 5.5,
+               "alto": 8.8,
+               "costoUnitario": 10651.5608
+            },
+            {
+               "recurso": "Especialista",
+               "bajo": 2.8,
+               "intermedio": 4.2,
+               "alto": 7.1,
+               "costoUnitario": 24272.362
+            },
+            {
+               "recurso": "Visita Urgencias",
+               "bajo": 3.5,
+               "intermedio": 3.6,
+               "alto": 7.2,
+               "costoUnitario": 47130.8
+            },
+            {
+               "recurso": "Electrocardiograma",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 26487.5096
+            },
+            {
+               "recurso": "Test cardiopulmonar de ejercicio",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 185271.1748
+            },
+            {
+               "recurso": "Test de caminata 6 min",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 177683.116
+            },
+            {
+               "recurso": "Ecocardiograma",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 2,
+               "costoUnitario": 122681.4724
+            },
+            {
+               "recurso": "Hemograma",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 21397.3832
+            },
+            {
+               "recurso": "BUN",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 10038.8604
+            },
+            {
+               "recurso": "Creatinina",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 10038.8604
+            },
+            {
+               "recurso": "Sodio",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 11547.046
+            },
+            {
+               "recurso": "Potaso",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 16260.126
+            },
+            {
+               "recurso": "Transaminasa glutamicopiruvica o alanino amino transferasa [TGP-ALT]",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 8813.4596
+            },
+            {
+               "recurso": "Transaminasa glutamico oxalacetica o aspartato amino transferasa [TGO-AST]",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 8813.4596
+            },
+            {
+               "recurso": "Tiempo De Protrombina",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 0
+            },
+            {
+               "recurso": "Bilirrubinas total y directa",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 9756.0756
+            },
+            {
+               "recurso": "NT PRO BNP",
+               "bajo": 2.5,
+               "intermedio": 3.5,
+               "alto": 4,
+               "costoUnitario": 70696.2
+            },
+            {
+               "recurso": "Hormona estimulante de tiroides (TSH)",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 46565.2304
+            },
+            {
+               "recurso": "Troponina T cuantitativa",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 76163.3728
+            },
+            {
+               "recurso": "Análisis de gases arteriales",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 2,
+               "costoUnitario": 24649.4084
+            },
+            {
+               "recurso": "Cateterismo derecho",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 939929.5444
+            },
+            {
+               "recurso": "Angiograma",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 208577.25
+            },
+            {
+               "recurso": "Radigráfia de torax",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 2,
+               "costoUnitario": 27477.8
+            },
+            {
+               "recurso": "TAC Tórax simple",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 2,
+               "costoUnitario": 92102.5
+            },
+            {
+               "recurso": "Gamagrafia VQ",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 2,
+               "costoUnitario": 115211.25
+            },
+            {
+               "recurso": "Tromboendarterectomia pulmonar",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 115150000
+            },
+            {
+               "recurso": "Angioplastía pulmonar",
+               "bajo": 1,
+               "intermedio": 1,
+               "alto": 1,
+               "costoUnitario": 1216910.1
+            }
+            ]
+},
+         "procedimientos2": {
             "HAP":{
                "bajo": 3093312,
                "intermedio": 3561425,

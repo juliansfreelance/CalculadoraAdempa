@@ -60,7 +60,7 @@ header hgroup div h3 {
 }
 
 main {
-   @apply flex-grow px-7 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
+   @apply flex-grow px-7 my-6 grid grid-flow-row auto-rows-max justify-items-center gap-2 content-center;
 }
 
 .home-btn {
@@ -226,26 +226,54 @@ main {
    @apply absolute text-text-500 left-[10px] -mt-[24px]
 }
 
-.costos {
-   @apply flex flex-col-reverse drop-shadow-md w-full;
+.costos, .total {
+   @apply w-fit flex flex-col-reverse drop-shadow-md;
 }
-.costos .form {
-   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
+.total {
+   @apply w-full px-2
 }
+
 .costos .form {
-   @apply pr-2 !important
+   @apply bg-white/80 pl-6 pr-4 py-4 rounded-xl w-full text-text-500 text-sm
+}
+.total .form {
+   @apply bg-white/80 pl-6 pr-4 py-2 rounded-xl w-full text-text-500 text-sm
 }
 .costos .form table {
-   @apply border-spacing-x-1 border-spacing-y-1 border-separate;
+   @apply w-full;
+}
+.costos .form table.thead {
+   width: calc(100% - 14px);
+}
+.costos .form table tbody tr {
+   @apply rounded-md w-full px-3 odd:bg-white/0 even:bg-gray-800/5
 }
 .costos .form table thead tr th {
    @apply leading-none py-2
 }
-.costos .form table tbody tr td {
+.costos .form table tbody {
+   @apply max-h-[250px] overflow-auto pr-2
+}
+.costos .form table tbody tr td,
+.total .form table tbody tr td {
    @apply leading-none py-1 px-1
 }
+.costos .form table.thead thead tr th,
+.total .form table tbody tr td {
+   @apply w-[194px] px-1;
+}
 .costos .form table tbody tr td:first-child {
-   @apply max-w-[13rem]
+   @apply w-[290px] px-4 rounded-l-md
+}
+.total .form table tbody tr td:first-child {
+   @apply w-[270px] px-4 rounded-l-md
+}
+.costos .form table.thead thead tr th:first-child {
+   @apply w-[277px] px-4 rounded-l-md
+}
+
+.costos .form table tbody tr td:last-child {
+   @apply pr-1 rounded-r-md
 }
 .costos .form table tbody tr td.input-error {
    @apply bg-red-200 rounded-lg
@@ -256,6 +284,21 @@ main {
 .costos .label h4 {
    @apply text-orange-400 font-bold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
 }
+
+
+.slider-range .content-range {
+   @apply absolute left-2.5 right-2.5 h-1.5 bg-slate-300 rounded-full overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-red-600 before:to-amber-600 before:[mask-image:_linear-gradient(to_right,theme(colors.white),theme(colors.white)_var(--progress),transparent_var(--progress))] after:absolute after:inset-0 after:bg-[repeating-linear-gradient(to_right,transparent,transparent_calc(var(--segments-width)-1px),theme(colors.white/.7)_calc(var(--segments-width)-1px),theme(colors.white/.7)_calc(var(--segments-width)+1px))] [&[x-cloak]]:hidden
+}
+.slider-range ul {
+   @apply flex justify-between text-xs font-medium text-text-500 px-2.5
+}
+.slider-range input {
+   @apply relative appearance-none cursor-pointer w-full bg-transparent focus:outline-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow [&::-webkit-slider-thumb]:focus-visible:ring [&::-webkit-slider-thumb]:focus-visible:ring-red-600 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:shadow [&::-moz-range-thumb]:focus-visible:ring [&::-moz-range-thumb]:focus-visible:ring-red-600
+}
+
+
+
+
 
 .error {
    @apply w-full px-4 text-red-500 leading-none text-xs italic text-center;
@@ -309,7 +352,7 @@ footer article.ref p:last-child {
 }
 .pop .pop-form table tbody tr td,
 .pop .pop-form table thead tr th {
-   @apply w-[140px] !important
+   @apply w-[200px] !important
 }
 
 .pop .pop-form table tbody tr td:nth-child(1),
@@ -330,12 +373,12 @@ footer article.ref p:last-child {
    @apply mx-3
 }
 
-/* .pop-animate-up {
+.pop-animate-up {
    @apply animate-fade-in animate-duration-slow
 }
 .pop-animate-down {
    @apply animate-fade-out animate-duration-slow
-} */
+}
 
 .alert-conten {
    @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center z-[60] top-0 left-0;
@@ -394,7 +437,7 @@ footer article.ref p:last-child {
 .alert-conten .alert .alert-contain .alert-footer{
    @apply bg-slate-100 px-6 py-3 flex flex-row-reverse gap-4
 }
-/* .alert-animate-in {
+.alert-animate-in {
    @apply animate-fade-in animate-duration-slow
 }
 .alert-animate-out {
@@ -406,4 +449,4 @@ footer article.ref p:last-child {
 }
 .alert-conten-animate-out {
    @apply animate-fade-out-down animate-delay-200 animate-duration-slow
-} */
+}

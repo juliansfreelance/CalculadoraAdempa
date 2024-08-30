@@ -9,8 +9,10 @@ class customInput extends HTMLElement {
       this.icon = '';
       this.iconConten = '';
       this.decimalMode = false;
+      this.previousValue = '';
       this.handleBlur = this.handleBlur.bind(this);
       this.handleInput = this.handleInput.bind(this);
+      this.handleFocus = this.handleFocus.bind(this);
    }
 
    static get observedAttributes(){
@@ -60,14 +62,18 @@ class customInput extends HTMLElement {
    }
 
    formatNumber(val) {
-      console.log(val);
-      const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
+      const FORMAT_DECIMAL = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
       const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
       if (val !== '') {
          let inputValue = val.toString().replace(/[^\d,.]/g, '');
          let integer = parseFloat(inputValue.replace(/\./g, '').replace(/,/g, '.'));
          return inputValue.indexOf(',') !== -1 ? FORMAT_DECIMAL(integer).format() : FORMAT_ENTERO(integer).format();
       }
+   }
+
+   handleFocus(event) {
+      this.previousValue = event.target.value.replace(/\./g, '');
+      event.target.value = '';
    }
 
    handleInput(event) {
@@ -89,11 +95,49 @@ class customInput extends HTMLElement {
    }
 
    handleBlur(event) {
-      if (event.target.value !== '') {
-         let inputValue = event.target.value.replace(/[^\d,.]/g, '');
-         event.target.value = this.formatNumber(inputValue);
-         this.valor = this.formatNumber(inputValue);
+      const input = event.target;
+      const inputValue = input.value.replace(/[^\d,.]/g, '');
+      const formattedValue = this.formatNumber(inputValue);
+      if (input.value === '') {
+         input.value = this.previousValue;
+         this.updateJsonValue(input.name, this.previousValue);
+      } else if (input.value !== '') {
+         input.value = formattedValue;
+         this.valor = formattedValue;
+         this.updateJsonValue(input.name, inputValue);
       }
+   }
+
+   updateGlobalValues() {
+      const costos = veeva.calculadora.complicaciones.costos;
+      costos[3].bajo = 0; costos[3].intermedio = 0; costos[3].alto = 0
+      costos.forEach((costo, index) => {
+         if (costo.nombre !== "Totales") {
+            costos[3].bajo += costo.bajo;
+            costos[3].intermedio += costo.intermedio;
+            costos[3].alto += costo.alto;
+         }
+      });
+      slideOnce.updateInputCosts();
+      if(slideOnce.validateCounnt > 0) slideOnce.validateCosts();
+   }
+
+   updateJsonValue(name, value) {
+      const complicaciones = veeva.calculadora.complicaciones;
+      const [tipo, index, riesgo] = name.split('-');
+      switch (tipo) {
+         case 'costo':
+            const costos = complicaciones.costos;
+            costos[index - 1][riesgo] = parseFloat(value.replace(',', '.'));
+         break;
+         case 'microcosteo':
+            const rubros = complicaciones.microcosteo.rubros;
+            rubros[index].cantidad[riesgo] = parseFloat(value.replace(',', '.'));
+            rubros[index].costo[riesgo] = parseFloat(value.replace(',', '.') * rubros[index].valorUnitario);
+            slideOnce.calcMicrocosteo();
+         break;
+      }
+      this.updateGlobalValues();
    }
 
    connectedCallback() {
@@ -114,6 +158,7 @@ class customInput extends HTMLElement {
          </div>`;
       const inputElement = this.querySelector('input');
       inputElement.addEventListener('input', this.handleInput);
+      inputElement.addEventListener('focus', this.handleFocus);
       inputElement.addEventListener('blur', this.handleBlur);
    }
 }
