@@ -311,7 +311,7 @@ footer {
    @apply w-full px-12 text-center flex flex-col items-center justify-between;
 }
 footer div {
-   @apply w-full px-12 text-center flex items-center justify-between;
+   @apply w-full text-center flex items-center justify-between;
 }
 footer article p {
    @apply font-normal leading-none text-center text-sm my-2 text-text-500
