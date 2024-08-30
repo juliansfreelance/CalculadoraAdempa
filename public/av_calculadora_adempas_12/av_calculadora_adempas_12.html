@@ -131,7 +131,7 @@
                                  <th class="font-bold text-sm text-green-500 text-center">Estadificación riesgo Bajo</th>
                                  <th class="font-bold text-sm text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                                  <th class="font-bold text-sm text-red-500 text-center">Estadificación riesgo Alto</th>
-                                 <th class="font-bold text-sm text-text-500 text-center">TOTAL</th>
+                                 <th class="font-bold text-sm text-text-500 text-center hidden">TOTAL</th>
                               </tr>
                            </thead>
                            <tbody>
@@ -140,17 +140,17 @@
                                  <td><custom-input name="res-patient-bajo" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-patient-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-patient-alto" type="calc" icon="money"></custom-input></td>
-                                 <td class="bg-green-100 rounded-md"><custom-input name="res-patient-total" type="calc"></custom-input></td>
+                                 <td class="bg-green-100 rounded-md hidden"><custom-input name="res-patient-total" type="calc"></custom-input></td>
                               </tr>
-                              <tr>
+                              <tr class="hidden">
                                  <td class="text-xs font-bold">Promedio Total</td>
                                  <td colspan="4" class="bg-green-100 rounded-md"><custom-input name="res-patient-promedio" type="calc" icon="money"></custom-input></td>
                               </tr>
                               <tr>
                                  <td colspan="3" class="text-xs">
-                                    <p>Representación <span class="font-bold text-green-500">Estadificación riesgo Bajo</span> versus total: <span class="font-bold patient-estadificacion-bajo"></span>%</p>
-                                    <p>Representación <span class="font-bold text-text-intermedio">Estadificación riesgo Intermedio</span> versus total: <span class="font-bold patient-estadificacion-intermedio"></span>%</p>
-                                    <p>Representación <span class="font-bold text-red-500">Estadificación riesgo Alto</span> versus total: <span class="font-bold patient-estadificacion-alto"></span>%</p>
+                                    <p class="hidden">Representación <span class="font-bold text-green-500">Estadificación riesgo Bajo</span> versus total: <span class="font-bold patient-estadificacion-bajo"></span>%</p>
+                                    <p class="hidden">Representación <span class="font-bold text-text-intermedio">Estadificación riesgo Intermedio</span> versus total: <span class="font-bold patient-estadificacion-intermedio"></span>%</p>
+                                    <p class="hidden">Representación <span class="font-bold text-red-500">Estadificación riesgo Alto</span> versus total: <span class="font-bold patient-estadificacion-alto"></span>%</p>
                                  </td>
                                  <td colspan="2" class="text-xs text-right">
                                     <p>Representación <span class="font-bold text-amber-500">Tecnologías</span> versus total: <span class="font-bold patient-represent-tecno"></span>%</p>
@@ -202,7 +202,7 @@
                                  <td><custom-input name="res-procedimientos-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-procedimientos-alto" type="calc" icon="money"></custom-input></td>
                               </tr>
-                              <tr>
+                              <tr class=" hidden">
                                  <td class="text-xs max-w-[200px] font-bold">Promedio Total</td>
                                  <td colspan="3" class="bg-green-100 rounded-md">
                                     <custom-input name="res-procedimientos-promedio" type="calc" icon="money"></custom-input>
@@ -346,7 +346,7 @@
                                  <td><custom-input name="res-tecno-intermedio" type="calc" icon="money"></custom-input></td>
                                  <td><custom-input name="res-tecno-alto" type="calc" icon="money"></custom-input></td>
                               </tr>
-                              <tr>
+                              <tr class="hidden">
                                  <td class="text-xs max-w-[200px] font-bold">Promedio Total</td>
                                  <td colspan="3" class="bg-green-100 rounded-md"><custom-input name="res-tecno-promedio" type="calc" icon="money"></custom-input></td>
                               </tr>

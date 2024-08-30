@@ -212,8 +212,6 @@ let slideDoce = {
       const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
       const { calculadora } = veeva;
 
-      console.log(calculadora);
-
       const resPoblacion = document.querySelector("input[name='res-poblacion']");
       resPoblacion.value = calculadora.poblacion;
 
