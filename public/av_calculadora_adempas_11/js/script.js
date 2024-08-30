@@ -8,25 +8,24 @@
  */
 let veeva = {};
 
-let slideDiez = {
+let slideOnce = {
    validateCounnt: 0,
    ini: async function () {
       const calculadoraData = localStorage.getItem('calculadora');
       if (calculadoraData) {
          veeva.calculadora = await JSON.parse(calculadoraData);
          document.dispatchEvent(new Event('configLoaded'));
-         if(veeva.calculadora.procedimientos.indexSliderHAP !== 5) updateSliderValue(veeva.calculadora.procedimientos.indexSliderHAP);
+         if(veeva.calculadora.procedimientos.indexSliderHTEC !== 5) updateSliderValue(veeva.calculadora.procedimientos.indexSliderHTEC);
       } else {
          setTimeout(() => {
-            slideDiez.openAlert('bd-clear');
+            slideOnce.openAlert('bd-clear');
          }, 1400);
       }
    },
 
    calcCostProcedimientos: function () {
       const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
-      const tableHAP = document.querySelector('.tableHAP');
-      // const tableHTEC = document.querySelector('.tableHPTEC');
+      const tableHTEC = document.querySelector('.tableHPTEC');
       let procedimientosHAP = veeva.calculadora.referencias.procedimientos.HAP;
       let procedimientosHTEC = veeva.calculadora.referencias.procedimientos.HTEC;
       veeva.calculadora.procedimientos.HAPTotal.bajo = 0;
@@ -76,13 +75,13 @@ let slideDiez = {
       totales.alto = Math.round(((HAPTotal.alto * HAP) + (HTECTotal.alto * HTEC)) / 100);
       totales.promedio = parseFloat(((totales.bajo + totales.intermedio + totales.alto) / 3).toFixed(2));
       veeva.calculadora.chartOptions.chartProcedures.valores = [totales.bajo, totales.intermedio, totales.alto];
-      slideDiez.drawTable(veeva.calculadora.procedimientos.HAP, tableHAP);
+      slideOnce.drawTable(veeva.calculadora.procedimientos.HTEC, tableHTEC);
       const totalHAPBajo = document.querySelector("input[name='total-HAP-bajo']");
       const totalHAPIntermedio = document.querySelector("input[name='total-HAP-intermedio']");
       const totalHAPAlto = document.querySelector("input[name='total-HAP-alto']");
-      totalHAPBajo.value = FORMAT_ENTERO(HAPTotal.bajo).format();
-      totalHAPIntermedio.value = FORMAT_ENTERO(HAPTotal.intermedio).format();
-      totalHAPAlto.value = FORMAT_ENTERO(HAPTotal.alto).format();
+      totalHAPBajo.value = FORMAT_ENTERO(HTECTotal.bajo).format();
+      totalHAPIntermedio.value = FORMAT_ENTERO(HTECTotal.intermedio).format();
+      totalHAPAlto.value = FORMAT_ENTERO(HTECTotal.alto).format();
    },
 
    drawTable: function (procedimientos, tabla) {
@@ -103,7 +102,7 @@ let slideDiez = {
    validarForm: function () {
       setTimeout(() => {
          localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
-         slideDiez.jumpToSlide('11');
+         slideOnce.jumpToSlide('12');
       }, 800);
    },
    updateTotales: function (value, index) {
@@ -111,28 +110,28 @@ let slideDiez = {
       const totalHAPIntermedio = document.querySelector("input[name='total-HAP-intermedio']");
       const totalHAPAlto = document.querySelector("input[name='total-HAP-alto']");
       const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
-      let { HAPTotal, HAPTotalSlider } = veeva.calculadora.procedimientos;
-      HAPTotal.bajo = HAPTotalSlider.bajo;
-      HAPTotal.intermedio = HAPTotalSlider.intermedio;
-      HAPTotal.alto = HAPTotalSlider.alto;
-      if(index !== 5){veeva.calculadora.procedimientos.indexSliderHAP = index}
+      let { HTECTotal, HTECTotalSlider } = veeva.calculadora.procedimientos;
+      HTECTotal.bajo = HTECTotalSlider.bajo;
+      HTECTotal.intermedio = HTECTotalSlider.intermedio;
+      HTECTotal.alto = HTECTotalSlider.alto;
+      if(index !== 5){veeva.calculadora.procedimientos.indexSliderHTEC = index}
       if (value.money !== '0') {
          const selectedPrice = value;
          const operation = selectedPrice.money.charAt(0);
          const amount = parseInt(selectedPrice.money.slice(1).replace('K', '000'));
          if (operation === '+') {
-            HAPTotal.bajo += amount;
-            HAPTotal.intermedio += amount;
-            HAPTotal.alto += amount;
+            HTECTotal.bajo += amount;
+            HTECTotal.intermedio += amount;
+            HTECTotal.alto += amount;
          } else if (operation === '-') {
-            HAPTotal.bajo -= amount;
-            HAPTotal.intermedio -= amount;
-            HAPTotal.alto -= amount;
+            HTECTotal.bajo -= amount;
+            HTECTotal.intermedio -= amount;
+            HTECTotal.alto -= amount;
          }
       }
-      totalHAPBajo.value = FORMAT_ENTERO(HAPTotal.bajo).format();
-      totalHAPIntermedio.value = FORMAT_ENTERO(HAPTotal.intermedio).format();
-      totalHAPAlto.value = FORMAT_ENTERO(HAPTotal.alto).format();
+      totalHAPBajo.value = FORMAT_ENTERO(HTECTotal.bajo).format();
+      totalHAPIntermedio.value = FORMAT_ENTERO(HTECTotal.intermedio).format();
+      totalHAPAlto.value = FORMAT_ENTERO(HTECTotal.alto).format();
    },
 
    popUp: function (pop) {
@@ -230,11 +229,11 @@ let slideDiez = {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-   slideDiez.loadConfig().then(() => {
+   slideOnce.loadConfig().then(() => {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
-      slideDiez.ini();
+      slideOnce.ini();
       setTimeout(() => {
-         slideDiez.calcCostProcedimientos();
+         slideOnce.calcCostProcedimientos();
       }, 1000);
    });
 });

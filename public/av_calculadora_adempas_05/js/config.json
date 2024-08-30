@@ -829,7 +829,8 @@
             "alto": 0,
             "promedio": 0
          },
-         "indexSlider": 5
+         "indexSliderHAP": 5,
+         "indexSliderHTEC": 5
       },
       "referencias": {
          "grupos": [
