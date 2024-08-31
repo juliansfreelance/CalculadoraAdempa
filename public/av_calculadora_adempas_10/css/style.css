@@ -1033,6 +1033,10 @@ select {
   display: grid;
 }
 
+.contents {
+  display: contents;
+}
+
 .hidden {
   display: none;
 }
@@ -1081,10 +1085,6 @@ select {
 
 .w-4\/5 {
   width: 80%;
-}
-
-.w-\[150px\] {
-  width: 150px;
 }
 
 .w-auto {
@@ -1654,6 +1654,10 @@ select {
 
 .animate-delay-100 {
   animation-delay: 100ms;
+}
+
+.animate-delay-1000 {
+  animation-delay: 1000ms;
 }
 
 .animate-delay-200 {
@@ -2677,8 +2681,6 @@ footer div {
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding-left: 3rem;
-  padding-right: 3rem;
   text-align: center;
 }
 
