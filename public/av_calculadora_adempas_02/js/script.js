@@ -16,10 +16,15 @@ let slideDos = {
    jumptoSlide: function (slide) {
       localStorage.setItem('previousSlide', veeva.slide);
       if (slide === '01' && localStorage.getItem('instrucciones') !== null) slide = '05'; localStorage.removeItem('instrucciones');
-      if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
-         document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
+      const isIpad = /iPad/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      if (typeof veeva !== 'undefined') {
+         if (isIpad) {
+            document.location = `veeva:gotoSlide("${veeva.zipName}${slide}.zip", "${veeva.presentationCode}")`;
+         } else {
+            document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+         }
       } else {
-         document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+         console.error('Error al cargar la configuración');
       }
    }
 }
