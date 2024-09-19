@@ -269,7 +269,7 @@ let slideCinco = {
       const isIpad = /iPad/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
       if (typeof veeva !== 'undefined') {
          if (isIpad) {
-            document.location = `veeva:gotoSlide("${veeva.zipName}${slide}.zip", "${veeva.presentationCode}")`;
+            document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip, ${veeva.presentationCode})`;
          } else {
             document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
          }

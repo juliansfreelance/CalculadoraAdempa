@@ -14,11 +14,22 @@ let slideUno = {
 
    jumptoSlide: function (slide) {
       localStorage.setItem('previousSlide', veeva.slide);
+      const isVeeva = navigator.userAgent.includes("Veeva" || "veeva");
       const isIpad = /iPad/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      alert(
+         "userAgent:" + navigator.userAgent +
+         "\nisVeeva: " + isVeeva +
+         "\nisIpad: " + isIpad +
+         "\nTestIpad" + /iPad/.test(navigator.userAgent) +
+         "\nplatform: " + navigator.platform +
+         "\nmaxTouchPoints: " + navigator.maxTouchPoints
+      );
       if (typeof veeva !== 'undefined') {
          if (isIpad) {
-            document.location = `veeva:gotoSlide("${veeva.zipName}${slide}.zip", "${veeva.presentationCode}")`;
+            alert("veeva navigation");
+            document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip, ${veeva.presentationCode})`;
          } else {
+            alert("browser navigation");
             document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
          }
       } else {
