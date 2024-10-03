@@ -66,7 +66,7 @@ let slideNueve = {
          if (isIpad) {
             document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip, ${veeva.presentationCode})`;
          } else {
-            document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+            document.location = `/CalculadoraAdempa/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
          }
       } else {
          console.error('Error al cargar la configuración');
