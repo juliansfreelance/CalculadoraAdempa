@@ -20,6 +20,7 @@ class customPop extends HTMLElement{
             rubrosHTML += `
                <tr>
                   <td>${rubro.nombre}</td>
+                  <td><custom-input name="${this.type}-${i}-valorUnitario" type="calc" icon="money" valor="${this.formatToFloatString(rubro.valorUnitario)}"></custom-input></td>
                   <td><custom-input name="${this.type}-${i}-bajo" type="edit" valor="${this.formatToFloatString(rubro.cantidad.bajo)}"></custom-input></td>
                   <td><custom-input name="${this.type}-${i}-intermedio" type="edit" valor="${this.formatToFloatString(rubro.cantidad.intermedio)}"></custom-input></td>
                   <td><custom-input name="${this.type}-${i}-alto" type="edit" valor="${this.formatToFloatString(rubro.cantidad.alto)}"></custom-input></td>
@@ -52,6 +53,7 @@ class customPop extends HTMLElement{
                      <thead>
                         <tr>
                            <th class="font-bold text-base text-orange-400 text-left">Rubro</th>
+                           <th class="font-bold text-base text-cyan-400 text-center">Valor Unitario</th>
                            <th class="font-bold text-base text-green-500 text-center">Estadificación riesgo Bajo</th>
                            <th class="font-bold text-base text-text-intermedio text-center">Estadificación riesgo Intermedio</th>
                            <th class="font-bold text-base text-red-500 text-center">Estadificación riesgo Alto</th>
@@ -67,7 +69,9 @@ class customPop extends HTMLElement{
                <div class="pop-label">
                   <div>
                      <h4>${complicaciones.title}</h4>
-                     <button onclick="javascript:slideNueve.popDown('${this.type}')" class="text-red-600 shadow-md rounded-full bg-white h-fit">
+                     <button onclick="javascript:slideNueve.popDown('${
+                       this.type
+                     }')" class="text-red-600 shadow-md rounded-full bg-white h-fit">
                         <svg class="size-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                            <path fill-rule="evenodd"
                               d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"
