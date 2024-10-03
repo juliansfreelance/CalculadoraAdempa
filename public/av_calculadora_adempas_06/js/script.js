@@ -292,10 +292,15 @@ let slideSeis = {
 
    jumpToSlide: function (slide) {
       localStorage.setItem('previousSlide', veeva.slide);
-      if (typeof veeva !== 'undefined' && veeva.gotoSlide) {
-         document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip,${veeva.presentationCode})`;
+      const isIpad = /iPad/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      if (typeof veeva !== 'undefined') {
+         if (isIpad) {
+            document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip, ${veeva.presentationCode})`;
+         } else {
+            document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+         }
       } else {
-         document.location = `/CalculadoraAdempa/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+         console.error('Error al cargar la configuración');
       }
    }
 }
