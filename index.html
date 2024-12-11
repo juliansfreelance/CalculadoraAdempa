@@ -18,7 +18,12 @@
 
 <body>
    <script>
-      window.location.href = "public/av_calculadora_adempas_01/av_calculadora_adempas_01.html";
+      window.location.hostname === "127.0.0.1" ? localStorage.setItem("ambiente", "local") : localStorage.setItem("ambiente", "git");
+      if (localStorage.getItem("ambiente") === "local") {
+         window.location.href = "public/av_calculadora_adempas_01/av_calculadora_adempas_01.html";
+      } else {
+         window.location.href = "/CalculadoraAdempa/public/av_calculadora_adempas_01/av_calculadora_adempas_01.html";
+      }
    </script>
 </body>
 

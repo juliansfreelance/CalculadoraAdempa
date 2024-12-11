@@ -46,7 +46,6 @@ input[type=number] {
 header hgroup {
    @apply w-full flex justify-end items-start relative;
 }
-
 header hgroup span {
    @apply flex flex-wrap items-center gap-x-4 gap-y-2 w-[255px] absolute left-0 pt-4
 }
@@ -64,25 +63,26 @@ header hgroup div h3 {
 }
 
 main {
-   @apply flex-grow mx-20 my-10 mb-20 grid grid-flow-row auto-rows-max justify-items-center gap-14 content-center;
+   @apply flex-grow mx-40 my-10 mb-20 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
 }
-.risk-ask {
+
+.HTP-ask {
    @apply flex flex-col items-center justify-center gap-2 mt-4;
 }
-.risk-ask h3 {
+.HTP-ask h3 {
    @apply font-extrabold text-text-500 text-2xl leading-none;
 }
-.risk-ask p {
+.HTP-ask p {
    @apply text-base text-text-500 leading-none;
 }
-.risk-ask div {
+.HTP-ask div {
    @apply flex flex-row justify-center items-center gap-4;
 }
 
 .background-btn-blue {
    @apply bg-gradient-to-tl from-[#005D73] from-20% to-[#009CC1]
 }
-.background-btn-blue .title {
+.background-btn-blue div {
    @apply bg-gradient-to-b from-[#00748F] from-40% to-white/25
 }
 
@@ -99,7 +99,6 @@ main {
 .background-btn-orange div {
    @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
 }
-
 
 .home-btn {
    @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
@@ -179,42 +178,55 @@ main {
 .label-blue {
    @apply mx-auto flex flex-col justify-center w-fit p-[3px] border border-b-0 border-[#004555] shadow-md shadow-black/30 rounded-t-lg
 }
-.label-blue .title {
-   @apply rounded-t-md px-4 py-2 w-[220px] flex flex-row gap-2 justify-evenly items-center
+.label-blue div {
+   @apply rounded-md px-4 py-1
 }
-.label-blue .title .point {
-   @apply w-4 h-4 rounded-full shadow-sm shadow-black/25
-}
-.label-blue .title h4 {
-   @apply text-center text-white font-bold text-[15px] leading-none
+.label-blue div h4 {
+   @apply text-center text-white font-bold text-lg
 }
 
-.point.low {
-   @apply bg-green-500
-}
-.point.intermediate {
-   @apply bg-text-intermedio
-}
-.point.high {
-   @apply bg-red-500
+.input-poblacion {
+   @apply relative flex w-full h-9
 }
 
+.input-poblacion input {
+   @apply form-input w-full block rounded-r-md border border-l-0 text-text-500 shadow-sm shadow-black/40 border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
+}
+.input-poblacion label {
+   @apply flex flex-row items-center justify-center rounded-l-full p-[3px] shadow-sm shadow-black/40 border border-[#F8971D] bg-white
+}
+.input-poblacion label div {
+   @apply rounded-l-full h-full
+}
+.input-poblacion label i {
+   @apply pl-4
+}
+.input-poblacion label h4 {
+   @apply pl-2 pr-4 font-bold text-base
+}
+.input-poblacion label i,
+.input-poblacion label h4 {
+   @apply text-black/35 drop-shadow-button
+}
+.input-poblacion .error {
+   @apply absolute mt-9 ml-4 text-red-500 leading-none pt-1 text-xs flex-none italic;
+}
 .content-inputs .error {
    @apply ml-4 text-red-500 leading-none pt-1 text-xs flex-none italic;
 }
 .grupos-error {
-   @apply col-span-3 text-center ml-0 !important
+   @apply col-span-2 text-center ml-0 !important
 }
 
 .content-inputs {
    @apply w-full flex-col justify-center items-center gap-6;
 }
-.content-inputs .risk-edit,
-.content-inputs .risk-estudy   {
-   @apply grid-cols-3 gap-x-6 gap-y-1 content-center w-full;
+.content-inputs .htp-edit,
+.content-inputs .htp-estudy   {
+   @apply grid-cols-2 gap-x-6 gap-y-1 content-center w-full;
 }
-.content-inputs .risk-edit .input,
-.content-inputs .risk-estudy .input {
+.content-inputs .htp-edit .input,
+.content-inputs .htp-estudy .input {
    @apply flex flex-col
 }
 
@@ -260,10 +272,6 @@ footer article p {
 .pop .pop-form {
    @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
 }
-.pop .pop-form table {
-   @apply border-spacing-1 border-separate
-}
-
 .pop .pop-form table thead tr th {
    @apply leading-none py-2
 }
@@ -271,9 +279,8 @@ footer article p {
    @apply leading-none py-1 px-1
 }
 .pop .pop-form table tbody tr td:first-child {
-   @apply mr-2 w-[180px]
+   @apply mr-2
 }
-
 .pop .pop-label {
    @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
 }

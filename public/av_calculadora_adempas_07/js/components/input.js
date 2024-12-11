@@ -9,10 +9,8 @@ class customInput extends HTMLElement {
       this.icon = '';
       this.iconConten = '';
       this.decimalMode = false;
-      this.previousValue = '';
       this.handleBlur = this.handleBlur.bind(this);
       this.handleInput = this.handleInput.bind(this);
-      this.handleFocus = this.handleFocus.bind(this);
    }
 
    static get observedAttributes(){
@@ -63,16 +61,12 @@ class customInput extends HTMLElement {
 
    formatNumber(val) {
       const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
-      const FORMAT_ENTERO = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
+      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
       if (val !== '') {
          let inputValue = val.toString().replace(/[^\d,.]/g, '');
          let integer = parseFloat(inputValue.replace(/\./g, '').replace(/,/g, '.'));
          return inputValue.indexOf(',') !== -1 ? FORMAT_DECIMAL(integer).format() : FORMAT_ENTERO(integer).format();
       }
-   }
-   handleFocus(event) {
-      this.previousValue = event.target.value;
-      event.target.value = '';
    }
 
    handleInput(event) {
@@ -94,56 +88,11 @@ class customInput extends HTMLElement {
    }
 
    handleBlur(event) {
-      const input = event.target;
-      const inputValue = input.value.replace(/[^\d,.]/g, '');
-      const formattedValue = this.formatNumber(inputValue);
-
-      if (input.value === '') {
-         input.value = this.previousValue;
-         this.updateJsonValue(input.name, this.previousValue);
-      } else if (input.value !== '') {
-         input.value = formattedValue;
-         this.valor = formattedValue;
-         this.updateJsonValue(input.name, inputValue);
+      if (event.target.value !== '') {
+         let inputValue = event.target.value.replace(/[^\d,.]/g, '');
+         event.target.value = this.formatNumber(inputValue);
+         this.valor = this.formatNumber(inputValue);
       }
-   }
-
-   updateJsonValue(name, value) {
-      const path = name.split('-');
-      const terapiaIndex = parseInt(path[1]);
-      const field = path[2];
-      if (path[0] === 'monoterapia') {
-         veeva.calculadora.tecnologias.monoterapias.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
-      } else if (path[0] === 'biterapia') {
-         veeva.calculadora.tecnologias.terapiasDobles.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
-      } else if (path[0] === 'triterapia') {
-         veeva.calculadora.tecnologias.terapiasTripes.terapias[terapiaIndex][field] = parseFloat(value.replace(',', '.'));
-      }
-      this.updateGlobalValues();
-      if (slideSiete.validateCounnt > 0) slideSiete.validateTecnnology();
-   }
-
-   updateGlobalValues() {
-      function sumTerapias(terapias, field) {
-         return terapias.reduce((sum, terapia) => sum + terapia[field], 0);
-      }
-      veeva.calculadora.tecnologias.monoterapias.bajo = sumTerapias(veeva.calculadora.tecnologias.monoterapias.terapias, 'bajo');
-      veeva.calculadora.tecnologias.monoterapias.intermedio = sumTerapias(veeva.calculadora.tecnologias.monoterapias.terapias, 'intermedio');
-      veeva.calculadora.tecnologias.monoterapias.alto = sumTerapias(veeva.calculadora.tecnologias.monoterapias.terapias, 'alto');
-
-      veeva.calculadora.tecnologias.terapiasDobles.bajo = sumTerapias(veeva.calculadora.tecnologias.terapiasDobles.terapias, 'bajo');
-      veeva.calculadora.tecnologias.terapiasDobles.intermedio = sumTerapias(veeva.calculadora.tecnologias.terapiasDobles.terapias, 'intermedio');
-      veeva.calculadora.tecnologias.terapiasDobles.alto = sumTerapias(veeva.calculadora.tecnologias.terapiasDobles.terapias, 'alto');
-
-      veeva.calculadora.tecnologias.terapiasTripes.bajo = sumTerapias(veeva.calculadora.tecnologias.terapiasTripes.terapias, 'bajo');
-      veeva.calculadora.tecnologias.terapiasTripes.intermedio = sumTerapias(veeva.calculadora.tecnologias.terapiasTripes.terapias, 'intermedio');
-      veeva.calculadora.tecnologias.terapiasTripes.alto = sumTerapias(veeva.calculadora.tecnologias.terapiasTripes.terapias, 'alto');
-
-      veeva.calculadora.tecnologias.totalRiesgoBajo = veeva.calculadora.tecnologias.monoterapias.bajo + veeva.calculadora.tecnologias.terapiasDobles.bajo + veeva.calculadora.tecnologias.terapiasTripes.bajo;
-      veeva.calculadora.tecnologias.totalRiesgoIntermedio = veeva.calculadora.tecnologias.monoterapias.intermedio + veeva.calculadora.tecnologias.terapiasDobles.intermedio + veeva.calculadora.tecnologias.terapiasTripes.intermedio;
-      veeva.calculadora.tecnologias.totalRiesgoAlto = veeva.calculadora.tecnologias.monoterapias.alto + veeva.calculadora.tecnologias.terapiasDobles.alto + veeva.calculadora.tecnologias.terapiasTripes.alto;
-
-      slideSiete.updateInputTecnologias();
    }
 
    connectedCallback() {
@@ -164,7 +113,6 @@ class customInput extends HTMLElement {
          </div>`;
       const inputElement = this.querySelector('input');
       inputElement.addEventListener('input', this.handleInput);
-      inputElement.addEventListener('focus', this.handleFocus);
       inputElement.addEventListener('blur', this.handleBlur);
    }
 }

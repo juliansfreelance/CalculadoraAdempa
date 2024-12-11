@@ -8,10 +8,10 @@
    @apply w-1.5 h-1.5;
 }
 *::-webkit-scrollbar-track {
-   @apply bg-slate-300 rounded-[3px]
+   @apply bg-slate-300
 }
 *::-webkit-scrollbar-thumb {
-   @apply bg-gradient-to-b from-red-600 to-amber-600 rounded-[3px]
+   @apply bg-green-400;
 }
 * {
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
@@ -67,7 +67,10 @@ main {
    @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
 }
 .home-btn div {
-   @apply bg-gradient-to-b from-button-bg1 to-white flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+.home-btn div {
+   @apply flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
 }
 .home-btn div svg {
    @apply text-button-text;
@@ -226,33 +229,41 @@ main {
    @apply absolute text-text-500 left-[10px] -mt-[24px]
 }
 
+.complicaciones,
 .costos {
-   @apply flex flex-col-reverse drop-shadow-md w-full;
+   @apply flex-col-reverse drop-shadow-md w-full;
 }
+.complicaciones .form,
 .costos .form {
    @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
 }
 .costos .form {
    @apply pr-2 !important
 }
+.complicaciones .form table,
 .costos .form table {
    @apply border-spacing-x-1 border-spacing-y-1 border-separate;
 }
+.complicaciones .form table thead tr th,
 .costos .form table thead tr th {
    @apply leading-none py-2
 }
+.complicaciones .form table tbody tr td,
 .costos .form table tbody tr td {
    @apply leading-none py-1 px-1
 }
 .costos .form table tbody tr td:first-child {
    @apply max-w-[13rem]
 }
+.complicaciones .form table tbody tr td.input-error,
 .costos .form table tbody tr td.input-error {
    @apply bg-red-200 rounded-lg
 }
+.complicaciones .label,
 .costos .label {
    @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
 }
+.complicaciones .label h4,
 .costos .label h4 {
    @apply text-orange-400 font-bold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
 }
@@ -275,13 +286,13 @@ footer article p {
    @apply w-[1024px] h-[768px] relative top-0 flex flex-col justify-center items-center bg-pop-background/85
 }
 .pop-conten {
-   @apply absolute p-8
+   @apply absolute
 }
 .pop {
-   @apply flex flex-col-reverse w-fit drop-shadow-md
+   @apply flex flex-col-reverse w-fit drop-shadow-md p-8
 }
 .pop .pop-form {
-   @apply bg-white/80 pl-6 pr-[18px] py-4 rounded-xl w-full text-text-500 text-sm
+   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
 }
 
 .pop .pop-form .thead {

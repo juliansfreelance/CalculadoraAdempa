@@ -62,8 +62,8 @@ class customInput extends HTMLElement {
    }
 
    formatNumber(val) {
-      const FORMAT_DECIMAL = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
-      const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
+      const FORMAT_DECIMAL = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
+      const FORMAT_ENTERO = value => currency(value, { precision: 2, symbol: '', decimal: ',', separator: '.' });
       if (val !== '') {
          let inputValue = val.toString().replace(/[^\d,.]/g, '');
          let integer = parseFloat(inputValue.replace(/\./g, '').replace(/,/g, '.'));

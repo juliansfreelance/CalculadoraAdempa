@@ -1747,18 +1747,13 @@ select {
 }
 
 *::-webkit-scrollbar-track {
-  border-radius: 3px;
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 
 *::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
-  --tw-gradient-from: #dc2626 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(220 38 38 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #d97706 var(--tw-gradient-to-position);
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
 }
 
 * {
@@ -1908,6 +1903,11 @@ main {
 }
 
 .home-btn div {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  --tw-gradient-from: #DFE0E4 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(223 224 228 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #fff var(--tw-gradient-to-position);
   display: flex;
   height: 2.25rem;
   width: 2.25rem;
@@ -1916,11 +1916,6 @@ main {
   justify-content: center;
   gap: 0.25rem;
   border-radius: 9999px;
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
-  --tw-gradient-from: #DFE0E4 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(223 224 228 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #fff var(--tw-gradient-to-position);
   padding: 0.25rem;
 }
 
@@ -2380,28 +2375,34 @@ main {
   color: rgb(109 109 109 / var(--tw-text-opacity));
 }
 
+.complicaciones,
 .costos {
-  display: flex;
   width: 100%;
   flex-direction: column-reverse;
   --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.complicaciones .form,
 .costos .form {
   width: 100%;
   border-radius: 0.75rem;
   background-color: rgb(255 255 255 / 0.8);
   padding-left: 1.5rem;
+  padding-right: 1.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
   color: rgb(109 109 109 / var(--tw-text-opacity));
+}
+
+.costos .form {
   padding-right: 0.5rem !important;
 }
 
+.complicaciones .form table,
 .costos .form table {
   border-collapse: separate;
   --tw-border-spacing-x: 0.25rem;
@@ -2409,12 +2410,14 @@ main {
   border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
 }
 
+.complicaciones .form table thead tr th,
 .costos .form table thead tr th {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   line-height: 1;
 }
 
+.complicaciones .form table tbody tr td,
 .costos .form table tbody tr td {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -2427,12 +2430,14 @@ main {
   max-width: 13rem;
 }
 
+.complicaciones .form table tbody tr td.input-error,
 .costos .form table tbody tr td.input-error {
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
   background-color: rgb(254 202 202 / var(--tw-bg-opacity));
 }
 
+.complicaciones .label,
 .costos .label {
   margin-left: 2rem;
   width: -moz-fit-content;
@@ -2447,6 +2452,7 @@ main {
   padding: 0.25rem;
 }
 
+.complicaciones .label h4,
 .costos .label h4 {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -2521,7 +2527,6 @@ footer article p {
   justify-content: center;
   background-color: rgb(221 215 209 / 0.85);
   position: absolute;
-  padding: 2rem;
 }
 
 .pop {
@@ -2529,6 +2534,7 @@ footer article p {
   width: -moz-fit-content;
   width: fit-content;
   flex-direction: column-reverse;
+  padding: 2rem;
   --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -2537,10 +2543,10 @@ footer article p {
   width: 100%;
   border-radius: 0.75rem;
   background-color: rgb(255 255 255 / 0.8);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  padding-left: 1.5rem;
-  padding-right: 18px;
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;

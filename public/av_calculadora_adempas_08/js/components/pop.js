@@ -67,7 +67,7 @@ class customPop extends HTMLElement{
                <div class="pop-label">
                   <div>
                      <h4>${terapia.title}</h4>
-                     <button onclick="javascript:slideSiete.popDown('${this.type}')" class="text-red-600 shadow-md rounded-full bg-white h-fit">
+                     <button onclick="javascript:slideOcho.popDown('${this.type}')" class="text-red-600 shadow-md rounded-full bg-white h-fit">
                         <svg class="size-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                            <path fill-rule="evenodd"
                               d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"
@@ -78,7 +78,7 @@ class customPop extends HTMLElement{
                </div>
             </section>
          </section>`;
-         slideSiete.updateInputTecnologias();
+         slideOcho.updateInputTecnologias();
       });
    }
 }

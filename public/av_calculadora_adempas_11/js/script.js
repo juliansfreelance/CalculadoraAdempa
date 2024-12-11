@@ -4,7 +4,8 @@
  * Agency: ÜlaIdeas
  * Created by: Julio Calderón
  * Developed By: Julio Calderón
- * Modified By:
+ * Modified By: Julio Calderón
+ * last modified: 2024-12-12
  */
 let veeva = {};
 
@@ -15,7 +16,7 @@ let slideOnce = {
       if (calculadoraData) {
          veeva.calculadora = await JSON.parse(calculadoraData);
          document.dispatchEvent(new Event('configLoaded'));
-         if(veeva.calculadora.procedimientos.indexSliderHTEC !== 5) updateSliderValue(veeva.calculadora.procedimientos.indexSliderHTEC);
+         if(veeva.calculadora.procedimientos.indexSliderHAP !== 5) updateSliderValue(veeva.calculadora.procedimientos.indexSliderHAP);
       } else {
          setTimeout(() => {
             slideOnce.openAlert('bd-clear');
@@ -25,7 +26,8 @@ let slideOnce = {
 
    calcCostProcedimientos: function () {
       const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
-      const tableHTEC = document.querySelector('.tableHPTEC');
+      const tableHAP = document.querySelector('.tableHAP');
+      // const tableHTEC = document.querySelector('.tableHPTEC');
       let procedimientosHAP = veeva.calculadora.referencias.procedimientos.HAP;
       let procedimientosHTEC = veeva.calculadora.referencias.procedimientos.HTEC;
       veeva.calculadora.procedimientos.HAPTotal.bajo = 0;
@@ -75,13 +77,13 @@ let slideOnce = {
       totales.alto = Math.round(((HAPTotal.alto * HAP) + (HTECTotal.alto * HTEC)) / 100);
       totales.promedio = parseFloat(((totales.bajo + totales.intermedio + totales.alto) / 3).toFixed(2));
       veeva.calculadora.chartOptions.chartProcedures.valores = [totales.bajo, totales.intermedio, totales.alto];
-      slideOnce.drawTable(veeva.calculadora.procedimientos.HTEC, tableHTEC);
+      slideOnce.drawTable(veeva.calculadora.procedimientos.HAP, tableHAP);
       const totalHAPBajo = document.querySelector("input[name='total-HAP-bajo']");
       const totalHAPIntermedio = document.querySelector("input[name='total-HAP-intermedio']");
       const totalHAPAlto = document.querySelector("input[name='total-HAP-alto']");
-      totalHAPBajo.value = FORMAT_ENTERO(HTECTotal.bajo).format();
-      totalHAPIntermedio.value = FORMAT_ENTERO(HTECTotal.intermedio).format();
-      totalHAPAlto.value = FORMAT_ENTERO(HTECTotal.alto).format();
+      totalHAPBajo.value = FORMAT_ENTERO(HAPTotal.bajo).format();
+      totalHAPIntermedio.value = FORMAT_ENTERO(HAPTotal.intermedio).format();
+      totalHAPAlto.value = FORMAT_ENTERO(HAPTotal.alto).format();
    },
 
    drawTable: function (procedimientos, tabla) {
@@ -102,7 +104,7 @@ let slideOnce = {
    validarForm: function () {
       setTimeout(() => {
          localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
-         slideOnce.jumpToSlide('12');
+         slideOnce.jumptoSlide('12');
       }, 800);
    },
    updateTotales: function (value, index) {
@@ -110,28 +112,28 @@ let slideOnce = {
       const totalHAPIntermedio = document.querySelector("input[name='total-HAP-intermedio']");
       const totalHAPAlto = document.querySelector("input[name='total-HAP-alto']");
       const FORMAT_ENTERO = value => currency(value, { precision: 0, symbol: '', decimal: ',', separator: '.' });
-      let { HTECTotal, HTECTotalSlider } = veeva.calculadora.procedimientos;
-      HTECTotal.bajo = HTECTotalSlider.bajo;
-      HTECTotal.intermedio = HTECTotalSlider.intermedio;
-      HTECTotal.alto = HTECTotalSlider.alto;
-      if(index !== 5){veeva.calculadora.procedimientos.indexSliderHTEC = index}
+      let { HAPTotal, HAPTotalSlider } = veeva.calculadora.procedimientos;
+      HAPTotal.bajo = HAPTotalSlider.bajo;
+      HAPTotal.intermedio = HAPTotalSlider.intermedio;
+      HAPTotal.alto = HAPTotalSlider.alto;
+      if(index !== 5){veeva.calculadora.procedimientos.indexSliderHAP = index}
       if (value.money !== '0') {
          const selectedPrice = value;
          const operation = selectedPrice.money.charAt(0);
          const amount = parseInt(selectedPrice.money.slice(1).replace('K', '000'));
          if (operation === '+') {
-            HTECTotal.bajo += amount;
-            HTECTotal.intermedio += amount;
-            HTECTotal.alto += amount;
+            HAPTotal.bajo += amount;
+            HAPTotal.intermedio += amount;
+            HAPTotal.alto += amount;
          } else if (operation === '-') {
-            HTECTotal.bajo -= amount;
-            HTECTotal.intermedio -= amount;
-            HTECTotal.alto -= amount;
+            HAPTotal.bajo -= amount;
+            HAPTotal.intermedio -= amount;
+            HAPTotal.alto -= amount;
          }
       }
-      totalHAPBajo.value = FORMAT_ENTERO(HTECTotal.bajo).format();
-      totalHAPIntermedio.value = FORMAT_ENTERO(HTECTotal.intermedio).format();
-      totalHAPAlto.value = FORMAT_ENTERO(HTECTotal.alto).format();
+      totalHAPBajo.value = FORMAT_ENTERO(HAPTotal.bajo).format();
+      totalHAPIntermedio.value = FORMAT_ENTERO(HAPTotal.intermedio).format();
+      totalHAPAlto.value = FORMAT_ENTERO(HAPTotal.alto).format();
    },
 
    popUp: function (pop) {
@@ -220,12 +222,14 @@ let slideOnce = {
 
    jumpToSlide: function (slide) {
       localStorage.setItem('previousSlide', veeva.slide);
-      const isIpad = /iPad/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      const isIpad = /iPad/.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.platform === "MacIntel" && navigator.maxTouchPoints > 1);
       if (typeof veeva !== 'undefined') {
          if (isIpad) {
             document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip, ${veeva.presentationCode})`;
+         } else if (localStorage.getItem("ambiente") === "local") {
+            window.location.href = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
          } else {
-            document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+            window.location.href = `/CalculadoraAdempa/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
          }
       } else {
          console.error('Error al cargar la configuración');

@@ -10,7 +10,7 @@
    <meta name='author' href="https://github.com/juliansfreelance" email="jcalderon.code@gmail.com" content='Julio Calderón - Desarrollador Front-end' />
    <meta name="description" content="Herramienta de costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica o de la Hipertensión Pulmonar por categoria de riesgo (HTP)" />
 
-   <title>AV Calculadora HTP Adempa | Costo Procedimientos por Paciente HPTEC</title>
+   <title>AV Calculadora HTP Adempa | Costo Procedimientos por Paciente HAP</title>
 
    <link rel="icon" type="image/ico" href="images/icon.png" />
 
@@ -38,7 +38,7 @@
                   </div>
                </button>
                <button class="background-btn-gray button-gray-corner-md animate-fade-in-left animate-delay-[600ms]"
-                  onclick="slideOnce.jumpToSlide('10')">
+                  onclick="slideOnce.jumptoSlide('10')">
                   <div>
                      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                         stroke="currentColor">
@@ -47,7 +47,7 @@
                      <h4>Regresar</h4>
                   </div>
                </button>
-               <button class="ref-btn animate-fade-in-up animate-delay-[600ms]" onclick="slideOnce.jumpToSlide('13')">
+               <button class="ref-btn animate-fade-in-up animate-delay-[600ms]" onclick="slideOnce.jumptoSlide('14')">
                   <div>
                      <h4>IPP</h4>
                   </div>
@@ -55,7 +55,7 @@
             </span>
             <div class="titulo animate-fade-in animate-delay-500 animate-duration-slow">
                <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
-               <h3>Costo Procedimientos por Paciente HPTEC</h3>
+               <h3>Costo Procedimientos por Paciente HAP</h3>
             </div>
          </hgroup>
       </header>
@@ -74,12 +74,12 @@
                   </thead>
                </table>
                <table class="w-fit table-auto">
-                  <tbody class="tableHPTEC overflow-y-scroll block">
+                  <tbody class="tableHAP overflow-y-scroll block">
                   </tbody>
                </table>
             </div>
             <div class="flex flex-row-reverse justify-end items-center gap-2">
-               <button class="btn-caso-ref" onclick="javascript:slideOnce.popUp('recursos-HPTEC')">
+               <button class="btn-caso-ref" onclick="javascript:slideOnce.popUp('recursos-HAP')">
                   <div>
                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
@@ -89,7 +89,7 @@
                   </div>
                </button>
                <div class="label">
-                  <h4>Costo anual por paciente HPTEC</h4>
+                  <h4>Costo anual por paciente HAP</h4>
                </div>
             </div>
          </section>
@@ -121,7 +121,6 @@
                         </ul>
                      </div>
                   </div>
-               
                </div>
             </div>
          </section>
@@ -142,11 +141,10 @@
                   <h4>Continuar</h4>
                </div>
             </button>
-         </div>
 
       </footer>
 
-      <custom-pop type="recursos-HPTEC" class="hidden z-50"></custom-pop>
+      <custom-pop type="recursos-HAP" class="hidden z-50"></custom-pop>
 
       <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
          message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"

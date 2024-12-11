@@ -4,7 +4,8 @@
  * Agency: ÜlaIdeas
  * Created by: Julio Calderón
  * Developed By: Julio Calderón
- * Modified By:
+ * Modified By: Julio Calderón
+ * last modified: 2024-12-12
  */
 let veeva = {};
 let slideCinco = {
@@ -163,14 +164,14 @@ let slideCinco = {
             if (poblacion !== 0) {
                localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
                setTimeout(() => {
-                  slideCinco.jumpToSlide('06');
+                  slideCinco.jumptoSlide('07');
                }, 800);
             }
          }
       } else if (poblacion !== 0) {
          localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
          setTimeout(() => {
-            slideCinco.jumpToSlide('06');
+            slideCinco.jumptoSlide('07');
          }, 800);
       }
    },
@@ -179,27 +180,12 @@ let slideCinco = {
       const customAlert = document.querySelector(`custom-alert[name="alert-${alert}"]`);
       const customAlertConten = document.querySelector(`custom-alert[name="alert-${alert}"] .alert-conten`);
       const customAlertAlert = document.querySelector(`custom-alert[name="alert-${alert}"] .alert`);
-      switch (alert) {
-
-         case 'reset':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-            break;
-
-         case 'bd-clear':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-            break;
+      if (customAlert) {
+         customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
+         customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
+         customAlert.classList.replace('hidden', 'block');
+      } else {
+         console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${alert}".`);
       }
    },
 
@@ -230,7 +216,11 @@ let slideCinco = {
 
    handleInput: function (event) {
       let inputValue;
-      event.target.id === 'poblacion' ? inputValue = event.target.value.replace(/[^\d]/g, '') : inputValue = event.target.value.replace(/[^\d,]/g, '');
+      if (event.target.id === 'poblacion') {
+         inputValue = event.target.value.replace(/[^\d]/g, '');
+      } else {
+         inputValue = event.target.value.replace(/[^\d,]/g, '');
+      }
       if (inputValue.includes(',')) {
          this.decimalMode = true;
       }
@@ -266,12 +256,14 @@ let slideCinco = {
    jumpToSlide: function (slide) {
       localStorage.setItem('previousSlide', veeva.slide);
       slide === '02' ? localStorage.setItem('instrucciones', true) : localStorage.removeItem('instrucciones');
-      const isIpad = /iPad/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      const isIpad = /iPad/.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.platform === "MacIntel" && navigator.maxTouchPoints > 1);
       if (typeof veeva !== 'undefined') {
          if (isIpad) {
             document.location = `veeva:gotoSlide(${veeva.zipName}${slide}.zip, ${veeva.presentationCode})`;
+         } else if (localStorage.getItem("ambiente") === "local") {
+            window.location.href = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
          } else {
-            document.location = `/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
+            window.location.href = `/CalculadoraAdempa/public/${veeva.zipName}${slide}/${veeva.zipName}${slide}.html`;
          }
       } else {
          console.error('Error al cargar la configuración');

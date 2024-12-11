@@ -24,14 +24,17 @@ body {
    @apply bg-slate-800;
 }
 
+
 input {
    @apply py-1 text-sm text-right !important;
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
    -webkit-appearance: none;
    margin: 0;
 }
+
 input[type=number] {
    -moz-appearance: textfield;
 }
@@ -43,6 +46,7 @@ input[type=number] {
 header hgroup {
    @apply w-full flex justify-end items-start relative;
 }
+
 header hgroup span {
    @apply flex flex-wrap items-center gap-x-4 gap-y-2 w-[255px] absolute left-0 pt-4
 }
@@ -60,8 +64,42 @@ header hgroup div h3 {
 }
 
 main {
-   @apply flex-grow px-7 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
+   @apply flex-grow mx-20 my-10 mb-20 grid grid-flow-row auto-rows-max justify-items-center gap-14 content-center;
 }
+.risk-ask {
+   @apply flex flex-col items-center justify-center gap-2 mt-4;
+}
+.risk-ask h3 {
+   @apply font-extrabold text-text-500 text-2xl leading-none;
+}
+.risk-ask p {
+   @apply text-base text-text-500 leading-none;
+}
+.risk-ask div {
+   @apply flex flex-row justify-center items-center gap-4;
+}
+
+.background-btn-blue {
+   @apply bg-gradient-to-tl from-[#005D73] from-20% to-[#009CC1]
+}
+.background-btn-blue .title {
+   @apply bg-gradient-to-b from-[#00748F] from-40% to-white/25
+}
+
+.background-btn-gray {
+   @apply bg-gradient-to-b from-white to-button-bg1;
+}
+.background-btn-gray div {
+   @apply bg-gradient-to-b from-button-bg1 to-white;
+}
+
+.background-btn-orange {
+   @apply bg-gradient-to-tl from-[#F49306] from-20% to-[#F6C37E]
+}
+.background-btn-orange div {
+   @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
+}
+
 
 .home-btn {
    @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
@@ -84,27 +122,6 @@ main {
 }
 .ref-btn div h4 {
    @apply text-button-text font-bold text-xs;
-}
-
-.background-btn-blue {
-   @apply bg-gradient-to-tl from-[#005D73] from-20% to-[#009CC1]
-}
-.background-btn-blue div {
-   @apply bg-gradient-to-b from-[#00748F] from-40% to-white/25
-}
-
-.background-btn-gray {
-   @apply bg-gradient-to-b from-white to-button-bg1;
-}
-.background-btn-gray div {
-   @apply bg-gradient-to-b from-button-bg1 to-white;
-}
-
-.background-btn-orange {
-   @apply bg-gradient-to-tl from-[#F49306] from-20% to-[#F6C37E]
-}
-.background-btn-orange div {
-   @apply bg-gradient-to-b from-[#FF9900] from-40% to-white/60
 }
 
 .button-gray-corner-md {
@@ -159,132 +176,92 @@ main {
    @apply text-white font-bold text-base
 }
 
-.btn-caso-ref {
-   @apply w-fit text-button-text bg-gradient-to-t from-button-bg2 to-button-bg4 border-t-[2px] border-button-bg2 p-1 shadow-md rounded-full
+.label-blue {
+   @apply mx-auto flex flex-col justify-center w-fit p-[3px] border border-b-0 border-[#004555] shadow-md shadow-black/30 rounded-t-lg
 }
-.btn-caso-ref div {
-   @apply text-button-text px-2 drop-shadow-button flex flex-row items-center justify-center
+.label-blue .title {
+   @apply rounded-t-md px-4 py-2 w-[220px] flex flex-row gap-2 justify-evenly items-center
 }
-.btn-caso-ref div svg {
-   @apply mr-2 -ml-1
+.label-blue .title .point {
+   @apply w-4 h-4 rounded-full shadow-sm shadow-black/25
 }
-.btn-caso-ref div h4 {
-   @apply font-semibold text-sm leading-tight
+.label-blue .title h4 {
+   @apply text-center text-white font-bold text-[15px] leading-none
 }
 
-.input-insert {
-   @apply relative w-full
+.point.low {
+   @apply bg-green-500
+}
+.point.intermediate {
+   @apply bg-text-intermedio
+}
+.point.high {
+   @apply bg-red-500
+}
+
+.content-inputs .error {
+   @apply ml-4 text-red-500 leading-none pt-1 text-xs flex-none italic;
+}
+.grupos-error {
+   @apply col-span-3 text-center ml-0 !important
+}
+
+.content-inputs {
+   @apply w-full flex-col justify-center items-center gap-6;
+}
+.content-inputs .risk-edit,
+.content-inputs .risk-estudy   {
+   @apply grid-cols-3 gap-x-6 gap-y-1 content-center w-full;
+}
+.content-inputs .risk-edit .input,
+.content-inputs .risk-estudy .input {
+   @apply flex flex-col
+}
+
+.input-insert,
+.input-calc {
+   @apply w-full relative;
 }
 .input-insert input {
-   @apply border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
+   @apply w-full text-text-500 border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40;
 }
-.input-insert input.porcentaje {
-   @apply pr-8
-}
-.input-insert input.money {
-   @apply pl-8
-}
-.input-insert .icon-porcentaje {
-   @apply absolute text-text-500 right-[10px] -mt-[24px]
-}
-.input-insert .icon-money {
-   @apply absolute text-text-500 left-[10px] -mt-[24px]
-}
-
-.input-calc {
-   @apply relative w-full
-}
-.input-calc input {
-   @apply border-slate-400 bg-zinc-300 rounded-md block w-full
-}
+.input-insert input.porcentaje,
 .input-calc input.porcentaje {
-   @apply pr-8
+   @apply pr-8;
 }
-.input-calc input.money {
-   @apply pl-8
-}
+.input-insert .icon-porcentaje,
 .input-calc .icon-porcentaje {
    @apply absolute text-text-500 right-[10px] -mt-[24px]
 }
-.input-calc .icon-money {
-   @apply absolute text-text-500 left-[10px] -mt-[24px]
-}
 
-.input-edit {
-   @apply relative w-full
-}
-.input-edit input {
-   @apply border-slate-400 bg-introduccion-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
-}
-.input-edit input.porcentaje {
-   @apply pr-8
-}
-.input-edit input.money {
-   @apply pl-8
-}
-.input-edit .icon-porcentaje {
-   @apply absolute text-text-500 right-[10px] -mt-[24px]
-}
-.input-edit .icon-money {
-   @apply absolute text-text-500 left-[10px] -mt-[24px]
-}
-
-.tratamiento,
-.complicaciones {
-   @apply flex flex-col-reverse drop-shadow-md w-full;
-}
-.tratamiento .form,
-.complicaciones .form {
-   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
-}
-.tratamiento .form {
-   @apply pr-4
-}
-.tratamiento .form table {
-   @apply border-spacing-x-1 border-separate;
-}
-.tratamiento .form table thead tr th,
-.complicaciones .form table thead tr th {
-   @apply leading-none py-2
-}
-.tratamiento .form table tbody tr td,
-.complicaciones .form table tbody tr td {
-   @apply leading-none py-1 px-1
-}
-.tratamiento .label,
-.complicaciones .label {
-   @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
-}
-.tratamiento .label h4,
-.complicaciones .label h4 {
-   @apply text-orange-400 font-bold text-lg bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% px-6 py-1 rounded-t-2xl
-}
-
-.error {
-   @apply w-full px-4 text-red-500 leading-none text-xs italic text-center;
-}
-.error span {
-   @apply font-bold text-sm not-italic leading-none;
+.input-calc input {
+   @apply w-full text-text-500 border-slate-400 bg-zinc-300 rounded-md block
 }
 
 footer {
-   @apply w-full px-12 text-center flex items-center justify-between;
+   @apply w-full px-44 text-center flex flex-col items-center gap-4;
+}
+footer article {
+   @apply px-9;
 }
 footer article p {
-   @apply font-normal leading-none text-center text-sm my-2 text-text-500
+   @apply font-helvet font-light leading-none text-center text-xs mt-2
 }
 
 .pop-conten {
-   @apply w-[1024px] h-[768px] relative top-0 flex flex-col justify-center items-center bg-pop-background/85
-}
-.pop-conten {
-   @apply absolute
+   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex-col gap-4 justify-center items-center py-6 p-4;
 }
 .pop {
-   @apply flex flex-col-reverse  w-fit drop-shadow-md
+   @apply flex flex-col-reverse w-fit drop-shadow-md
+}
+.pop h4 {
+   @apply font-extrabold text-button-text
 }
 .pop .pop-form {
    @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
+}
+.pop .pop-form table {
+   @apply border-spacing-1 border-separate
 }
 
 .pop .pop-form table thead tr th {
@@ -294,30 +271,27 @@ footer article p {
    @apply leading-none py-1 px-1
 }
 .pop .pop-form table tbody tr td:first-child {
-   @apply mr-2
+   @apply mr-2 w-[180px]
 }
 
 .pop .pop-label {
    @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
 }
 .pop .pop-label div {
-   @apply flex bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% pl-6 py-1 rounded-t-2xl
+   @apply flex justify-center items-center bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% pl-6 py-1 rounded-t-2xl
 }
 .pop .pop-label div h4 {
-   @apply text-orange-400 font-bold text-lg
+   @apply text-orange-400 font-extrabold text-lg
 }
 .pop .pop-label div button {
    @apply mx-3
 }
-
 .pop-animate-up {
    @apply animate-fade-in animate-duration-slow
 }
-
 .pop-animate-down {
    @apply animate-fade-out animate-duration-slow
 }
-
 
 .alert-conten {
    @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center z-[60] top-0 left-0;
@@ -326,7 +300,7 @@ footer article p {
    @apply flex flex-col-reverse w-fit drop-shadow-md
 }
 .alert-conten .alert .alert-contain {
-   @apply max-w-lg inline-block align-bottom  rounded-xl text-left overflow-hidden shadow-xl
+   @apply max-w-lg inline-block align-bottom rounded-xl text-left overflow-hidden shadow-xl
 }
 .alert-conten .alert .alert-contain .alert-body {
    @apply bg-white flex-col items-start px-4 pt-5 pb-4
@@ -340,10 +314,9 @@ footer article p {
 .alert-body.warning .header-icon {
    @apply bg-yellow-100 text-yellow-500
 }
-.alert-body.danger .header-icon  {
+.alert-body.danger .header-icon {
    @apply bg-red-100 text-red-500
 }
-
 .alert-body.info .header-conten h3 {
    @apply text-sky-500
 }
@@ -353,9 +326,7 @@ footer article p {
 .alert-body.danger .header-conten h3 {
    @apply text-red-500
 }
-
-.alert-conten .alert .alert-contain .alert-body .header-title
-{
+.alert-conten .alert .alert-contain .alert-body .header-title {
    @apply mt-3 ml-4 text-center;
 }
 .alert-conten .alert .alert-contain .alert-body .header-conten {
@@ -373,7 +344,7 @@ footer article p {
 .alert-conten .alert .alert-contain .alert-body .header-conten article p span {
    @apply font-bold
 }
-.alert-conten .alert .alert-contain .alert-footer{
+.alert-conten .alert .alert-contain .alert-footer {
    @apply bg-slate-100 px-6 py-3 flex flex-row-reverse gap-4
 }
 .alert-animate-in {
@@ -382,7 +353,6 @@ footer article p {
 .alert-animate-out {
    @apply animate-fade-out animate-duration-slow
 }
-
 .alert-conten-animate-in {
    @apply animate-fade-in-up animate-delay-200 animate-duration-slow
 }

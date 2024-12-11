@@ -36,7 +36,7 @@ class customPop extends HTMLElement{
    connectedCallback() {
       document.addEventListener('configLoaded', () => {
          const { type } = this;
-         let procedimientosHTEC = veeva.calculadora.referencias.procedimientos.HTEC;
+         let procedimientosHAP = veeva.calculadora.referencias.procedimientos.HAP;
 
          this.innerHTML = `
          <section class="pop-conten">
@@ -52,13 +52,13 @@ class customPop extends HTMLElement{
                   </table>
                   <table class="w-full">
                      <tbody class="overflow-y-scroll h-[400px] block">
-                        ${this.getRecursos(procedimientosHTEC)}
+                        ${this.getRecursos(procedimientosHAP)}
                      </tbody>
                   </table>
                </div>
                <div class="pop-label">
                   <div>
-                     <h4>Consumo de recursos por clase funcional HPTEC</h4>
+                     <h4>Consumo de recursos por clase funcional HAP</h4>
                      <button onclick="javascript:slideOnce.popDown('${this.type}')" class="text-red-600 shadow-md rounded-full bg-white h-fit">
                         <svg class="size-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                            <path fill-rule="evenodd"
