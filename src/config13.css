@@ -37,8 +37,9 @@ input[type=number] {
 }
 
 .slide {
-   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-[4.5rem] relative
+   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-[4.5rem] absolute;
 }
+
 
 header hgroup {
    @apply w-full flex justify-end items-start relative;
@@ -54,6 +55,9 @@ header hgroup .titulo {
 }
 header hgroup div h2 {
    @apply font-extrabold text-center text-white text-3xl
+}
+header hgroup div h3 {
+   @apply font-thin text-white text-base leading-none;
 }
 
 main {
@@ -417,9 +421,12 @@ canvas {
    100% {background: rgb(221, 215, 209, 0);}
 }
 
+custom-pop, custom-alert {
+   @apply w-screen h-screen grid place-items-center place-content-center z-[60];
+}
 
 .alert-conten {
-   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center z-[60] top-0 left-0;
+   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center;
 }
 
 .alert-conten .alert {

@@ -138,37 +138,35 @@
             </div>
          </button>
       </footer>
-
-      <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
-         message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
-         actions='[
-            {"name": "Aceptar", "color": "orange", "handler": "slideNueve.jumpToSlide(&apos;01&apos;)"},
-            {"name": "Cancelar", "color": "gray", "handler": "slideNueve.closeAlert()"}
-         ]'>
-      </custom-alert>
-
-      <custom-alert name="alert-ref-complicaciones" class="hidden" type="info" title="Usar Datos de Referencia"
-         message="<p> Se utilizarán los <span>valores de referencia</span> para la <span>Probabilidad de Complicaciones</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
-         actions='[
-            {"name": "Aceptar", "color": "orange", "handler": "slideNueve.syncComplicationsWithReference()"},
-            {"name": "Cancelar", "color": "gray", "handler": "slideNueve.closeAlert()"}
-         ]'>
-      </custom-alert>
-
-      <custom-alert name="alert-ref-microcosteo" class="hidden" type="info" title="Usar Datos de Referencia"
-         message="<p> Se utilizarán los <span>valores de referencia</span> para los <span>Costos de paciente por complicación</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
-         actions='[
-                  {"name": "Aceptar", "color": "orange", "handler": "slideNueve.syncCostosWithReference()"},
-                  {"name": "Cancelar", "color": "gray", "handler": "slideNueve.closeAlert()"}
-               ]'>
-      </custom-alert>
-
-      <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
-         message="<p> No puede continuar porque no se encontraron <span>datos almacenados</span>.<br>Por favor, verifica la información y vuelve a intentarlo.</p>"
-         actions='[{"name": "Aceptar", "color": "orange", "handler": "slideNueve.jumpToSlide(&apos;01&apos;)"}]'>
-      </custom-alert>
-
    </section>
+
+   <custom-alert name="alert-ref-complicaciones" class="hidden" type="info" title="Usar Datos de Referencia"
+      message="<p> Se utilizarán los <span>valores de referencia</span> para la <span>Probabilidad de Complicaciones</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
+      actions='[
+      {"name": "Aceptar", "color": "orange", "handler": "slideNueve.syncComplicationsWithReference()"},
+      {"name": "Cancelar", "color": "gray", "handler": "slideNueve.closeAlert()"}
+      ]'>
+   </custom-alert>
+
+   <custom-alert name="alert-ref-microcosteo" class="hidden" type="info" title="Usar Datos de Referencia"
+      message="<p> Se utilizarán los <span>valores de referencia</span> para los <span>Costos de paciente por complicación</span>. Todos los valores actuales serán reemplazados por los datos de referencia.</p>"
+      actions='[
+      {"name": "Aceptar", "color": "orange", "handler": "slideNueve.syncCostosWithReference()"},
+      {"name": "Cancelar", "color": "gray", "handler": "slideNueve.closeAlert()"}
+      ]'>
+   </custom-alert>
+
+   <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
+      message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
+      actions='[
+         {"name": "Aceptar", "color": "orange", "handler": "slideNueve.jumpToSlide(&apos;01&apos;)"},
+         {"name": "Cancelar", "color": "gray", "handler": "slideNueve.closeAlert()"}
+      ]'>
+   </custom-alert>
+   <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
+      message="<p> No puede continuar porque no se encontraron <span>datos almacenados</span>.<br>Por favor, verifica la información y vuelve a intentarlo.</p>"
+      actions='[{"name": "Aceptar", "color": "orange", "handler": "slideNueve.jumpToSlide(&apos;01&apos;)"}]'>
+   </custom-alert>
 
 </body>
 </html>

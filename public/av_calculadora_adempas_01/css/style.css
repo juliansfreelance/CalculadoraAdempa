@@ -1773,11 +1773,13 @@ body {
 }
 
 .slide {
+  position: absolute;
   display: flex;
   height: 768px;
   width: 1024px;
   flex-direction: column;
   gap: 1.5rem;
+  overflow: hidden;
   background-image: url('../images/fondo.jpg');
   background-size: cover;
   background-position: center;

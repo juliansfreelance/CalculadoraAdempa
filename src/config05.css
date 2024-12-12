@@ -40,7 +40,7 @@ input[type=number] {
 }
 
 .slide {
-   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6 relative
+   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6 absolute;
 }
 
 header hgroup {

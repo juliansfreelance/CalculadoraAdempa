@@ -37,8 +37,9 @@ input[type=number] {
 }
 
 .slide {
-   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6 relative
+   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6 absolute;
 }
+
 
 header hgroup {
    @apply w-full flex justify-end items-start relative;
@@ -323,8 +324,12 @@ footer article.ref p:last-child {
    @apply mb-0 !important;
 }
 
+custom-pop, custom-alert {
+   @apply w-screen h-screen grid place-items-center place-content-center z-[60];
+}
+
 .pop-conten {
-   @apply w-[1024px] h-[768px] relative top-0 flex flex-col justify-center items-center bg-pop-background/85 p-8
+   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center py-6 p-4;
 }
 .pop {
    @apply flex flex-col-reverse w-fit drop-shadow-md
@@ -378,7 +383,7 @@ footer article.ref p:last-child {
 }
 
 .alert-conten {
-   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center z-[60] top-0 left-0;
+   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex flex-col gap-4 justify-center items-center;
 }
 .alert-conten .alert {
    @apply flex flex-col-reverse w-fit drop-shadow-md

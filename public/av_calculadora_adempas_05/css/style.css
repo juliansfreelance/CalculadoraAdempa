@@ -1791,7 +1791,7 @@ input[type=number] {
 }
 
 .slide {
-  position: relative;
+  position: absolute;
   display: flex;
   height: 768px;
   width: 1024px;
@@ -2536,14 +2536,8 @@ footer article p {
   line-height: 1;
 }
 
-custom-pop {
-  position: absolute;
-  z-index: 60;
-}
-
 .pop-conten {
   position: absolute;
-  z-index: 60;
   height: 768px;
   width: 1024px;
   flex-direction: column;

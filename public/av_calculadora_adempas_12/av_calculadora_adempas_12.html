@@ -121,7 +121,6 @@
                         </ul>
                      </div>
                   </div>
-               
                </div>
             </div>
          </section>
@@ -145,23 +144,22 @@
          </div>
 
       </footer>
-
-      <custom-pop type="recursos-HPTEC" class="hidden z-50"></custom-pop>
-
-      <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
-         message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
-         actions='[
-            {"name": "Aceptar", "color": "orange", "handler": "slideDoce.jumpToSlide(&apos;01&apos;)"},
-            {"name": "Cancelar", "color": "gray", "handler": "slideDoce.closeAlert()"}
-         ]'>
-      </custom-alert>
-
-      <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
-         message="<p> No puede continuar porque no se encontraron <span>datos almacenados</span>.<br>Por favor, verifica la información y vuelve a intentarlo.</p>"
-         actions='[{"name": "Aceptar", "color": "orange", "handler": "slideDoce.jumpToSlide(&apos;01&apos;)"}]'>
-      </custom-alert>
-
    </section>
+
+   <custom-pop type="recursos-HPTEC" class="hidden z-50"></custom-pop>
+
+   <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
+      message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
+      actions='[
+         {"name": "Aceptar", "color": "orange", "handler": "slideDoce.jumpToSlide(&apos;01&apos;)"},
+         {"name": "Cancelar", "color": "gray", "handler": "slideDoce.closeAlert()"}
+      ]'>
+   </custom-alert>
+   <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
+      message="<p> No puede continuar porque no se encontraron <span>datos almacenados</span>.<br>Por favor, verifica la información y vuelve a intentarlo.</p>"
+      actions='[{"name": "Aceptar", "color": "orange", "handler": "slideDoce.jumpToSlide(&apos;01&apos;)"}]'>
+   </custom-alert>
+
 
    <script defer>
       document.addEventListener('alpine:init', () => {
@@ -215,7 +213,7 @@
             ],
             segmentsWidth: '100%',
             progress: '0%',
-            segments: 1,
+            segments: 10,
             calculateProgress() {
                this.segmentsWidth = 100 / this.segments + '%'
                this.progress = 100 / this.segments * this.value + '%'
@@ -227,7 +225,7 @@
             },
             init() {
                this.segments = this.prices.length - 1
-               this.calculateProgress()
+               this.calculateProgress();
                this.$watch('value', () => this.calculateProgress());
                window.updateSliderValue = (newValue) => this.updateValue(newValue);
             },

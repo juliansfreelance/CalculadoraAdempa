@@ -58,6 +58,7 @@
             </span>
             <div class="titulo animate-fade-in-left animate-delay-500 animate-duration-slow">
                <h2>Resultados</h2>
+               <h3>Grupo 1 (HAP) Y Grupo 4 (HPTEC)</h3>
             </div>
          </hgroup>
       </header>
@@ -499,22 +500,20 @@
             </section>
          </section>
       </section>
-
-      <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
-         message="<p> No se pueden mostrar los resultados porque no se encontraron <span>datos almacenados</span>. Por favor, verifica la información y vuelve a intentarlo.</p>"
-         actions='[{"name": "Aceptar", "color": "orange", "handler": "slideTrece.jumpToSlide(&apos;01&apos;)"}]'>
-      </custom-alert>
-
-      <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
-         message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
-         actions='[
-                  {"name": "Aceptar", "color": "orange", "handler": "slideTrece.jumpToSlide(&apos;01&apos;)"},
-                  {"name": "Cancelar", "color": "gray", "handler": "slideTrece.closeAlert()"}
-               ]'>
-      </custom-alert>
-
    </section>
 
+   <custom-alert name="alert-bd-clear" class="hidden" type="danger" title="Datos no disponibles"
+      message="<p> No se pueden mostrar los resultados porque no se encontraron <span>datos almacenados</span>. Por favor, verifica la información y vuelve a intentarlo.</p>"
+      actions='[{"name": "Aceptar", "color": "orange", "handler": "slideTrece.jumpToSlide(&apos;01&apos;)"}]'>
+   </custom-alert>
+
+   <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
+      message="<p> Si vuelves al inicio, se perderán todos los datos suministrados<br>y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
+      actions='[
+               {"name": "Aceptar", "color": "orange", "handler": "slideTrece.jumpToSlide(&apos;01&apos;)"},
+               {"name": "Cancelar", "color": "gray", "handler": "slideTrece.closeAlert()"}
+            ]'>
+   </custom-alert>
 
 </body>
 </html>

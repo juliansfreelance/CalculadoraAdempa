@@ -54,7 +54,7 @@ ol ol>li {
 }
 
 .slide {
-   @apply w-[1024px] h-[768px] flex flex-col gap-4 bg-white bg-fondo bg-cover bg-center pb-16 z-0;
+   @apply w-[1024px] h-[768px] flex flex-col gap-4 bg-white bg-fondo bg-cover bg-center pb-16 z-0 absolute;
 }
 
 header hgroup {

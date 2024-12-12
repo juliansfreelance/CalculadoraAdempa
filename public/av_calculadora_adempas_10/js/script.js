@@ -106,21 +106,21 @@ let slideDiez = {
       if (customAlert) {
          customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
          customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-         customAlert.classList.replace('hidden', 'block');
+         customAlert.classList.replace('hidden', 'grid');
       } else {
          console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${alert}".`);
       }
    },
 
    closeAlert: function () {
-      const customAlert = document.querySelector('custom-alert.block');
-      const customAlertConten = document.querySelector('custom-alert.block .alert-conten');
-      const customAlertAlert = document.querySelector('custom-alert.block .alert-conten .alert');
+      const customAlert = document.querySelector('custom-alert.grid');
+      const customAlertConten = document.querySelector('custom-alert.grid .alert-conten');
+      const customAlertAlert = document.querySelector('custom-alert.grid .alert-conten .alert');
       if (customAlert) {
          customAlertConten.classList.replace('alert-animate-in', 'alert-animate-out');
          customAlertAlert.classList.replace('alert-conten-animate-in', 'alert-conten-animate-out');
          setTimeout(() => {
-            customAlert.classList.replace('block', 'hidden');
+            customAlert.classList.replace('grid', 'hidden');
          }, 600);
       } else {
          console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
@@ -143,7 +143,7 @@ let slideDiez = {
       costTypes.forEach(type => {
          document.querySelector(`input[name='total-${type}']`).value = FORMAT_ENTERO(costos[3][type]).format();
       });
-      const customAlert = document.querySelector('custom-alert.block');
+      const customAlert = document.querySelector('custom-alert.grid');
       if (customAlert) {
          setTimeout(() => {
             slideDiez.validateCosts();
@@ -187,7 +187,7 @@ let slideDiez = {
       const inputs = document.querySelectorAll('input[name^="microcosteo"]');
       inputs.forEach(input => {
       const name = input.name;
-      const [index, riesgo] = name.split('-');
+      const [tipo, index, riesgo] = name.split('-');
          input.value = FORMAT_DECIMAL(rubros[index].cantidad[riesgo]).format();
       });
       slideDiez.updateInputCosts();

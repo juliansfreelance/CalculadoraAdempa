@@ -1791,6 +1791,7 @@ input[type=number] {
 }
 
 .slide {
+  position: absolute;
   display: flex;
   height: 768px;
   width: 1024px;

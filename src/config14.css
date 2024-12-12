@@ -27,8 +27,9 @@ body {
 }
 
 .slide {
-   @apply w-[1024px] h-[768px] flex flex-col gap-4 bg-white bg-fondo bg-cover bg-center pb-16 z-0;
+   @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6 absolute;
 }
+
 
 header hgroup {
    @apply w-full h-[80px] flex justify-between items-start

@@ -28,7 +28,7 @@ body {
 }
 
 .slide {
-   @apply w-[1024px] h-[768px] flex flex-col gap-6 bg-white bg-fondo bg-cover bg-center pb-6 z-0;
+   @apply w-[1024px] h-[768px] flex flex-col gap-6 bg-white bg-fondo bg-cover bg-center pb-6 z-0 absolute;
 }
 
 header hgroup {

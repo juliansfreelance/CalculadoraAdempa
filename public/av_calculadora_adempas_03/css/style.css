@@ -1778,6 +1778,7 @@ body {
 }
 
 .slide {
+  position: absolute;
   z-index: 0;
   display: flex;
   height: 768px;
@@ -1880,11 +1881,6 @@ main {
 }
 
 .home-btn div {
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
-  --tw-gradient-from: #DFE0E4 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(223 224 228 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #fff var(--tw-gradient-to-position);
   display: flex;
   height: 2.25rem;
   width: 2.25rem;
@@ -1893,6 +1889,11 @@ main {
   justify-content: center;
   gap: 0.25rem;
   border-radius: 9999px;
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  --tw-gradient-from: #DFE0E4 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(223 224 228 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #fff var(--tw-gradient-to-position);
   padding: 0.25rem;
 }
 
@@ -2003,7 +2004,12 @@ main {
   position: absolute;
   z-index: 20;
   height: 2.25rem;
-  width: 750px
+  width: 750px;
+  border-top-left-radius: 0.5rem;
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  --tw-gradient-from: rgb(255 255 255 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position)
 }
 
 .pop .pop-content::after {
@@ -2012,24 +2018,13 @@ main {
   bottom: 1rem;
   z-index: 20;
   height: 2.25rem;
-  width: 750px
-}
-
-.pop .pop-content::before {
-  border-top-left-radius: 0.5rem;
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
-  --tw-gradient-from: rgb(255 255 255 / 0.8) var(--tw-gradient-from-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
-}
-
-.pop .pop-content::after {
+  width: 750px;
   border-bottom-left-radius: 0.5rem;
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
   --tw-gradient-from: rgb(255 255 255 / 0) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: rgb(255 255 255 / 0.8) var(--tw-gradient-to-position);
+  --tw-gradient-to: rgb(255 255 255 / 0.8) var(--tw-gradient-to-position)
 }
 
 .pop .pop-label {
