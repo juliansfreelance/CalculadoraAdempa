@@ -36,7 +36,7 @@ let slideSeis = {
             htecEditValue.value = veeva.calculadora.grupos.HTEC.toString().replace('.', ',');
             htpEdit.classList.replace('hidden', 'grid');
             inputsElement.classList.replace('hidden', 'flex');
-         } else {
+         } else if (hapState && hptecState) {
             updateButtonStyles(1);
             const hapEstudyValue = document.querySelector('input[name="estudy-HAP"]');
             const htecEstudyValue = document.querySelector('input[name="estudy-HTCE"]');
@@ -52,8 +52,6 @@ let slideSeis = {
       buttonsElement.forEach(button => {
          button.addEventListener('click', slideSeis.handleButtonClick);
       });
-
-      console.log(hapState, hptecState);
       if (hapState && hptecState) {
          HTPAsk.classList.remove('hidden');
          HTPAsk.classList.add('flex');
