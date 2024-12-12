@@ -57,6 +57,7 @@ module.exports = {
     require('@midudev/tailwind-animations'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
   ],
 }
 

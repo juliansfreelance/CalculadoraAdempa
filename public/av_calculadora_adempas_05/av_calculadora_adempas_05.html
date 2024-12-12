@@ -10,14 +10,14 @@
    <meta name='author' href="https://github.com/juliansfreelance" email="jcalderon.code@gmail.com" content='Julio Calderón - Desarrollador Front-end' />
    <meta name="description" content="Herramienta de costos asociados con la atención médica en el contexto de la hipertensión pulmonar tromboembólica crónica o de la Hipertensión Pulmonar por categoria de riesgo (HTP)" />
 
-   <title>AV Calculadora HTP Adempa | Población y Distribución por grupo de HTP</title>
+   <title>AV Calculadora HTP Adempa | Selección de grupo de HTP</title>
 
    <link rel="icon" type="image/ico" href="images/icon.png" />
 
    <link rel="stylesheet" href="css/style.css">
 
-   <script src="js/lib/currency.min.js" defer></script>
-   <script src="js/components/input.js" defer></script>
+   <script src="js/lib/alpine.min.js" defer></script>
+
    <script src="js/components/alert.js" defer></script>
    <script src="js/script.js" defer></script>
 </head>
@@ -44,100 +44,112 @@
             </span>
             <div class="titulo animate-fade-in-left animate-delay-100 animate-duration-slow">
                <h2>Herramienta de costos<br>de la Hipertensión Pulmonar por categoria de riesgo</h2>
-               <h3>Población y Distribución por grupo de HTP</h3>
+               <h3>Selección de grupo de HTP</h3>
             </div>
          </hgroup>
       </header>
 
-      <main>
+      <main class="mx-16">
 
-         <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[100ms] transition-all" onclick="slideCinco.jumpToSlide('02')">
+         <!-- <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[100ms] transition-all" onclick="slideCinco.jumpToSlide('02')">
             <div><h4>Instrucciones</h4></div>
+         </button> -->
+         <div class="animate-slide-up-fade animate-delay-200">
+            <h3 class="w-full font-extrabold text-text-500 text-2xl leading-none text-center">Grupo de HTP</h3>
+            <p class="w-full text-base text-text-500 leading-none text-center">Active los grupos el grupo HTP</p>
+         </div>
+
+
+         <section class="grupos">
+            <div class="card-grupo animate-fade-in-left animate-delay-500"
+               x-data="{ isHAP: true }"
+               :class="!isHAP ? 'active' : ''">
+               <div class="img">
+                  <img src="images/grupo1.png" alt="Grupo 1 (HAP)">
+               </div>
+               <article>
+                  <h4>Grupo 1 (HAP)</h4>
+                  <h2>Hipertensión arterial pulmonar</h2>
+                  <p>Idiopática (50 a 60%), asociada a enfermedades del tejido conectivo hereditaria, asociada a medicamentos y toxinas, infección por VIH, hipertensión portal, cardiopatías congénitas, esquistosomiasis, HTP persistente del recién nacido.</p>
+                  <p><span>Prevalencia:</span> Rara</p>
+                  <div class="absolute bottom-0 right-6 flex justify-center min-w-[14rem] mb-4 shadow-sm rounded-full">
+                     <div class="relative flex w-full p-1 bg-slate-200 rounded-full">
+                        <span class="absolute inset-0 m-1 pointer-events-none" aria-hidden="true">
+                           <span :class="isHAP ? 'translate-x-0' : 'translate-x-full'"
+                              class="absolute inset-0 w-1/2 bg-gradient-to-r from-red-600 to-amber-600 rounded-full shadow-sm shadow-indigo-950/10 transform transition-transform duration-150 ease-in-out"></span>
+                        </span>
+                        <button
+                           @click="isHAP = true"
+                           onclick="slideCinco.flujo('HAP', false)"
+                           class="relative flex-1 text-sm font-semibold h-8 rounded-full focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors duration-150 ease-in-out"
+                           :class="isHAP ? 'text-white' : 'text-slate-500'"
+                           :aria-pressed="isHAP">
+                           Desactivar
+                        </button>
+                        <button
+                           @click="isHAP = false"
+                           onclick="slideCinco.flujo('HAP', true)"
+                           class="relative flex-1 text-sm font-semibold h-8 rounded-full focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors duration-150 ease-in-out"
+                           :class="isHAP ? 'text-slate-500' : 'text-white'"
+                           :aria-pressed="isHAP">
+                           Activar
+                        </button>
+                     </div>
+                  </div>
+               </article>
+            </div>
+            <div class="card-grupo animate-fade-in-right animate-delay-500"
+               x-data="{ isHPTEC: true }"
+               :class="!isHPTEC ? 'active' : ''">
+               <div class="img">
+                  <img src="images/grupo4.png" alt="Grupo  (HPTEC)">
+               </div>
+               <article>
+                  <h4>Grupo 4 (HPTEC)</h4>
+                  <h2>Hipertensión pulmonar secundaria a obstrucción arterial pulmonar</h2>
+                  <p>Hipertensión pulmonar (HTP) tromboembólica crónica y otras obstrucciones arteriales.</p>
+                  <p><span>Prevalencia:</span> Rara</p>
+                  <div class="absolute bottom-0 right-6 flex justify-center min-w-[14rem] mb-4 shadow-sm rounded-full">
+                     <div class="relative flex w-full p-1 bg-slate-200 rounded-full">
+                        <span class="absolute inset-0 m-1 pointer-events-none" aria-hidden="true">
+                           <span :class="isHPTEC ? 'translate-x-0' : 'translate-x-full'"
+                              class="absolute inset-0 w-1/2 bg-gradient-to-r from-red-600 to-amber-600 rounded-full shadow-sm shadow-indigo-950/10 transform transition-transform duration-150 ease-in-out">
+                           </span>
+                        </span>
+                        <button
+                           @click="isHPTEC = true"
+                           onclick="slideCinco.flujo('HPTEC', false)"
+                           class="relative flex-1 text-sm font-semibold h-8 rounded-full focus-visible:outline-none focus-visible:ring focus-visible:ring-slate-300 transition-colors duration-150 ease-in-out"
+                           :class="isHPTEC ? 'text-white' : 'text-slate-500'"
+                           :aria-pressed="isHPTEC">
+                           Desactivar
+                        </button>
+                        <button
+                           @click="isHPTEC = false"
+                           onclick="slideCinco.flujo('HPTEC', true)"
+                           class="relative flex-1 text-sm font-semibold h-8 rounded-full focus-visible:outline-none focus-visible:ring focus-visible:ring-slate-300 transition-colors duration-150 ease-in-out"
+                           :class="isHPTEC ? 'text-slate-500' : 'text-white'"
+                           :aria-pressed="isHPTEC">
+                           Activar
+                        </button>
+                     </div>
+                  </div>
+               </article>
+            </div>
+         </section>
+
+         <button class="btn-next-slide background-btn-orange button-orange-corner-md animate-pulse-fade-in hidden"
+            onclick="slideCinco.jumpToSlide('06')">
+            <div>
+               <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+               </svg>
+               <h4>Continuar</h4>
+            </div>
          </button>
 
-         <div class="input-poblacion animate-fade-in-down animate-delay-[100ms] transition-all">
-            <label for="poblacion" class="background-btn-orange z-10 peer-focus:border-blue-300 peer-focus:ring peer-focus:ring-blue-200 peer-focus:ring-opacity-50">
-               <div class="flex flex-row items-center justify-center">
-                  <i>
-                     <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-                     </svg>
-                  </i>
-                  <h4>Población</h4>
-               </div>
-            </label>
-            <input type="text" id="poblacion" name="poblacion" class="peer z-0" placeholder="Ingresa aquí tu población" />
-            <span class="error hidden">Debe ingresar la población o debe ser mayor a 0</span>
-         </div>
-
-         <div class="HTP-ask animate-fade-in-up animate-delay-[200ms] transition-all">
-            <h3>Distribución por grupo de HTP</h3><p>¿Conoce usted sus grupos?</p>
-            <div>
-               <button name="conoceGrupos" type="button" value="true" class="background-btn-gray button-gray-corner-full animate-fade-in-left animate-delay-[300ms]"><div><h4>SI</h4></div></button>
-               <button name="conoceGrupos" type="button" value="false" class="background-btn-gray button-gray-corner-full animate-fade-in-right animate-delay-[300ms]"><div><h4>NO</h4></div></button>
-            </div>
-         </div>
-
-         <section class="content-inputs hidden">
-            <div class="htp-edit hidden">
-               <div class="input animate-fade-in-left animate-delay-[100ms]">
-                  <label class="background-btn-blue label-blue" for="edit-HAP">
-                     <div>
-                        <h4>Grupo 1 HAP</h4>
-                     </div>
-                  </label>
-                  <custom-input name="edit-HAP" type="insert" icon="porcentaje"></custom-input>
-                  <span class="error hap-error hidden">Debe ingresar el Grupo 1 HAP</span>
-               </div>
-               <div class="input animate-fade-in-right animate-delay-[100ms]">
-                  <label class="background-btn-blue label-blue" for="edit-HTCE">
-                     <div>
-                        <h4>Grupo 4 HPTEC</h4>
-                     </div>
-                  </label>
-                  <custom-input name="edit-HTCE" type="insert" icon="porcentaje"></custom-input>
-                  <span class="error htce-error hidden">Debe ingresar el Grupo 4 HPTEC</span>
-               </div>
-               <span class="error grupos-error hidden">La suma de (Grupo 1 HAP) + (Grupo 4 HPTEC) debe ser igual a 100%.</span>
-            </div>
-
-            <div class="htp-estudy hidden">
-               <div class="input animate-fade-in-left animate-delay-[100ms]">
-                  <label class="background-btn-blue label-blue" for="estudy-HAP">
-                     <div>
-                        <h4>Grupo 1 HAP</h4>
-                     </div>
-                  </label>
-                  <custom-input name="estudy-HAP" type="calc" icon="porcentaje"></custom-input>
-               </div>
-               <div class="input animate-fade-in-right animate-delay-[100ms]">
-                  <label class="background-btn-blue label-blue" for="estudy-HTCE">
-                     <div>
-                        <h4>Grupo 4 HPTEC</h4>
-                     </div>
-                  </label>
-                  <custom-input name="estudy-HTCE" type="calc" icon="porcentaje"></custom-input>
-               </div>
-            </div>
-            <button class="background-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[600ms]"
-               onclick="slideCinco.validarForm()">
-               <div>
-                  <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                     stroke="currentColor">
-                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                  </svg>
-                  <h4>Continuar</h4>
-               </div>
-            </button>
-         </section>
       </main>
-
-      <!-- <footer>
-         <article class="animate-fade-in-up animate-delay-[500ms] animate-duration-slower">
-            <p>Costos procedimientos por paciente = Recurso en salud * Proporción de uso por estadificación de riesgo * Costo unitario. La proporción de uso de recursos según estadificación de riesgo está basada en la literatura (38) y el costo unitario basado en el tarifario del Instituto de Seguridad Social de Colombia de 2001 más el 35% de inflación estimado desde año a la actualidad (39)</p>
-            <p>38. Zozaya N., et al. The economic burden of pulmonary arterial hypertension in Spain. BMC Pulm Med. 2022 Mar 26;22(1):105.39. Ministerio de Salud. ACUERDO No. 256 DE 2.001. URL disponible: https://lexsaludcolombia.files.wordpress.com/2010/10/tarifas-iss-2001.pdf.</p>
-         </article>
-      </footer> -->
 
       <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"
          message="<p> Si vuelves al inicio, se perderán todos los datos suministrados y se <span>reiniciará la calculadora</span>.</p><p>¿Estás seguro de que deseas volver al inicio?</p>"
@@ -147,35 +159,6 @@
          ]'>
       </custom-alert>
 
-   </section>
-
-   <section class="pop-conten pop-animate-down hidden">
-      <div class="pop animate-fade-in-up animate-delay-100 animate-duration-slow">
-         <div class="pop-form">
-            <table class="w-full table-auto">
-               <thead>
-                  <tr>
-                     <th class="font-bold text-base text-sky-600 text-left">Estudio</th>
-                     <th class="font-bold text-base text-sky-600 text-center">Grupo 1 HAP</th>
-                     <th class="font-bold text-base text-sky-600 text-center">Grupo 4 HPTEC</th>
-                     <th></th>
-                  </tr>
-               </thead>
-               <tbody class="pop-conten-body">
-               </tbody>
-            </table>
-         </div>
-         <div class="pop-label">
-            <div>
-               <h4>Distribución por grupo diagnóstico</h4>
-               <button onclick="slideCinco.popDown()" class="text-red-600 shadow-md rounded-full bg-white h-fit">
-                  <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                     <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z" clip-rule="evenodd" />
-                  </svg>
-               </button>
-            </div>
-         </div>
-      </div>
    </section>
 
 

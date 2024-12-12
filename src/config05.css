@@ -25,19 +25,7 @@ body {
 }
 
 
-input {
-   @apply py-1 text-sm text-right !important;
-}
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-   -webkit-appearance: none;
-   margin: 0;
-}
-
-input[type=number] {
-   -moz-appearance: textfield;
-}
 
 .slide {
    @apply w-[1024px] h-[768px] flex flex-col bg-white bg-fondo bg-cover bg-center pb-6 absolute;
@@ -63,21 +51,10 @@ header hgroup div h3 {
 }
 
 main {
-   @apply flex-grow mx-40 my-10 mb-20 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
+   @apply flex-grow mx-16 my-10 mb-20 grid grid-flow-row auto-rows-max justify-items-center gap-4 content-center;
 }
 
-.HTP-ask {
-   @apply flex flex-col items-center justify-center gap-2 mt-4;
-}
-.HTP-ask h3 {
-   @apply font-extrabold text-text-500 text-2xl leading-none;
-}
-.HTP-ask p {
-   @apply text-base text-text-500 leading-none;
-}
-.HTP-ask div {
-   @apply flex flex-row justify-center items-center gap-4;
-}
+
 
 .background-btn-blue {
    @apply bg-gradient-to-tl from-[#005D73] from-20% to-[#009CC1]
@@ -172,79 +149,46 @@ main {
    @apply text-white font-bold text-base
 }
 
-.label-blue {
-   @apply mx-auto flex flex-col justify-center w-fit p-[3px] border border-b-0 border-[#004555] shadow-md shadow-black/30 rounded-t-lg
+.grupos {
+   @apply w-full grid grid-rows-2 gap-6 px-10;
 }
-.label-blue div {
-   @apply rounded-md px-4 py-1
-}
-.label-blue div h4 {
-   @apply text-center text-white font-bold text-lg
+.card-grupo {
+   @apply cursor-pointer w-full grid grid-cols-5 gap-3 bg-white/80 bg-center rounded-2xl shadow-black/30 shadow-md p-6 relative;
 }
 
-.input-poblacion {
-   @apply relative flex w-full h-9
+.card-grupo .img {
+   @apply aspect-w-1 aspect-h-1 rounded-2xl bg-white shadow-md relative;
+}
+.card-grupo .img img {
+   @apply w-[120px] mx-auto h-full object-scale-down;
+}
+.card-grupo article {
+   @apply col-span-4 flex flex-col justify-center pr-6 text-justify;
+}
+.card-grupo article h4 {
+   @apply text-text-500 font-bold text-sm;
+}
+.card-grupo article h2 {
+   @apply font-bold text-lg text-button-text mb-1 leading-tight;
+}
+.card-grupo article p {
+   @apply text-text-500 text-sm leading-tight my-1;
+}
+.card-grupo article p span {
+   @apply font-semibold;
 }
 
-.input-poblacion input {
-   @apply form-input w-full block rounded-r-md border border-l-0 text-text-500 shadow-sm shadow-black/40 border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
+.card-grupo.active {
+   @apply bg-slate-900/80;
 }
-.input-poblacion label {
-   @apply flex flex-row items-center justify-center rounded-l-full p-[3px] shadow-sm shadow-black/40 border border-[#F8971D] bg-white
+.card-grupo.active article h4 {
+   @apply text-slate-200 font-bold text-sm;
 }
-.input-poblacion label div {
-   @apply rounded-l-full h-full
+.card-grupo.active article h2 {
+   @apply text-white;
 }
-.input-poblacion label i {
-   @apply pl-4
-}
-.input-poblacion label h4 {
-   @apply pl-2 pr-4 font-bold text-base
-}
-.input-poblacion label i,
-.input-poblacion label h4 {
-   @apply text-black/35 drop-shadow-button
-}
-.input-poblacion .error {
-   @apply absolute mt-9 ml-4 text-red-500 leading-none pt-1 text-xs flex-none italic;
-}
-.content-inputs .error {
-   @apply ml-4 text-red-500 leading-none pt-1 text-xs flex-none italic;
-}
-.grupos-error {
-   @apply col-span-2 text-center ml-0 !important
-}
-
-.content-inputs {
-   @apply w-full flex-col justify-center items-center gap-6;
-}
-.content-inputs .htp-edit,
-.content-inputs .htp-estudy   {
-   @apply grid-cols-2 gap-x-6 gap-y-1 content-center w-full;
-}
-.content-inputs .htp-edit .input,
-.content-inputs .htp-estudy .input {
-   @apply flex flex-col
-}
-
-.input-insert,
-.input-calc {
-   @apply w-full relative;
-}
-.input-insert input {
-   @apply w-full text-text-500 border-slate-400 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40;
-}
-.input-insert input.porcentaje,
-.input-calc input.porcentaje {
-   @apply pr-8;
-}
-.input-insert .icon-porcentaje,
-.input-calc .icon-porcentaje {
-   @apply absolute text-text-500 right-[10px] -mt-[24px]
-}
-
-.input-calc input {
-   @apply w-full text-text-500 border-slate-400 bg-zinc-300 rounded-md block
+.card-grupo.active article p {
+   @apply text-slate-200;
 }
 
 footer {
@@ -255,46 +199,6 @@ footer article {
 }
 footer article p {
    @apply font-helvet font-light leading-none text-center text-xs mt-2
-}
-
-.pop-conten {
-   @apply w-[1024px] h-[768px] absolute bg-pop-background/85 bg-center flex-col gap-4 justify-center items-center py-6 p-4;
-}
-.pop {
-   @apply flex flex-col-reverse w-fit drop-shadow-md
-}
-.pop h4 {
-   @apply font-extrabold text-button-text
-}
-.pop .pop-form {
-   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
-}
-.pop .pop-form table thead tr th {
-   @apply leading-none py-2
-}
-.pop .pop-form table tbody tr td {
-   @apply leading-none py-1 px-1
-}
-.pop .pop-form table tbody tr td:first-child {
-   @apply mr-2
-}
-.pop .pop-label {
-   @apply w-fit ml-8 rounded-t-2xl bg-gradient-to-b from-button-bg1 to-white/80 p-1
-}
-.pop .pop-label div {
-   @apply flex justify-center items-center bg-gradient-to-b from-button-bg0/20 to-white/0 from-10% pl-6 py-1 rounded-t-2xl
-}
-.pop .pop-label div h4 {
-   @apply text-orange-400 font-extrabold text-lg
-}
-.pop .pop-label div button {
-   @apply mx-3
-}
-.pop-animate-up {
-   @apply animate-fade-in animate-duration-slow
-}
-.pop-animate-down {
-   @apply animate-fade-out animate-duration-slow
 }
 
 .alert-conten {

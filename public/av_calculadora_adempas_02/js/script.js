@@ -23,7 +23,7 @@ let slideDos = {
 
    jumpToSlide: function (slide) {
       localStorage.setItem('previousSlide', veeva.slide);
-      if (slide === '01' && localStorage.getItem('instrucciones') !== null) slide = '05';
+      if (slide === '01' && localStorage.getItem('instrucciones') !== null) slide = '06';
       localStorage.removeItem('instrucciones');
       const isIpad = /iPad/.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.platform === "MacIntel" && navigator.maxTouchPoints > 1);
       if (typeof veeva !== 'undefined') {

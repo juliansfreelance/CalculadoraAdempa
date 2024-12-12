@@ -24,6 +24,7 @@
     "devSlide14": "npx tailwindcss -i ./src/config14.css -o ./public/av_calculadora_adempas_14/css/style.css --watch"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
     "tailwindcss": "^3.4.4"
