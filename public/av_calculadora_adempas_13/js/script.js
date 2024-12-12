@@ -18,6 +18,8 @@ let veeva = {};
 let slideTrece = {
 
    ini: function () {
+      const hapState = JSON.parse(localStorage.getItem('HAP') || 'false');
+      const hptecState = JSON.parse(localStorage.getItem('HPTEC') || 'false');
       const resolveReferences = (obj) => {
          const resolvePath = (path, obj) => {
             return path.split('.').reduce((acc, part) => acc?.[part], obj);
@@ -48,6 +50,13 @@ let slideTrece = {
          setTimeout(() => {
             slideTrece.openAlert('bd-clear');
          }, 1600);
+      }
+      if (hapState && hptecState) {
+         document.querySelector('.titulo h3').innerHTML = 'Grupo 1 (HAP) Y Grupo 4 (HPTEC)';
+      } else if (hapState) {
+         document.querySelector('.titulo h3').innerHTML = 'Grupo 1 (HAP)';
+      } else if (hptecState) {
+         document.querySelector('.titulo h3').innerHTML = 'Grupo 4 (HPTEC)';
       }
    },
 
