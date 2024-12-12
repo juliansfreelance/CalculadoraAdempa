@@ -36,6 +36,17 @@
                      </svg>
                   </div>
                </button>
+
+               <button class="background-btn-gray button-gray-corner-md animate-fade-in-left animate-delay-[600ms]"
+                  onclick="slideSeis.jumpToSlide('05')">
+                  <div>
+                     <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                     </svg>
+                     <h4>Regresar</h4>
+                  </div>
+               </button>
                <button class="ref-btn animate-fade-in-left animate-delay-[100ms]" onclick="slideSeis.jumpToSlide('14')">
                   <div>
                      <h4>IPP</h4>
@@ -70,7 +81,7 @@
             <span class="error hidden">Debe ingresar la población o debe ser mayor a 0</span>
          </div>
 
-         <div class="HTP-ask animate-fade-in-up animate-delay-[200ms] transition-all">
+         <div class="HTP-ask animate-fade-in-up animate-delay-[200ms] transition-all hidden">
             <h3>Distribución por grupo de HTP</h3><p>¿Conoce usted sus grupos?</p>
             <div>
                <button name="conoceGrupos" type="button" value="true" class="background-btn-gray button-gray-corner-full animate-fade-in-left animate-delay-[300ms]"><div><h4>SI</h4></div></button>
@@ -120,7 +131,7 @@
                </div>
             </div>
             <button class="background-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[600ms]"
-               onclick="slideSeis.validarForm()">
+               onclick="slideSeis.validarForm('fullForm')">
                <div>
                   <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                      stroke="currentColor">
@@ -130,6 +141,16 @@
                </div>
             </button>
          </section>
+         <button class="btn-simpleForm background-btn-orange button-orange-corner-md animate-pulse-fade-in animate-delay-[600ms] hidden"
+            onclick="slideSeis.validarForm('simpleForm')">
+            <div>
+               <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+               </svg>
+               <h4>Continuar</h4>
+            </div>
+         </button>
       </main>
 
       <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"

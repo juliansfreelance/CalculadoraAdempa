@@ -28,7 +28,7 @@
          <hgroup>
             <span>
                <button class="home-btn animate-pulse-fade-in animate-delay-100"
-                  onclick="localStorage.getItem('calculadora') ? slideCinco.openAlert('reset') : slideCinco.jumpToSlide('01')">
+                  onclick="localStorage.getItem('calculadora') || localStorage.getItem('HAP') === 'true' ? slideCinco.openAlert('reset') : slideCinco.jumpToSlide('01')">
                   <div>
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -51,18 +51,20 @@
 
       <main class="mx-16">
 
-         <!-- <button class="background-btn-gray button-gray-corner-md animate-pulse-fade-in animate-delay-[100ms] transition-all" onclick="slideCinco.jumpToSlide('02')">
-            <div><h4>Instrucciones</h4></div>
-         </button> -->
          <div class="animate-slide-up-fade animate-delay-200 mb-4">
             <h3 class="w-full font-extrabold text-text-500 text-2xl leading-none text-center">Grupo de HTP</h3>
-            <p class="w-full text-base text-text-500 leading-none text-center">Active los grupos el grupo HTP</p>
+            <p class="w-full text-base text-text-500 leading-none text-center">Active los grupos HTP que desea avaluar</p>
          </div>
 
 
          <section class="grupos">
             <div class="card-grupo animate-fade-in-left animate-delay-500"
-               x-data="{ isHAP: true }"
+               x-data="{
+                  isHAP: (() => {
+                     const valor = localStorage.getItem('HAP');
+                     return !(valor ? JSON.parse(valor) : false);
+                  })()
+               }"
                :class="!isHAP ? 'active' : ''">
                <div class="img">
                   <img src="images/grupo1.png" alt="Grupo 1 (HAP)">
@@ -99,7 +101,12 @@
                </article>
             </div>
             <div class="card-grupo animate-fade-in-right animate-delay-500"
-               x-data="{ isHPTEC: true }"
+               x-data="{
+                  isHPTEC: (() => {
+                     const valor = localStorage.getItem('HPTEC');
+                     return !(valor ? JSON.parse(valor) : false);
+                  })()
+                  }"
                :class="!isHPTEC ? 'active' : ''">
                <div class="img">
                   <img src="images/grupo4.png" alt="Grupo  (HPTEC)">
@@ -137,8 +144,7 @@
                </article>
             </div>
          </section>
-
-         <button class="btn-next-slide background-btn-orange button-orange-corner-md animate-pulse-fade-in hidden"
+         <button class="btn-next-slide background-btn-orange button-orange-corner-md animate-pulse-fade-in hidden absolute bottom-10 mx-auto"
             onclick="slideCinco.jumpToSlide('06')">
             <div>
                <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
@@ -148,7 +154,6 @@
                <h4>Continuar</h4>
             </div>
          </button>
-
       </main>
 
       <custom-alert name="alert-reset" class="hidden" type="warning" title="Volver al inicio"

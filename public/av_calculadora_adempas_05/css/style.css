@@ -943,6 +943,10 @@ select {
   bottom: 0px;
 }
 
+.bottom-10 {
+  bottom: 2.5rem;
+}
+
 .bottom-6 {
   bottom: 1.5rem;
 }
@@ -1991,7 +1995,7 @@ main {
   margin-left: 4rem;
   margin-right: 4rem;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   display: grid;
   flex-grow: 1;
   grid-auto-flow: row;

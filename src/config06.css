@@ -67,7 +67,7 @@ main {
 }
 
 .HTP-ask {
-   @apply flex flex-col items-center justify-center gap-2 mt-4;
+   @apply flex-col items-center justify-center gap-2 mt-4;
 }
 .HTP-ask h3 {
    @apply font-extrabold text-text-500 text-2xl leading-none;

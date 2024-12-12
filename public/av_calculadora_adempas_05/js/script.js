@@ -40,14 +40,12 @@ let slideCinco = {
    },
 
    flujo: function (flujo, estado) {
-      console.log(flujo, estado);
-      const boton = document.querySelector('.btn-next-slide');
       if (['HAP', 'HPTEC'].includes(flujo)) {
          localStorage.setItem(flujo, estado);
       }
       const hapState = JSON.parse(localStorage.getItem('HAP') || 'false');
       const hptecState = JSON.parse(localStorage.getItem('HPTEC') || 'false');
-
+      const boton = document.querySelector('.btn-next-slide');
       !hapState && !hptecState ? boton.classList.add('hidden') : boton.classList.remove('hidden');
    },
 
@@ -81,8 +79,16 @@ let slideCinco = {
 document.addEventListener('DOMContentLoaded', function () {
    slideCinco.loadConfig().then(() => {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
-      localStorage.setItem('HAP', false);
-      localStorage.setItem('HPTEC', false);
+      if (localStorage.getItem('HAP') === null) {
+         localStorage.setItem('HAP', false);
+         localStorage.setItem('HPTEC', false);
+      } else {
+         console.log('entro');
+         const hapState = JSON.parse(localStorage.getItem('HAP') || 'false');
+         const hptecState = JSON.parse(localStorage.getItem('HPTEC') || 'false');
+         const boton = document.querySelector('.btn-next-slide');
+         !hapState && !hptecState ? boton.classList.add('hidden') : boton.classList.remove('hidden');
+      }
    });
 });
 

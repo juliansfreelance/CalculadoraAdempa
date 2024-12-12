@@ -12,6 +12,9 @@ let slideSeis = {
 
    ini: async function () {
       const inputElement = document.querySelector('input[name="poblacion"]');
+      const HTPAsk = document.querySelector('.HTP-ask');
+      const hapState = JSON.parse(localStorage.getItem('HAP') || 'false');
+      const hptecState = JSON.parse(localStorage.getItem('HPTEC') || 'false');
       const buttonsElement = document.querySelectorAll('button[name="conoceGrupos"]');
       const inputsElement = document.querySelector('.content-inputs');
       const htpEdit = document.querySelector('.htp-edit');
@@ -49,6 +52,26 @@ let slideSeis = {
       buttonsElement.forEach(button => {
          button.addEventListener('click', slideSeis.handleButtonClick);
       });
+
+      console.log(hapState, hptecState);
+      if (hapState && hptecState) {
+         HTPAsk.classList.remove('hidden');
+         HTPAsk.classList.add('flex');
+      } else {
+         document.querySelector('.btn-simpleForm').classList.remove('hidden');
+         document.querySelector('.titulo h3').innerHTML = 'Población total de pacientes';
+         if (hapState && !hptecState) {
+            veeva.calculadora.grupos.HAP = 100;
+            veeva.calculadora.grupos.HTEC = 0;
+            veeva.calculadora.grupos.study = "";
+         }
+         if (hptecState && !hapState) {
+            veeva.calculadora.grupos.HAP = 0;
+            veeva.calculadora.grupos.HTEC = 100;
+            veeva.calculadora.grupos.study = "";
+         }
+      }
+
    },
 
    handleButtonClick(event) {
@@ -140,39 +163,52 @@ let slideSeis = {
       }
    },
 
-   validarForm() {
+   validarForm(tipoForm) {
       const { poblacion, grupos } = veeva.calculadora;
       const toggleError = (selector, condition) => {
          document.querySelector(selector).classList.replace(condition ? 'hidden' : 'block', condition ? 'block' : 'hidden');
       };
-      toggleError('.input-poblacion .error', poblacion === 0);
-      if (grupos.conoceDistribucion) {
-         const hapInput = document.querySelector('input[name="edit-HAP"]');
-         const htecInput = document.querySelector('input[name="edit-HTCE"]');
-         const hapEditValue = parseFloat(hapInput.value.replace(',', '.'));
-         const htecEditValue = parseFloat(htecInput.value.replace(',', '.'));
-         toggleError('.hap-error', !hapInput.value);
-         toggleError('.htce-error', !htecInput.value);
-         const inputsNotEmpty = hapInput.value && htecInput.value;
-         const sumNot100 = hapEditValue + htecEditValue !== 100;
-         if (inputsNotEmpty && sumNot100) {
-            toggleError('.grupos-error', true);
-         } else if (inputsNotEmpty && !sumNot100) {
-            toggleError('.grupos-error', false);
-            grupos.HAP = hapEditValue;
-            grupos.HTEC = htecEditValue;
-            if (poblacion !== 0) {
-               localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
-               setTimeout(() => {
-                  slideSeis.jumpToSlide('07');
-               }, 800);
+
+      if (tipoForm === "fullForm") {
+         toggleError('.input-poblacion .error', poblacion === 0);
+         if (grupos.conoceDistribucion) {
+            const hapInput = document.querySelector('input[name="edit-HAP"]');
+            const htecInput = document.querySelector('input[name="edit-HTCE"]');
+            const hapEditValue = parseFloat(hapInput.value.replace(',', '.'));
+            const htecEditValue = parseFloat(htecInput.value.replace(',', '.'));
+            toggleError('.hap-error', !hapInput.value);
+            toggleError('.htce-error', !htecInput.value);
+            const inputsNotEmpty = hapInput.value && htecInput.value;
+            const sumNot100 = hapEditValue + htecEditValue !== 100;
+            if (inputsNotEmpty && sumNot100) {
+               toggleError('.grupos-error', true);
+            } else if (inputsNotEmpty && !sumNot100) {
+               toggleError('.grupos-error', false);
+               grupos.HAP = hapEditValue;
+               grupos.HTEC = htecEditValue;
+               if (poblacion !== 0) {
+                  localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+                  setTimeout(() => {
+                     slideSeis.jumpToSlide('07');
+                  }, 800);
+               }
             }
+         } else if (poblacion !== 0) {
+            localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+            setTimeout(() => {
+               slideSeis.jumpToSlide('07');
+            }, 800);
          }
-      } else if (poblacion !== 0) {
-         localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
-         setTimeout(() => {
-            slideSeis.jumpToSlide('07');
-         }, 800);
+      } else {
+         console.log('entromos');
+         if (poblacion !== 0) {
+            localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
+            setTimeout(() => {
+               slideSeis.jumpToSlide('07');
+            }, 800);
+         } else {
+            toggleError('.input-poblacion .error', true);
+         }
       }
    },
 
