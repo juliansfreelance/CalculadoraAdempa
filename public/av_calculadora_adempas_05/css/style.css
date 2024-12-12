@@ -1990,8 +1990,8 @@ header hgroup div h3 {
 main {
   margin-left: 4rem;
   margin-right: 4rem;
-  margin-top: 2.5rem;
-  margin-bottom: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   display: grid;
   flex-grow: 1;
   grid-auto-flow: row;

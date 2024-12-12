@@ -41,18 +41,14 @@ let slideCinco = {
 
    flujo: function (flujo, estado) {
       console.log(flujo, estado);
-      if (flujo === 'HAP' && estado === true) {
-         localStorage.setItem('HAP', true);
+      const boton = document.querySelector('.btn-next-slide');
+      if (['HAP', 'HPTEC'].includes(flujo)) {
+         localStorage.setItem(flujo, estado);
       }
-      if (flujo === 'HAP' && estado === false) {
-         localStorage.setItem('HAP', false);
-      }
-      if (flujo === 'HPTEC' && estado === true) {
-         localStorage.setItem('HPTEC', true);
-      }
-      if (flujo === 'HPTEC' && estado === false) {
-         localStorage.setItem('HPTEC', false);
-      }
+      const hapState = JSON.parse(localStorage.getItem('HAP') || 'false');
+      const hptecState = JSON.parse(localStorage.getItem('HPTEC') || 'false');
+
+      !hapState && !hptecState ? boton.classList.add('hidden') : boton.classList.remove('hidden');
    },
 
 
@@ -85,6 +81,8 @@ let slideCinco = {
 document.addEventListener('DOMContentLoaded', function () {
    slideCinco.loadConfig().then(() => {
       console.log(`LoadConfig Ready Slide ${veeva.zipName}${veeva.slide}`);
+      localStorage.setItem('HAP', false);
+      localStorage.setItem('HPTEC', false);
    });
 });
 
