@@ -205,7 +205,7 @@ let slideSiete = {
       estadificacionCategoria.alto = categoriaAlto;
       localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
       setTimeout(() => {
-         slideSiete.jumptoSlide('08');
+         slideSiete.jumpToSlide('08');
       }, 800);
    },
 

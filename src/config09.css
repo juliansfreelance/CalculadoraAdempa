@@ -285,9 +285,6 @@ footer article p {
 .pop-conten {
    @apply w-[1024px] h-[768px] relative top-0 flex flex-col justify-center items-center bg-pop-background/85
 }
-.pop-conten {
-   @apply absolute
-}
 .pop {
    @apply flex flex-col-reverse w-fit drop-shadow-md p-8
 }

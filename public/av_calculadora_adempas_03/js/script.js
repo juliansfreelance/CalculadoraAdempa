@@ -43,7 +43,7 @@ let slideTres = {
          console.error("Error al cargar las imágenes:", error);
       }
    },
-   jumptoSlide: function (slide) {
+   jumpToSlide: function (slide) {
       localStorage.setItem("previousSlide", veeva.slide);
       const isIpad = /iPad/.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.platform === "MacIntel" && navigator.maxTouchPoints > 1);
       if (typeof veeva !== 'undefined') {

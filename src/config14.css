@@ -48,7 +48,7 @@ main {
    @apply text-text-500 text-base font-albert text-center leading-tight
 }
 .consideraciones a {
-   @apply w-2/5 text-center mb-4
+   @apply w-2/5 text-center mb-4 text-cyan-500
 }
 .consideraciones a img {
    @apply w-full
@@ -56,9 +56,7 @@ main {
 .consideraciones p {
    @apply leading-tight text-text-500 text-center text-sm font-albert
 }
-.consideraciones a {
-   @apply text-cyan-500
-}
+
 .consideraciones p:last-child {
    @apply pt-4
 }

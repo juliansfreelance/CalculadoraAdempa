@@ -76,47 +76,12 @@ let slideNueve = {
       const customAlert = document.querySelector(`custom-alert[name="alert-${alert}"]`);
       const customAlertConten = document.querySelector(`custom-alert[name="alert-${alert}"] .alert-conten`);
       const customAlertAlert = document.querySelector(`custom-alert[name="alert-${alert}"] .alert`);
-      switch (alert) {
-
-         case 'ref-complicaciones':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-         break;
-         
-         case 'ref-microcosteo':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-         break;
-
-            case 'reset':
-               if (customAlert) {
-                  customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-                  customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-                  customAlert.classList.replace('hidden', 'block');
-               } else {
-                  console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-               }
-            break;
-
-         case 'bd-clear':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-         break;
+      if (customAlert) {
+         customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
+         customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
+         customAlert.classList.replace('hidden', 'block');
+      } else {
+         console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${alert}".`);
       }
    },
 
@@ -131,7 +96,7 @@ let slideNueve = {
             customAlert.classList.replace('block', 'hidden');
          }, 600);
       } else {
-         console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
+         console.error(`No se encontró ningún elemento <custom-alert> Abierto.`);
       }
    },
 
@@ -208,7 +173,7 @@ let slideNueve = {
       const validateComplications = slideNueve.validateComplications();
       if (validateComplications === true) {
          localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
-         slideNueve.jumptoSlide('10');
+         slideNueve.jumpToSlide('10');
       }
    }
 };

@@ -230,10 +230,7 @@ main {
    @apply flex flex-col-reverse drop-shadow-md w-full;
 }
 .costos .form {
-   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm
-}
-.costos .form {
-   @apply pr-2 !important
+   @apply bg-white/80 px-6 py-4 rounded-xl w-full text-text-500 text-sm pr-2 !important
 }
 .costos .form table {
    @apply border-spacing-x-1 border-spacing-y-1 border-separate;
@@ -272,10 +269,7 @@ footer article p {
 }
 
 .pop-conten {
-   @apply w-[1024px] h-[768px] relative top-0 flex flex-col justify-center items-center bg-pop-background/85
-}
-.pop-conten {
-   @apply absolute p-8
+   @apply w-[1024px] h-[768px] relative top-0 flex flex-col justify-center items-center bg-pop-background/85 p-8
 }
 .pop {
    @apply flex flex-col-reverse w-fit drop-shadow-md

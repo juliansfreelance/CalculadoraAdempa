@@ -55,10 +55,7 @@ main {
    @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
 }
 .home-btn div {
-   @apply bg-gradient-to-b from-button-bg1 to-white;
-}
-.home-btn div {
-   @apply flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
+   @apply bg-gradient-to-b from-button-bg1 to-white flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
 }
 .home-btn div svg {
    @apply text-button-text;
@@ -97,18 +94,11 @@ main {
 
 .pop .pop-content::before {
    content: '';
-   @apply absolute w-[750px] h-9 z-20
+   @apply absolute w-[750px] h-9 z-20 bg-gradient-to-b from-white/80 to-white/0 rounded-tl-lg
 }
 .pop .pop-content::after {
    content: '';
-   @apply absolute bottom-4 w-[750px] h-9 z-20
-}
-.pop .pop-content::before {
-   @apply bg-gradient-to-b from-white/80 to-white/0 rounded-tl-lg
-}
-
-.pop .pop-content::after {
-   @apply bg-gradient-to-b from-white/0 to-white/80 rounded-bl-lg
+   @apply absolute bottom-4 w-[750px] h-9 z-20 bg-gradient-to-b from-white/0 to-white/80 rounded-bl-lg
 }
 
 .pop .pop-label {

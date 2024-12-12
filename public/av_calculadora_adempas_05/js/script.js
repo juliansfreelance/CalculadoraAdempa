@@ -164,14 +164,14 @@ let slideCinco = {
             if (poblacion !== 0) {
                localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
                setTimeout(() => {
-                  slideCinco.jumptoSlide('07');
+                  slideCinco.jumpToSlide('07');
                }, 800);
             }
          }
       } else if (poblacion !== 0) {
          localStorage.setItem('calculadora', JSON.stringify(veeva.calculadora));
          setTimeout(() => {
-            slideCinco.jumptoSlide('07');
+            slideCinco.jumpToSlide('07');
          }, 800);
       }
    },

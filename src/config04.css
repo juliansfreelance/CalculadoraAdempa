@@ -54,10 +54,7 @@ main {
    @apply bg-gradient-to-b from-white to-button-bg1 p-1 border border-gray-400 shadow-md shadow-black/30 rounded-full w-fit;
 }
 .home-btn div {
-   @apply bg-gradient-to-b from-button-bg1 to-white;
-}
-.home-btn div {
-   @apply flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
+   @apply bg-gradient-to-b from-button-bg1 to-white flex flex-row items-center justify-center gap-1 w-9 h-9 p-1 rounded-full;
 }
 .home-btn div svg {
    @apply text-button-text;

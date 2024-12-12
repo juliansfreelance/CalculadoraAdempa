@@ -955,6 +955,10 @@ select {
   z-index: 50;
 }
 
+.z-\[60\] {
+  z-index: 60;
+}
+
 .col-span-10 {
   grid-column: span 10 / span 10;
 }
@@ -2514,7 +2518,6 @@ footer article p {
   align-items: center;
   justify-content: center;
   background-color: rgb(221 215 209 / 0.85);
-  position: absolute;
 }
 
 .pop {

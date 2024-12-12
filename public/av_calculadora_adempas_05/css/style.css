@@ -1991,11 +1991,6 @@ main {
 }
 
 .home-btn div {
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
-  --tw-gradient-from: #DFE0E4 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(223 224 228 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #fff var(--tw-gradient-to-position);
   display: flex;
   height: 2.25rem;
   width: 2.25rem;
@@ -2004,6 +1999,11 @@ main {
   justify-content: center;
   gap: 0.25rem;
   border-radius: 9999px;
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  --tw-gradient-from: #DFE0E4 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(223 224 228 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #fff var(--tw-gradient-to-position);
   padding: 0.25rem;
 }
 
@@ -2536,8 +2536,14 @@ footer article p {
   line-height: 1;
 }
 
+custom-pop {
+  position: absolute;
+  z-index: 60;
+}
+
 .pop-conten {
   position: absolute;
+  z-index: 60;
   height: 768px;
   width: 1024px;
   flex-direction: column;

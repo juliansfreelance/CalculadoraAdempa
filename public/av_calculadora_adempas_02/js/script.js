@@ -21,7 +21,7 @@ let slideDos = {
          });
    },
 
-   jumptoSlide: function (slide) {
+   jumpToSlide: function (slide) {
       localStorage.setItem('previousSlide', veeva.slide);
       if (slide === '01' && localStorage.getItem('instrucciones') !== null) slide = '05';
       localStorage.removeItem('instrucciones');

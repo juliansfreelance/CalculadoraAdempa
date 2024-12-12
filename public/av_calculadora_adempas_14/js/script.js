@@ -22,7 +22,7 @@ let slideCatorce = {
          });
    },
 
-   jumptoSlide: function (slide) {
+   jumpToSlide: function (slide) {
       if (slide === 'refClose' && localStorage.getItem('previousSlide')) {
          slide = localStorage.getItem('previousSlide');
       } else {

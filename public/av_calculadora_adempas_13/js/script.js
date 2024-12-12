@@ -20,7 +20,7 @@ let slideTrece = {
    ini: function () {
       const resolveReferences = (obj) => {
          const resolvePath = (path, obj) => {
-            return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+            return path.split('.').reduce((acc, part) => acc?.[part], obj);
          };
          const traverseAndResolve = (currentObj, rootObj) => {
             for (let key in currentObj) {
@@ -102,27 +102,12 @@ let slideTrece = {
       const customAlert = document.querySelector(`custom-alert[name="alert-${alert}"]`);
       const customAlertConten = document.querySelector(`custom-alert[name="alert-${alert}"] .alert-conten`);
       const customAlertAlert = document.querySelector(`custom-alert[name="alert-${alert}"] .alert`);
-      switch (alert) {
-
-         case 'bd-clear':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-            break;
-
-         case 'reset':
-            if (customAlert) {
-               customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
-               customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
-               customAlert.classList.replace('hidden', 'block');
-            } else {
-               console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${pop}".`);
-            }
-            break;
+      if (customAlert) {
+         customAlertConten.classList.replace('alert-animate-out', 'alert-animate-in');
+         customAlertAlert.classList.replace('alert-conten-animate-out', 'alert-conten-animate-in');
+         customAlert.classList.replace('hidden', 'block');
+      } else {
+         console.error(`No se encontró ningún elemento <custom-alert> con name="alert-${alert}".`);
       }
    },
 
