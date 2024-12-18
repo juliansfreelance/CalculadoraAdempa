@@ -47,6 +47,7 @@ let slideSeis = {
             htpEstudy.classList.replace('hidden', 'grid');
          }
       }
+      alert('IndexBd creada con exito');
       inputElement.addEventListener('input', slideSeis.handleInput);
       inputElement.addEventListener('blur', slideSeis.handleBlur);
       buttonsElement.forEach(button => {
@@ -55,6 +56,8 @@ let slideSeis = {
       if (hapState && hptecState) {
          HTPAsk.classList.remove('hidden');
          HTPAsk.classList.add('flex');
+         alert('HAP y HPTEC seleccionados calculadora v1');
+         alert('indexBD Tablas actualizadas con HAP y HPTEC');
       } else {
          document.querySelector('.btn-simpleForm').classList.remove('hidden');
          document.querySelector('.titulo h3').innerHTML = 'Población total de pacientes';
@@ -62,11 +65,15 @@ let slideSeis = {
             veeva.calculadora.grupos.HAP = 100;
             veeva.calculadora.grupos.HTEC = 0;
             veeva.calculadora.grupos.study = "";
+            alert('HAP seleccionado calculadora v2 flujo 1');
+            alert('indexBD Tablas actualizadas con HAP');
          }
          if (hptecState && !hapState) {
             veeva.calculadora.grupos.HAP = 0;
             veeva.calculadora.grupos.HTEC = 100;
             veeva.calculadora.grupos.study = "";
+            alert('HPTEC seleccionado calculadora v2 flujo 2');
+            alert('indexBD Tablas actualizadas con HPTEC');
          }
       }
 
