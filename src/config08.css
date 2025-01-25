@@ -214,7 +214,7 @@ main {
    @apply relative w-full
 }
 .input-edit input {
-   @apply border-slate-400 bg-introduccion-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
+   @apply border-slate-400  bg-purple-200/80  focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm shadow-black/40 block w-full
 }
 .input-edit input.porcentaje {
    @apply pr-8
