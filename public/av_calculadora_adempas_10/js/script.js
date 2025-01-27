@@ -157,6 +157,7 @@ let slideDiez = {
       const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
       const referencias = veeva.calculadora.referencias.complicaciones;
       rubros.forEach((rubro, index) => {
+         rubro.valorUnitario = referencias.microcosteo[index].valorUnitario;
          rubro.cantidad.bajo = referencias.microcosteo[index].cantidad.bajo;
          rubro.costo.bajo = referencias.microcosteo[index].costo.bajo;
          rubro.cantidad.intermedio = referencias.microcosteo[index].cantidad.intermedio;
@@ -186,9 +187,9 @@ let slideDiez = {
       const rubros = veeva.calculadora.complicaciones.microcosteo.rubros;
       const inputs = document.querySelectorAll('input[name^="microcosteo"]');
       inputs.forEach(input => {
-      const name = input.name;
-      const [tipo, index, riesgo] = name.split('-');
-         input.value = FORMAT_DECIMAL(rubros[index].cantidad[riesgo]).format();
+         const name = input.name;
+         const [tipo, index, riesgo] = name.split('-');
+         riesgo === 'valorUnitario' ? input.value = FORMAT_DECIMAL(rubros[index].valorUnitario).format() : input.value = FORMAT_DECIMAL(rubros[index].cantidad[riesgo]).format();
       });
       slideDiez.updateInputCosts();
    },

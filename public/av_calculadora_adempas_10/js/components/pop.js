@@ -20,7 +20,7 @@ class customPop extends HTMLElement{
             rubrosHTML += `
                <tr>
                   <td>${rubro.nombre}</td>
-                  <td><custom-input name="${this.type}-${i}-valorUnitario" type="calc" icon="money" valor="${this.formatToFloatString(veeva.calculadora.referencias.complicaciones.microcosteo[i].valorUnitario)}"></custom-input></td>
+                  <td><custom-input name="${this.type}-${i}-valorUnitario" type="edit" icon="money" valor="${this.formatToFloatString(veeva.calculadora.referencias.complicaciones.microcosteo[i].valorUnitario)}"></custom-input></td>
                   <td><custom-input name="${this.type}-${i}-bajo" type="edit" valor="${this.formatToFloatString(rubro.cantidad.bajo)}"></custom-input></td>
                   <td><custom-input name="${this.type}-${i}-intermedio" type="edit" valor="${this.formatToFloatString(rubro.cantidad.intermedio)}"></custom-input></td>
                   <td><custom-input name="${this.type}-${i}-alto" type="edit" valor="${this.formatToFloatString(rubro.cantidad.alto)}"></custom-input></td>

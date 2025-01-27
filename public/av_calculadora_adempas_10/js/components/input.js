@@ -131,6 +131,13 @@ class customInput extends HTMLElement {
             costos[index - 1][riesgo] = parseFloat(value.replace(',', '.'));
          break;
          case 'microcosteo':
+            if (riesgo === 'valorUnitario') {
+               const rubros = complicaciones.microcosteo.rubros;
+               rubros[index].valorUnitario = parseFloat(value.replace(',', '.'));
+               rubros[index].costo.bajo = parseFloat(rubros[index].cantidad.bajo * rubros[index].valorUnitario);
+               rubros[index].costo.intermedio = parseFloat(rubros[index].cantidad.intermedio * rubros[index].valorUnitario);
+               rubros[index].costo.alto = parseFloat(rubros[index].cantidad.alto * rubros[index].valorUnitario);
+            }
             const rubros = complicaciones.microcosteo.rubros;
             rubros[index].cantidad[riesgo] = parseFloat(value.replace(',', '.'));
             rubros[index].costo[riesgo] = parseFloat(value.replace(',', '.') * rubros[index].valorUnitario);
